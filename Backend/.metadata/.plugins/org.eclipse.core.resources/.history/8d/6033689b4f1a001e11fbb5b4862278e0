@@ -1,0 +1,33 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import java.util.List;
+
+import com.js.plataformasalud.modelos.entidades.Especialidades;
+
+public class IEspServicesImpl implements IEspServices {
+
+	@Override
+	public List<Especialidades> findAll() {
+		
+		return null;
+	}
+
+	@Override
+	public Especialidades findById(Long idepecialidades) {
+		
+		return null;
+	}
+
+	@Override
+	public Especialidades save(Especialidades especialidades) {
+		
+		return null;
+	}
+
+	@Override
+	public void delete(Long idespecialidades) {
+		
+		
+	}
+
+}

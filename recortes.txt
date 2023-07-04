@@ -1,0 +1,50 @@
+<div class="form-group row">
+                <label for="tipoDoc" class="col-form-label col-sm-2">TIPO DE DOCUMENTO</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="pac.tipodoc" name="tipoDoc">
+                </div>            
+            </div>
+
+
+
+
+<div class="form-group row">
+                <label for="numDocPac" class="col-form-label col-sm-2">DOCUMENTO</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="pac.numdocpac" name="numDocPac">
+                </div>  
+                <label for="tipoDoc" class="col-form-label col-sm-2">TIPO DE DOCUMENTO</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="pac.tipodoc" name="tipoDoc">
+                </div>
+                
+            </div>
+
+
+
+<input type="text" class="form-control" [(ngModel)]="pac.tipodoc" name="tipoDoc" placeholder="Tipo de documento">
+<input type="text" class="form-control" [(ngModel)]="pac.sexopac" name="sexopac" placeholder="Sexo del paciente">
+
+
+
+
+
+
+this.pacienteservice.create(this.pac).subscribe(
+       pac =>{ 
+              this.router.navigate(['/pacientes'])
+              Swal.fire({
+                icon: 'success',
+                title: 'Creacion de pacientes',
+                text: 'El paciente se ha creado con exito',
+  
+              })
+      },
+      err => {
+        this.errores = err.error.errors as String[];
+        console.error ('codigo de error desde el backend' + err.status);
+        console.error (err.error.errors);
+      }
+    )
+    
+  }

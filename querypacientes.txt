@@ -1,0 +1,6 @@
+INSERT INTO `plataformasalud`.`pacientes` (`numDocuPac`, `primerApePac`, `primerNomPac`, `segundoApePac`, `segundoNomPac`, `tipoDoc`) VALUES ('1234546852', 'SALCEDO', 'JHOAN', 'BARRERA', 'DAVID', 'CC');
+INSERT INTO `plataformasalud`.`pacientes` (`numDocuPac`, `primerApePac`, `primerNomPac`, `segundoApePac`, `segundoNomPac`, `tipoDoc`) VALUES ('1234546853', 'SALCEDO', 'JHOAN', 'BARRERA', 'DAVID', 'CC');
+INSERT INTO `plataformasalud`.`pacientes` (`numDocuPac`, `primerApePac`, `primerNomPac`, `segundoApePac`, `segundoNomPac`, `tipoDoc`) VALUES ('1234546854', 'SALCEDO', 'JHOAN', 'BARRERA', 'DAVID', 'CC');
+INSERT INTO `plataformasalud`.`pacientes` (`numDocuPac`, `primerApePac`, `primerNomPac`, `segundoApePac`, `segundoNomPac`, `tipoDoc`) VALUES ('1234546855', 'SALCEDO', 'JHOAN', 'BARRERA', 'DAVID', 'CC');
+INSERT INTO `plataformasalud`.`pacientes` (`numDocuPac`, `primerApePac`, `primerNomPac`, `segundoApePac`, `segundoNomPac`, `tipoDoc`) VALUES ('1234546856', 'SALCEDO', 'JHOAN', 'BARRERA', 'DAVID', 'CC');
+INSERT INTO `plataformasalud`.`pacientes` (`numDocuPac`, `primerApePac`, `primerNomPac`, `segundoApePac`, `segundoNomPac`, `tipoDoc`) VALUES ('1234546857', 'SALCEDO', 'JHOAN', 'BARRERA', 'DAVID', 'CC');

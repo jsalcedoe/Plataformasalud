@@ -1,0 +1,40 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.js.plataformasalud.modelos.dao.IUsuarioDao;
+import com.js.plataformasalud.modelos.entidades.Usuario;
+
+@Service
+public class IUsuarioServiceImpl implements IUsuarioServices {
+	@Autowired
+	private IUsuarioDao userdao;
+
+	@Override
+	public List<Usuario> findAll() {
+		
+		return null;
+	}
+
+	@Override
+	public Usuario findById(Long idusuario) {
+		
+		return null;
+	}
+
+	@Override
+	public Usuario save(Usuario user) {
+		
+		return null;
+	}
+
+	@Override
+	public void delete(Long idusuario) {
+		
+		
+	}
+
+}

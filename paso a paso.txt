@@ -1,0 +1,21 @@
+paso a paso en springboot
+
+PROCESO EN BACKEND
+
+1. se crea la clase del modelo entity que es la que crea la tabla en la base de datos
+2. Se crea la clase de repository o DAO, la cual se encarga de realizar las consultas en la base de datos
+   - implementamos una interfaz y heredamos de la interfaz repository, con esto ya tenemos listos todos los metodos para el CRUD
+3. Se crea la clase de Service la cual interactua con la clase DAO
+   - implementamos una interfaz para el servicio la cual va a realizar la consulta al DAO
+   - Luego creamos una clase de service para implementar la interfaz que se acaba de construir
+4. Se crea el API Rest, la cual es la aplicacion que va a interactuar con ANGULAR, la API 
+5. Se implementa un CORS en el API RestController para autorizar la url	
+6. en la clase de servicio se implementa el CRUD creando los metodos necesarios ej: public paciente save(Cliente, cliente);
+7. En la implementacion del servicio se implementa los metodos de la clase servicios
+8. En el controller se implementan los metodos
+
+PROCESO EN FRONTEND
+
+1. Configuramos el HTTPClient en module.ts en el frontend
+2. En la clase de serviceimportamos HTTPClient, luego se inyectamos en el constructor
+

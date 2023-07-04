@@ -1,0 +1,42 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.js.plataformasalud.modelos.entidades.Especialidades;
+
+
+@Service
+public class IEspServicesImpl implements IEspServices {
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Especialidades> findAll() {
+		
+		return null;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Especialidades findById(Long idepecialidades) {
+		
+		return null;
+	}
+
+	@Override
+	@Transactional
+	public Especialidades save(Especialidades especialidades) {
+		
+		return null;
+	}
+
+	@Override
+	@Transactional
+	public void delete(Long idespecialidades) {
+		
+		
+	}
+
+}

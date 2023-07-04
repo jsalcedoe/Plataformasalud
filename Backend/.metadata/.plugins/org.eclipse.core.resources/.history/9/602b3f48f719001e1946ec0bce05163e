@@ -1,0 +1,39 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import com.js.plataformasalud.modelos.entidades.Diagnostico;
+
+public class IDxServiceImpl implements IDxService {
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Diagnostico> findAll() {
+		
+		return null;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Diagnostico findById(String iddx) {
+		
+		return null;
+	}
+
+	@Override
+	@Transactional
+	public Diagnostico save(Diagnostico dx) {
+		
+		return null;
+	}
+
+	@Override
+	@Transactional
+	public void delete(String iddx) {
+		
+		
+	}
+
+}

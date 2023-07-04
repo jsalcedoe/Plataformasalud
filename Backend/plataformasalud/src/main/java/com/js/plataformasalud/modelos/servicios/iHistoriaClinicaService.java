@@ -1,0 +1,17 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import java.util.List;
+
+import com.js.plataformasalud.modelos.entidades.HistoriaClinica;
+
+public interface iHistoriaClinicaService {
+	
+	public List<HistoriaClinica> findAll();
+	
+	public HistoriaClinica findById(Long idhcpac);
+	
+	public HistoriaClinica save (HistoriaClinica hcpac);
+	
+	public void delete (Long idhcpac);
+
+}

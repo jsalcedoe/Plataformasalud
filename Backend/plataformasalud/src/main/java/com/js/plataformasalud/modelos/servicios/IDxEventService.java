@@ -1,0 +1,18 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import java.util.List;
+
+import com.js.plataformasalud.modelos.entidades.DiagnosticoEvent;
+
+public interface IDxEventService {
+	
+	public List<DiagnosticoEvent> findAll();
+	
+	public DiagnosticoEvent findById(Long iddxpac);
+	
+	public DiagnosticoEvent save (DiagnosticoEvent dxevent);
+	
+	public void delete (Long iddxpac);
+	
+
+}
