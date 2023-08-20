@@ -20,9 +20,11 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "dxevent")
 
@@ -47,6 +49,7 @@ public class DiagnosticoEvent implements Serializable {
 	@Column(nullable = false, length = 10)
 	@NotEmpty(message = "El campo tipo de diagnostico no puede ser estar vacio, por favor seleccione el tipo de diagnostico")
 	private String tipdxpac;
+	//El tipo de diagnostico puede ser: principal, secundario, relacionado, confirmado
 	
 	@Column(nullable = false, length = 12)
 	@Temporal(TemporalType.DATE)

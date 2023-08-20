@@ -1,6 +1,8 @@
 package com.js.plataformasalud.modelos.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -13,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,7 +52,16 @@ public class Usuario implements Serializable{
 	@JoinColumn(name = "especialidades_idespecialidades")
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Especialidades especialidad ;
-		
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+	private List<OrdenesProcExam> ordxuser;
+	
+	public Usuario() {
+		this.ordxuser = new ArrayList<OrdenesProcExam>();
+	}
+
+
+
 	private static final long serialVersionUID = 1L;
 
 }

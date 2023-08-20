@@ -16,16 +16,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PostPersist;
-//import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table (name = "pacientes")
 
@@ -102,6 +103,14 @@ public class Paciente implements Serializable {
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Ciudad ciudad;
 	
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private TipoPaciente tipac;
+	
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private Entidad entidad;
+	
 	@Column(nullable = false, length = 12)
 	@Temporal(TemporalType.DATE)
 	private Date fechacreacionpac;
@@ -111,9 +120,6 @@ public class Paciente implements Serializable {
 		fechacreacionpac = new Date();
 	}
 	
-	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "ubicaevent", cascade = CascadeType.ALL)
-	private List<Evento> event;*/
-		
 	@Column (nullable = false, length = 10 )
 	private String estado;
 	//Los estados pueden ser: Creado, Modificado, Eliminado

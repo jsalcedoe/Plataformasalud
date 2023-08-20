@@ -1,0 +1,47 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.js.plataformasalud.modelos.dao.ITipoEAPBDao;
+import com.js.plataformasalud.modelos.entidades.TipoEAPB;
+
+@Service
+
+public class ITipoEAPBServiceImpl implements ITipoEAPBService {
+	
+	private ITipoEAPBDao tipentdao;
+	
+	
+
+	public ITipoEAPBServiceImpl(ITipoEAPBDao tipentdao) {
+		super();
+		this.tipentdao = tipentdao;
+	}
+
+	@Override
+	public List<TipoEAPB> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TipoEAPB findById(long idtipeapb) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TipoEAPB save(TipoEAPB tipeapb) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(long idtipeapb) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

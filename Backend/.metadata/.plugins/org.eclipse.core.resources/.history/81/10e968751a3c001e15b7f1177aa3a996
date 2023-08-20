@@ -1,0 +1,10 @@
+package com.js.plataformasalud.modelos.entidades;
+
+import java.io.Serializable;
+
+public class TipoEAPB implements Serializable{
+
+
+	private static final long serialVersionUID = 1L;
+
+}

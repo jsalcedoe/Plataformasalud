@@ -1,0 +1,38 @@
+package com.js.plataformasalud.modelos.entidades;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+@Entity
+@Table(name = "agmed")
+
+public class Agenda implements Serializable {
+
+	private long idagmed;
+	
+	private Date fechaagmed;
+	
+	private Date horainiagmed;
+	
+	private Date horafinagmed;
+	
+	private long intervtempagmed; //intervalo de tiempo para agenda medica o tiempo que se demore en cada cita
+	
+	private long totalcitasagmed;
+	
+	private Consultorio consagmed;
+	
+	private Usuario mediagmed;
+	
+	private ProcedimientosExamenes cupscita;
+	
+	private static final long serialVersionUID = 1L;
+
+}

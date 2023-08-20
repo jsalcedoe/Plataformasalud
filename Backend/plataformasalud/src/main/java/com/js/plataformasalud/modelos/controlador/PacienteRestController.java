@@ -62,6 +62,7 @@ public class PacienteRestController {
 		pacienteActual.setAcudientepac(paciente.getAcudientepac());
 		pacienteActual.setContactoacudientepac(paciente.getContactoacudientepac());
 		pacienteActual.setCiudad(paciente.getCiudad());
+		pacienteActual.setTipac(paciente.getTipac());
 		pacienteActual.setEstado(paciente.getEstado());
 		
 		

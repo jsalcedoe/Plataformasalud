@@ -17,8 +17,8 @@ import lombok.Setter;
 public class Departamento implements Serializable {
 	
 	@Id
-	@Column (nullable = false, length = 2, unique = true )
-	private Long id_departamento;
+	@Column (name = "id_departamento",nullable = false, length = 2, unique = true )
+	private Long coddep;
 	
 	@Column (nullable = false, length = 30 )
 	private String departamento;

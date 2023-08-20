@@ -6,8 +6,8 @@ import com.js.plataformasalud.modelos.entidades.Evento;
 
 
 public interface iEventosService {
-public List<Evento> findAll();
 
+	public List<Evento> findAll();
 	
 	public Evento findById(Long ideventpac);
 	

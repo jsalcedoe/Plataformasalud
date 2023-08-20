@@ -1,0 +1,5 @@
+package com.js.plataformasalud.modelos.controlador;
+
+public class TipoPacienteRestController {
+
+}
