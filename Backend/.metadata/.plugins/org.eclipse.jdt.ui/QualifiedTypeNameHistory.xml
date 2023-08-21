@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="jakarta.persistence.PrePersist"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IProcedimientoExamenesServices"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IProcedimientoQuirurgicoDao"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.PorcedimientoQuirurgico"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IProcedimientoQuirurgicoServiceImpl"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.ProcedimientoQuirurgico"/>
@@ -42,6 +38,9 @@
     <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
     <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.ITarifaContratoDao"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.ITarifaContratoServiceImpl"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.TarifaContrato"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
     <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
@@ -49,12 +48,13 @@
     <fullyQualifiedTypeName name="jakarta.persistence.ManyToOne"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.ITarifaContratoDao"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IContratoService"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IContratoDao"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.ITarifaContratoServiceImpl"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IContratoServiceImpl"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.TarifaContrato"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.Contrato"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
