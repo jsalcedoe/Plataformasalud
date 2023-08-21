@@ -1,0 +1,42 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.js.plataformasalud.modelos.dao.IContratoDao;
+import com.js.plataformasalud.modelos.entidades.Contrato;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class IContratoServiceImpl implements IContratoService {
+	
+	private IContratoDao contratodao;
+	
+	@Override
+	public List<Contrato> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Contrato findById(Long idcontrato) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Contrato save(Contrato contrato) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Long idcontrato) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

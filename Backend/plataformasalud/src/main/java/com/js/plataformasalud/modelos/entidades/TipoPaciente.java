@@ -25,6 +25,11 @@ public class TipoPaciente implements Serializable {
 	
 	@Column(nullable = false, length = 15)
 	private String nomtipac;
+	/*
+	 * 	Los tipos de pacientes pueden ser:
+		contizantes
+		beneficiarios
+	 */
 	
 	private static final long serialVersionUID = 1L;
 

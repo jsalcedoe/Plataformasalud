@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.ITipoAnestesiaDao"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.ITipoAnestesiaServiceImpl"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.TipoAnestesia"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Temporal"/>
     <fullyQualifiedTypeName name="jakarta.persistence.PrePersist"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IProcedimientoExamenesServices"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IProcedimientoQuirurgicoDao"/>
@@ -34,12 +30,13 @@
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.ITipoEAPBDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.ITipoEAPBServiceImpl"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.TipoEAPB"/>
-    <fullyQualifiedTypeName name="jakarta.validation.constraints.NotEmpty"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IEntidadDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IEntidadServiceImpl"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.Entidad"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.ManyToOne"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnoreProperties"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.ITipoPacienteDao"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.ITipoPacienteServiceImpl"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.TipoPaciente"/>
     <fullyQualifiedTypeName name="lombok.Getter"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
@@ -48,13 +45,16 @@
     <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
     <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
+    <fullyQualifiedTypeName name="jakarta.validation.constraints.NotEmpty"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.ManyToOne"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.ITipoPacienteDao"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.ITarifaContratoDao"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.ITipoPacienteServiceImpl"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.ITarifaContratoServiceImpl"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.TipoPaciente"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.TarifaContrato"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
