@@ -2,7 +2,6 @@ package com.js.plataformasalud.modelos.controlador;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.js.plataformasalud.modelos.entidades.Agenda;
@@ -34,25 +32,21 @@ public class AgendaRestController {
 	}*/
 	
 	@GetMapping("/agenda")
-	@ResponseStatus(code = HttpStatus.OK)
 	public List<Agenda> index(){
 		return agmedserv.findAll();
 	}
 	
 	@GetMapping("/agenda/{idagmed}")
-	@ResponseStatus(code = HttpStatus.OK)
 	public Agenda mostrar(@PathVariable Long idagmed) {
 		return agmedserv.findById(idagmed);
 	}
 	
 	@PostMapping("/agenda")
-	@ResponseStatus(code = HttpStatus.CREATED)
 	public Agenda crear (@RequestBody Agenda agmed) {
 		return agmedserv.save(agmed);
 	}
 	
 	@PutMapping("/agenda/{idagmed}")
-	@ResponseStatus(code = HttpStatus.OK)
 	public Agenda actualiza (@RequestBody Agenda agmed, @PathVariable Long idagmed) {
 		Agenda AgendaActual = agmedserv.findById(idagmed);
 		

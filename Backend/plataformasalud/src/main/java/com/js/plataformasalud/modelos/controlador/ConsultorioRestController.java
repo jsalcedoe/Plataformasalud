@@ -16,19 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
 import com.js.plataformasalud.modelos.entidades.Consultorio;
 import com.js.plataformasalud.modelos.servicios.IConsultorioServiceImpl;
 
+import lombok.AllArgsConstructor;
+
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
+@AllArgsConstructor
 
 public class ConsultorioRestController {
 	private IConsultorioServiceImpl consultorioService;
 
-	public ConsultorioRestController(IConsultorioServiceImpl consultorioService) {
+	/*public ConsultorioRestController(IConsultorioServiceImpl consultorioService) {
 		super();
 		this.consultorioService = consultorioService;
-	}
+	}*/
 	
 	@GetMapping("/consultorio")
+	@ResponseStatus(code = HttpStatus.OK)
 	public List<Consultorio> index(){
 		return consultorioService.findAll();
 		
@@ -47,6 +51,7 @@ public class ConsultorioRestController {
 	}
 	
 	@PutMapping("/consultorio/{idconsultorio}")
+	@ResponseStatus(code = HttpStatus.OK)
 	public Consultorio update (@RequestBody Consultorio consultorio, @PathVariable Long idconsultorio) {
 		Consultorio consActual = consultorioService.FindById(idconsultorio);
 		

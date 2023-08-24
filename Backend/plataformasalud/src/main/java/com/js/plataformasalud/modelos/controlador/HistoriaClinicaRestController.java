@@ -2,7 +2,7 @@ package com.js.plataformasalud.modelos.controlador;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,16 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.js.plataformasalud.modelos.entidades.HistoriaClinica;
 import com.js.plataformasalud.modelos.servicios.iHistoriaClinicaServiceImpl;
 
+import lombok.AllArgsConstructor;
+
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
+@AllArgsConstructor
 
 public class HistoriaClinicaRestController {
 	
-	@Autowired
+	
 	private iHistoriaClinicaServiceImpl hcpacservice;
 	
 	@GetMapping("/hcpac")
+	@ResponseStatus(code = HttpStatus.OK)
 	public List<HistoriaClinica> index(){
 		
 		return hcpacservice.findAll();
@@ -49,6 +53,7 @@ public class HistoriaClinicaRestController {
 	}
 	
 	@PutMapping("hcpac/idhcpac")
+	@ResponseStatus(code = HttpStatus.OK)
 	public HistoriaClinica editar (@RequestBody HistoriaClinica hcpac, @PathVariable Long idhcpac) {
 		
 		HistoriaClinica hcpacActual = hcpacservice.findById(idhcpac);
