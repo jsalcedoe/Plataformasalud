@@ -8,16 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.js.plataformasalud.modelos.dao.IConsultorioDao;
 import com.js.plataformasalud.modelos.entidades.Consultorio;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class IConsultorioServiceImpl implements IConsultorioService {
 	
 	private IConsultorioDao consDao;
 	
-	public IConsultorioServiceImpl(IConsultorioDao consDao) {
-		super();
-		this.consDao = consDao;
-	}
-
 	@Override
 	@Transactional(readOnly = true)
 	public List<Consultorio> findAll() {

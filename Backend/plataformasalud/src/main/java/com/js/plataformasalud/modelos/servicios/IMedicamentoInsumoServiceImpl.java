@@ -2,17 +2,18 @@ package com.js.plataformasalud.modelos.servicios;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.js.plataformasalud.modelos.dao.IMedicamentoInsumoDao;
 import com.js.plataformasalud.modelos.entidades.MedicamentoInsumo;
 
-@Service
+import lombok.AllArgsConstructor;
 
+@Service
+@AllArgsConstructor
 public class IMedicamentoInsumoServiceImpl implements IMedicamentoInsumoService {
 	
-	@Autowired
 	private IMedicamentoInsumoDao medinsdao;
 
 	@Override

@@ -8,18 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.js.plataformasalud.modelos.dao.ITarifaDao;
 import com.js.plataformasalud.modelos.entidades.Tarifa;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 
 public class ITarifaServiceImpl implements ITarifaService {
 	
 	private ITarifaDao tarifadao;
 	
-	
-	public ITarifaServiceImpl(ITarifaDao tarifadao) {
-		super();
-		this.tarifadao = tarifadao;
-	}
-
 	@Override
 	@Transactional(readOnly = true)
 	public List<Tarifa> findAll() {

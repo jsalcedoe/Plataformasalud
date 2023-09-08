@@ -8,16 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.js.plataformasalud.modelos.dao.IDepartamentoDao;
 import com.js.plataformasalud.modelos.entidades.Departamento;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class IDepartamentoServiceImpl implements IDepartamentoService {
 	
 	private IDepartamentoDao depdao;
 	
-	public IDepartamentoServiceImpl(IDepartamentoDao depdao) {
-		super();
-		this.depdao = depdao;
-	}
-
 	@Override
 	@Transactional(readOnly = true)
 	public List<Departamento> findAll() {

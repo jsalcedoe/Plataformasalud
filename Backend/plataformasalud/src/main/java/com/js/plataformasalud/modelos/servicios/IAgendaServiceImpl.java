@@ -8,17 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.js.plataformasalud.modelos.dao.IAgendaDao;
 import com.js.plataformasalud.modelos.entidades.Agenda;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class IAgendaServiceImpl implements IAgendaService {
 	
 	private IAgendaDao agmedao;
 	
-	
-	public IAgendaServiceImpl(IAgendaDao agmedao) {
-		super();
-		this.agmedao = agmedao;
-	}
-
 	@Override
 	@Transactional(readOnly = true)
 	public List<Agenda> findAll() {

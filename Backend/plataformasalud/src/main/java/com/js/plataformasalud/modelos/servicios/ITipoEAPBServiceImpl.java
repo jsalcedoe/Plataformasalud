@@ -8,19 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.js.plataformasalud.modelos.dao.ITipoEAPBDao;
 import com.js.plataformasalud.modelos.entidades.TipoEAPB;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 
 public class ITipoEAPBServiceImpl implements ITipoEAPBService {
 	
 	private ITipoEAPBDao tipentdao;
 	
-	
-
-	public ITipoEAPBServiceImpl(ITipoEAPBDao tipentdao) {
-		super();
-		this.tipentdao = tipentdao;
-	}
-
 	@Override
 	@Transactional(readOnly = true)
 	public List<TipoEAPB> findAll() {

@@ -2,17 +2,20 @@ package com.js.plataformasalud.modelos.servicios;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.js.plataformasalud.modelos.dao.IProcedimientoExamenesDao;
 import com.js.plataformasalud.modelos.entidades.ProcedimientosExamenes;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class IProcedimientoExamenesImpl implements IProcedimientoExamenesServices {
 	
-	@Autowired
+	
 	private IProcedimientoExamenesDao procexamdao;
 
 	@Override

@@ -8,16 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.js.plataformasalud.modelos.dao.ICiudadDao;
 import com.js.plataformasalud.modelos.entidades.Ciudad;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class ICiudadServiceImpl implements ICiudadService {
 	
 	private ICiudadDao ciudao;
 	
-	public ICiudadServiceImpl(ICiudadDao ciudao) {
-		super();
-		this.ciudao = ciudao;
-	}
-
 	@Override
 	@Transactional(readOnly = true)
 	public List<Ciudad> findAll() {

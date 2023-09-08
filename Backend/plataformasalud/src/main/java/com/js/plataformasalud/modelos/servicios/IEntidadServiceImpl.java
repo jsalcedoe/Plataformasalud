@@ -8,17 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.js.plataformasalud.modelos.dao.IEntidadDao;
 import com.js.plataformasalud.modelos.entidades.Entidad;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 
 public class IEntidadServiceImpl implements IEntidadService {
 	
 	private IEntidadDao entdao;
 	
-	public IEntidadServiceImpl(IEntidadDao entdao) {
-		super();
-		this.entdao = entdao;
-	}
-
 	@Override
 	@Transactional(readOnly = true)
 	public List<Entidad> findAll() {

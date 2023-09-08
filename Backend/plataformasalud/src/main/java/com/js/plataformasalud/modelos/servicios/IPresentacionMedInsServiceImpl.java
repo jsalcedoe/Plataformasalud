@@ -4,18 +4,20 @@ import java.util.List;
 
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.js.plataformasalud.modelos.dao.PresentacionMedInsDao;
 import com.js.plataformasalud.modelos.entidades.PresentacionMedIns;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 
 public class IPresentacionMedInsServiceImpl implements IPresentacionMedInsService{
 	
-	@Autowired
 	private PresentacionMedInsDao pmedinsdao;
 
 	@Override
