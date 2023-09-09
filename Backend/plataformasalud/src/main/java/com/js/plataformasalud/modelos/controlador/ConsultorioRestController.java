@@ -26,11 +26,6 @@ import lombok.AllArgsConstructor;
 public class ConsultorioRestController {
 	private IConsultorioServiceImpl consultorioService;
 
-	/*public ConsultorioRestController(IConsultorioServiceImpl consultorioService) {
-		super();
-		this.consultorioService = consultorioService;
-	}*/
-	
 	@GetMapping("/consultorio")
 	@ResponseStatus(code = HttpStatus.OK)
 	public List<Consultorio> index(){
