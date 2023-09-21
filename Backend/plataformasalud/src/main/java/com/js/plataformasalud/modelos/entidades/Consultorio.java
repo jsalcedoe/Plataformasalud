@@ -24,7 +24,7 @@ public class Consultorio implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true)
-	private long idconsultorio;
+	private Long idconsultorio;
 	
 	@NotEmpty(message = "El campo del consultorio u area a crear no puede estar vacio")
 	private String nomconsul;
