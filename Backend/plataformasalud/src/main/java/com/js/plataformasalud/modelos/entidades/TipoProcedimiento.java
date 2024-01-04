@@ -31,7 +31,7 @@ public class TipoProcedimiento implements Serializable {
 	 3. Ecografias
 	 4. Rx
 	 5. procedimientos no invasivos*/
-	
+		
 	private String estado;
 	
 	/*Los estados pueden ser: creado, modificado,eliminado*/

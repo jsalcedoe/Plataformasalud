@@ -24,6 +24,9 @@ public class Rol implements Serializable {
 	
 	@Column(unique = true,length = 20)
 	private String nomrol;
+	
+	@Column(unique = true, length = 50)
+	private String desrol; // realiza la descripcion detallada del rol que se esta creando
 
 	
 	private static final long serialVersionUID = 1L;

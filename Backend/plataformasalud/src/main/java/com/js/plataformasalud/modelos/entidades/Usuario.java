@@ -1,10 +1,11 @@
 package com.js.plataformasalud.modelos.entidades;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mysql.cj.jdbc.Blob;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -15,7 +16,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,32 +35,38 @@ public class Usuario implements Serializable{
 	@Column(length = 60, nullable = false)
 	private String password;
 	
+	@Column(length = 3, nullable = false)
+	private String typiduser;
+	
+	@Column (length = 11, unique = true)
+	private Long docuser;
+	
 	@Column(nullable = false)
-	private String nombresusuario;
+	private String nameuser;
+	
+	@Column (length = 30,unique = false)
+	private String lastnameuser;
+	
+	@Column (length = 20, unique = true)
+	private String tarjprofuser;
+	
+	@Column (length = 45)
+	private String emailuser;
 	
 	@Column (nullable = false)
-	private String apellidosusuario;
-	
-	private String tarjprofusuario;
-	
-	private String firma;
+	private Blob firma;
 	
 	@Column (nullable = false)
-	private Boolean habilitado;
+	private Date creatdateuser;
+	
+	@Column (nullable = false)
+	private Boolean statususer;;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "especialidades_idespecialidades")
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Especialidades especialidad ;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
-	private List<OrdenesProcExam> ordxuser;
-	
-	public Usuario() {
-		this.ordxuser = new ArrayList<OrdenesProcExam>();
-	}
-
-
 
 	private static final long serialVersionUID = 1L;
 

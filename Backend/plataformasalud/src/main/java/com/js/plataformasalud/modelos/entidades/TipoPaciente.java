@@ -29,6 +29,7 @@ public class TipoPaciente implements Serializable {
 	 * 	Los tipos de pacientes pueden ser:
 		contizantes
 		beneficiarios
+		particulares
 	 */
 	
 	private static final long serialVersionUID = 1L;

@@ -50,13 +50,17 @@ public class UsuarioRestController {
 	public Usuario update (@RequestBody Usuario user, @PathVariable Long idusuario) {
 		Usuario userActualizado = userservice.findById(idusuario);
 		
-		userActualizado.setApellidosusuario(user.getApellidosusuario());
+		userActualizado.setNameuser(user.getNameuser());
+		userActualizado.setLastnameuser(user.getLastnameuser());
+		userActualizado.setCreatdateuser(user.getCreatdateuser());
+		userActualizado.setEmailuser(user.getEmailuser());
 		userActualizado.setEspecialidad(user.getEspecialidad());
 		userActualizado.setFirma(user.getFirma());
-		userActualizado.setHabilitado(user.getHabilitado());
-		userActualizado.setNombresusuario(user.getNombresusuario());
 		userActualizado.setPassword(user.getPassword());
-		userActualizado.setTarjprofusuario(user.getTarjprofusuario());
+		userActualizado.setDocuser(user.getDocuser());
+		userActualizado.setStatususer(user.getStatususer());
+		userActualizado.setTarjprofuser(user.getTarjprofuser());
+		userActualizado.setTypiduser(user.getTypiduser());
 		userActualizado.setUsername(user.getUsername());
 		
 		return userservice.save(userActualizado);

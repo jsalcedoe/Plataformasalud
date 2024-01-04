@@ -33,7 +33,7 @@ public class ProcedimientosExamenes implements Serializable {
 	
 	@Column(nullable = false)
 	@NotEmpty(message = "Por favor seleccione el sexo al que se aplica el procedimiento o examen")
-	private String sexo;//el sexo puede ser 1. Femenino 2. masculino 3. ambos
+	private String sexoprocexam;//el sexo puede ser 1. Femenino 2. masculino 3. ambos
 	
 	@Column(nullable = false)
 	private String estado;// el estado puede ser: creado, modificado o eliminado

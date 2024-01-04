@@ -31,7 +31,7 @@ public class Diagnostico implements Serializable {
 	
 	private String estdx;// El estado puede ser: activo o inactivo
 	
-	private String sexdx; // en el sexo puede ser 1. masculino, 2. femenino, 3. Ambos
+	private Long sexdx; // en el sexo puede ser 1. masculino, 2. femenino, 3. Ambos
 	
 	private long edadmindx;
 	
