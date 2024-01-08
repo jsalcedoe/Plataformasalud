@@ -5,7 +5,7 @@ import java.util.Date;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.mysql.cj.jdbc.Blob;
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -27,7 +27,7 @@ import lombok.Setter;
 public class Usuario implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idusuario;
+	private long idusuario;
 	
 	@Column(unique = true, length = 20)
 	private String username;
@@ -39,7 +39,7 @@ public class Usuario implements Serializable{
 	private String typiduser;
 	
 	@Column (length = 11, unique = true)
-	private Long docuser;
+	private long docuser;
 	
 	@Column(nullable = false)
 	private String nameuser;
@@ -54,7 +54,7 @@ public class Usuario implements Serializable{
 	private String emailuser;
 	
 	@Column (nullable = false)
-	private Blob firma;
+	private String firma;
 	
 	@Column (nullable = false)
 	private Date creatdateuser;

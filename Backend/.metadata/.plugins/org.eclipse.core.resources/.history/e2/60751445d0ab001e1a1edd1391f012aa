@@ -1,0 +1,19 @@
+package com.js.plataformasalud.modelos.entidades;
+
+public class RepresentanteLegal {
+	
+	private long idrepleg;
+	
+	private long docrepleg;
+	
+	private String pnomrepleg;
+	
+	private String snomrepleg;
+	
+	private String paperepleg;
+	
+	private String saperepleg;
+	
+	private TipoDocumento tipdoc_fk;
+
+}

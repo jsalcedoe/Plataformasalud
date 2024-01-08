@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -47,20 +46,6 @@ public class ProcedimientoExamenesRestController {
 		return procexamservice.save(procexam);
 	}
 	
-	@PutMapping("procexam/{codprocexam}")
-	@ResponseStatus(code = HttpStatus.OK)
-	public ProcedimientosExamenes update (@PathVariable String codprocexam, @RequestBody ProcedimientosExamenes procexam) {
-		
-		ProcedimientosExamenes procexamAct = procexamservice.findById(codprocexam);
-		
-		procexamAct.setEstado(procexam.getEstado());
-		procexamAct.setNomprocexam(procexam.getNomprocexam());
-		procexamAct.setPrecio(procexam.getPrecio());
-		procexamAct.setSexo(procexam.getSexo());
-		procexamAct.setTprocexam(procexam.getTprocexam());
-		procexamAct.setTarifprocexam(procexam.getTarifprocexam());
-		
-		return procexamservice.save(procexamAct);
-	}
+	
 
 }

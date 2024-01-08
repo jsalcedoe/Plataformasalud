@@ -3,11 +3,16 @@ package com.js.plataformasalud.modelos.entidades;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -19,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="prestadorservicio")
+@Table(name="prestserv")
 
 /* Esta entidad es la encargada de crear la IPS prestadora de salud */
 
@@ -34,31 +39,23 @@ public class PrestadorServicio implements Serializable  {
 	@NotEmpty(message = "El campo no puede ser vacio, digite el nombre del prestador de servicios")
 	private String nomprestserv;
 	
-	@Column(length = 11)
+	@Column(nullable = false, length = 11, unique = true)
 	@NotEmpty(message = "El campo NIT no puede ser vacio")
-	private String nitprestserv;
+	private String docprestserv;
 	
-	@Column(length = 50)
+	@Column(nullable = false,length = 50)
 	@NotEmpty(message = "El campo direccion del prestador no puede ser vacio")
 	private String dirprestserv;
 	
-	@Column(length = 10)
+	@Column(nullable = false, length = 10)
 	@NotEmpty(message = "El campo telefono de IPS no puede ser vacio")
 	private String telprestserv;
 	
-	@Column(length = 3)
-	private String tipdoc;
+	@Column(nullable = false, length = 30)
+	@NotEmpty(message = "El campo email de IPS no puede ser vacio")
+	private String emailprestserv;
 	
-	@Column(length = 15)
-	@NotEmpty(message = "El campo numero de documento del representante no puede ser vacio")
-	private long numdocreprlegprest;
-	
-	@Column(length = 45)
-	@NotEmpty(message = "El campo nombre del representante legal no puede ser vacio")
-	private String reprlegprest;
-		
-	
-	@Column(nullable = false, length = 12)
+	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fechacreaprestserv;
 	
@@ -67,8 +64,15 @@ public class PrestadorServicio implements Serializable  {
 		fechacreaprestserv = new Date();
 	}
 	
-	@Column (nullable = false, length = 10 )
-	private String estado;
+	
+	@ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private TipoDocumento tipdocprestserv_fk;
+	
+	
+	@ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private Estado estado_fk;
 	
 	private static final long serialVersionUID = 1L;
 

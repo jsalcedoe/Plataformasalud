@@ -40,7 +40,7 @@ public class EventoServiceImpl implements iEventosService {
 	}
 
 	@Override
-	@Transactional(readOnly = true)
+	@Transactional
 	public void delete(Long ideventpac) {
 		eventodao.deleteById(ideventpac);
 		

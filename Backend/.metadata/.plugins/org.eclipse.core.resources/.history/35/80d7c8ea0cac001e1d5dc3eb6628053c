@@ -1,0 +1,43 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.js.plataformasalud.modelos.entidades.RepresentanteLegal;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+
+public class IRepresentanteLegalServicesImpl implements IRepresentanteLegalService{
+	
+	private 
+	
+	
+	@Override
+	public List<RepresentanteLegal> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RepresentanteLegal findById(Long idrepleg) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RepresentanteLegal save(RepresentanteLegal replegal) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Long idrepleg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
