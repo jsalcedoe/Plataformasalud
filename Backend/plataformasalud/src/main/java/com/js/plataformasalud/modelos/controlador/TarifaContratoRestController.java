@@ -50,12 +50,7 @@ public class TarifaContratoRestController {
 	public TarifaContrato update (@PathVariable Long idtarifcont,@RequestBody TarifaContrato taricont) {
 		
 		TarifaContrato tarifAct = tarifaservice.findById(idtarifcont);
-		
-		tarifAct.setContarif(taricont.getContarif());
 		tarifAct.setDetarifcont(taricont.getDetarifcont());
-		tarifAct.setMedins(taricont.getMedins());
-		tarifAct.setProcexam(taricont.getProcexam());
-		tarifAct.setTarifacont(taricont.getTarifacont());
 		
 		return tarifaservice.save(tarifAct);
 	}

@@ -11,6 +11,6 @@ public interface IDxService {
 	
 	public Diagnostico save (Diagnostico dx);
 	
-	public void delete (String iddx);
+	
 
 }

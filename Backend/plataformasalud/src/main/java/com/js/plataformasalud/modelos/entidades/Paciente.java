@@ -8,12 +8,11 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PostPersist;
 import jakarta.persistence.PrePersist;
@@ -98,16 +97,15 @@ public class Paciente implements Serializable {
 	@Column (nullable = false, length = 15 )
 	private String contactoacudientepac;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "ciudad_idciudad")
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Ciudad ciudad;
 	
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private TipoPaciente tipac;
 	
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Entidad entidad;
 	

@@ -40,20 +40,20 @@ public class CiudadRestController {
 		return ciuservice.findAll();
 	}
 	
-	@GetMapping("/ciudades/{codciudad}")
-	public ResponseEntity<?> mostrar(@PathVariable Long codciudad) {
+	@GetMapping("/ciudades/{codciu}")
+	public ResponseEntity<?> mostrar(@PathVariable Long codciu) {
 		Ciudad ciudad = null;
 		Map<String, Object> response = new HashMap<>();
 	
 		try {
-			ciudad = ciuservice.FindById(codciudad);
+			ciudad = ciuservice.FindById(codciu);
 		}catch(DataAccessException e) {
 			response.put("mensaje", "Error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (ciudad == null) {
-			response.put("mensaje", "La ciudad ID: ".concat(codciudad.toString().concat(" no existe en la base de datos!")));
+			response.put("mensaje", "La ciudad ID: ".concat(codciu.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Ciudad>(ciudad, HttpStatus.OK);
@@ -85,11 +85,11 @@ public class CiudadRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/ciudades/{codciudad}")
-	public ResponseEntity <?> actualizar (@PathVariable Long codciudad,@RequestBody Ciudad ciudad, BindingResult result) {
+	@PutMapping("/ciudades/{codciu}")
+	public ResponseEntity <?> actualizar (@PathVariable Long codciu,@RequestBody Ciudad ciudad, BindingResult result) {
 		
 		Ciudad ciudadUpdate = null;
-		Ciudad ciuAct = ciuservice.FindById(codciudad);
+		Ciudad ciuAct = ciuservice.FindById(codciu);
 		Map<String, Object> response = new HashMap<>();
 
 		if(result.hasErrors()) {
@@ -105,12 +105,14 @@ public class CiudadRestController {
 		
 		if (ciuAct == null) {
 			response.put("mensaje", "Error: no se pudo editar, la ciudad ID: "
-					.concat(codciudad.toString().concat(" no existe en la base de datos!")));
+					.concat(codciu.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		try {
-			ciuAct.setDepartamento(ciudad.getDepartamento());
-			ciuAct.setNomciudad(ciudad.getNomciudad());
+			ciuAct.setDatecreatciu(ciudad.getDatecreatciu());
+			ciuAct.setDepciu_fk(ciudad.getDepciu_fk());
+			ciuAct.setNomciu(ciudad.getNomciu());
+			ciuAct.setEstciu_fk(ciudad.getEstciu_fk());
 			
 			ciudadUpdate =ciuservice.save(ciuAct);
 			}catch(DataAccessException e) {
@@ -118,7 +120,7 @@ public class CiudadRestController {
 				response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
-		response.put("mensaje", "El cliente ha sido actualizado con éxito!");
+		response.put("mensaje", "La ciudad ha sido actualizada con éxito!");
 		response.put("ciudad", ciudadUpdate);
 
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);

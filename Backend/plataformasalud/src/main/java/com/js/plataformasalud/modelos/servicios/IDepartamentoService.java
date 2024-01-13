@@ -12,5 +12,4 @@ public interface IDepartamentoService {
 	
 	public Departamento save (Departamento departamento);
 	
-	public void delete (Long coddep);
 }

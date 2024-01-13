@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -24,14 +25,20 @@ public class Estado implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(unique = true)
 	private long idstatus;
 	
-	@Column(nullable = false, length = 15)
+	@Column(nullable = false, length = 15, unique = true)
 	@NotEmpty(message = "El campo estado no puede ser vacio")
 	private String nomstatus;
 	
 	@Temporal(TemporalType.DATE)
 	private Date datecreatstatus;
+	
+	@PrePersist
+	public void prePersis() {
+		datecreatstatus = new Date();
+	}
 
 	
 	private static final long serialVersionUID = 1L;

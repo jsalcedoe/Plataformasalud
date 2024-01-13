@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item key="org.springframework.tooling.ls.eclipse.gotosymbol.dialogs.GotoSymbolDialogDIALOG_WIDTH" value="982"/>
-	<item key="org.springframework.tooling.ls.eclipse.gotosymbol.dialogs.GotoSymbolDialogDIALOG_HEIGHT" value="298"/>
-	<item key="org.springframework.tooling.ls.eclipse.gotosymbol.dialogs.GotoSymbolDialogDIALOG_X_ORIGIN" value="392"/>
-	<item key="org.springframework.tooling.ls.eclipse.gotosymbol.dialogs.GotoSymbolDialogDIALOG_Y_ORIGIN" value="254"/>
+	<item key="org.springframework.tooling.ls.eclipse.gotosymbol.dialogs.GotoSymbolDialogDIALOG_WIDTH" value="708"/>
+	<item key="org.springframework.tooling.ls.eclipse.gotosymbol.dialogs.GotoSymbolDialogDIALOG_HEIGHT" value="287"/>
+	<item key="org.springframework.tooling.ls.eclipse.gotosymbol.dialogs.GotoSymbolDialogDIALOG_X_ORIGIN" value="306"/>
+	<item key="org.springframework.tooling.ls.eclipse.gotosymbol.dialogs.GotoSymbolDialogDIALOG_Y_ORIGIN" value="270"/>
 </section>

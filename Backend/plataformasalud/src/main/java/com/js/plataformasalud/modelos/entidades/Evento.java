@@ -5,7 +5,6 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -50,7 +49,7 @@ public class Evento implements Serializable {
 	private String estado;
 	// los estados pueden ser: creado, modificado, eliminado
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Paciente paciente;
 		

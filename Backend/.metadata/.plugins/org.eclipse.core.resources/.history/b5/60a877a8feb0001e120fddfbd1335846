@@ -1,0 +1,49 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import java.util.List;
+
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.js.plataformasalud.modelos.dao.IEspecialidadesDao;
+import com.js.plataformasalud.modelos.entidades.Cargo;
+
+import lombok.AllArgsConstructor;
+
+
+@Service
+@AllArgsConstructor
+public class ICargoServicesImpl implements ICargoServices {
+	
+	private IEspecialidadesDao espdao;
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Cargo> findAll() {
+		
+		return (List<Cargo>)espdao.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Cargo findById(Long idepecialidades) {
+		
+		return espdao.findById(idepecialidades).orElse(null);
+	}
+
+	@Override
+	@Transactional
+	public Cargo save(Cargo especialidades) {
+		
+		return espdao.save(especialidades);
+	}
+
+	@Override
+	@Transactional
+	public void delete(Long idespecialidades) {
+		espdao.deleteById(idespecialidades);
+		
+	}
+
+}

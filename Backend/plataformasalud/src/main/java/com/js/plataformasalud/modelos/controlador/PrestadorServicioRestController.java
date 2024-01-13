@@ -124,11 +124,12 @@ public class PrestadorServicioRestController {
 			prestservActual.setDirprestserv(prestserv.getDirprestserv());
 			prestservActual.setDocprestserv(prestserv.getDocprestserv());
 			prestservActual.setEmailprestserv(prestserv.getEmailprestserv());
-			prestservActual.setEstado_fk(prestserv.getEstado_fk());
+			prestservActual.setEstadoprestserv_fk(prestserv.getEstadoprestserv_fk());
 			prestservActual.setFechacreaprestserv(prestserv.getFechacreaprestserv());
 			prestservActual.setNomprestserv(prestserv.getNomprestserv());
 			prestservActual.setTelprestserv(prestserv.getTelprestserv());
 			prestservActual.setTipdocprestserv_fk(prestserv.getTipdocprestserv_fk());
+			prestservActual.setCiuprestserv_fk(prestserv.getCiuprestserv_fk());
 			
 			
 			prestservUpdate = preservserv.save(prestservActual);

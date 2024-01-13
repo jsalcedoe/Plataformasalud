@@ -1,0 +1,20 @@
+package com.js.plataformasalud.modelos.entidades;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "permission")
+
+public class Permiso implements Serializable{
+
+	
+	private static final long serialVersionUID = 1L;
+
+}

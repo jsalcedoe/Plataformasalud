@@ -39,11 +39,6 @@ public class IDxServiceImpl implements IDxService {
 		return dxdao.save(dx);
 	}
 
-	@Override
-	@Transactional
-	public void delete(String iddx) {
-		
-		dxdao.deleteById(iddx);
-	}
+	
 
 }

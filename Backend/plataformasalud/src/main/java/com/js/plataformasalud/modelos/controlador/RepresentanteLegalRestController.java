@@ -112,13 +112,13 @@ public class RepresentanteLegalRestController {
 			replegAct.setDatecreaterepleg(repleg.getDatecreaterepleg());
 			replegAct.setDocrepleg(repleg.getDocrepleg());
 			replegAct.setEmailrepleg(repleg.getEmailrepleg());
-			replegAct.setIdprestserv_fk(repleg.getIdprestserv_fk());
+			replegAct.setIdprestservrepleg_fk(repleg.getIdprestservrepleg_fk());
 			replegAct.setPaperepleg(repleg.getPaperepleg());
 			replegAct.setPnomrepleg(repleg.getPnomrepleg());
 			replegAct.setSaperepleg(repleg.getSaperepleg());
 			replegAct.setSnomrepleg(repleg.getSnomrepleg());
-			replegAct.setStatus_fk(repleg.getStatus_fk());
-			replegAct.setTipdoc_fk(repleg.getTipdoc_fk());
+			replegAct.setStatusrepleg_fk(repleg.getStatusrepleg_fk());
+			replegAct.setTipdocrepleg_fk(repleg.getTipdocrepleg_fk());
 			
 			replegUpdate =replegserv.save(replegAct);
 			

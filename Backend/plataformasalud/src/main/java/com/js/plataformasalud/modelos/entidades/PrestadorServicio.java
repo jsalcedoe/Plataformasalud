@@ -5,7 +5,6 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,7 +16,9 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,7 +42,8 @@ public class PrestadorServicio implements Serializable  {
 	
 	@Column(nullable = false, length = 11, unique = true)
 	@NotEmpty(message = "El campo NIT no puede ser vacio")
-	private String docprestserv;
+	@Pattern(regexp = "^[0-9]+$", message = "El campo solo debe contener números")
+	private Long docprestserv;
 	
 	@Column(nullable = false,length = 50)
 	@NotEmpty(message = "El campo direccion del prestador no puede ser vacio")
@@ -52,6 +54,7 @@ public class PrestadorServicio implements Serializable  {
 	private String telprestserv;
 	
 	@Column(nullable = false, length = 30)
+	@Email(message = "la direccion de correo es incorrecta")
 	@NotEmpty(message = "El campo email de IPS no puede ser vacio")
 	private String emailprestserv;
 	
@@ -64,15 +67,18 @@ public class PrestadorServicio implements Serializable  {
 		fechacreaprestserv = new Date();
 	}
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private Ciudad ciuprestserv_fk;
 	
-	@ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private TipoDocumento tipdocprestserv_fk;
 	
 	
-	@ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private Estado estado_fk;
+	private Estado estadoprestserv_fk;
 	
 	private static final long serialVersionUID = 1L;
 

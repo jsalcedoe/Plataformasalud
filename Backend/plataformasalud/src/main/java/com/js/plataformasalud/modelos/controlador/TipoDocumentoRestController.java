@@ -76,7 +76,7 @@ public class TipoDocumentoRestController {
 		try {
 				Newtipdoc= tipdocserv.save(tipdoc);
 		}catch(DataAccessException e) {
-			response.put("mensaje", "Error al registrar la ciudad en la base de datos");
+			response.put("mensaje", "Error al registrar el tipo de documento en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			

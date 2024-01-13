@@ -65,7 +65,7 @@ public class Usuario implements Serializable{
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "especialidades_idespecialidades")
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private Especialidades especialidad ;
+	private Cargo especialidad ;
 	
 
 	private static final long serialVersionUID = 1L;

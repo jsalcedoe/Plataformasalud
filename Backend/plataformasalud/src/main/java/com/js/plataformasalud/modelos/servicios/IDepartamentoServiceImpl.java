@@ -37,11 +37,5 @@ public class IDepartamentoServiceImpl implements IDepartamentoService {
 		return depdao.save(departamento);
 	}
 
-	@Override
-	@Transactional
-	public void delete(Long coddep) {
-		depdao.deleteById(coddep);
-		
-	}
 
 }
