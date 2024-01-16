@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Date;
-//import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -16,18 +15,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PostPersist;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table (name = "pacientes")
+@Table (name = "pac")
 
 
 
@@ -35,10 +34,6 @@ public class Paciente implements Serializable {
 	@Id
 	@Column(nullable = false, unique = true )
 	private Long numdocpac;
-	
-	@Column (nullable = false, length = 5 )
-	@NotEmpty(message = "El tipo de documento no puede ser vacio")
-	private String tipodoc;
 	
 	@Column (nullable = false, length = 15 )
 	@NotEmpty(message = "El campo no puede ser vacio, digite el primer nombre")
@@ -51,21 +46,18 @@ public class Paciente implements Serializable {
 	@NotEmpty (message = "El campo no puede ser vacio, digite el primer apellido")
 	private String primerapepac;
 	
-	
-	
 	private String segundoapepac;
 	
 	@Column (nullable = false, length = 10 )
 	@NotEmpty (message = "El campo no puede ser vacio, seleccione el sexo del paciente")
 	private String sexopac;
 	
-	@Column (nullable = false, length = 12 )
 	@Temporal(TemporalType.DATE)
-	@NotNull (message = "El campo fecha de nacimiento no puede ser vacio, seleccione fecha de nacimiento")
+	@NotEmpty(message = "El campo fecha de nacimiento no puede ser vacio")
 	private LocalDate fechanacpac;
 	
 	@Column (nullable = false, length = 3 )
-	private Long edadpac;
+	private long edadpac;
 	
 	@PostPersist
 	private void calculaedad() {
@@ -97,6 +89,26 @@ public class Paciente implements Serializable {
 	@Column (nullable = false, length = 15 )
 	private String contactoacudientepac;
 	
+	@Temporal(TemporalType.DATE)
+	private Date fechacreacionpac;
+	
+	@PrePersist
+	public void prePersis() {
+		fechacreacionpac = new Date();
+	}
+	
+	@Temporal(TemporalType.DATE)
+	private Date fechaedipac;
+	
+	@PreUpdate
+	public void fechaedit() {
+		fechaedipac = new Date();
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private TipoDocumento typdocpac;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Ciudad ciudad;
@@ -109,18 +121,10 @@ public class Paciente implements Serializable {
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Entidad entidad;
 	
-	@Column(nullable = false, length = 12)
-	@Temporal(TemporalType.DATE)
-	private Date fechacreacionpac;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private Estado estpac_fk;
 	
-	@PrePersist
-	public void prePersis() {
-		fechacreacionpac = new Date();
-	}
-	
-	@Column (nullable = false, length = 10 )
-	private String estado;
-	//Los estados pueden ser: Creado, Modificado, Eliminado
 	
 	private static final long serialVersionUID = 1L;
 

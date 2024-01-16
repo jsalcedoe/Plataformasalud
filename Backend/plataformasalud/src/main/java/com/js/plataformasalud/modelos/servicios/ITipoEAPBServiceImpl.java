@@ -38,11 +38,4 @@ public class ITipoEAPBServiceImpl implements ITipoEAPBService {
 		return tipentdao.save(tipeapb);
 	}
 
-	@Override
-	@Transactional
-	public void delete(long idtipeapb) {
-		
-		tipentdao.deleteById(idtipeapb);
-	}
-
 }

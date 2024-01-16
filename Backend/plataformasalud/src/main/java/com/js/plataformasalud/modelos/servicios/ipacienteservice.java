@@ -14,6 +14,6 @@ public interface ipacienteservice {
 	
 	public Paciente save (Paciente paciente);
 	
-	public void delete (Long numdocpac);
+
 	
 }

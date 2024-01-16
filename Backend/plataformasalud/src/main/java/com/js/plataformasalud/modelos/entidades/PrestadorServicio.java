@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -58,11 +59,11 @@ public class PrestadorServicio implements Serializable  {
 	@NotEmpty(message = "El campo email de IPS no puede ser vacio")
 	private String emailprestserv;
 	
-	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fechacreaprestserv;
 	
 	@PrePersist
+	@PreUpdate
 	public void prePersis() {
 		fechacreaprestserv = new Date();
 	}

@@ -11,7 +11,5 @@ public interface IEntidadService {
 	public Entidad findById(Long ideapb);
 	
 	public Entidad save(Entidad eapb);
-	
-	public void delete(Long ideapb);
 
 }

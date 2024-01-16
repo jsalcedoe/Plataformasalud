@@ -11,6 +11,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -30,12 +31,12 @@ public class Departamento implements Serializable {
 	
 	@Column (nullable = false, length = 30 )
 	private String nomdep;
-	
-	@Column(nullable = false)
-	private Date datecreatdep;
+
 	@Temporal(TemporalType.DATE)
+	private Date datecreatdep;
 	
 	@PrePersist
+	@PreUpdate
 	public void prePersis() {
 		datecreatdep = new Date();
 	}

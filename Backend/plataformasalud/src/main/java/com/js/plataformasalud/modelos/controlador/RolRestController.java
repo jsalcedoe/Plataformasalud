@@ -80,7 +80,7 @@ public class RolRestController {
 		}
 		
 		try {
-			roles = rolserv.save(roles);
+			roles = rolserv.save(rol);
 		} catch(DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

@@ -38,13 +38,6 @@ public class PacienteServiceImpl implements ipacienteservice {// en esta clase s
 		return pacientedao.save(paciente);
 	}
 	
-	@Override
-	@Transactional
-	public void delete(Long numdocpac) {
-		pacientedao.deleteById(numdocpac);
 		
-	}
-
-	
 	
 }

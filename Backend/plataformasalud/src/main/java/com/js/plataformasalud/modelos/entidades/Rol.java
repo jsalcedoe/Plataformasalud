@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -40,6 +41,7 @@ public class Rol implements Serializable {
 	private Date creatrol;
 	
 	@PrePersist
+	@PreUpdate
 	public void prePersis() {
 		creatrol = new Date();
 	}

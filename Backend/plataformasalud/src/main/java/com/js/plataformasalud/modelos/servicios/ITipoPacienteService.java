@@ -11,6 +11,5 @@ public interface ITipoPacienteService {
 	
 	public TipoPaciente save (TipoPaciente tipac);
 	
-	public void delete (Long idtipac);
 
 }

@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -39,11 +40,11 @@ public class Permiso implements Serializable{
 	@NotEmpty(message = "El campo detalle del permiso no puede ser vacio")
 	private String detperm;
 	
-	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date datecreatperm;
 	
 	@PrePersist
+	@PreUpdate
 	public void datecreatpermission(){
 		datecreatperm = new Date();
 	}

@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -27,7 +28,7 @@ import lombok.Setter;
 @Table(name = "cargo_user")
 public class Cargo implements Serializable {
 	
-	//Esta entidad es la que almacena los cargos y las especialidades medicas
+	//Esta entidad es la que almacena los cargos
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +42,7 @@ public class Cargo implements Serializable {
 	private Date datecreatcarguser;
 	
 	@PrePersist
+	@PreUpdate
 	public void prePersis() {
 		datecreatcarguser = new Date();
 	}

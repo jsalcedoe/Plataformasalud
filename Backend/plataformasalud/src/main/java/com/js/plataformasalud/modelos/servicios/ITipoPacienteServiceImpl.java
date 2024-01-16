@@ -38,12 +38,4 @@ public class ITipoPacienteServiceImpl implements ITipoPacienteService {
 		return tipacdao.save(tipac);
 	}
 
-	@Override
-	@Transactional
-	public void delete(Long idtipac) {
-		
-		tipacdao.deleteById(idtipac);
-		
-	}
-
 }

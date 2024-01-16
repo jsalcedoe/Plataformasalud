@@ -11,7 +11,5 @@ public interface ITipoEAPBService {
 	public TipoEAPB findById(long idtipeapb);
 	
 	public TipoEAPB save (TipoEAPB tipeapb);
-	
-	public void delete (long idtipeapb);
 
 }

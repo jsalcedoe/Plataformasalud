@@ -12,6 +12,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -32,11 +33,11 @@ public class Ciudad implements Serializable {
 	@Column (nullable = false, length = 30)
 	private String nomciu;
 	
-	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date datecreatciu;
 	
 	@PrePersist
+	@PreUpdate
 	public void prePersis() {
 		datecreatciu = new Date();
 	}

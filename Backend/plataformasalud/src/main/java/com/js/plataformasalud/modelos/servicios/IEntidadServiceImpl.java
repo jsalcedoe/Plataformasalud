@@ -38,11 +38,4 @@ public class IEntidadServiceImpl implements IEntidadService {
 		return entdao.save(eapb);
 	}
 
-	@Override
-	@Transactional
-	public void delete(Long ideapb) {
-		
-		entdao.deleteById(ideapb);
-	}
-
 }
