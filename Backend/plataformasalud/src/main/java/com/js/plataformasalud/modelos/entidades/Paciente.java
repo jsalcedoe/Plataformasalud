@@ -11,15 +11,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PostPersist;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,17 +31,19 @@ import lombok.Setter;
 @Entity
 @Table (name = "pac")
 
-
-
 public class Paciente implements Serializable {
+	
 	@Id
-	@Column(nullable = false, unique = true )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idpac;
+	
+	@NotNull(message = "El campo numero de documento no puede ser vacio")
+	@Column(unique = true)
 	private Long numdocpac;
 	
 	@Column (nullable = false, length = 15 )
 	@NotEmpty(message = "El campo no puede ser vacio, digite el primer nombre")
 	private String primernompac;
-	
 	
 	private String segundonompac;
 	
@@ -53,20 +58,21 @@ public class Paciente implements Serializable {
 	private String sexopac;
 	
 	@Temporal(TemporalType.DATE)
-	@NotEmpty(message = "El campo fecha de nacimiento no puede ser vacio")
 	private LocalDate fechanacpac;
 	
-	@Column (nullable = false, length = 3 )
-	private long edadpac;
-	
-	@PostPersist
-	private void calculaedad() {
+	@PrePersist
+	private void persistencia() {
+		fechacreacionpac = new Date();
+		
 		if(fechanacpac != null) {
 			LocalDate fechaactual = LocalDate.now();
 			Period periodo = Period.between(fechanacpac, fechaactual);
 			edadpac = (long) periodo.getYears();
 		}
+		
 	}
+	@Column (length = 3 )
+	private Long edadpac;
 	
 	@Column (nullable = false)
 	@NotEmpty(message = "El campo estado civil no puede ser vacio, por favor seleccione el estado civil")
@@ -78,9 +84,11 @@ public class Paciente implements Serializable {
 	
 	@Column (nullable = false, length = 40 )
 	@NotEmpty(message = "El campo email no puede ser vacio, por favor digite el email del paciente")
+	@Email(message = "Registre una direccion de email valida")
 	private String emailpac;
 		
 	@Column (nullable = false, length = 15 )
+	@NotEmpty(message = "El campo contacto del paciente no debe ser vacio")
 	private String contactopac;
 	
 	@Column (nullable = false, length = 30 )
@@ -92,10 +100,10 @@ public class Paciente implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fechacreacionpac;
 	
-	@PrePersist
+	/*@PrePersist
 	public void prePersis() {
 		fechacreacionpac = new Date();
-	}
+	}*/
 	
 	@Temporal(TemporalType.DATE)
 	private Date fechaedipac;

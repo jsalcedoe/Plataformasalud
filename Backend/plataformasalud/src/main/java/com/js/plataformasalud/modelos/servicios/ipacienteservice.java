@@ -10,7 +10,7 @@ public interface ipacienteservice {
 	// en esta interfaz se suscriben los contratos de servicios como listar, grabar, editar, borrar.
 	public List<Paciente> findAll();
 	
-	public Paciente findById(Long numdocpac);
+	public Paciente findById(Long idpac);
 	
 	public Paciente save (Paciente paciente);
 	

@@ -28,8 +28,8 @@ public class PacienteServiceImpl implements ipacienteservice {// en esta clase s
 	
 	@Override
 	@Transactional(readOnly = true)
-	public Paciente findById(Long numdocpac) {
-		return pacientedao.findById(numdocpac).orElse(null);
+	public Paciente findById(Long idpac) {
+		return pacientedao.findById(idpac).orElse(null);
 	}
 	
 	@Override

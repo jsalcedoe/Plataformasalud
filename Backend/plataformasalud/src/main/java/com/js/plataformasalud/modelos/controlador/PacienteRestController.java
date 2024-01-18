@@ -38,20 +38,20 @@ public class PacienteRestController {
 		return pacserv.findAll();
 	}
 	
-	@GetMapping("/pacientes/{numdocpac}")
-	public ResponseEntity<?> mostrar (@PathVariable Long numdocpac){
+	@GetMapping("/pacientes/{idpac}")
+	public ResponseEntity<?> mostrar (@PathVariable Long idpac){
 		Paciente paciente = null;
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-				paciente = pacserv.findById(numdocpac);
+				paciente = pacserv.findById(idpac);
 			} catch(DataAccessException e) {
 		response.put("mensaje", "Error al realizar la consulta en la base de datos");
 		response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	if(paciente == null) {
-		response.put("mensaje", "El paciente ID: ".concat(numdocpac.toString().concat(" no existe en la base de datos!")));
+		response.put("mensaje", "El paciente ID: ".concat(idpac.toString().concat(" no existe en la base de datos!")));
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 	}
 	
@@ -87,11 +87,11 @@ public class PacienteRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/pacientes/{numdocpac}")
+	@PutMapping("/pacientes/{idpac}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public ResponseEntity<?> actualiza (@Valid @RequestBody Paciente paciente, @PathVariable Long numdocpac, BindingResult validacion) {
+	public ResponseEntity<?> actualiza (@Valid @RequestBody Paciente paciente, @PathVariable Long idpac, BindingResult validacion) {
 		
-		Paciente pacActual = pacserv.findById(numdocpac);
+		Paciente pacActual = pacserv.findById(idpac);
 		
 		Paciente pacUpdate = null;
 		
@@ -107,7 +107,7 @@ public class PacienteRestController {
 		}
 		if(pacActual == null) {
 			response.put("mensaje", "Error: no se pudo editar, el paciente ID: "
-					.concat(numdocpac.toString().concat(" no existe en la base de datos!")));
+					.concat(idpac.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		try {
@@ -131,6 +131,7 @@ public class PacienteRestController {
 				pacActual.setSexopac(paciente.getSexopac());
 				pacActual.setTipac(paciente.getTipac());
 				pacActual.setTypdocpac(paciente.getTypdocpac());
+				pacActual.setNumdocpac(paciente.getNumdocpac());
 			
 				pacUpdate = pacserv.save(pacActual);
 				
