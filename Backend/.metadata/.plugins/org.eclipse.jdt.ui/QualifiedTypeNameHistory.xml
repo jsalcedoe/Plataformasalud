@@ -37,7 +37,6 @@
     <fullyQualifiedTypeName name="jakarta.persistence.ManyToOne"/>
     <fullyQualifiedTypeName name="jakarta.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="jakarta.validation.constraints.NotNull"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.PrePersist"/>
     <fullyQualifiedTypeName name="jakarta.persistence.PreUpdate"/>
     <fullyQualifiedTypeName name="lombok.Getter"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.TipoPlantilla"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IHistoriaClinicaServiceImpl"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.HistoriaClinica"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.PrePersist"/>
 </qualifiedTypeNameHistroy>

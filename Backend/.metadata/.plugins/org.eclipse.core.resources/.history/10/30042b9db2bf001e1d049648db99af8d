@@ -31,7 +31,7 @@ public class ProcedimientoQuirurgico implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true)
-	private Long idqx;
+	private long idqx;
 	
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)

@@ -62,6 +62,10 @@ public class DiagnosticoAtencion implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private HistoriaClinica hcpac_fk;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private ProcedimientoQuirurgico dxqx_fk;
 
 	
 	private static final long serialVersionUID = 1L;

@@ -38,11 +38,4 @@ public class IProcedimientoQuirurgicoServiceImpl implements IProcedimientoQuirur
 		
 		return qxdao.save(qx);
 	}
-
-	@Override
-	@Transactional
-	public void delete(Long idqx) {
-		
-		qxdao.deleteById(idqx);
-	}
 }

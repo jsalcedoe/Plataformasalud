@@ -31,7 +31,7 @@ public class ProcedimientoQuirurgico implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true)
-	private Long idqx;
+	private long idqx;
 	
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -66,9 +66,9 @@ public class ProcedimientoQuirurgico implements Serializable {
 	@NotEmpty(message = "El campo descripcion no puede ser vacio")
 	private String descqx;
 	
-	private String typqx; // el tipo de procedimiento puede ser urgencias programada
+	private String typqx; // urgencias programada
 	
-	private String matprot; // describe si se coloco material o protesis y si se coloca lo describe
+	private String matprot; // describe si se coloco material o protesis 
 	
 	private String muespato; // si o no
 	

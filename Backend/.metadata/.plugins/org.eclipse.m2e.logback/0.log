@@ -4326,3 +4326,35 @@
 2024-01-30 05:49:49,625 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2024-01-30 05:49:49,636 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2024-01-30 05:49:49,642 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\julio\Documents\Personal\Proyectos\PlataformaSalud\Backend\plataformasalud\src\test\resources
+2024-01-30 08:41:05,537 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-01-30 14:41:35,340 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-01-30 15:37:45,002 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-01-30 15:37:45,033 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-01-30 15:37:45,038 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\julio\Documents\Personal\Proyectos\PlataformaSalud\Backend\plataformasalud\src\test\resources
+2024-01-30 15:39:05,499 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-01-30 15:39:05,570 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-01-30 15:39:05,575 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\julio\Documents\Personal\Proyectos\PlataformaSalud\Backend\plataformasalud\src\test\resources
+2024-01-30 15:40:02,457 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-01-30 15:40:02,523 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-01-30 15:40:02,530 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\julio\Documents\Personal\Proyectos\PlataformaSalud\Backend\plataformasalud\src\test\resources
+2024-01-30 15:41:12,186 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-01-30 15:41:12,200 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-01-30 15:41:12,207 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\julio\Documents\Personal\Proyectos\PlataformaSalud\Backend\plataformasalud\src\test\resources
+2024-01-30 15:56:14,336 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-01-30 15:56:14,376 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-01-30 15:56:14,382 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\julio\Documents\Personal\Proyectos\PlataformaSalud\Backend\plataformasalud\src\test\resources
+2024-01-30 16:00:36,087 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-01-30 16:00:36,234 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-01-30 16:00:36,243 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\julio\Documents\Personal\Proyectos\PlataformaSalud\Backend\plataformasalud\src\test\resources
+2024-01-30 16:01:01,425 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-01-30 16:01:01,464 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-01-30 16:01:01,470 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\julio\Documents\Personal\Proyectos\PlataformaSalud\Backend\plataformasalud\src\test\resources
+2024-01-30 16:01:11,193 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-01-30 16:01:11,243 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-01-30 16:01:11,249 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\julio\Documents\Personal\Proyectos\PlataformaSalud\Backend\plataformasalud\src\test\resources
+2024-01-30 16:23:09,893 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-01-30 16:23:09,906 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-01-30 16:23:09,911 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\julio\Documents\Personal\Proyectos\PlataformaSalud\Backend\plataformasalud\src\test\resources
+2024-01-30 16:23:21,032 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-01-30 16:23:21,043 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-01-30 16:23:21,048 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\julio\Documents\Personal\Proyectos\PlataformaSalud\Backend\plataformasalud\src\test\resources

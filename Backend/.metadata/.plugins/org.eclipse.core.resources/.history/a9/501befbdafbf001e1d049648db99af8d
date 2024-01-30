@@ -18,9 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.js.plataformasalud.modelos.entidades.RegistroHistoriaClinica;
-import com.js.plataformasalud.modelos.servicios.IRegistroHistoriaClinicaServiceImpl;
+import com.js.plataformasalud.modelos.entidades.DiagnosticoAtencion;
+import com.js.plataformasalud.modelos.servicios.IDiagnosticoAtencionService;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -30,40 +29,40 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/api")
 @AllArgsConstructor
 
-public class RegistroHistoriaClinicaRestController {
+
+
+public class DiagnosticoAtencionRestController {
 	
-	private IRegistroHistoriaClinicaServiceImpl reghcpacserv;
+private IDiagnosticoAtencionService dxateserv;
 	
-	@GetMapping("/registrohcpac")
+	@GetMapping("/diagnosticosatencion")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<RegistroHistoriaClinica> index(){
-		
-		return reghcpacserv.findAll();
-		
+	public List<DiagnosticoAtencion> index(){
+		return dxateserv.findAll();
 	}
 	
-	@GetMapping("registrohcpac/{idreghcpac}")
-	public ResponseEntity<?> mostrar(@PathVariable Long idreghcpac) {
-		RegistroHistoriaClinica reghcpac = null;
+	@GetMapping("/diagnosticosatencion/{iddxathcpac}")
+	public ResponseEntity<?> mostrar(@PathVariable Long iddxathcpac) {
+		DiagnosticoAtencion dxate = null;
 		Map<String, Object> response = new HashMap<>();
 	
 		try {
-			reghcpac = reghcpacserv.findById(idreghcpac);
+			dxate = dxateserv.findById(iddxathcpac);
 		}catch(DataAccessException e) {
 			response.put("mensaje", "Error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		if (reghcpac == null) {
-			response.put("mensaje", "El registro de historia clinica ID: ".concat(idreghcpac.toString().concat(" no existe en la base de datos!")));
+		if (dxate == null) {
+			response.put("mensaje", "El Diagnostico ID: ".concat(iddxathcpac.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<RegistroHistoriaClinica>(reghcpac, HttpStatus.OK);
+		return new ResponseEntity<DiagnosticoAtencion>(dxate, HttpStatus.OK);
 	}
 	
-	@PostMapping("/registrohcpac")
-	public ResponseEntity<?> save (@Valid @RequestBody RegistroHistoriaClinica reghcpac, BindingResult result) {
-		RegistroHistoriaClinica Newreghcpac = null;
+	@PostMapping("/diagnosticosatencion")
+	public ResponseEntity<?> save (@Valid @RequestBody DiagnosticoAtencion dxate, BindingResult result) {
+		DiagnosticoAtencion Newdxate = null;
 		Map<String, Object> response = new HashMap<>();
 		if(result.hasErrors()) {
 			List<String> errors = result.getFieldErrors()
@@ -75,23 +74,23 @@ public class RegistroHistoriaClinicaRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
 		try {
-				Newreghcpac= reghcpacserv.save(reghcpac);
+				Newdxate= dxateserv.save(dxate);
 		}catch(DataAccessException e) {
-			response.put("mensaje", "Error al registrar el registro de historia clinica en la base de datos");
+			response.put("mensaje", "Error al registrar el diagnostico en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			
 		}
-		response.put("mensaje", "El registro de historia clinica ha sido creado con éxito!");
-		response.put("cargo", Newreghcpac);
+		response.put("mensaje", "El diagnostico ha sido registrado con éxito!");
+		response.put("dxate", Newdxate);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("registrohcpac/{idreghcpac}")
-	public ResponseEntity <?> actualizar (@PathVariable Long idreghcpac,@RequestBody RegistroHistoriaClinica reghcpac, BindingResult result) {
+	@PutMapping("/diagnosticosatencion/{iddxathcpac}")
+	public ResponseEntity <?> actualizar (@PathVariable Long iddxathcpac,@RequestBody DiagnosticoAtencion dxate, BindingResult result) {
 		
-		RegistroHistoriaClinica reghcpacUpdate = null;
-		RegistroHistoriaClinica reghcpacAct = reghcpacserv.findById(idreghcpac);
+		DiagnosticoAtencion dxateUpdate = null;
+		DiagnosticoAtencion dxateAct = dxateserv.findById(iddxathcpac);
 		Map<String, Object> response = new HashMap<>();
 
 		if(result.hasErrors()) {
@@ -105,28 +104,28 @@ public class RegistroHistoriaClinicaRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
 		
-		if (reghcpacAct == null) {
-			response.put("mensaje", "Error: no se pudo editar, el registro de historia clinica ID: "
-					.concat(idreghcpac.toString().concat(" no existe en la base de datos!")));
+		if (dxateAct == null) {
+			response.put("mensaje", "Error: no se pudo editar, el diagnostico ID: "
+					.concat(iddxathcpac.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		try {
-			reghcpacAct.setDateendreghcpac(reghcpac.getDateendreghcpac());
-			reghcpacAct.setDateinitreghcpac(reghcpac.getDateinitreghcpac());
-			reghcpacAct.setDxreghcpac_fk(reghcpac.getDxreghcpac_fk());
-			reghcpacAct.setEstreghcpac_fk(reghcpac.getEstreghcpac_fk());
-			reghcpacAct.setOrgdestreghcpac_fk(reghcpac.getOrgdestreghcpac_fk());
-			reghcpacAct.setRegpac_fk(reghcpac.getRegpac_fk());
+			dxateAct.setCreatdxathcpac(dxate.getCreatdxathcpac());
+			dxateAct.setDxatehcpac_fk(dxate.getDxatehcpac_fk());
+			dxateAct.setEstdxatehcpac(dxate.getEstdxatehcpac());
+			dxateAct.setHcpac_fk(dxate.getHcpac_fk());
+			dxateAct.setTypdxatehcpac_fk(dxate.getTypdxatehcpac_fk());
+			dxateAct.setEditdxathcpac(dxate.getEditdxathcpac());
 			
-			reghcpacUpdate = reghcpacserv.save(reghcpacAct);
+			dxateUpdate = dxateserv.save(dxateAct);
 			
 			}catch(DataAccessException e) {
-				response.put("mensaje", "Error al actualizar el registro de historia clinica en la base de datos");
+				response.put("mensaje", "Error al actualizar el registro del diagnostico en la base de datos");
 				response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
-		response.put("mensaje", "El registro de historia clinica ha sido actualizado con éxito!");
-		response.put("cargo", reghcpacUpdate);
+		response.put("mensaje", "El registro de diagnostico ha sido actualizado con éxito!");
+		response.put("cargo", dxateUpdate);
 
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}

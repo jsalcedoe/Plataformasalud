@@ -11,7 +11,5 @@ public interface IProcedimientoQuirurgicoService {
 	public ProcedimientoQuirurgico findById(Long idqx);
 	
 	public ProcedimientoQuirurgico save(ProcedimientoQuirurgico qx);
-	
-	public void delete (Long idqx);
 
 }
