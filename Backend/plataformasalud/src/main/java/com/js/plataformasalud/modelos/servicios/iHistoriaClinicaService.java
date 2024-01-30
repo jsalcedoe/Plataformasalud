@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.js.plataformasalud.modelos.entidades.HistoriaClinica;
 
-public interface iHistoriaClinicaService {
+public interface IHistoriaClinicaService {
 	
 	public List<HistoriaClinica> findAll();
 	
@@ -12,6 +12,5 @@ public interface iHistoriaClinicaService {
 	
 	public HistoriaClinica save (HistoriaClinica hcpac);
 	
-	public void delete (Long idhcpac);
 
 }

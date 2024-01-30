@@ -8,10 +8,8 @@ public interface IProcedimientoExamenesServices {
 	
 public List<ProcedimientosExamenes> findAll();
 	
-	public ProcedimientosExamenes findById(String codprocexam);
+	public ProcedimientosExamenes findById(Long idpxex);
 	
 	public ProcedimientosExamenes save (ProcedimientosExamenes procexam);
-	
-	public void delete (String codprocexam);
 
 }

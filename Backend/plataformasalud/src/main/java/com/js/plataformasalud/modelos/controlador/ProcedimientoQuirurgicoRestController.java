@@ -55,7 +55,6 @@ public class ProcedimientoQuirurgicoRestController {
 		qxact.setComplicqx(qx.getComplicqx());
 		qxact.setConducqx(qx.getComplicqx());
 		qxact.setDescqx(qx.getDescqx());
-		qxact.setEventqx(qx.getEventqx());
 		qxact.setFechaprocqx(qx.getFechaprocqx());
 		qxact.setHallaqx(qx.getHallaqx());
 		qxact.setHorafinprocqx(qx.getHorafinprocqx());

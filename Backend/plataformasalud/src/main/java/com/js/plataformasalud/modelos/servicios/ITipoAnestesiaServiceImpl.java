@@ -37,11 +37,4 @@ public class ITipoAnestesiaServiceImpl implements ITipoAnestesiaService {
 		return anestdao.save(anestesia);
 	}
 
-	@Override
-	@Transactional
-	public void delete(Long idtipanest) {
-		
-		anestdao.deleteById(idtipanest);
-	}
-
 }

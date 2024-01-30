@@ -16,34 +16,29 @@ import lombok.AllArgsConstructor;
 public class IProcedimientoExamenesImpl implements IProcedimientoExamenesServices {
 	
 	
-	private IProcedimientoExamenesDao procexamdao;
+	private IProcedimientoExamenesDao pxexdao;
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<ProcedimientosExamenes> findAll() {
 		
-		return (List<ProcedimientosExamenes>)procexamdao.findAll();
+		return (List<ProcedimientosExamenes>)pxexdao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public ProcedimientosExamenes findById(String codprocexam) {
+	public ProcedimientosExamenes findById(Long idpxex) {
 		
-		return procexamdao.findById(codprocexam).orElse(null);
+		return pxexdao.findById(idpxex).orElse(null);
 	}
 
 	@Override
 	@Transactional
 	public ProcedimientosExamenes save(ProcedimientosExamenes procexam) {
 		
-		return procexamdao.save(procexam);
+		return pxexdao.save(procexam);
 	}
 
-	@Override
-	@Transactional
-	public void delete(String codprocexam) {
-		
-		procexamdao.deleteById(codprocexam);
-	}
+	
 
 }

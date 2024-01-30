@@ -1,0 +1,41 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import java.util.List;
+
+import org.springframework.data.annotation.ReadOnlyProperty;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.js.plataformasalud.modelos.dao.IDiagnosticoAtencionDao;
+import com.js.plataformasalud.modelos.entidades.DiagnosticoAtencion;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+
+public class IDiagnostivoAtencionServiceImpl implements IDiagnosticoAtencionService {
+	
+	private IDiagnosticoAtencionDao dxatedao;
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<DiagnosticoAtencion> findAll() {
+		
+		return null;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public DiagnosticoAtencion findById(Long iddxathcpac) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DiagnosticoAtencion save(DiagnosticoAtencion dxatehcpac) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

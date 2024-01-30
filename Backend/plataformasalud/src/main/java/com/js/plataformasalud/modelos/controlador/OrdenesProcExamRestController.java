@@ -51,7 +51,6 @@ public class OrdenesProcExamRestController {
 	public OrdenesProcExam editar(@RequestBody OrdenesProcExam ordenes, @PathVariable Long idordprocexam) {
 		OrdenesProcExam ordenesActual = ordenservice.findById(idordprocexam);
 		ordenesActual.setCantprocexam(ordenes.getCantprocexam());
-		ordenesActual.setEventord(ordenes.getEventord());
 		ordenesActual.setFechaordprocexam(ordenes.getFechaordprocexam());
 		ordenesActual.setObsprocexam(ordenes.getObsprocexam());
 		ordenesActual.setProcexamord(ordenes.getProcexamord());

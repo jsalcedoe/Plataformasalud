@@ -12,7 +12,6 @@ public interface ITarifaService {
 	
 	public Tarifa save(Tarifa tarifa);
 	
-	public void delete(long idtarifa);
 	
 
 }

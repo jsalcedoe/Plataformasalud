@@ -37,11 +37,4 @@ public class ITarifaServiceImpl implements ITarifaService {
 		return tarifadao.save(tarifa);
 	}
 
-	@Override
-	public void delete(long idtarifa) {
-		
-		tarifadao.deleteById(idtarifa);
-		
-	}
-
 }

@@ -12,6 +12,5 @@ public interface ICargoServices {
 	
 	public Cargo save(Cargo cargo);
 	
-	public void delete (Long idcarguser);
 
 }

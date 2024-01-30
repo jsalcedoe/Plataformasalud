@@ -19,3 +19,7 @@ PROCESO EN FRONTEND
 1. Configuramos el HTTPClient en module.ts en el frontend
 2. En la clase de serviceimportamos HTTPClient, luego se inyectamos en el constructor
 
+
+
+
+arquitectura CQRS

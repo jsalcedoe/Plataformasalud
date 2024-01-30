@@ -12,6 +12,5 @@ public interface ITipoAnestesiaService {
 	
 	public TipoAnestesia save (TipoAnestesia anestesia);
 	
-	public void delete(Long idtipanest);
 
 }

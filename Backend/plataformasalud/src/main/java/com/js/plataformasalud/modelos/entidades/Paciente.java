@@ -39,7 +39,7 @@ public class Paciente implements Serializable {
 	
 	@NotNull(message = "El campo numero de documento no puede ser vacio")
 	@Column(unique = true)
-	private Long numdocpac;
+	private String numdocpac;
 	
 	@Column (nullable = false, length = 15 )
 	@NotEmpty(message = "El campo no puede ser vacio, digite el primer nombre")

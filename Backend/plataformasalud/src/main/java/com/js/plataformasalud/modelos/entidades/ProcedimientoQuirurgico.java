@@ -71,9 +71,7 @@ public class ProcedimientoQuirurgico implements Serializable {
 	private String conducqx;
 	//la conducta puede ser, hospitalizar, observacion, o salida
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private Evento eventqx;
+	
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})

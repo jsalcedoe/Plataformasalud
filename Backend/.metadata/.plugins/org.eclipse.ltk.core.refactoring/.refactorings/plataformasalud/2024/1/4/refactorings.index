@@ -1,0 +1,22 @@
+1705931131286	Rename type 'HistoriaClinica'
+1705931179987	Rename type 'ihistoriaclinicadao'
+1705931233053	Rename type 'iHistoriaClinicaService'
+1705931264040	Rename type 'iHistoriaClinicaServiceImpl'
+1705931309928	Rename type 'HistoriaClinicaRestController'
+1705932204687	Rename type 'OrigeneDestino'
+1705960530236	Rename type 'DocumentoHistoriaClinica'
+1705960572720	Rename type 'idocumentohistoriaclinicadao'
+1705960625233	Rename type 'iDocumentoHistoriaClinicaService'
+1705960646237	Rename type 'iDocumentoHistoriaClinicaServiceImpl'
+1705961061076	Rename type 'DocumentoHistoriaClinicaRestController'
+1706073497961	Delete element
+1706073507566	Delete element
+1706073569453	Delete element
+1706073582191	Delete element
+1706073587487	Delete element
+1706073593450	Delete element
+1706073597575	Delete element
+1706073609502	Delete element
+1706073618225	Delete element
+1706073732400	Delete element
+1706074341009	Rename type 'ITipoDiagnostico'

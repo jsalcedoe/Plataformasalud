@@ -1,0 +1,60 @@
+package com.js.plataformasalud.modelos.entidades;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "dxatehcpac")
+
+
+public class DiagnosticoAtencion implements Serializable {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long iddxathcpac;
+	
+	@Temporal(TemporalType.DATE)
+	private Date creatdxathcpac;
+	
+	public void creatdate () {
+		creatdxathcpac = new Date ();
+		
+	}
+	
+	@ManyToOne
+	@JoinColumn(name = "uniqcodreghcpac",referencedColumnName = "uniqcodreghcpac")
+	private RegistroHistoriaClinica uniqcod_fk;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private Diagnostico dxatehcpac_fk;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private TipoDiagnostico typdxatehcpac_fk;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private HistoriaClinica hcpac_fk;
+
+	
+	private static final long serialVersionUID = 1L;
+
+}

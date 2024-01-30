@@ -56,7 +56,6 @@ public class OrdMedInsRestController {
 		ordmedinsAct.setCantordmedins(ord.getCantordmedins());
 		ordmedinsAct.setDosifmedins(ord.getDosifmedins());
 		ordmedinsAct.setEstordmedins(ord.getEstordmedins());
-		ordmedinsAct.setEventmedins(ord.getEventmedins());
 		ordmedinsAct.setFechacreaordmedins(ord.getFechacreaordmedins());
 		ordmedinsAct.setOrdmedins(ord.getOrdmedins());
 		ordmedinsAct.setTiempoaplicmedins(ord.getTiempoaplicmedins());

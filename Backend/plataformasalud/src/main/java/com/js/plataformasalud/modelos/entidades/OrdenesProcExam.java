@@ -49,9 +49,7 @@ public class OrdenesProcExam implements Serializable{
 	@Column(length = 500)
 	private String obsprocexam;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private Evento eventord;
+	
 	
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})

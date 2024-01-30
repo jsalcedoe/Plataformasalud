@@ -39,11 +39,5 @@ public class ICargoServicesImpl implements ICargoServices {
 		return cargdao.save(especialidades);
 	}
 
-	@Override
-	@Transactional
-	public void delete(Long idcarguser) {
-		cargdao.deleteById(idcarguser);
-		
-	}
 
 }

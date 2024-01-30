@@ -1,16 +1,22 @@
 package com.js.plataformasalud.modelos.entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,30 +29,44 @@ import lombok.Setter;
 public class ProcedimientosExamenes implements Serializable {
 	
 	@Id
-	@Column(nullable = false, length = 6, unique = true)
-	@NotEmpty(message = "El campo codigo del examen o procedimiento no puede ser vacio")
-	private String codprocexam;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idpxex;
+	
+	@Column(nullable = false, unique = true, length = 6)
+	@NotEmpty(message = "El campo codigo del procedimiento no puede ser vacio")
+	private String codpxex;
 	
 	@Column(nullable = false)
 	@NotEmpty(message = "El campo nombre del procedimiento o examen no puede ser vacio")
-	private String nomprocexam;
+	private String nompxex;
 	
 	@Column(nullable = false)
 	@NotEmpty(message = "Por favor seleccione el sexo al que se aplica el procedimiento o examen")
-	private String sexoprocexam;//el sexo puede ser 1. Femenino 2. masculino 3. ambos
+	private String sexopxex;//el sexo puede ser 1. Femenino 2. masculino 3. ambos
 	
-	@Column(nullable = false)
-	private String estado;// el estado puede ser: creado, modificado o eliminado
+	@Temporal(TemporalType.DATE)
+	private Date datecreatpxex;
 	
-	private Long precio;
+	@PrePersist
+	public void creadate() {
+		datecreatpxex = new Date();
+	}
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@Temporal(TemporalType.DATE)
+	private Date dateeditpxex;
+	
+	@PreUpdate
+	public void editdate() {
+		dateeditpxex = new Date ();
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private TipoProcedimiento tprocexam;
+	private Estado estadopxex_fk;// el estado puede ser: creado, modificado o eliminado
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private Tarifa tarifprocexam;
+	private TipoProcedimiento tpxex;
 	
 	private static final long serialVersionUID = 1L;
 

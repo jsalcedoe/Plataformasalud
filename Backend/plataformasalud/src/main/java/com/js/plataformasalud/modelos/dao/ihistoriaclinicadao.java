@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.js.plataformasalud.modelos.entidades.HistoriaClinica;
 
-public interface ihistoriaclinicadao extends JpaRepository<HistoriaClinica, Long> {
+public interface IHistoriaClinicaDao extends JpaRepository<HistoriaClinica, Long> {
 
 }

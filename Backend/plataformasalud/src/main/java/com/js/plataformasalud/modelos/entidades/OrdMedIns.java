@@ -48,9 +48,7 @@ public class OrdMedIns implements Serializable{
 	public void fechacreaorden() {
 		fechacreaordmedins = new Date();
 	}
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private Evento eventmedins;
+	
 	
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
