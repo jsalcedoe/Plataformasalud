@@ -1,5 +1,0 @@
-package com.js.plataformasalud.modelos.dao;
-
-public interface IDiagnosticoAtencionDao {
-
-}

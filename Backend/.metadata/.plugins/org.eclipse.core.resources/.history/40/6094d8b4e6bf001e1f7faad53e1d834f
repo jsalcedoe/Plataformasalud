@@ -1,0 +1,24 @@
+package com.js.plataformasalud.modelos.entidades;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+@Entity
+@Table(name = "eqqx")
+
+public class EquipoQx implements Serializable {
+	
+	private Long ideqqx;
+	
+	private 
+
+
+	private static final long serialVersionUID = 1L;
+
+}

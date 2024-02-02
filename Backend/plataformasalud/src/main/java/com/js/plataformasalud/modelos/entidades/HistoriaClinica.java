@@ -27,7 +27,9 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "hcpac")
+
 // se debe crear aparte un modulo donde se realicen las evoluciones y se realice el registro de los examenes.
+
 public class HistoriaClinica implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -141,12 +143,8 @@ public class HistoriaClinica implements Serializable {
 	private Estado esthcpac_fk;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazynitializer","handler"})
-	private OrigenDestino origdeshcpac_fk;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazynitializer","handler"})
-	private Paciente pachcpac_fk;
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private Evento eventpac_fk;
 	
 	private static final long serialVersionUID = 1L;
 

@@ -13,6 +13,8 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
+
+
 public class IProcedimientoQuirurgicoServiceImpl implements IProcedimientoQuirurgicoService{
 	
 	

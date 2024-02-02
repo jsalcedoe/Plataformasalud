@@ -126,8 +126,6 @@ public class HistoriaClinicaRestController {
 			hcpacAct.setMedico(hcpac.getMedico());
 			hcpacAct.setMotconshcpac(hcpac.getMotconshcpac());
 			hcpacAct.setObjhcpac(hcpac.getObjhcpac());
-			hcpacAct.setOrigdeshcpac_fk(hcpac.getOrigdeshcpac_fk());
-			hcpacAct.setPachcpac_fk(hcpac.getPachcpac_fk());
 			hcpacAct.setPesohcpac(hcpac.getPesohcpac());
 			hcpacAct.setPlanmanejhcpac(hcpac.getPlanmanejhcpac());
 			hcpacAct.setTahcpac(hcpac.getTahcpac());

@@ -1,4 +1,12 @@
 package com.js.plataformasalud.modelos.entidades;
+/*observacion
+ * recuperacion
+ * hospitalizacion
+ * examenes
+ * consultorios
+ * salas de quirofano
+ * camillas de observacion
+ * habitaciones*/
 
 import java.io.Serializable;
 import java.util.Date;

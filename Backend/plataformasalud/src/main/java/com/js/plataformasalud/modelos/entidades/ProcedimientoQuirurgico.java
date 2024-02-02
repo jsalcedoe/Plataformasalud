@@ -12,7 +12,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -52,7 +51,6 @@ public class ProcedimientoQuirurgico implements Serializable {
 	
 	private Long timeqx;
 	
-	@PrePersist
 	public Long calculatimeend(Date horainicioprocqx, Date horafinprocqx ) {
 		timeqx = horafinprocqx.getTime()- horainicioprocqx.getTime();
 		return timeqx;
@@ -70,7 +68,8 @@ public class ProcedimientoQuirurgico implements Serializable {
 	
 	private String matprot; // describe si se coloco material o protesis y si se coloca lo describe
 	
-	private String muespato; // si o no
+	private String muespato; 
+	// Descripcion de las muestras anatopatologicas si es el caso incluye el tipo la cantidad la localizacion el aspecto
 	
 	private String complicqx; // si o no
 	
@@ -83,7 +82,7 @@ public class ProcedimientoQuirurgico implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private HistoriaClinica hcpacqx_fk;
+	private Evento eventpxqx_fk;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
