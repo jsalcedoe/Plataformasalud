@@ -1,0 +1,33 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import com.js.plataformasalud.modelos.entidades.Camas;
+
+public class ICamaServiceImpl implements ICamaService {
+	
+	private ICamaServiceImpl camserv;
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Camas> findAll() {
+		
+		return (List<Camas>)camserv.findAll() ;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Camas findById(Long idhab) {
+		
+		return camserv.findById(idhab);
+	}
+
+	@Override
+	public Camas save(Camas camas) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

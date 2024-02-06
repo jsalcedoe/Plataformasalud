@@ -2,26 +2,40 @@ package com.js.plataformasalud.modelos.servicios;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.js.plataformasalud.modelos.dao.ICamasDao;
 import com.js.plataformasalud.modelos.entidades.Camas;
 
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+
 public class ICamaServiceImpl implements ICamaService {
-
+	
+	private ICamasDao camdao;
+	
 	@Override
+	@Transactional(readOnly = true)
 	public List<Camas> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return (List<Camas>) camdao.findAll();
 	}
 
 	@Override
-	public Camas findById(Camas idhab) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional(readOnly = true)
+	public Camas findById(Long idhab) {
+		
+		return camdao.findById(idhab).orElse(null);
 	}
 
 	@Override
-	public Camas save(Camas camas) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public Camas save(Camas cam) {
+		
+		return camdao.save(cam);
 	}
 
 }

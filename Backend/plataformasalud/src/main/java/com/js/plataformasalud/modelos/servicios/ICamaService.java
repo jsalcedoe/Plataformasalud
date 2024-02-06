@@ -8,8 +8,10 @@ public interface ICamaService {
 	
 	public List<Camas> findAll();
 	
-	public Camas findById(Camas idhab);
+	public Camas findById (Long idhab);
 	
-	public Camas save (Camas camas);
+	public Camas save (Camas cam);
+	
+	
 
 }
