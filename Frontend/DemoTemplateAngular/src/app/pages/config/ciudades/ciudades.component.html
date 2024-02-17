@@ -1,0 +1,49 @@
+<p>camas works!</p>
+<div class=" content">
+    <div class=" row">
+      <div class=" col-md-6">
+        <div class=" card">
+          <div class=" card-header">
+            <h4 class=" card-title">PANEL DE ADMINISTRACION PARA CIUDADES</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-3">
+      <h2>Listado de ciudades</h2>
+      <h1 *ngIf="!ready">Cargando...</h1>            
+                      
+      <table class="table table-dark table-hover" id="" *ngIf="ready" >
+        <!--<table class="table-success">-->
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Codigo Postal Ciudad</th>
+            <th>Ciudad</th>
+            <th>Fecha Creacion</th>
+            <th>Departamento</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of ciudad, let i =index">
+            <td>{{i+1}}</td>
+            <td>{{c.codciu}}</td>
+            <td>{{c.nomciu}}</td>
+            <td>{{c.datecreatciu}}</td>
+            <td>{{c.depciu_fk.nomdep}}</td>
+            <td>{{c.estciu_fk.nomstatus}}</td>
+            <td><button>editar</button></td>
+  
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+  
+
+
+
+

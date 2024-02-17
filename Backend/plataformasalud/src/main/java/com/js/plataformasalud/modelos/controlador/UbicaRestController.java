@@ -40,21 +40,21 @@ public class UbicaRestController {
 		return ubicaservice.findAll();
 	}
 	
-	@GetMapping("/ubicaciones/{idubicaciones}")
-	public ResponseEntity<?> mostrar(@PathVariable Long idubicacion) {
+	@GetMapping("/ubicaciones/{idubica}")
+	public ResponseEntity<?> mostrar(@PathVariable Long idubica) {
 		
 			Ubicacion ubica = null;
 			Map<String, Object> response = new HashMap<>();
 		
 			try {
-				ubica = ubicaservice.findById(idubicacion);
+				ubica = ubicaservice.findById(idubica);
 			}catch(DataAccessException e) {
 				response.put("mensaje", "Error al realizar la consulta en la base de datos");
 				response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if (ubica == null) {
-				response.put("mensaje", "La ubicación ID: ".concat(idubicacion.toString().concat(" no existe en la base de datos!")));
+				response.put("mensaje", "La ubicación ID: ".concat(idubica.toString().concat(" no existe en la base de datos!")));
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 			}
 			return new ResponseEntity<Ubicacion>(ubica, HttpStatus.OK);
@@ -83,7 +83,7 @@ public class UbicaRestController {
 			
 		}
 		response.put("mensaje", "La ubicacion ha sido creada con éxito!");
-		response.put("cargo", Newubica);
+		response.put("Ubicacion", Newubica);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -124,7 +124,7 @@ public class UbicaRestController {
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 		response.put("mensaje", "La ubicación ha sido actualizado con éxito!");
-		response.put("cargo", ubicaUpdate);
+		response.put("Ubicacion", ubicaUpdate);
 
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}

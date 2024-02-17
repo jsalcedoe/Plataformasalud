@@ -26,9 +26,9 @@ public class IUbicaServiceImpl implements IUbicaService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Ubicacion findById(Long idubicaciones) {
+	public Ubicacion findById(Long idubica) {
 		
-		return ubicadao.findById(idubicaciones).orElse(null);
+		return ubicadao.findById(idubica).orElse(null);
 	}
 
 	@Override
@@ -38,11 +38,6 @@ public class IUbicaServiceImpl implements IUbicaService {
 		return ubicadao.save(ubica);
 	}
 
-	@Override
-	@Transactional
-	public void delete(Long idubicaciones) {
 	
-		ubicadao.deleteById(idubicaciones);
-	}
 
 }

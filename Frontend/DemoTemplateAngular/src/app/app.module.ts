@@ -1,0 +1,59 @@
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { RouterModule } from "@angular/router";
+import { ToastrModule } from 'ngx-toastr';
+
+import { AppComponent } from "./app.component";
+import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+
+import { AppRoutingModule } from "./app-routing.module";
+import { ComponentsModule } from "./components/components.module";
+import { TestComponent } from './page/test/test.component';
+import { ConfigComponent } from './pages/config/config.component';
+import { EstadosComponent } from './pages/config/estados/estados.component';
+import { CargosComponent } from './pages/config/cargos/cargos.component';
+import { PermisosComponent } from './pages/config/permisos/permisos.component';
+import { DepartamentosComponent } from './pages/config/departamentos/departamentos.component';
+import { CiudadesComponent } from './pages/config/ciudades/ciudades.component';
+import { DiagnosticosComponent } from './pages/config/diagnosticos/diagnosticos.component';
+import { RolesComponent } from './pages/config/roles/roles.component';
+import { PermisorolComponent } from './pages/config/permisorol/permisorol.component';
+import { UsuariosComponent } from './pages/config/usuarios/usuarios.component';
+import { TipopacienteComponent } from './pages/config/tipopaciente/tipopaciente.component';
+import { EntidadesComponent } from './pages/config/entidades/entidades.component';
+import { OrigendestinoComponent } from './pages/config/origendestino/origendestino.component';
+import { TipodxComponent } from './pages/config/tipodx/tipodx.component';
+import { TipoanestesiaComponent } from './pages/config/tipoanestesia/tipoanestesia.component';
+import { TipopxComponent } from './pages/config/tipopx/tipopx.component';
+import { ProcedimientoexamenesComponent } from './pages/config/procedimientoexamenes/procedimientoexamenes.component';
+import { UbicacionesComponent } from './pages/config/ubicaciones/ubicaciones.component';
+import { CamasComponent } from './pages/config/camas/camas.component';
+import { TiponotaComponent } from './pages/config/tiponota/tiponota.component';
+import { PlantillasComponent } from './pages/config/plantillas/plantillas.component';
+import { PrestadorservicioComponent } from './pages/config/prestadorservicio/prestadorservicio.component';
+import { RepresentantelegalComponent } from './pages/config/representantelegal/representantelegal.component';
+import { TipodocumentosComponent } from './pages/config/tipodocumentos/tipodocumentos.component';
+import { TipoeapbComponent } from './pages/config/tipoeapb/tipoeapb.component';
+import { TipoplantillaComponent } from './pages/config/tipoplantilla/tipoplantilla.component';
+
+@NgModule({
+  imports: [
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    ComponentsModule,
+    NgbModule,
+    RouterModule,
+    AppRoutingModule,
+    ToastrModule.forRoot()
+  ],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, TestComponent, ConfigComponent,EstadosComponent, CargosComponent, PermisosComponent, DepartamentosComponent, CiudadesComponent, DiagnosticosComponent, RolesComponent, PermisorolComponent, UsuariosComponent, TipopacienteComponent, EntidadesComponent, OrigendestinoComponent, TipodxComponent, TipoanestesiaComponent, TipopxComponent, ProcedimientoexamenesComponent, UbicacionesComponent, CamasComponent, TiponotaComponent, PlantillasComponent, PrestadorservicioComponent, RepresentantelegalComponent, TipodocumentosComponent, TipoeapbComponent, TipoplantillaComponent],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}

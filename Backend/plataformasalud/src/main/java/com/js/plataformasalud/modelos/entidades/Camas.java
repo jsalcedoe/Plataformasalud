@@ -35,7 +35,7 @@ public class Camas implements Serializable{
 	@NotEmpty(message = "El campo habitacion o camilla no puede ser vacio")
 	private String nomhab;
 	
-	@Column(length = 30)
+	@Column(length = 100)
 	@NotEmpty(message = "El campo detalle no puede ser vacio")
 	private String dethab;
 	

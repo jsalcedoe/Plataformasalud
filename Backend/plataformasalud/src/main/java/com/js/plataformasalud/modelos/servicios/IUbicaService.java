@@ -8,10 +8,8 @@ public interface IUbicaService {
 	
 	public List<Ubicacion> findAll();
 	
-	public Ubicacion findById(Long idubicaciones);
+	public Ubicacion findById(Long idubica);
 	
 	public Ubicacion save (Ubicacion ubica);
-	
-	public void delete (Long idubicaciones);
 
 }

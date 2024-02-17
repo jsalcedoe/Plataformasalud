@@ -1,0 +1,47 @@
+<div class=" content">
+  <div class=" row">
+    <div class=" col-md-6">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">PANEL DE ADMINISTRACION PARA CAMAS</h4>
+          <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Digita la cama a consultar">
+            <button class="btn btn-primary" type="button">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>  
+  
+  <div class="container mt-3">
+    <h2>Listado de camas creadas</h2>
+    <h1 *ngIf="!ready">Cargando...</h1>            
+                    <th>Name</th>
+    <table class="table table-dark table-hover" id="" *ngIf="ready" >
+      <!--<table class="table-success">-->
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Cama</th>
+          <th>Detalle de cama</th>
+          <th>Fecha Creacion</th>
+          <th>Ubicacion de la cama</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of cam, let i =index">
+          <td>{{i+1}}</td>
+          <td>{{c.nomhab}}</td>
+          <td>{{c.dethab}}</td>
+          <td>{{c.fechacreahab}}</td>
+          <td>{{c.ubicahab}}</td>
+          <td>{{c.esthab_fk}}</td>
+          <td><button>editar</button></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</div>
