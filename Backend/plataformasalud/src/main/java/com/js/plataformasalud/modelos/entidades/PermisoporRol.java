@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +29,12 @@ public class PermisoporRol {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idpermrol;
+	
+	@Column(unique = true, length = 10)
+	private String nompermrol;
+	
+	@Column(length = 50)
+	private String detpermrol;
 	
 	@Temporal(TemporalType.DATE)
 	private Date datecreatidpermrol;

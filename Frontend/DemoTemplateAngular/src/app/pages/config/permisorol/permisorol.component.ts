@@ -19,7 +19,7 @@ export class PermisorolComponent implements OnInit {
   }
 
   getPermisorol(){
-    this.service.getOrigendestino().pipe(
+    this.service.getPermisorol().pipe(
       tap((res) => {
         // Maneja la respuesta exitosa aquí
         console.log('PERMISO POR ROL', res);

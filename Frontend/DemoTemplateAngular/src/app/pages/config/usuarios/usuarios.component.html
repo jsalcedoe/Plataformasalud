@@ -1,12 +1,54 @@
-<p>camas works!</p>
 <div class=" content">
-    <div class=" row">
-      <div class=" col-md-6">
-        <div class=" card">
-          <div class=" card-header">
-            <h4 class=" card-title">PANEL DE ADMINISTRACION DE USUARIOS</h4>
-          </div>
+  <div class=" row">
+    <div class=" col-md-6">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">PANEL DE ADMINISTRACION PARA ENTIDADES</h4>
+          <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Digita la cama a consultar">
+            <button class="btn btn-primary" type="button">Search</button>
+          </form>
         </div>
       </div>
     </div>
-</div>
+  </div>  
+  
+  <div class="container mt-3">
+    <h2>Listado de entidades responsables de pago creadas</h2>
+    <h1 *ngIf="!ready">Cargando...</h1>            
+     <table class="table table-dark table-hover" id="" *ngIf="ready" >
+      <!--<table class="table-success">-->
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Usuario</th>
+          <th>Tipo de documento Usuario</th>
+          <th>Documento</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Correo</th>
+          <th>Fecha Creación</th>
+          <th>Cargo</th>
+          <th>Rol</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of user, let i =index">
+          <td>{{i+1}}</td>
+          <td>{{c.username}}</td>
+          <td>{{c.typeiduser_fk.tipdoc}}</td>
+          <td>{{c.docuser}}</td>
+          <td>{{c.firstname}}</td>
+          <td>{{c.lastname}}</td>
+          <td>{{c.emailuser}}</td>
+          <td>{{c.creatdateuser}}</td>
+          <td>{{c.carguser_fk.detcarguser}}</td>
+          <td>{{c.roluser_fk.nomrol}}</td>
+          <td>{{estuser_fk.nomstatus}}</td>
+          <td><button>editar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ </div>

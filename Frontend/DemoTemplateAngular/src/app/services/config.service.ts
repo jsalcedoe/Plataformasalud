@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,9 @@ export class ConfigService {
 
   constructor(private http:HttpClient) { }
 
-  endpoint:String='http://localhost:8080/api/';
+  private endpoint: String ='http://localhost:8080/api/';
+  private httpheaders = new HttpHeaders({'Content-Type': 'application/json'});
+
 
   /* metodos Get del service para cada uno de las tablas del config */
 
@@ -114,6 +116,14 @@ export class ConfigService {
   getUsuarios():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'usuarios')
   }
+
+//metodos post para insertar registros
+
+  insertarRegistro(datosRegistros: any): Observable<any> {
+    return this.http.post<any>(this.endpoint + 'departamentos', datosRegistros,{headers:this.httpheaders})
+
+  }
+
 
 
 

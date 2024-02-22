@@ -110,6 +110,7 @@ public class CargoRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		try {
+			cargoAct.setNomcarg(cargo.getNomcarg());
 			cargoAct.setDatecreatcarguser(cargo.getDatecreatcarguser());
 			cargoAct.setDetcarguser(cargo.getDetcarguser());
 			cargoAct.setEstado_carguser(cargo.getEstado_carguser());

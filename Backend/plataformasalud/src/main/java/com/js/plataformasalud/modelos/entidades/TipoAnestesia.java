@@ -40,7 +40,7 @@ public class TipoAnestesia implements Serializable {
 	@Column(length = 30, unique = true)
 	private String desctipanest;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIME)
 	private Date datecreatanest;
 	
 	@PrePersist
@@ -48,7 +48,7 @@ public class TipoAnestesia implements Serializable {
 		datecreatanest = new Date();
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIME)
 	private Date dateeditanest;
 	
 	@PreUpdate

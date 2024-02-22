@@ -1,12 +1,40 @@
-<p>camas works!</p>
 <div class=" content">
-    <div class=" row">
-      <div class=" col-md-6">
-        <div class=" card">
-          <div class=" card-header">
-            <h4 class=" card-title">PANEL DE ADMINISTRACION PARA TIPO DE DOCUMENTOS</h4>
-          </div>
+  <div class=" row">
+    <div class=" col-md-6">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">PANEL DE ADMINISTRACION PARA TIPOS DE DOCUEMENTOS</h4>
+          <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Digita el tipo de documento a consultar">
+            <button class="btn btn-primary" type="button">Search</button>
+          </form>
         </div>
       </div>
     </div>
-</div>
+  </div>  
+  
+  <div class="container mt-3">
+    <h2>Listado de tipos de documentos creados</h2>
+    <h1 *ngIf="!ready">Cargando...</h1>            
+     <table class="table table-dark table-hover" id="" *ngIf="ready" >
+      <!--<table class="table-success">-->
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Tipo de documento</th>
+          <th>Detalle del tipo de documento</th>
+          <th>Fecha de creación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of tipodocument, let i =index">
+          <td>{{i+1}}</td>
+          <td>{{c.tipdoc}}</td>
+          <td>{{c.detatipdoc}}</td>
+          <td>{{c.datecreatetipdoc}}</td>
+          <td><button>editar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ </div>

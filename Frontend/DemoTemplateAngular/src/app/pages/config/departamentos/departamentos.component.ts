@@ -11,16 +11,29 @@ export class DepartamentosComponent implements OnInit {
   depart:any
   ready:boolean=false
 
+  coddep: any;
+  nomdep: any;  
+  
+
+  datosRegistros : any = {
+    coddep : String,
+    nomdep : String
+ 
+  }
+
+  
+
   constructor(private service:ConfigService) { }
 
   ngOnInit(): void {
 
-    this.getDepart()
+    this.getDepart();
+ 
     
 
   }
 
- getDepart(){
+ public getDepart(){
   this.service.getDepart().pipe(
     tap((res) => {
       // Maneja la respuesta exitosa aquí
@@ -36,5 +49,16 @@ export class DepartamentosComponent implements OnInit {
     })
   ).subscribe();
   }
+
+  /*public postDepart(): void {
+    this.service.insertarRegistro(this.datosRegistros).subscribe({
+      next: respuesta => {
+        console.log('Registro insertado correctamente:', respuesta);
+        }
+    });
+
+
+    
+  }*/
 
 }

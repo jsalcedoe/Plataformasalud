@@ -1,12 +1,47 @@
-<p>camas works!</p>
 <div class=" content">
-    <div class=" row">
-      <div class=" col-md-6">
-        <div class=" card">
-          <div class=" card-header">
-            <h4 class=" card-title">PANEL DE ADMINISTRACION PARA PLANTILLAS</h4>
-          </div>
+  <div class=" row">
+    <div class=" col-md-6">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">PANEL DE ADMINISTRACION PARA PLANTILLAS</h4>
+          <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Digita la plantilla a consultar">
+            <button class="btn btn-primary" type="button">Search</button>
+          </form>
         </div>
       </div>
     </div>
+  </div>  
+  
+  <div class="container mt-3">
+    <h2>Listado de plantillas creadas</h2>
+    <h1 *ngIf="!ready">Cargando...</h1>            
+     <table class="table table-dark table-hover" id="" *ngIf="ready" >
+      <!--<table class="table-success">-->
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Plantilla</th>
+          <th>Detalle de plantilla</th>
+          <th>Fecha de creación</th>
+          <th>Tipo de plantilla</th>
+          <th>Usuario de plantilla</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of plantillas, let i =index">
+          <td>{{i+1}}</td>
+          <td>{{c.nametemp}}</td>
+          <td>{{c.dettemp}}</td>
+          <td>{{c.creatdatetemp}}</td>
+          <td>{{c.typtemp_fk.nomtytemp}}</td>
+          <td>{{c.usertemp_fk.firstname}}  {{c.usertemp_fk.lastname}}</td>
+          <td>{{c.esttemp_fk.nomstatus}}</td>
+          <td><button>editar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
 </div>

@@ -1,12 +1,54 @@
-<p>camas works!</p>
 <div class=" content">
-    <div class=" row">
-      <div class=" col-md-6">
-        <div class=" card">
-          <div class=" card-header">
-            <h4 class=" card-title">PANEL DE ADMINISTRACION DE REPRESENTANTE LEGAL</h4>
-          </div>
+  <div class=" row">
+    <div class=" col-md-6">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">PANEL DE ADMINISTRACION PARA REPRESENTANTE LEGAL</h4>
+          <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Digita el representante a consultar">
+            <button class="btn btn-primary" type="button">Search</button>
+          </form>
         </div>
       </div>
     </div>
+  </div>  
+  
+  <div class="container mt-3">
+    <h2>Listado representantes legales creados</h2>
+    <h1 *ngIf="!ready">Cargando...</h1>            
+     <table class="table table-dark table-hover" id="" *ngIf="ready" >
+      <!--<table class="table-success">-->
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Tipo de documento</th>
+          <th>Documento de identidad</th>
+          <th>Primer nombre</th>
+          <th>Segundo nombre</th>
+          <th>Primer apellido</th>
+          <th>Segundo apellido</th>
+          <th>Correo electronico</th>
+          <th>Fecha de creación</th>
+          <th>Prestador de servicio</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of representante, let i =index">
+          <td>{{i+1}}</td>
+          <td>{{c.tipdocrepleg_fk.tipdoc}}</td>
+          <td>{{c.docrepleg}}</td>
+          <td>{{c.pnomrepleg}}</td>
+          <td>{{c.snomrepleg}}</td>
+          <td>{{c.paperepleg}}</td>
+          <td>{{c.saperepleg}}</td>
+          <td>{{c.emailrepleg}}</td>
+          <td>{{c.datecreaterepleg}}</td>
+          <td>{{c.idprestservrepleg_fk.nomprestserv}}</td>
+          <td><button>editar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
 </div>

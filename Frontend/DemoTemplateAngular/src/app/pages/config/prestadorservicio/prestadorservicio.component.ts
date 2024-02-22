@@ -14,6 +14,7 @@ export class PrestadorservicioComponent implements OnInit {
   constructor(private services:ConfigService) { }
 
   ngOnInit(): void {
+    this.getPrestador();
   }
 
   getPrestador(){

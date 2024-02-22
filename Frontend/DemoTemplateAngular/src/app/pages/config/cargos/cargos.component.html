@@ -28,11 +28,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let c of cam, let i =index">
+        <tr *ngFor="let c of cargos, let i =index">
           <td>{{i+1}}</td>
           <td>{{c.detcarguser}}</td>
           <td>{{c.datecreatcarguser}}</td>
-          <td>{{c.estado_carguser}}</td>
+          <td>{{c.estado_carguser.nomstatus}}</td>
           <td><button>editar</button></td>
 
         </tr>

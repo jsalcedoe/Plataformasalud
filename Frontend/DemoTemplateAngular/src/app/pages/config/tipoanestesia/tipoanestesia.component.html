@@ -1,12 +1,47 @@
-<p>camas works!</p>
 <div class=" content">
-    <div class=" row">
-      <div class=" col-md-6">
-        <div class=" card">
-          <div class=" card-header">
-            <h4 class=" card-title">PANEL DE ADMINISTRACION PARA TIPO DE ANESTESIA</h4>
-          </div>
+  <div class=" row">
+    <div class=" col-md-6">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">PANEL DE ADMINISTRACION PARA TIPO DE ANESTESIA</h4>
+          <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Digita el tipo de anestesia a consultar">
+            <button class="btn btn-primary" type="button">Search</button>
+          </form>
         </div>
       </div>
     </div>
-</div>
+  </div>  
+  
+  <div class="container mt-3">
+    <h2>Listado de tipos de anestesias creadas</h2>
+    <h1 *ngIf="!ready">Cargando...</h1>            
+     <table class="table table-dark table-hover" id="" *ngIf="ready" >
+      <!--<table class="table-success">-->
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Tipo de anestesia</th>
+          <th>Descripción</th>
+          <th>Fecha de creación</th>
+          <th>Estado</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of tipoanest, let i =index">
+          <td>{{i+1}}</td>
+          <td>{{c.nomtipanest}}</td>
+          <td>{{c.desctipanest}}</td>
+          <td>{{c.datecreatanest}}</td>
+          <td>{{c.esttypanest.nomstatus}}</td>
+          <td><button>editar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ </div>

@@ -1,12 +1,47 @@
-<p>camas works!</p>
 <div class=" content">
-    <div class=" row">
-      <div class=" col-md-6">
-        <div class=" card">
-          <div class=" card-header">
-            <h4 class=" card-title">PANEL DE ADMINISTRACION DE PROCEDIMIENTOS Y EXAMENES</h4>
-          </div>
+  <div class=" row">
+    <div class=" col-md-6">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">PANEL DE ADMINISTRACION PARA PROCEDIMIENTOS Y EXAMENES</h4>
+          <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Digita el procedimiento o examen a consultar">
+            <button class="btn btn-primary" type="button">Search</button>
+          </form>
         </div>
       </div>
     </div>
+  </div>  
+  
+  <div class="container mt-3">
+    <h2>Listado de procedimiento y EXAMENES creadas</h2>
+    <h1 *ngIf="!ready">Cargando...</h1>            
+     <table class="table table-dark table-hover" id="" *ngIf="ready" >
+      <!--<table class="table-success">-->
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Codigo de procedimiento o examen</th>
+          <th>Detalle</th>
+          <th>Tipo de procedimiento</th>
+          <th>Sexo al que aplica</th>
+          <th>Fecha de creación</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of procedimientos, let i =index">
+          <td>{{i+1}}</td>
+          <td>{{c.codpxex}}</td>
+          <td>{{c.nompxex}}</td>
+          <td>{{c.tpxex.nomtproc}}</td>
+          <td>{{c.sexopxex}}</td>
+          <td>{{c.datecreatpxex}}</td>
+          <td>{{c.estadopxex_fk.nomstatus}}</td>
+          <td><button>editar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
 </div>

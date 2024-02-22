@@ -22,6 +22,8 @@ export class DiagnosticosComponent implements OnInit {
       tap((res) => {
         // Maneja la respuesta exitosa aquí
         console.log('DIAGNOSTICOS', res);
+        this.dx = res;
+        this.ready = true;
       }),
       catchError((err) => {
         // Maneja el error aquí

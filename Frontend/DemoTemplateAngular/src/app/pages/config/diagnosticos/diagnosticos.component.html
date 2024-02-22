@@ -21,19 +21,19 @@
       <thead>
         <tr>
           <th>Item</th>
-          <th>Codigo CIE10</th>
-          <th>Diagnostico CIE10</th>
-          <th>Descripcion diagnostico CIE10</th>
-          <th>Sexo al que aplica</th>
+          <th>CIE10</th>
+          <th>Diagnostico</th>
+          <th>Descripcion</th>
+          <th>Sexo</th>
           <th>Edad minima</th>
           <th>Edad maxima</th>
-          <th>Capitulo CIE10</th>
+          <th>Capitulo</th>
           <th>Fecha Creacion</th>
           <th>Estado</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let c of cam, let i =index">
+        <tr *ngFor="let c of dx, let i =index">
           <td>{{i+1}}</td>
           <td>{{c.iddx}}</td>
           <td>{{c.nomdx}}</td>

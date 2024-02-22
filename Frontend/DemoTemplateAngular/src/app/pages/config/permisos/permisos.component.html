@@ -1,12 +1,44 @@
-<p>camas works!</p>
 <div class=" content">
-    <div class=" row">
-      <div class=" col-md-6">
-        <div class=" card">
-          <div class=" card-header">
-            <h4 class=" card-title">PANEL DE ADMINISTRACION PARA PERMISOS</h4>
-          </div>
+  <div class=" row">
+    <div class=" col-md-6">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">PANEL DE ADMINISTRACION PARA PERMISOS</h4>
+          <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Digita el permiso a consultar">
+            <button class="btn btn-primary" type="button">Search</button>
+          </form>
         </div>
       </div>
     </div>
+  </div>  
+  
+  <div class="container mt-3">
+    <h2>Listado de permisos creados</h2>
+    <h1 *ngIf="!ready">Cargando...</h1>            
+     <table class="table table-dark table-hover" id="" *ngIf="ready" >
+      <!--<table class="table-success">-->
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Permiso</th>
+          <th>Detalle</th>
+          <th>Fecha Creación</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of permiso, let i =index">
+          <td>{{i+1}}</td>
+          <td>{{c.namperm}}</td>
+          <td>{{c.detperm}}</td>
+          <td>{{c.datecreatperm}}</td>
+          <td>{{c.estperm_fk.nomstatus}}</td>
+          <td><button>editar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
 </div>
+

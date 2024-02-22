@@ -1,12 +1,47 @@
-<p>camas works!</p>
 <div class=" content">
-    <div class=" row">
-      <div class=" col-md-6">
-        <div class=" card">
-          <div class=" card-header">
-            <h4 class=" card-title">PANEL DE ADMINISTRACION PARA PERMISOS POR ROL</h4>
-          </div>
+  <div class=" row">
+    <div class=" col-md-6">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">PANEL DE ADMINISTRACION PARA PERMISOS POR ROL</h4>
+          <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Digita el permiso por rol a consultar">
+            <button class="btn btn-primary" type="button">Search</button>
+          </form>
         </div>
       </div>
     </div>
+  </div>  
+  
+  <div class="container mt-3">
+    <h2>Listado de permisos por rol creados</h2>
+    <h1 *ngIf="!ready">Cargando...</h1>            
+     <table class="table table-dark table-hover" id="" *ngIf="ready" >
+      <!--<table class="table-success">-->
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Permiso por rol</th>
+          <th>Detalle permiso por rol</th>
+          <th>Fecha de creación</th>
+          <th>Rol</th>
+          <th>Permiso</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of perol, let i =index">
+          <td>{{i+1}}</td>
+          <td>{{c.nompermrol}}</td>
+          <td>{{c.detpermrol}}</td>
+          <td>{{c.datecreatidpermrol}}</td>
+          <td>{{c.rolpermrol_fk.desrol}}</td>
+          <td>{{c.permrol_fk.detperm}}</td>
+          <td>{{c.estpermrol_fk.nomstatus}}</td>
+        <td><button>editar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
 </div>
