@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -13,7 +14,7 @@ export class EstadosComponent implements OnInit {
   estados:any
   ready: boolean = false
   
-  constructor(private service:ConfigService) { }
+  constructor(private service:ConfigService, private route:Router) { }
 
   ngOnInit(): void {
     this.getEstados();
@@ -35,6 +36,12 @@ export class EstadosComponent implements OnInit {
       })
     ).subscribe();
     
+  }
+
+  irCreaestados(){
+
+    this.route.navigate(['creaestados'])
+
   }
 
 }

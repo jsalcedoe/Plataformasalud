@@ -1,6 +1,6 @@
 USE plataformasalud;
 
-INSERT INTO `plataformasalud`.`status` (`datecreatstatus`, `nomstatus`) VALUES ('2024-02-21', 'CREADO');
+INSERT INTO `plataformasalud`.`status` (`datecreatstatus`, `detstatus`, `nomstatus`) VALUES ('2024-02-24', 'CREADO', 'CR');
 INSERT INTO `plataformasalud`.`tipdoc` (`datecreatetipdoc`, `detatipdoc`, `tipdoc`) VALUES ('2024-02-21', 'CEDULA DE CIUDADANIA', 'CC');
 INSERT INTO `plataformasalud`.`ubicaciones` (`datecreatubic`, `detubica`, `nomubicaciones`, `estubica_fk_idstatus`) VALUES ('2024-02-21', 'RECUPERACION', 'REC', '1');
 INSERT INTO `plataformasalud`.`habcami` (`dethab`, `fechacreahab`, `nomhab`, `esthab_fk_idstatus`, `ubicahab_idubica`) VALUES ('RECUPERACION CAMILLA 1', '2024-02-21', 'REC 1', '1', '1');

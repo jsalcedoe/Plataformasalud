@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -15,23 +16,11 @@ export class DepartamentosComponent implements OnInit {
   nomdep: any;  
   
 
-  datosRegistros : any = {
-    coddep : String,
-    nomdep : String
- 
-  }
-
-  
-
-  constructor(private service:ConfigService) { }
+  constructor(private service:ConfigService,private router:Router) { }
 
   ngOnInit(): void {
-
     this.getDepart();
- 
-    
-
-  }
+   }
 
  public getDepart(){
   this.service.getDepart().pipe(
@@ -50,15 +39,10 @@ export class DepartamentosComponent implements OnInit {
   ).subscribe();
   }
 
-  /*public postDepart(): void {
-    this.service.insertarRegistro(this.datosRegistros).subscribe({
-      next: respuesta => {
-        console.log('Registro insertado correctamente:', respuesta);
-        }
-    });
+  irCrearDep(){
+    this.router.navigate(['creadep']);
+  }
 
-
-    
-  }*/
+ 
 
 }

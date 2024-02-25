@@ -33,6 +33,10 @@ public class Estado implements Serializable {
 	@NotEmpty(message = "El campo estado no puede ser vacio")
 	private String nomstatus;
 	
+	@Column(nullable = false,length = 20, unique = true)
+	@NotEmpty(message = "el campo detalle del estado no puede ser vacio")
+	private String detstatus;
+	
 	@Temporal(TemporalType.DATE)
 	private Date datecreatstatus;
 	

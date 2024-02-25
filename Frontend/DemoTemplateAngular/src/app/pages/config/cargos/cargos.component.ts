@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -12,7 +13,7 @@ export class CargosComponent implements OnInit {
   cargos:any
   ready:boolean=false
 
-  constructor(private service:ConfigService) { }
+  constructor(private service:ConfigService, private route:Router) { }
 
   ngOnInit(): void {
     this.getCargos();
@@ -33,6 +34,10 @@ export class CargosComponent implements OnInit {
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();
+  }
+
+  irCrearCargos(){
+    this.route.navigate(['creacargos'])
   }
 
 }

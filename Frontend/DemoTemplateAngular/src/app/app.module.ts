@@ -1,6 +1,7 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { ToastrModule } from 'ngx-toastr';
@@ -40,11 +41,29 @@ import { RepresentantelegalComponent } from './pages/config/representantelegal/r
 import { TipodocumentosComponent } from './pages/config/tipodocumentos/tipodocumentos.component';
 import { TipoeapbComponent } from './pages/config/tipoeapb/tipoeapb.component';
 import { TipoplantillaComponent } from './pages/config/tipoplantilla/tipoplantilla.component';
+import { CreadepComponent } from './pages/config/departamentos/creadep/creadep.component';
+import { CreacamasComponent } from './pages/config/camas/creacamas/creacamas.component';
+import { CreacargosComponent } from './pages/config/cargos/creacargos/creacargos.component';
+import { CreaciudadComponent } from './pages/config/ciudades/creaciudad/creaciudad.component';
+import { CreadxComponent } from './pages/config/diagnosticos/creadx/creadx.component';
+import { CreaentidadComponent } from './pages/config/entidades/creaentidad/creaentidad.component';
+import { CreaestadosComponent } from './pages/config/estados/creaestados/creaestados.component';
+import { CreaorigdesComponent } from './pages/config/origendestino/creaorigdes/creaorigdes.component';
+import { CreapermisorolComponent } from './pages/config/permisorol/creapermisorol/creapermisorol.component';
+import { CreapermisosComponent } from './pages/config/permisos/creapermisos/creapermisos.component';
+import { CreaplantillasComponent } from './pages/config/plantillas/creaplantillas/creaplantillas.component';
+import { CreaprestadorComponent } from './pages/config/prestadorservicio/creaprestador/creaprestador.component';
+import { CreapxexComponent } from './pages/config/procedimientoexamenes/creapxex/creapxex.component';
+import { ReplegalComponent } from './pages/config/representantelegal/replegal/replegal.component';
+import { CrearolComponent } from './pages/config/roles/crearol/crearol.component';
+
+
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
     NgbModule,
@@ -52,7 +71,52 @@ import { TipoplantillaComponent } from './pages/config/tipoplantilla/tipoplantil
     AppRoutingModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, TestComponent, ConfigComponent,EstadosComponent, CargosComponent, PermisosComponent, DepartamentosComponent, CiudadesComponent, DiagnosticosComponent, RolesComponent, PermisorolComponent, UsuariosComponent, TipopacienteComponent, EntidadesComponent, OrigendestinoComponent, TipodxComponent, TipoanestesiaComponent, TipopxComponent, ProcedimientoexamenesComponent, UbicacionesComponent, CamasComponent, TiponotaComponent, PlantillasComponent, PrestadorservicioComponent, RepresentantelegalComponent, TipodocumentosComponent, TipoeapbComponent, TipoplantillaComponent],
+  declarations: [
+    AppComponent, 
+    AdminLayoutComponent, 
+    AuthLayoutComponent, 
+    TestComponent, 
+    ConfigComponent,
+    EstadosComponent, 
+    CargosComponent, 
+    PermisosComponent, 
+    DepartamentosComponent, 
+    CiudadesComponent, 
+    DiagnosticosComponent, 
+    RolesComponent, 
+    PermisorolComponent, 
+    UsuariosComponent, 
+    TipopacienteComponent, 
+    EntidadesComponent, 
+    OrigendestinoComponent, 
+    TipodxComponent, 
+    TipoanestesiaComponent, 
+    TipopxComponent, 
+    ProcedimientoexamenesComponent, 
+    UbicacionesComponent, 
+    CamasComponent, 
+    TiponotaComponent, 
+    PlantillasComponent, 
+    PrestadorservicioComponent, 
+    RepresentantelegalComponent, 
+    TipodocumentosComponent, 
+    TipoeapbComponent, 
+    TipoplantillaComponent, 
+    CreadepComponent, 
+    CreacamasComponent, 
+    CreacargosComponent, 
+    CreaciudadComponent,
+    CreadxComponent, 
+    CreaentidadComponent, 
+    CreaestadosComponent, 
+    CreaorigdesComponent, 
+    CreapermisorolComponent, 
+    CreapermisosComponent, 
+    CreaplantillasComponent, 
+    CreaprestadorComponent, 
+    CreapxexComponent, 
+    ReplegalComponent, CrearolComponent
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -36,8 +36,12 @@ public class Entidad implements Serializable {
 	@NotEmpty(message = "El campo entidad no puede ser vacio")
 	private String nomeapb;
 	
+	@Column(unique = true, length = 12)
+	@NotEmpty(message = "El campo documento de la entindad no puede ser vacio")
+	private Long doceapb;
+	
 	@Column(nullable = false, length = 50)
-	@NotEmpty(message = "El campo direccion de la entidad no puede ser vacio")
+	@NotEmpty(message = "El direccion de la entidad no puede ser vacio")
 	private String direapb;
 	
 	@Column(nullable = false, length = 15)
@@ -64,6 +68,10 @@ public class Entidad implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private TipoEAPB tipent;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private TipoDocumento tipdoceapb_fk;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})

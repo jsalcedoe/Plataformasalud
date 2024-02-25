@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -13,7 +14,7 @@ export class CiudadesComponent implements OnInit {
 
   
   
-  constructor(private service:ConfigService) { }
+  constructor(private service:ConfigService, private route:Router) { }
 
   ngOnInit(): void { 
     this.getCiudades();
@@ -35,7 +36,10 @@ export class CiudadesComponent implements OnInit {
       })
     ).subscribe();
   }
+  irCreaCiudad(){
+    this.route.navigate(['creaciudad'])
 
+  }
 
 
   

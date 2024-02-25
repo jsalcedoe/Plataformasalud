@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -11,7 +12,7 @@ export class DiagnosticosComponent implements OnInit {
   dx:any
   ready:boolean = false
 
-  constructor(private service:ConfigService) { }
+  constructor(private service:ConfigService, private route:Router) { }
 
   ngOnInit(): void {
     this.getDiagnosticos();
@@ -32,6 +33,10 @@ export class DiagnosticosComponent implements OnInit {
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();
+  }
+
+  irCreaDx(){
+    this.route.navigate(['creadx'])
   }
 
 }

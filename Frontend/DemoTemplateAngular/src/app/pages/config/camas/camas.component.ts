@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -13,7 +14,7 @@ export class CamasComponent implements OnInit {
   ready:boolean=false
 
 
-  constructor(private service:ConfigService) { }
+  constructor(private service:ConfigService,private route:Router) { }
 
   ngOnInit(): void {
 
@@ -37,6 +38,11 @@ export class CamasComponent implements OnInit {
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();
+  }
+
+  irCreacamas(){
+    this.route.navigate(['creacamas'])
+
   }
 
 }

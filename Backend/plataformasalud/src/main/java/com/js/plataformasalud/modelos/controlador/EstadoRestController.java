@@ -115,6 +115,7 @@ public class EstadoRestController {
 		try {
 				statusActual.setDatecreatstatus(status.getDatecreatstatus());
 				statusActual.setNomstatus(status.getNomstatus());
+				statusActual.setDetstatus(status.getDetstatus());
 			
 				statusUpdate = statserv.save(statusActual);
 				

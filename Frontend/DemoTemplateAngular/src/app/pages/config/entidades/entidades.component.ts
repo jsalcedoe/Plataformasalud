@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -11,7 +12,7 @@ export class EntidadesComponent implements OnInit {
   entidades: any
   ready: boolean= false
 
-  constructor(private services:ConfigService) { }
+  constructor(private services:ConfigService, private route:Router) { }
 
   ngOnInit(): void {
     this.getEntidades();
@@ -32,6 +33,11 @@ export class EntidadesComponent implements OnInit {
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();
+  }
+
+  irCreaentidad(){
+    this.route.navigate(['creaentidad'])
+    
   }
 
 }

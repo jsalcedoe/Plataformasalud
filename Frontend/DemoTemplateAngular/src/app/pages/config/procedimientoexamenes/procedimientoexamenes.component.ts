@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -11,7 +12,7 @@ export class ProcedimientoexamenesComponent implements OnInit {
   procedimientos : any;
   ready : boolean = false;
 
-  constructor(private services:ConfigService) { }
+  constructor(private services:ConfigService, private route:Router) { }
 
   ngOnInit(): void {
     this.getProcedimientosexam();
@@ -31,6 +32,10 @@ export class ProcedimientoexamenesComponent implements OnInit {
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();
+  }
+
+  irCreapxex(){
+    this.route.navigate(['creapxex'])
   }
 
 }

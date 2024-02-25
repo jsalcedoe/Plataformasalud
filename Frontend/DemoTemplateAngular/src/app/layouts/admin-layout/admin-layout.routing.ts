@@ -33,6 +33,23 @@ import { TipoplantillaComponent } from "src/app/pages/config/tipoplantilla/tipop
 import { TipopxComponent } from "src/app/pages/config/tipopx/tipopx.component";
 import { UbicacionesComponent } from "src/app/pages/config/ubicaciones/ubicaciones.component";
 import { UsuariosComponent } from "src/app/pages/config/usuarios/usuarios.component";
+import { CreadepComponent } from "src/app/pages/config/departamentos/creadep/creadep.component";
+import { CreacamasComponent } from "src/app/pages/config/camas/creacamas/creacamas.component";
+import { CreacargosComponent } from "src/app/pages/config/cargos/creacargos/creacargos.component";
+import { CreaciudadComponent } from "src/app/pages/config/ciudades/creaciudad/creaciudad.component";
+import { CreadxComponent } from "src/app/pages/config/diagnosticos/creadx/creadx.component";
+import { Component } from "@angular/core";
+import { CreaentidadComponent } from "src/app/pages/config/entidades/creaentidad/creaentidad.component";
+import { CreaestadosComponent } from "src/app/pages/config/estados/creaestados/creaestados.component";
+import { CreaorigdesComponent } from "src/app/pages/config/origendestino/creaorigdes/creaorigdes.component";
+import { CreapermisorolComponent } from "src/app/pages/config/permisorol/creapermisorol/creapermisorol.component";
+import { CreapermisosComponent } from "src/app/pages/config/permisos/creapermisos/creapermisos.component";
+import { CreaplantillasComponent } from "src/app/pages/config/plantillas/creaplantillas/creaplantillas.component";
+import { CreaprestadorComponent } from "src/app/pages/config/prestadorservicio/creaprestador/creaprestador.component";
+import { CreapxexComponent } from "src/app/pages/config/procedimientoexamenes/creapxex/creapxex.component";
+import { ReplegalComponent } from "src/app/pages/config/representantelegal/replegal/replegal.component";
+import { CrearolComponent } from "src/app/pages/config/roles/crearol/crearol.component";
+
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
 export const AdminLayoutRoutes: Routes = [
@@ -69,7 +86,23 @@ export const AdminLayoutRoutes: Routes = [
   {path:'tipoplantilla',component:TipoplantillaComponent},
   {path:'tipopx',component:TipopxComponent},
   {path:'ubicaciones',component:UbicacionesComponent},
-  {path:'usuarios',component:UsuariosComponent}
+  {path:'usuarios',component:UsuariosComponent},
+  {path:'creadep',component:CreadepComponent},
+  {path:'creacamas',component:CreacamasComponent},
+  {path:'creacargos',component:CreacargosComponent},
+  {path:'creaciudad',component:CreaciudadComponent},
+  {path:'creadx',component:CreadxComponent},
+  {path:'creaentidad',component:CreaentidadComponent},
+  {path:'creaestados',component:CreaestadosComponent},
+  {path:'creaorigdes',component:CreaorigdesComponent},
+  {path:'creapermisorol',component:CreapermisorolComponent},
+  {path:'creapermisos',component:CreapermisosComponent},
+  {path:'creaplantillas',component:CreaplantillasComponent},
+  {path:'creaprestador',component:CreaprestadorComponent},
+  {path:'creapxex',component:CreapxexComponent},
+  {path:'creareplegal',component:ReplegalComponent},
+  {path:'crearol',component:CrearolComponent}
+
 
   // { path: "rtl", component: RtlComponent }
 ];

@@ -15,7 +15,10 @@
   
   <div class="container mt-3">
     <h2>Listado representantes legales creados</h2>
-    <h1 *ngIf="!ready">Cargando...</h1>            
+    <h1 *ngIf="!ready">Cargando...</h1>     
+    <form class="d-flex">
+      <button class="btn btn-primary" type="button" (click)="irCreareplegal()"  >Crear Camas</button>    
+</form>        
      <table class="table table-dark table-hover" id="" *ngIf="ready" >
       <!--<table class="table-success">-->
       <thead>
