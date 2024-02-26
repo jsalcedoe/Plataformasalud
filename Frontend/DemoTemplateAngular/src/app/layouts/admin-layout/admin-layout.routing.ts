@@ -49,6 +49,16 @@ import { CreaprestadorComponent } from "src/app/pages/config/prestadorservicio/c
 import { CreapxexComponent } from "src/app/pages/config/procedimientoexamenes/creapxex/creapxex.component";
 import { ReplegalComponent } from "src/app/pages/config/representantelegal/replegal/replegal.component";
 import { CrearolComponent } from "src/app/pages/config/roles/crearol/crearol.component";
+import { CreatipoanestComponent } from "src/app/pages/config/tipoanestesia/creatipoanest/creatipoanest.component";
+import { CreatipodocComponent } from "src/app/pages/config/tipodocumentos/creatipodoc/creatipodoc.component";
+import { CreatipodxComponent } from "src/app/pages/config/tipodx/creatipodx/creatipodx.component";
+import { CreatipoeapbComponent } from "src/app/pages/config/tipoeapb/creatipoeapb/creatipoeapb.component";
+import { CreatiponotaComponent } from "src/app/pages/config/tiponota/creatiponota/creatiponota.component";
+import { CreatipacComponent } from "src/app/pages/config/tipopaciente/creatipac/creatipac.component";
+import { CreatipotempComponent } from "src/app/pages/config/tipoplantilla/creatipotemp/creatipotemp.component";
+import { CreatipopxComponent } from "src/app/pages/config/tipopx/creatipopx/creatipopx.component";
+import { CreaubicaComponent } from "src/app/pages/config/ubicaciones/creaubica/creaubica.component";
+import { CreauserComponent } from "src/app/pages/config/usuarios/creauser/creauser.component";
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
@@ -101,7 +111,17 @@ export const AdminLayoutRoutes: Routes = [
   {path:'creaprestador',component:CreaprestadorComponent},
   {path:'creapxex',component:CreapxexComponent},
   {path:'creareplegal',component:ReplegalComponent},
-  {path:'crearol',component:CrearolComponent}
+  {path:'crearol',component:CrearolComponent},
+  {path:'creatipoanest',component:CreatipoanestComponent},
+  {path:'creatipodoc',component:CreatipodocComponent},
+  {path:'creatipodx',component:CreatipodxComponent},
+  {path:'creatipoeapb',component:CreatipoeapbComponent},
+  {path:'creatiponota',component:CreatiponotaComponent},
+  {path:'creatipac',component:CreatipacComponent},
+  {path:'creatipotemp',component:CreatipotempComponent},
+  {path:'creatipopx',component:CreatipopxComponent},
+  {path:'creaubica',component:CreaubicaComponent},
+  {path:'creauser',component:CreauserComponent}
 
 
   // { path: "rtl", component: RtlComponent }

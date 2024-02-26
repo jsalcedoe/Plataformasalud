@@ -1,57 +1,92 @@
 <div class=" content">
-    <div class=" row">
-      <div class=" col-md-6">
-        <div class=" card">
-          <div class=" card-header">
-            <h4 class=" card-title">CREACION DE DIAGNOSTICOS</h4>
-          </div>
+  <div class=" row">
+    <div class=" col-md-8">
+      <div class=" card">
+        <div class=" card-header"><h2 class=" title">Creacion de Diagnosticos</h2></div>
+        <div class=" card-body">
+          <form>
+            <div class=" row">
+              <div class=" col-md-4 pr-md-1">
+                <div class=" form-group">
+                  <label> Codigo del diagnostico </label>
+                  <input
+                    class=" form-control"
+                    placeholder="Codigo"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class=" col-md-4 px-md-1">
+                <div class=" form-group">
+                  <label> Diagnostico </label>
+                  <input
+                    class=" form-control"
+                    placeholder="Diagnostico"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class=" col-md-4 pl-md-1">
+                <div class=" form-group">
+                  <label > Detalle del diagnostivo </label>
+                  <input
+                    class=" form-control"
+                    placeholder="Detalle"
+                    type="text"
+                  />
+                </div>
+              </div>
+              
+            </div>
+            <div class=" row">
+              <div class=" col-md-3 pr-md-1">
+                <div class=" form-group">
+                  <label> Sexo al que aplica  </label>
+                  <select class="form-select" style="width: auto;">
+                    <option>Seleccione el sexo</option>
+                  </select>
+                </div>
+              </div>
+              <div class=" col-md-3 pr-md-1">
+                <div class=" form-group">
+                  <label> Edad minima </label>
+                  <input
+                    class=" form-control"
+                    placeholder="Edad minima"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class=" col-md-3 pl-md-1">
+                <div class=" form-group">
+                  <label> Edad maxima </label>
+                  <input
+                    class=" form-control"
+                    placeholder="Edad maxima"
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class=" row">
+              <div class=" col-md-3">
+                <div class=" form-group">
+                  <label> Capitulo del diagnostico</label>
+                  <input
+                    class=" form-control"
+                    placeholder="Capitulo"
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>            
+          </form>
+        </div>
+        <div class=" card-footer">
+          <button class=" btn btn-fill btn-danger" type="submit">Save</button>
         </div>
       </div>
     </div>
     
-    <form>
-      <div class="row">
-        <div class="col-md-4">
-          <label class="form-label">Codigo del diagnostico:</label>
-          <input type="text" class="form-control" id="nomhab" placeholder="Digite el codigo del diagnostico" name="nomhab" style="width: min-content;">
-        </div>
-        <div class="col-md-4">
-          <label class="form-label">Diagnostico:</label>
-          <input type="text" class="form-control" id="dethab" placeholder="Digite el diagnostico" name="dethab" style="width: min-content;">
-        </div>
-        <div class="col-md-4">
-            <label class="form-label">Detalle del diagnostico:</label>
-            <input type="text" class="form-control" id="dethab" placeholder="Digite el detalle del diagnostico" name="dethab" style="width: min-content;">
-          </div>
-
-          
-          <div class="col-md-4">
-            <label class="form-label">Edad minima:</label>
-            <input type="text" class="form-control" id="dethab" placeholder="Digite la edad minima" name="dethab" style="width: min-content;">
-          </div>
-          <div class="col-md-4">
-              <label class="form-label">Edad maxima:</label>
-              <input type="text" class="form-control" id="dethab" placeholder="Digite la edad maxima" name="dethab" style="width: min-content;">
-            </div>
-          <div class="col-md-4">
-                <div class="col-md-12">
-                    <label class="form-label">Capitulo:</label>
-                    <input type="text" class="form-control" id="nomhab" placeholder="Digite el codigo del diagnostico" name="nomhab" style="width: min-content;">
-                    
-                  </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="col-md-12">
-                <label class="form-label">Sexo:</label>
-                <select id="ubicahab">
-                  <option value="">Seleccione sexo</option>
-                </select>
-              </div>
-          </div>
-
-
-
-      </div>      
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+  </div>
+</div>

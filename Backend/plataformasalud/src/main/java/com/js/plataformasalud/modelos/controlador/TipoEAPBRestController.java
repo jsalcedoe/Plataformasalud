@@ -112,6 +112,7 @@ public class TipoEAPBRestController {
 			tipeapbAct.setDatecreatypeapb(tipeapb.getDatecreatypeapb());
 			tipeapbAct.setEstyeapb_fk(tipeapb.getEstyeapb_fk());
 			tipeapbAct.setNomtipeapb(tipeapb.getNomtipeapb());
+			tipeapbAct.setDetipeapb(tipeapb.getDetipeapb());
 			
 			tipeapbUpdate = tipentserv.save(tipeapbAct);
 			

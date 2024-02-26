@@ -56,6 +56,16 @@ import { CreaprestadorComponent } from './pages/config/prestadorservicio/creapre
 import { CreapxexComponent } from './pages/config/procedimientoexamenes/creapxex/creapxex.component';
 import { ReplegalComponent } from './pages/config/representantelegal/replegal/replegal.component';
 import { CrearolComponent } from './pages/config/roles/crearol/crearol.component';
+import { CreatipoanestComponent } from './pages/config/tipoanestesia/creatipoanest/creatipoanest.component';
+import { CreatipodocComponent } from './pages/config/tipodocumentos/creatipodoc/creatipodoc.component';
+import { CreatipodxComponent } from './pages/config/tipodx/creatipodx/creatipodx.component';
+import { CreatipoeapbComponent } from './pages/config/tipoeapb/creatipoeapb/creatipoeapb.component';
+import { CreatiponotaComponent } from './pages/config/tiponota/creatiponota/creatiponota.component';
+import { CreatipacComponent } from './pages/config/tipopaciente/creatipac/creatipac.component';
+import { CreatipotempComponent } from './pages/config/tipoplantilla/creatipotemp/creatipotemp.component';
+import { CreatipopxComponent } from './pages/config/tipopx/creatipopx/creatipopx.component';
+import { CreaubicaComponent } from './pages/config/ubicaciones/creaubica/creaubica.component';
+import { CreauserComponent } from './pages/config/usuarios/creauser/creauser.component';
 
 
 
@@ -115,7 +125,7 @@ import { CrearolComponent } from './pages/config/roles/crearol/crearol.component
     CreaplantillasComponent, 
     CreaprestadorComponent, 
     CreapxexComponent, 
-    ReplegalComponent, CrearolComponent
+    ReplegalComponent, CrearolComponent, CreatipoanestComponent, CreatipodocComponent, CreatipodxComponent, CreatipoeapbComponent, CreatiponotaComponent, CreatipacComponent, CreatipotempComponent, CreatipopxComponent, CreaubicaComponent, CreauserComponent
     ],
   providers: [],
   bootstrap: [AppComponent]

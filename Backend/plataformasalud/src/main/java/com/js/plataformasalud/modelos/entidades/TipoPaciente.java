@@ -32,9 +32,13 @@ public class TipoPaciente implements Serializable {
 	@Column(unique = true)
 	private Long idtipac;
 	
-	@Column(nullable = false, length = 15, unique = true)
+	@Column(nullable = false, length = 6, unique = true)
 	@NotEmpty(message = "El campo tipo de paciente no puede ser vacio")
 	private String nomtipac;
+	
+	@Column(nullable = false,length = 15)
+	@NotEmpty(message = "El campo detalle del tipo de paciente no puede ser vacio")
+	private String dettipac;
 	
 	@Temporal(TemporalType.DATE)
 	private Date datecreatipac;

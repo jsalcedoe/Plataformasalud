@@ -1,32 +1,50 @@
 <div class=" content">
-    <div class=" row">
-      <div class=" col-md-6">
-        <div class=" card">
-          <div class=" card-header">
-            <h4 class=" card-title">CREACION DE CAMAS</h4>
-          </div>
+  <div class=" row">
+    <div class=" col-md-8">
+      <div class=" card">
+        <div class=" card-header"><h2 class=" title">Creacion de Camas</h2></div>
+        <div class=" card-body">
+          <form>
+            <div class=" row">
+              <div class=" col-md-3 pr-md-1">
+                <div class=" form-group">
+                  <label> Cama </label>
+                  <input
+                    class=" form-control"
+                    placeholder="Digita la cama "
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class=" col-md-3 px-md-1">
+                <div class=" form-group">
+                  <label> Detalle de cama </label>
+                  <input
+                    class=" form-control"
+                    placeholder="Detalle de cama"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class=" col-md-3 pr-md-1">
+                <div class=" form-group">
+                  <label> Ubicacion </label>
+                  <select class="form-select" style="width: auto;">
+                    <option>Seleccione la ubicacion</option>
+                  </select>
+                </div>
+              </div>
+              
+              
+            </div>
+            
+            
+          </form>
+        </div>
+        <div class=" card-footer">
+          <button class=" btn btn-fill btn-danger" type="submit">Save</button>
         </div>
       </div>
     </div>
-    
-    <form>
-      <div class="row">
-        <div class="col-md-3">
-          <label class="form-label">Cama:</label>
-          <input type="text" class="form-control" id="nomhab" placeholder="Digite la cama a crear" name="nomhab" style="width: min-content;">
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Detalle de cama:</label>
-          <input type="text" class="form-control" id="dethab" placeholder="Digite el detalle de la cama" name="dethab" style="width: min-content;">
-        </div>
-        
-        <div class="col-md-12">
-          <label class="form-label">Ubicación de la cama:</label>
-          <select id="ubicahab">
-            <option value="">Seleccione una ubicación</option>
-          </select>
-        </div>
-      </div>      
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-   
+  </div>
+</div>

@@ -36,6 +36,10 @@ public class TipoEAPB implements Serializable{
 	@Column(nullable = false,unique = true)
 	private String nomtipeapb;
 	
+	@NotEmpty(message = "El campo detalle del tipo de entidad responsable de pago no puede ser vacio")
+	@Column(nullable = false, unique = true)
+	private String detipeapb;
+	
 	@Temporal(TemporalType.DATE)
 	private Date datecreatypeapb;
 	

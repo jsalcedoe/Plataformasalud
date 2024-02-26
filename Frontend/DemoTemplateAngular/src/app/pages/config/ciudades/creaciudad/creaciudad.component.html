@@ -1,31 +1,50 @@
 <div class=" content">
-    <div class=" row">
-      <div class=" col-md-6">
-        <div class=" card">
-          <div class=" card-header">
-            <h4 class=" card-title">CREACION DE CIUDADES</h4>
-          </div>
+  <div class=" row">
+    <div class=" col-md-8">
+      <div class=" card">
+        <div class=" card-header"><h2 class=" title">Creacion de Ciudades</h2></div>
+        <div class=" card-body">
+          <form>
+            <div class=" row">
+              <div class=" col-md-3 pr-md-1">
+                <div class=" form-group">
+                  <label> Codigo de la ciudad </label>
+                  <input
+                    class=" form-control"
+                    placeholder="Digita el codigo"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class=" col-md-3 px-md-1">
+                <div class=" form-group">
+                  <label> Ciudad </label>
+                  <input
+                    class=" form-control"
+                    placeholder="Ciudad"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class=" col-md-3 pr-md-1">
+                <div class=" form-group">
+                  <label> Departamento </label>
+                  <select class="form-select" style="width: auto;">
+                    <option>Seleccione el departamento</option>
+                  </select>
+                </div>
+              </div>
+              
+              
+            </div>
+            
+            
+          </form>
+        </div>
+        <div class=" card-footer">
+          <button class=" btn btn-fill btn-danger" type="submit">Save</button>
         </div>
       </div>
     </div>
-    
-    <form>
-      <div class="row">
-        <div class="col-md-3">
-          <label class="form-label">Codigo de la ciudad:</label>
-          <input type="text" class="form-control" id="codciu" placeholder="Digite el codigo a crear" name="codciu" style="width: min-content;">
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Detalle de la ciudad:</label>
-          <input type="text" class="form-control" id="nomciu" placeholder="Digite la ciudad" name="nomciu" style="width: min-content;">
-        </div>
-        
-        <div class="col-md-12">
-          <label class="form-label">Seleccione el departamento:</label>
-          <select id="ubicahab">
-            <option value="">Seleccione un departamento</option>
-          </select>
-        </div>
-      </div>      
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+  </div>
+</div>

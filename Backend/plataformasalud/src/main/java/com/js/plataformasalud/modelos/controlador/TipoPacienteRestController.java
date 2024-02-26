@@ -114,6 +114,7 @@ public class TipoPacienteRestController {
 		try {
 				tipacActual.setDatecreatipac(tipac.getDatecreatipac());
 				tipacActual.setNomtipac(tipac.getNomtipac());
+				tipacActual.setDettipac(tipac.getDettipac());
 				
 				tipacUpdate = tipacserv.save(tipacActual);
 				

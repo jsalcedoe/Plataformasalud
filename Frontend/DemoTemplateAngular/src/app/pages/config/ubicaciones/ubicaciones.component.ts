@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -12,7 +13,7 @@ export class UbicacionesComponent implements OnInit {
   ubica : any;
   ready : Boolean = false;
 
-  constructor(private services: ConfigService) { }
+  constructor(private services: ConfigService, private router:Router) { }
 
   ngOnInit(): void {
     this.getUbica();
@@ -33,6 +34,10 @@ export class UbicacionesComponent implements OnInit {
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();
+  }
+
+  irCreaUbica(){
+    this.router.navigate(['creaubica'])
   }
 
 }

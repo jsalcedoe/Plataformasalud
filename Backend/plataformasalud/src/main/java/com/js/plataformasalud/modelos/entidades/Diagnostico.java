@@ -32,7 +32,7 @@ public class Diagnostico implements Serializable {
 	@NotEmpty(message = "El campo codigo del diagnostico no puede ser vacio, por favor indique el codigo del diagnostico")
 	private String iddx;
 	
-	@Column(nullable = false)
+	@Column(nullable = false,unique = true)
 	@NotEmpty(message = "El campo nombre del diagnostico no puede ser vacio, por favor digite el nombre del diagnostico")
 	private String nomdx;
 	

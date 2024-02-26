@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -12,7 +13,7 @@ export class TipodxComponent implements OnInit {
   tipdx : any;
   ready : boolean = false;
 
-  constructor(private services:ConfigService) { }
+  constructor(private services:ConfigService, private router:Router) { }
 
   ngOnInit(): void {
     this.getTipoDx();
@@ -33,6 +34,10 @@ export class TipodxComponent implements OnInit {
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();
+  }
+
+  irCreatipodx(){
+    this.router.navigate(['creatipodx'])
   }
 
 }
