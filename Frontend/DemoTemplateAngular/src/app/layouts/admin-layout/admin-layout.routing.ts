@@ -59,11 +59,23 @@ import { CreatipotempComponent } from "src/app/pages/config/tipoplantilla/creati
 import { CreatipopxComponent } from "src/app/pages/config/tipopx/creatipopx/creatipopx.component";
 import { CreaubicaComponent } from "src/app/pages/config/ubicaciones/creaubica/creaubica.component";
 import { CreauserComponent } from "src/app/pages/config/usuarios/creauser/creauser.component";
+import { AdministrativoComponent } from "src/app/pages/administrativo/administrativo.component";
+import { AsistencialComponent } from "src/app/pages/asistencial/asistencial.component";
+import { PacientesComponent } from "src/app/pages/pacientes/pacientes.component";
+import { CreapacComponent } from "src/app/pages/pacientes/creapac/creapac.component";
+import { MedicoComponent } from "src/app/pages/medico/medico.component";
+import { EvolucionenfermeriaComponent } from "src/app/pages/asistencial/evolucionenfermeria/evolucionenfermeria.component";
+import { RegistrosignosvitalesComponent } from "src/app/pages/asistencial/registrosignosvitales/registrosignosvitales.component";
+import { HistoriaclinicaComponent } from "src/app/pages/medico/historiaclinica/historiaclinica.component";
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
+  { path:'administrativo',component:AdministrativoComponent},
+  { path:'asistencial',component:AsistencialComponent },
+  { path:'pacientes',component:PacientesComponent},
+  { path:'medico',component:MedicoComponent},
   { path: "icons", component: IconsComponent },
   { path: "maps", component: MapComponent },
   { path: "notifications", component: NotificationsComponent },
@@ -121,7 +133,11 @@ export const AdminLayoutRoutes: Routes = [
   {path:'creatipotemp',component:CreatipotempComponent},
   {path:'creatipopx',component:CreatipopxComponent},
   {path:'creaubica',component:CreaubicaComponent},
-  {path:'creauser',component:CreauserComponent}
+  {path:'creauser',component:CreauserComponent},
+  {path:'creapac',component:CreapacComponent},
+  {path:'evolucionenfermeria',component:EvolucionenfermeriaComponent},
+  {path:'registrosignosvitales',component:RegistrosignosvitalesComponent},
+  {path:'historiaclinica',component:HistoriaclinicaComponent}
 
 
   // { path: "rtl", component: RtlComponent }

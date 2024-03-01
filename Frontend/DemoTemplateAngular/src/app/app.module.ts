@@ -66,6 +66,16 @@ import { CreatipotempComponent } from './pages/config/tipoplantilla/creatipotemp
 import { CreatipopxComponent } from './pages/config/tipopx/creatipopx/creatipopx.component';
 import { CreaubicaComponent } from './pages/config/ubicaciones/creaubica/creaubica.component';
 import { CreauserComponent } from './pages/config/usuarios/creauser/creauser.component';
+import { AdministrativoComponent } from './pages/administrativo/administrativo.component';
+import { AsistencialComponent } from './pages/asistencial/asistencial.component';
+import { PacientesComponent } from './pages/pacientes/pacientes.component';
+import { CreapacComponent } from './pages/pacientes/creapac/creapac.component';
+import { MedicoComponent } from './pages/medico/medico.component';
+import { EvolucionenfermeriaComponent } from './pages/asistencial/evolucionenfermeria/evolucionenfermeria.component';
+import { RegistrosignosvitalesComponent } from './pages/asistencial/registrosignosvitales/registrosignosvitales.component';
+import { HistoriaclinicaComponent } from './pages/medico/historiaclinica/historiaclinica.component';
+import { EvolucionmedicaComponent } from './pages/medico/evolucionmedica/evolucionmedica.component';
+import { DescipcionquirurgicaComponent } from './pages/medico/descipcionquirurgica/descipcionquirurgica.component';
 
 
 
@@ -125,7 +135,28 @@ import { CreauserComponent } from './pages/config/usuarios/creauser/creauser.com
     CreaplantillasComponent, 
     CreaprestadorComponent, 
     CreapxexComponent, 
-    ReplegalComponent, CrearolComponent, CreatipoanestComponent, CreatipodocComponent, CreatipodxComponent, CreatipoeapbComponent, CreatiponotaComponent, CreatipacComponent, CreatipotempComponent, CreatipopxComponent, CreaubicaComponent, CreauserComponent
+    ReplegalComponent, 
+    CrearolComponent, 
+    CreatipoanestComponent, 
+    CreatipodocComponent, 
+    CreatipodxComponent, 
+    CreatipoeapbComponent, 
+    CreatiponotaComponent, 
+    CreatipacComponent, 
+    CreatipotempComponent, 
+    CreatipopxComponent, 
+    CreaubicaComponent, 
+    CreauserComponent, 
+    AdministrativoComponent, 
+    AsistencialComponent, 
+    PacientesComponent, 
+    CreapacComponent, 
+    MedicoComponent, 
+    EvolucionenfermeriaComponent, 
+    RegistrosignosvitalesComponent, 
+    HistoriaclinicaComponent, 
+    EvolucionmedicaComponent, 
+    DescipcionquirurgicaComponent
     ],
   providers: [],
   bootstrap: [AppComponent]

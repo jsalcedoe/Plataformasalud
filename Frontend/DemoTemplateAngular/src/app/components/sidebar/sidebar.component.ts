@@ -15,6 +15,46 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-chart-pie-36",
     class: ""
   },
+
+  {
+    path: "/medico",
+    title: "Modulo Medico",
+    rtlTitle: "لوحة القيادة",
+    icon: "icon-chart-pie-36",
+    class: ""
+  },
+  {
+    path: "/historiaclinica",
+    title: "Historia Clinica",
+    rtlTitle: "لوحة القيادة",
+    icon: "icon-chart-pie-36",
+    class: ""
+  },
+  
+  /*{
+    path: "/administrativo",
+    title: "Administrativo",
+    rtlTitle: "لوحة القيادة",
+    icon: "icon-chart-pie-36",
+    class: ""
+  }*/,
+
+  {
+    path: "/asistencial",
+    title: "Modulo Enfermeria",
+    rtlTitle: "لوحة القيادة",
+    icon: "icon-chart-pie-36",
+    class: ""
+  },
+
+  {
+    path: "/pacientes",
+    title: "Pacientes",
+    rtlTitle: "لوحة القيادة",
+    icon: "icon-chart-pie-36",
+    class: ""
+  },
+
   {
     path: "/icons",
     title: "Icons",
@@ -22,13 +62,13 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-atom",
     class: ""
   },
-  {
+  /*{
     path: "/maps",
     title: "Maps",
     rtlTitle: "خرائط",
     icon: "icon-pin",
     class: "" },
-  {
+  */{
     path: "/notifications",
     title: "Notifications",
     rtlTitle: "إخطارات",
@@ -50,7 +90,7 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-puzzle-10",
     class: ""
   },
-  {
+ /* {
     path: "/typography",
     title: "Typography",
     rtlTitle: "طباعة",
@@ -63,7 +103,7 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "ار تي ال",
     icon: "icon-world",
     class: ""
-  },
+  },*/
 
   // a partir de aqui trabajo yo
 
