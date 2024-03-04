@@ -90,47 +90,47 @@ public class HistoriaClinica implements Serializable {
 	@NotEmpty(message = "Digite por favor la tension arterial")
 	private String tahcpac;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 200)
 	@NotEmpty(message = "Digite el motivo de consulta")
 	private String motconshcpac;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 200)
 	@NotEmpty(message = "Digite la enfermedad actual")
 	private String enfacthcpac;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 200)
 	@NotEmpty(message = "Digite los antecedentes patologicos del paciente")
 	private String antpathcpac;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 200)
 	@NotEmpty(message = "Digite los antecedentes quirurgicos del paciente")
 	private String antqxhcpac;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 200)
 	@NotEmpty(message = "Digite los antecedentes alergicos del paciente")
 	private String antalerhcpac;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 200)
 	@NotEmpty(message = "Digite los antecedentes farmacologicos del paciente")
 	private String antfarmhcpac;
 	
-	@Column(nullable = false)
+	/*@Column(nullable = false)
 	@NotEmpty(message = "Digite los antecedentes toxicologicos del paciente")
-	private String anttoxihcpac;
+	private String anttoxihcpac;*/
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 200)
 	@NotEmpty(message = "Digite los antecedentes familiares del paciente")
 	private String antfamyhcpac;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length =  2000)
 	@NotEmpty(message = "Digite el objetivo de la historia clínica")
 	private String objhcpac;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 2000)
 	@NotEmpty(message = "Digite el analisis de la historia clínica")
 	private String analisishcpac;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 5000)
 	@NotEmpty(message = "Registre el plan de manejo para el paciente")
 	private String planmanejhcpac;
 	

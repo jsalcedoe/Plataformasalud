@@ -64,6 +64,14 @@ public class EvolucionEvento implements Serializable {
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Estado estnotaevol_fk;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private Diagnostico dxevolucion_fk;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private TipoDiagnostico tipodxevolucion_fk;
+	
 	
 	private static final long serialVersionUID = 1L;
 

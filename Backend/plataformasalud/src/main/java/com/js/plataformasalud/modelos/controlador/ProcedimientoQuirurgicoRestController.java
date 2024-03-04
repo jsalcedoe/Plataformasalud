@@ -119,7 +119,6 @@ public class ProcedimientoQuirurgicoRestController {
 			qxAct.setHorainicioprocqx(qx.getHorainicioprocqx());
 			qxAct.setMatprot(qx.getMatprot());
 			qxAct.setMuespato(qx.getMuespato());
-			qxAct.setQx_fk(qx.getQx_fk());
 			qxAct.setTimeqx(qx.getTimeqx());
 			qxAct.setTipoherida(qx.getTipoherida());
 			qxAct.setTypqx(qx.getTypqx());

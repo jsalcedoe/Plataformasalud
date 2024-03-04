@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.OrigenDestino"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IRegistroHistoriaClinicaDao"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IRegistroHistoriaClinicaServiceImpl"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.RegistroHistoriaClinica"/>
     <fullyQualifiedTypeName name="java.util.UUID"/>
@@ -41,23 +38,26 @@
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.TipoNota"/>
     <fullyQualifiedTypeName name="jakarta.persistence.PrePersist"/>
     <fullyQualifiedTypeName name="jakarta.persistence.PreUpdate"/>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IEvolucionEventoDao"/>
-    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IEvolucionEventoServiceImpl"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.EvolucionEvento"/>
-    <fullyQualifiedTypeName name="lombok.Getter"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
-    <fullyQualifiedTypeName name="java.io.Serializable"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
     <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Temporal"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
     <fullyQualifiedTypeName name="jakarta.validation.constraints.NotEmpty"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IProcedimientoDescripcionQXDao"/>
+    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IProcedimientoDescripcionQXServiceImpl"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.ProcedimientoDescripcionQX"/>
 </qualifiedTypeNameHistroy>

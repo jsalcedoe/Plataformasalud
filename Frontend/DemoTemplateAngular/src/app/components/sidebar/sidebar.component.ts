@@ -17,6 +17,14 @@ export const ROUTES: RouteInfo[] = [
   },
 
   {
+    path:"/config",
+    title: "Configuración",
+    rtlTitle:"",
+    icon:"icon-settings-gear-63",
+    class: ""
+  },
+
+  {
     path: "/medico",
     title: "Modulo Medico",
     rtlTitle: "لوحة القيادة",
@@ -30,7 +38,22 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-chart-pie-36",
     class: ""
   },
+  {
+    path: "/evolucionmedica",
+    title: "Evolucion Medica",
+    rtlTitle: "لوحة القيادة",
+    icon: "icon-chart-pie-36",
+    class: ""
+  },
   
+  {
+    path: "/descripcionquirurgica",
+    title: "Descripción Quirurgica",
+    rtlTitle: "لوحة القيادة",
+    icon: "icon-chart-pie-36",
+    class: ""
+  },
+
   /*{
     path: "/administrativo",
     title: "Administrativo",
@@ -107,13 +130,7 @@ export const ROUTES: RouteInfo[] = [
 
   // a partir de aqui trabajo yo
 
-  {
-    path:"/config",
-    title: "Configuración",
-    rtlTitle:"",
-    icon:"icon-settings-gear-63",
-    class: ""
-  }
+  
 
   
 ];

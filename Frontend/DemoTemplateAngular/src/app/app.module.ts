@@ -75,7 +75,10 @@ import { EvolucionenfermeriaComponent } from './pages/asistencial/evolucionenfer
 import { RegistrosignosvitalesComponent } from './pages/asistencial/registrosignosvitales/registrosignosvitales.component';
 import { HistoriaclinicaComponent } from './pages/medico/historiaclinica/historiaclinica.component';
 import { EvolucionmedicaComponent } from './pages/medico/evolucionmedica/evolucionmedica.component';
-import { DescipcionquirurgicaComponent } from './pages/medico/descipcionquirurgica/descipcionquirurgica.component';
+import { EventosComponent } from './pages/eventos/eventos.component';
+import { DescripcionquirurgicaComponent } from "./pages/medico/descripcionquirurgica/descripcionquirurgica.component";
+import { ProcedimientosComponent } from './pages/medico/procedimientos/procedimientos.component';
+import { DiagnosticosatencionComponent } from './pages/medico/diagnosticosatencion/diagnosticosatencion.component';
 
 
 
@@ -156,7 +159,10 @@ import { DescipcionquirurgicaComponent } from './pages/medico/descipcionquirurgi
     RegistrosignosvitalesComponent, 
     HistoriaclinicaComponent, 
     EvolucionmedicaComponent, 
-    DescipcionquirurgicaComponent
+    EventosComponent,
+    DescripcionquirurgicaComponent,
+    ProcedimientosComponent,
+    DiagnosticosatencionComponent
     ],
   providers: [],
   bootstrap: [AppComponent]

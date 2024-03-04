@@ -50,9 +50,6 @@ public class Evento implements Serializable{
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Paciente pacevent_fk;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private OrigenDestino origdesevent_fk;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})

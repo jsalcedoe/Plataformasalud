@@ -111,7 +111,6 @@ public class EventoRestController {
 			eventAct.setEstevent_fk(event.getEstevent_fk());
 			eventAct.setFechafinevent(event.getFechafinevent());
 			eventAct.setFechainievent(event.getFechainievent());
-			eventAct.setOrigdesevent_fk(event.getOrigdesevent_fk());
 			eventAct.setPacevent_fk(event.getPacevent_fk());
 			
 			
