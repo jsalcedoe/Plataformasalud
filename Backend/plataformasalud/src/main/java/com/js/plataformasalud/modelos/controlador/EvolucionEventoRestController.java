@@ -115,8 +115,7 @@ public class EvolucionEventoRestController {
 			evolAct.setDetevol(evol.getDetevol());
 			evolAct.setEventevo_fk(evol.getEventevo_fk());
 			evolAct.setNotaevol_fk(evol.getNotaevol_fk());
-			evolAct.setDxevolucion_fk(evol.getDxevolucion_fk());
-			evolAct.setTipodxevolucion_fk(evol.getTipodxevolucion_fk());
+			
 			
 			evolUpdate = evoserv.save(evolAct);
 			

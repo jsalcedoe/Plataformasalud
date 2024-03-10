@@ -113,10 +113,9 @@ private IDiagnosticoAtencionService dxateserv;
 			dxateAct.setCreatdxathcpac(dxate.getCreatdxathcpac());
 			dxateAct.setDxatehcpac_fk(dxate.getDxatehcpac_fk());
 			dxateAct.setEstdxatehcpac(dxate.getEstdxatehcpac());
-			dxateAct.setHcpac_fk(dxate.getHcpac_fk());
 			dxateAct.setTypdxatehcpac_fk(dxate.getTypdxatehcpac_fk());
 			dxateAct.setEditdxathcpac(dxate.getEditdxathcpac());
-			dxateAct.setDxqx_fk(dxate.getDxqx_fk());
+			
 			
 			dxateUpdate = dxateserv.save(dxateAct);
 			

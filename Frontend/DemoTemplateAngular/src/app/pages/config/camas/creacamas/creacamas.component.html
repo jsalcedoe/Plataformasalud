@@ -4,7 +4,7 @@
       <div class=" card">
         <div class=" card-header"><h2 class=" title">Creacion de Camas</h2></div>
         <div class=" card-body">
-          <form>
+          <form [formGroup]="formcamas" (ngSubmit)="creaCamas()">
             <div class=" row">
               <div class=" col-md-3 pr-md-1">
                 <div class=" form-group">
@@ -13,6 +13,7 @@
                     class=" form-control"
                     placeholder="Digita la cama "
                     type="text"
+                    formControlName="nomhab"
                   />
                 </div>
               </div>
@@ -23,27 +24,32 @@
                     class=" form-control"
                     placeholder="Detalle de cama"
                     type="text"
+                    formControlName="dethab"
                   />
                 </div>
               </div>
               <div class=" col-md-3 pr-md-1">
                 <div class=" form-group">
                   <label> Ubicacion </label>
-                  <select class="form-select" style="width: auto;">
+                  <select class="form-select" style="width: auto;" formControlName="ubicahab">
                     <option>Seleccione la ubicacion</option>
+                    <option *ngFor="let ubica of buscaubica"[value]="ubica.idubica">{{ubica.detubica}}</option>
                   </select>
                 </div>
               </div>
               
               
             </div>
+            <div class=" card-footer">
+              <button class=" btn btn-fill btn-danger" type="submit">Save</button>
+            </div>
+
+            
             
             
           </form>
         </div>
-        <div class=" card-footer">
-          <button class=" btn btn-fill btn-danger" type="submit">Save</button>
-        </div>
+        
       </div>
     </div>
   </div>

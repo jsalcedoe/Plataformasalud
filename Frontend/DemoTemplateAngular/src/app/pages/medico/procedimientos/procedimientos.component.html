@@ -81,41 +81,39 @@
                               />
                             </div>
                           </div>
-                          <div class=" col-md-3 pr-md-1">
-                            <div class=" form-group">
-                              <label> Procedimiento Practicado </label>
-                              <input
-                                class=" form-control"
-                                disabled="true"
-                                type="text"
-                              />
-                              <a routerLink="">Consulta procedimientos</a>
-                            </div>
+                          <div class=" col-md-12 pr-md-1">
+                            <form class="d-flex" style="width: 50%;">
+                              <input class="form-control me-2" type="text" placeholder="Consulta diagnostico">
+                              <button class="btn btn-primary" type="button">Search</button>
+                            </form>
                           </div>
-                          <table class="table table-dark table-hover" >
-                            <!--<table class="table-success">-->
-                            <thead>
-                              <tr>
-                                <th>Item</th>
-                                <th>Id Descripción quirurgica</th>
-                                <th>Codigo del procedimiento</th>
-                                <th>Procedimiento realizado</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let c of pxdesc, let i =index">
-                                <td>{{i+1}}</td>
-                                <td>{{c.detcarguser}}</td>
-                                <td>{{c.codpxex}}</td>
-                                <td>{{c.nompxex}}</td>
-                                
-                      
-                              </tr>
-                            </tbody>
-                          </table>
+                          <div class=" col-md-12 pr-md-1">
+                            <table class="table table-dark table-hover" >
+                              <!--<table class="table-success">-->
+                              <thead>
+                                <tr>
+                                  <th>Item</th>
+                                  <th>Id Descripción quirurgica</th>
+                                  <th>Codigo del procedimiento</th>
+                                  <th>Procedimiento realizado</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let c of pxdesc, let i =index">
+                                  <td>{{i+1}}</td>
+                                  <td>{{c.detcarguser}}</td>
+                                  <td>{{c.codpxex}}</td>
+                                  <td>{{c.nompxex}}</td>
+                                  
+                        
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          
                        </div>
                        <div class=" card-footer">
-                        <button class=" btn btn-fill btn-danger" type="submit" (click)="iradddx()">Save</button>
+                        <button class=" btn btn-fill btn-danger" type="submit" (click)="ircreaequipoqx()">Save</button>
                       </div>
                     </form>
                 </div>

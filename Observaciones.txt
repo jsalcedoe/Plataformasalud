@@ -1,0 +1,21 @@
+formulario de creacion de paciente
+verificar los list
+crear datos del responsable del paciente
+
+en el formulario de historia clinica
+crear antecedentes traumaticos
+
+cambiar el textbox por textarea en hc
+
+En el formulario de evoluciones traer la informacion de los antecedentes 
+
+En cada uno de los documentos medicos y asistenciales dejar las ordenes
+
+En el formulario de evolucion de enfermeria falta el campo de saturacion
+
+modulo de administracion de medicamentos: medicamento, presentacion, dosis, via y frecuencia
+
+En el registro de signos vitales debo capturar la fecha y hora manualmente y tener la opcion de capturar multiples eventos simultaneamente es decir los signos de diferentes horas
+
+reportes:
+reporte de la 256 pacientes operados

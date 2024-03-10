@@ -14,8 +14,10 @@ export class ProcedimientosComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  iradddx(){
-    this.router.navigate(['diagnosticosatencion'])
-  }
 
+  ircreaequipoqx(){
+    this.router.navigate(['creaequipoqx'])
+
+  }
+ 
 }

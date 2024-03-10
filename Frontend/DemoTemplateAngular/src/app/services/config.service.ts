@@ -123,6 +123,84 @@ export class ConfigService {
     return this.http.post<any>(this.endpoint + 'departamentos', datosRegistros,{headers:this.httpheaders})
 
   }
+  addStatus(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'estados',datosRegistros,{headers:this.httpheaders})
+  }
+
+  addCamas(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'camas',datosRegistros,{headers:this.httpheaders})
+  }
+  addCargos(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'cargos',datosRegistros,{headers:this.httpheaders})
+  }
+  addCiudades(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'ciudades',datosRegistros,{headers:this.httpheaders})
+  }
+  addDx(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'diagnosticos',datosRegistros,{headers:this.httpheaders})
+  }
+  addEntidades(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'entidades',datosRegistros,{headers:this.httpheaders})
+  }
+  addOrigenDestino(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'origendestino',datosRegistros,{headers:this.httpheaders})
+  }
+  addPermisoRol(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'permisosporrol',datosRegistros,{headers:this.httpheaders})
+  }
+  addPermisos(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'permisos',datosRegistros,{headers:this.httpheaders})
+  }
+  addPlantillas(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'plantillas',datosRegistros,{headers:this.httpheaders})
+  }
+  addPrestadorServicio(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'prestadorservicio',datosRegistros,{headers:this.httpheaders})
+  }
+  addProcedimientoexamenes(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'procedimientosyexamenes',datosRegistros,{headers:this.httpheaders})
+  }
+  addRepresentanteLegal(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'representantelegal',datosRegistros,{headers:this.httpheaders})
+  }
+  addRoles(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'roles',datosRegistros,{headers:this.httpheaders})
+  }
+  addTipoAnestesia(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'tipoanestesia',datosRegistros,{headers:this.httpheaders})
+  }
+  addTipoDocumentos(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'tipodocumento',datosRegistros,{headers:this.httpheaders})
+  }
+  addTipoDx(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'tipodx',datosRegistros,{headers:this.httpheaders})
+  }
+  addTipoEAPB(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'tipoentidades',datosRegistros,{headers:this.httpheaders})
+  }
+  addTipoNota(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'tiponotas',datosRegistros,{headers:this.httpheaders})
+  }
+  addTipoPaciente(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'tipopaciente',datosRegistros,{headers:this.httpheaders})
+  }
+  addTipoPlantilla(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'tipoplantilla',datosRegistros,{headers:this.httpheaders})
+  }
+  addTipoPx(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'tipoprocedimiento',datosRegistros,{headers:this.httpheaders})
+  }
+  addUbicaciones(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'ubicaciones',datosRegistros,{headers:this.httpheaders})
+  }
+  addUser(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'usuarios',datosRegistros,{headers:this.httpheaders})
+  }
+  
+      
+      
+    
+    
 
 
 

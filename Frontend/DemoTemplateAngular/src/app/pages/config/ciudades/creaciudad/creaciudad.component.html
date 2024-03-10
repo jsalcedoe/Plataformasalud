@@ -4,7 +4,8 @@
       <div class=" card">
         <div class=" card-header"><h2 class=" title">Creacion de Ciudades</h2></div>
         <div class=" card-body">
-          <form>
+                    console.error('Error:', err);
+                    <form [formGroup]="formCiudad" (ngSubmit)="creaCiudad()">
             <div class=" row">
               <div class=" col-md-3 pr-md-1">
                 <div class=" form-group">
@@ -13,6 +14,7 @@
                     class=" form-control"
                     placeholder="Digita el codigo"
                     type="text"
+                    formControlName = "codciu"
                   />
                 </div>
               </div>
@@ -23,27 +25,28 @@
                     class=" form-control"
                     placeholder="Ciudad"
                     type="text"
+                    formControlName = "nomciu"
                   />
                 </div>
               </div>
               <div class=" col-md-3 pr-md-1">
                 <div class=" form-group">
                   <label> Departamento </label>
-                  <select class="form-select" style="width: auto;">
-                    <option>Seleccione el departamento</option>
+                  <select class="form-select" style="width: auto;" formControlName="depciu_fk">
+                    <option *ngFor="let departamento of depart" [value]="departamento.coddep">{{departamento.nomdep}}</option>
                   </select>
                 </div>
               </div>
               
               
             </div>
-            
+            <div class=" card-footer">
+              <button class=" btn btn-fill btn-danger" type="submit"[disabled]="formCiudad.invalid">Save</button>
+            </div>
             
           </form>
         </div>
-        <div class=" card-footer">
-          <button class=" btn btn-fill btn-danger" type="submit">Save</button>
-        </div>
+        
       </div>
     </div>
   </div>

@@ -72,6 +72,7 @@ import { EvolucionmedicaComponent } from "src/app/pages/medico/evolucionmedica/e
 import { DescripcionquirurgicaComponent } from "src/app/pages/medico/descripcionquirurgica/descripcionquirurgica.component";
 import { DiagnosticosatencionComponent } from "src/app/pages/medico/diagnosticosatencion/diagnosticosatencion.component";
 import { ProcedimientosComponent } from "src/app/pages/medico/procedimientos/procedimientos.component";
+import { CreaequipoqxComponent } from "src/app/pages/medico/creaequipoqx/creaequipoqx.component";
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
@@ -147,7 +148,8 @@ export const AdminLayoutRoutes: Routes = [
   { path:'evolucionmedica',component:EvolucionmedicaComponent},
   { path:'descripcionquirurgica',component:DescripcionquirurgicaComponent},
   { path:'diagnosticosatencion',component:DiagnosticosatencionComponent},
-  { path:'procedimientos',component:ProcedimientosComponent}
+  { path:'procedimientos',component:ProcedimientosComponent},
+  { path:'creaequipoqx',component:CreaequipoqxComponent}
 
 
   // { path: "rtl", component: RtlComponent }

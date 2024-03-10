@@ -79,6 +79,7 @@ import { EventosComponent } from './pages/eventos/eventos.component';
 import { DescripcionquirurgicaComponent } from "./pages/medico/descripcionquirurgica/descripcionquirurgica.component";
 import { ProcedimientosComponent } from './pages/medico/procedimientos/procedimientos.component';
 import { DiagnosticosatencionComponent } from './pages/medico/diagnosticosatencion/diagnosticosatencion.component';
+import { CreaequipoqxComponent } from './pages/medico/creaequipoqx/creaequipoqx.component';
 
 
 
@@ -162,7 +163,8 @@ import { DiagnosticosatencionComponent } from './pages/medico/diagnosticosatenci
     EventosComponent,
     DescripcionquirurgicaComponent,
     ProcedimientosComponent,
-    DiagnosticosatencionComponent
+    DiagnosticosatencionComponent,
+    CreaequipoqxComponent
     ],
   providers: [],
   bootstrap: [AppComponent]

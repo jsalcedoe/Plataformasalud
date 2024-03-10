@@ -4,7 +4,7 @@
       <div class=" card">
         <div class=" card-header"><h2 class=" title">Creacion de Diagnosticos</h2></div>
         <div class=" card-body">
-          <form>
+          <form [formGroup]="formdx" (ngSubmit)="creaDx">
             <div class=" row">
               <div class=" col-md-4 pr-md-1">
                 <div class=" form-group">
@@ -13,6 +13,7 @@
                     class=" form-control"
                     placeholder="Codigo"
                     type="text"
+                    formControlName="iddx"
                   />
                 </div>
               </div>
@@ -23,6 +24,7 @@
                     class=" form-control"
                     placeholder="Diagnostico"
                     type="text"
+                    formControlName="nomdx"
                   />
                 </div>
               </div>
@@ -33,6 +35,7 @@
                     class=" form-control"
                     placeholder="Detalle"
                     type="text"
+                    formControlName="descdx"
                   />
                 </div>
               </div>
@@ -42,8 +45,11 @@
               <div class=" col-md-3 pr-md-1">
                 <div class=" form-group">
                   <label> Sexo al que aplica  </label>
-                  <select class="form-select" style="width: auto;">
+                  <select class="form-select" style="width: auto;" formControlName="sexdx">
                     <option>Seleccione el sexo</option>
+                    <option>MASCULINO</option>
+                    <option>FEMENINO</option>
+                    <option>AMBOS</option>
                   </select>
                 </div>
               </div>
@@ -54,6 +60,8 @@
                     class=" form-control"
                     placeholder="Edad minima"
                     type="text"
+                    formGroupName="edadmindx"
+
                   />
                 </div>
               </div>
@@ -64,6 +72,7 @@
                     class=" form-control"
                     placeholder="Edad maxima"
                     type="text"
+                    formControlName="edadmaxdx"
                   />
                 </div>
               </div>
@@ -76,15 +85,17 @@
                     class=" form-control"
                     placeholder="Capitulo"
                     type="text"
+                    formControlName="capdx"
                   />
                 </div>
               </div>
-            </div>            
+            </div> 
+            <div class=" card-footer">
+              <button class=" btn btn-fill btn-danger" type="submit" [disabled]="formdx.invalid">Save</button>
+            </div>           
           </form>
         </div>
-        <div class=" card-footer">
-          <button class=" btn btn-fill btn-danger" type="submit">Save</button>
-        </div>
+        
       </div>
     </div>
     

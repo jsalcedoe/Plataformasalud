@@ -56,6 +56,11 @@ public class Cargo implements Serializable {
 	private Estado estado_carguser;
 	//El estado puede ser creado, modificado o eliminado
 	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private Rol roluser;
+	
 	private static final long serialVersionUID = 1L;
 
 }

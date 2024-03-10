@@ -122,7 +122,6 @@ public class UsuarioRestController {
 				usActual.setFirstname(user.getFirstname());
 				usActual.setLastname(user.getLastname());
 				usActual.setPassword(user.getPassword());
-				usActual.setRoluser_fk(user.getRoluser_fk());
 				usActual.setTypeiduser_fk(user.getTypeiduser_fk());
 				usActual.setUsername(user.getUsername());
 			

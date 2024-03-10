@@ -4,7 +4,7 @@
       <div class=" card">
         <div class=" card-header"><h2 class=" title">Creacion de Cargos</h2></div>
         <div class=" card-body">
-          <form>
+          <form [formGroup]="formCargos" (ngSubmit)="creaCargos()">
             <div class=" row">
               <div class=" col-md-3 pr-md-1">
                   <div class=" form-group">
@@ -13,6 +13,7 @@
                       class=" form-control"
                       placeholder="Cargo"
                       type="text"
+                      formControlName="nomcarg"
                     />
                   </div>
                 </div>
@@ -24,15 +25,28 @@
                     class=" form-control"
                     placeholder="Detalle del cargo"
                     type="text"
+                    formControlName="detcarguser"
+
                   />
                 </div>
               </div>
+
+              <div class=" col-md-3 pr-md-1">
+                <div class=" form-group">
+                  <label> Cargos </label>
+                  <select class="form-select" style="width: auto;" formControlName="roluser">
+                    <option *ngFor="let cargo of cargos" [value]="cargo.idrol">{{cargo.desrol}}</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+            <div class=" card-footer">
+              <button class=" btn btn-fill btn-danger" type="submit">Save</button>
             </div>
           </form>
         </div>
-        <div class=" card-footer">
-          <button class=" btn btn-fill btn-danger" type="submit">Save</button>
-        </div>
+        
       </div>
     </div>
     

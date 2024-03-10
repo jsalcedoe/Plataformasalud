@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,6 +49,10 @@ public class DiagnosticoAtencion implements Serializable {
 		editdxathcpac = new Date ();
 	}
 	
+	@Column(length = 50, unique = true, nullable = false)
+	@NotNull(message = "Debe seleccionar un el documento donde indican el diagnostico")
+	private String origdx; // especifica de donde proviene el diagnostico, es decir si es de hc de descqx o nota
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Estado estdxatehcpac;
@@ -61,13 +67,9 @@ public class DiagnosticoAtencion implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private HistoriaClinica hcpac_fk;
+	private Evento eventdxate_fk;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private ProcedimientoQuirurgico dxqx_fk;
-
-	
+		
 	private static final long serialVersionUID = 1L;
 
 }

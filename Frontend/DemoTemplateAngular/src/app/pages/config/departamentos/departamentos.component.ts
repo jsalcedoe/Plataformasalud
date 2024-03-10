@@ -42,7 +42,5 @@ export class DepartamentosComponent implements OnInit {
   irCrearDep(){
     this.router.navigate(['creadep']);
   }
-
- 
-
+  
 }

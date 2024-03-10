@@ -69,26 +69,7 @@
                                   />
                                 </div>
                               </div>
-                              <div class=" col-md-3 pr-md-1">
-                                <div class=" form-group">
-                                  <label> Descripcion quirurgica </label>
-                                  <input
-                                    class=" form-control"
-                                    disabled="true"
-                                    type="text"
-                                  />
-                                </div>
-                              </div>
-                              <div class=" col-md-3 pr-md-1">
-                                <div class=" form-group">
-                                  <label> Historia Clinica </label>
-                                  <input
-                                    class=" form-control"
-                                    disabled="true"
-                                    type="text"
-                                  />
-                                </div>
-                              </div>
+                                                            
                             </div>
                             <div class="row">
                                 <div class=" card-header col-md-12"><h3 class=" title">Adicionar Registros de diagnosticos</h3></div>
@@ -100,34 +81,48 @@
                                        </select> 
                                    </div>
                                   </div>
+
+                                  <div class=" col-md-3 pr-md-1">
+                                    <div class=" form-group">
+                                        <label> Documento origen del diagnostico </label>
+                                        <select class="form-control" style="width: auto;">
+                                           <option>Seleccione el documento origen</option>
+                                        </select> 
+                                    </div>
+                                   </div>
                                   
                             </div>
                             <form class="d-flex" style="width: 50%;">
                                 <input class="form-control me-2" type="text" placeholder="Consulta diagnostico">
                                 <button class="btn btn-primary" type="button">Search</button>
                               </form>
-                              <table class="table table-dark table-hover" id="" *ngIf="ready" >
-                                <!--<table class="table-success">-->
-                                <thead>
-                                  <tr>
-                                    <th>Item</th>
-                                    <th>Codigo del diagnostico</th>
-                                    <th>Diagnostico</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr *ngFor="let c of dxate, let i =index">
-                                    <td>{{i+1}}</td>
-                                    <td>{{c.nomdx}}</td>
-                                    <td>{{c.descdx}}</td>
-                                         
-                                  </tr>
-                                </tbody>
-                              </table>
-                    </form>
-------------------------------------------------------------------------------------------------------------
-                    
+                              <div class=" col-md-12 pr-md-1">
+                                    <!--<table class="table table-dark table-hover" id="" *ngIf="ready" >-->
+                        <table class=" card-header col-md-12" >
+                          <thead>
+                            <tr>
+                              <th>Item</th>
+                              <th>Codigo CIE10</th>
+                              <th>Detalle del Diagnostico</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let c of dxate, let i =index">
+                              <td>{{i+1}}</td>
+                              <td>{{c.nomdx}}</td>
+                              <td>{{c.descdx}}</td>
+                                                  
+                            </tr>
+                          </tbody>
+                        </table>
+                              </div>
+                              <div class=" card-footer">
+                                <button class=" btn btn-fill btn-danger" type="submit" >Save</button>
+                              </div>
+                      </form>
+                      
                 </div>
+                
             </div>
         </div>
     </div>

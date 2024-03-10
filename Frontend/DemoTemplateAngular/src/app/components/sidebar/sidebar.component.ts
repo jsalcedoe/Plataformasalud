@@ -53,6 +53,20 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-chart-pie-36",
     class: ""
   },
+  {
+    path: "/evolucionenfermeria",
+    title: "Evolución Enfermeria",
+    rtlTitle: "لوحة القيادة",
+    icon: "icon-chart-pie-36",
+    class: ""
+  },
+  {
+    path: "/registrosignosvitales",
+    title: "Registro Signos Vitales",
+    rtlTitle: "لوحة القيادة",
+    icon: "icon-chart-pie-36",
+    class: ""
+  },
 
   /*{
     path: "/administrativo",
@@ -78,7 +92,7 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
 
-  {
+  /*{
     path: "/icons",
     title: "Icons",
     rtlTitle: "الرموز",
@@ -91,7 +105,7 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "خرائط",
     icon: "icon-pin",
     class: "" },
-  */{
+  {
     path: "/notifications",
     title: "Notifications",
     rtlTitle: "إخطارات",

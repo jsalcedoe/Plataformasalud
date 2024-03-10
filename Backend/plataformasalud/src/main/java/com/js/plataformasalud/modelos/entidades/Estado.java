@@ -29,7 +29,7 @@ public class Estado implements Serializable {
 	@Column(unique = true)
 	private long idstatus;
 	
-	@Column(nullable = false, length = 15, unique = true)
+	@Column(nullable = false, length = 4, unique = true)
 	@NotEmpty(message = "El campo estado no puede ser vacio")
 	private String nomstatus;
 	
