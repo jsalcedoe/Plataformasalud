@@ -113,7 +113,7 @@ public class PlantillasRestController {
 			tempAct.setEsttemp_fk(temp.getEsttemp_fk());
 			tempAct.setNametemp(temp.getNametemp());
 			tempAct.setTyptemp_fk(temp.getTyptemp_fk());
-			tempAct.setUsertemp_fk(temp.getUsertemp_fk());
+			
 			
 			tempUpdate = tempserv.save(tempAct);
 			

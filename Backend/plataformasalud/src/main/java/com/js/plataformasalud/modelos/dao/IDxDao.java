@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.js.plataformasalud.modelos.entidades.Diagnostico;
 
-public interface IDxDao extends JpaRepository<Diagnostico, String>{
+public interface IDxDao extends JpaRepository<Diagnostico, Long>{
 
 }

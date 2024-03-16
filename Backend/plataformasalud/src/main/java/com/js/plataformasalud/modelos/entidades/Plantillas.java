@@ -12,6 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -41,6 +43,7 @@ public class Plantillas implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date creatdatetemp;
 	
+	@PrePersist
 	public void datecreattemp() {
 		creatdatetemp = new Date();
 	}
@@ -48,6 +51,7 @@ public class Plantillas implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date edittemp;
 	
+	@PreUpdate
 	public void dateedittemp() {
 		edittemp = new Date();
 	}
@@ -55,10 +59,6 @@ public class Plantillas implements Serializable{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private TipoPlantilla typtemp_fk;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private Usuario usertemp_fk;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})

@@ -40,13 +40,13 @@ public class DepartamentoRestController {
 		return depservice.findAll();
 	}
 	
-	@GetMapping("/departamentos/{coddep}")
-	public ResponseEntity<?> mostrar (@PathVariable Long coddep){
+	@GetMapping("/departamentos/{iddep}")
+	public ResponseEntity<?> mostrar (@PathVariable Long iddep){
 		Departamento departamento = null;
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-				departamento = depservice.findById(coddep);
+				departamento = depservice.findById(iddep);
 			} catch(DataAccessException e) {
 			response.put("mensaje", "Error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -54,7 +54,7 @@ public class DepartamentoRestController {
 		}
 		
 		if(departamento == null) {
-			response.put("mensaje", "El departamento ID: ".concat(coddep.toString().concat(" no existe en la base de datos!")));
+			response.put("mensaje", "El departamento ID: ".concat(iddep.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		
@@ -92,11 +92,11 @@ public class DepartamentoRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 		
-	@PutMapping("/departamentos/{coddep}")
+	@PutMapping("/departamentos/{iddep}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public ResponseEntity<?> actualiza (@Valid @RequestBody Departamento departamento, @PathVariable Long coddep, BindingResult validacion) {
+	public ResponseEntity<?> actualiza (@Valid @RequestBody Departamento departamento, @PathVariable Long iddep, BindingResult validacion) {
 		
-		Departamento depActual = depservice.findById(coddep);
+		Departamento depActual = depservice.findById(iddep);
 		
 		Departamento depUpdate = null;
 		
@@ -112,7 +112,7 @@ public class DepartamentoRestController {
 		}
 		if(depActual == null) {
 			response.put("mensaje", "Error: no se pudo editar, el departamento ID: "
-					.concat(coddep.toString().concat(" no existe en la base de datos!")));
+					.concat(iddep.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		try {
@@ -128,7 +128,7 @@ public class DepartamentoRestController {
 
 			}
 		response.put("mensaje", "El departamento ha sido actualizada con éxito!");
-		response.put("agenda", depUpdate);
+		response.put("departamento", depUpdate);
 
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		

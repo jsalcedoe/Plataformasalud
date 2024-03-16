@@ -20,7 +20,7 @@ import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
+//import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,7 +37,7 @@ public class RepresentanteLegal implements Serializable{
 	
 	@Column(nullable = false, length = 15, unique = true)
 	@NotNull(message = "El campo documento del representante no puede ser vacio")
-	@Pattern(regexp = "^[0-9]+$", message = "El campo solo debe contener números")
+	//@Pattern(regexp = "^[0-9]+$", message = "El campo solo debe contener números")
 	private Long docrepleg;
 	
 	@Column(nullable = false, length = 20)

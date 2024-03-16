@@ -34,7 +34,7 @@ public class Cargo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idcarguser;
 	
-	@Column(unique = true, length = 6)
+	@Column(unique = true, length = 10)
 	@NotEmpty(message = "El campo del cargo no puede ser vacio")
 	private String nomcarg;
 		

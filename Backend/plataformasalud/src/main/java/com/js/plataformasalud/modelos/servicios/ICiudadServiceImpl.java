@@ -25,9 +25,9 @@ public class ICiudadServiceImpl implements ICiudadService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Ciudad FindById(Long codciudad) {
+	public Ciudad FindById(Long idciu) {
 		
-		return ciudao.findById(codciudad).orElse(null);
+		return ciudao.findById(idciu).orElse(null);
 	}
 
 	@Override
@@ -37,11 +37,6 @@ public class ICiudadServiceImpl implements ICiudadService {
 		return ciudao.save(ciudad);
 	}
 
-	@Override
-	@Transactional
-	public void delete(Long codciudad) {
-		ciudao.deleteById(codciudad);
-		
-	}
+	
 
 }

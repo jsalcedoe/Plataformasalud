@@ -40,20 +40,20 @@ public class dxRestController {
 		return dxserv.findAll();
 	}
 	
-	@GetMapping("/diagnosticos/{iddx}")
-	public ResponseEntity<?> mostrar(@PathVariable String iddx) {
+	@GetMapping("/diagnosticos/{clavedx}")
+	public ResponseEntity<?> mostrar(@PathVariable Long clavedx) {
 		Diagnostico diagnostico = null;
 		Map<String, Object> response = new HashMap<>();
 	
 		try {
-			diagnostico = dxserv.findById(iddx);
+			diagnostico = dxserv.findById(clavedx);
 		}catch(DataAccessException e) {
 			response.put("mensaje", "Error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (diagnostico == null) {
-			response.put("mensaje", "El diagnostico ID: ".concat(iddx.toString().concat(" no existe en la base de datos!")));
+			response.put("mensaje", "El diagnostico ID: ".concat(clavedx.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Diagnostico>(diagnostico, HttpStatus.OK);
@@ -85,11 +85,11 @@ public class dxRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/diagnosticos/{iddx}")
-	public ResponseEntity <?> actualizar (@PathVariable String iddx,@RequestBody Diagnostico diagnostico, BindingResult result) {
+	@PutMapping("/diagnosticos/{clavedx}")
+	public ResponseEntity <?> actualizar (@PathVariable Long clavedx,@RequestBody Diagnostico diagnostico, BindingResult result) {
 		
 		Diagnostico dxUpdate = null;
-		Diagnostico dxAct = dxserv.findById(iddx);
+		Diagnostico dxAct = dxserv.findById(clavedx);
 		Map<String, Object> response = new HashMap<>();
 
 		if(result.hasErrors()) {
@@ -105,7 +105,7 @@ public class dxRestController {
 		
 		if (dxAct == null) {
 			response.put("mensaje", "Error: no se pudo editar, el diagnostico ID: "
-					.concat(iddx.toString().concat(" no existe en la base de datos!")));
+					.concat(clavedx.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		try {

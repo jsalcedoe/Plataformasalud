@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -30,16 +31,18 @@ public class TipoPlantilla implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idtytemp;
 	
-	@Column(unique = true, length = 6, nullable = false)
+	@Column(unique = true, length = 10, nullable = false)
 	@NotEmpty(message = "El campo tipo de plantilla no puede ser vacio")
 	private String nomtytemp;
 	
+	@Column(nullable = false,unique = true)
 	@NotEmpty(message = "El campo detalle de la plantilla no puede ser vacio")
 	private String detytemp;
 	
 	@Temporal(TemporalType.DATE)
 	private Date creadatetytemp;
 	
+	@PrePersist
 	public void createdatetemp() {
 		creadatetytemp = new Date();
 	}

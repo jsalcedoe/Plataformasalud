@@ -25,9 +25,9 @@ public class IDepartamentoServiceImpl implements IDepartamentoService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Departamento findById(Long coddep) {
+	public Departamento findById(Long iddep) {
 		
-		return depdao.findById(coddep).orElse(null);
+		return depdao.findById(iddep).orElse(null);
 	}
 
 	@Override

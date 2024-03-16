@@ -8,10 +8,10 @@ public interface ICiudadService {
 	
 	public List<Ciudad> findAll();
 	
-	public Ciudad FindById(Long codciudad);
+	public Ciudad FindById(Long idciu);
 	
 	public Ciudad save (Ciudad ciudad);
 	
-	public void delete (Long codciudad);
+	
 
 }

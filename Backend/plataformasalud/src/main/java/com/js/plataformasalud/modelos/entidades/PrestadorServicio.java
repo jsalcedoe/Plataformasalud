@@ -19,7 +19,8 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.NotNull;
+//import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,8 +43,8 @@ public class PrestadorServicio implements Serializable  {
 	private String nomprestserv;
 	
 	@Column(nullable = false, length = 11, unique = true)
-	@NotEmpty(message = "El campo NIT no puede ser vacio")
-	@Pattern(regexp = "^[0-9]+$", message = "El campo solo debe contener números")
+	@NotNull(message = "El campo NIT no puede ser vacio")
+	//@Pattern(regexp = "^[0-9]+$", message = "El campo solo debe contener números")
 	private Long docprestserv;
 	
 	@Column(nullable = false,length = 50)

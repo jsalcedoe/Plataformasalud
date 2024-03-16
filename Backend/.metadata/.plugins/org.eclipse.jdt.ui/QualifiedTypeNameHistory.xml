@@ -35,12 +35,9 @@
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.ITipoNotaDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.ITipoNotaServiceImpl"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.TipoNota"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.PrePersist"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.PreUpdate"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IEvolucionEventoDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IEvolucionEventoServiceImpl"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.EvolucionEvento"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Temporal"/>
     <fullyQualifiedTypeName name="jakarta.validation.constraints.NotEmpty"/>
@@ -59,5 +56,8 @@
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IProcedimientoDescripcionQXServiceImpl"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.ProcedimientoDescripcionQX"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="jakarta.validation.constraints.NotNull"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.PreUpdate"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.PrePersist"/>
 </qualifiedTypeNameHistroy>

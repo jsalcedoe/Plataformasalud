@@ -26,19 +26,19 @@ public class IDxServiceImpl implements IDxService {
 	}
 
 	@Override
-	@Transactional(readOnly = true)
-	public Diagnostico findById(String iddx) {
-		
-		return dxdao.findById(iddx).orElse(null);
-	}
-
-	@Override
 	@Transactional
 	public Diagnostico save(Diagnostico dx) {
 		
 		return dxdao.save(dx);
 	}
 
+	@Override
+	public Diagnostico findById(Long clavedx) {
+		
+		return dxdao.findById(clavedx).orElse(null);
+	}
+
+	
 	
 
 }

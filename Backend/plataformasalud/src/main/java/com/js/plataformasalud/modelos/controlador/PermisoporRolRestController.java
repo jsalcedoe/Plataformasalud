@@ -117,8 +117,6 @@ public class PermisoporRolRestController {
 		}
 		try {
 			permrolActual.setDatecreatidpermrol(permrol.getDatecreatidpermrol());
-			permrolActual.setNompermrol(permrol.getNompermrol());
-			permrolActual.setDetpermrol(permrol.getDetpermrol());
 			permrolActual.setEstpermrol_fk(permrol.getEstpermrol_fk());
 			permrolActual.setPermrol_fk(permrol.getPermrol_fk());
 			permrolActual.setRolpermrol_fk(permrol.getRolpermrol_fk());

@@ -9,6 +9,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
@@ -27,10 +29,14 @@ import lombok.Setter;
 public class Ciudad implements Serializable {
 		 
 	@Id
-	@Column (nullable = false, length = 5, unique = true )
+	@Column (nullable = false,unique = true )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idciu;
+	
+	@Column(nullable = false,length = 5, unique = true)
 	private Long codciu;
 	
-	@Column (nullable = false, length = 30)
+	@Column (nullable = false, length = 30, unique = true)
 	private String nomciu;
 	
 	@Temporal(TemporalType.DATE)
