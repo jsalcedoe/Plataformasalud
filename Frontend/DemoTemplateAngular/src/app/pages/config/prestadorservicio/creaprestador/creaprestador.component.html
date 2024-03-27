@@ -1,17 +1,18 @@
 <div class=" content">
     <div class=" row">
-      <div class=" col-md-8">
+      <div class=" col-md-12">
         <div class=" card">
           <div class=" card-header"><h2 class=" title">Creacion del prestador</h2></div>
           <div class=" card-body">
-            <form>
+            <form [formGroup]="formPrestador" (ngSubmit)="creaPrestador()">
               <div class=" row">
                 <div class=" col-md-3 pr-md-1">
                   <div class=" form-group">
                     <label> Tipo de documento de la entidad </label>
-                    <select class="form-select" style="width: auto;">
-                      <option>tipo de documento</option>
-                    </select>
+                    <select class="form-select" style="width: auto;" formControlName="tipdocprestserv_fk">
+					            <option value="" disabled selected>Seleccione el tipo de documento</option>
+                      <option *ngFor="let td of tipodoc" [value]="td.idtipdoc">{{td.detatipdoc}}</option>
+                  </select>
                   </div>
                 </div>
 
@@ -22,6 +23,7 @@
                       class=" form-control"
                       placeholder="Documento"
                       type="text"
+                      formControlName="docprestserv"
                     />
                   </div>
                 </div>
@@ -34,6 +36,7 @@
                       class=" form-control"
                       placeholder="Prestador"
                       type="text"
+                      formControlName="nomprestserv"
                     />
                   </div>
                 </div>
@@ -44,51 +47,56 @@
                       class=" form-control"
                       placeholder="Correo electronico"
                       type="email"
+                      formControlName="emailprestserv"
                     />
                   </div>
                 </div>
               </div>
               <div class=" row">
-                <div class=" col-md-6 pr-md-1">
+                <div class=" col-md-4 pr-md-1">
                   <div class=" form-group">
                     <label> Dirección del prestador </label>
                     <input
                       class=" form-control"
                       placeholder="Dirección"
                       type="text"
+                      formControlName="dirprestserv"
                     />
                   </div>
                 </div>
-                <div class=" col-md-6 pl-md-1">
+                <div class=" col-md-4 pl-md-1">
                   <div class=" form-group">
                     <label> Número telefonico del prestador </label>
                     <input
                       class=" form-control"
                       placeholder="Contacto"
                       type="text"
+                      formControlName="telprestserv"
                     />
+                  </div>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class=" col-md-2 pl-md-1">
+                  <div class=" form-group">
+                    <label> Ciudad Residencia</label>
+                    <select class="form-group" style="width:auto;" formControlName="ciuprestserv_fk">
+					            <option value="" disabled selected>Seleccione la ciudad</option>
+                      <option *ngFor="let ciu of city" [value]="ciu.idciu">{{ciu.nomciu}}</option>
+                  </select>
                   </div>
                 </div>
               </div>
-              <div class=" row">
-                <div class=" col-md-12">
-                  <div class=" form-group">
-                    <label> Ciudad</label>
-                    <input
-                      class=" form-control"
-                      placeholder="Ciudad"
-                      type="text"
-                    />
-                    <a routerLink="">Consulta ciudad</a>
-                  </div>
-                </div>
-            </div>
               
+                
+           
+            <div class=" card-footer">
+              <button class=" btn btn-fill btn-danger" type="submit" [disabled]="formPrestador.invalid">Save</button>
+            </div>
             </form>
           </div>
-          <div class=" card-footer">
-            <button class=" btn btn-fill btn-danger" type="submit">Save</button>
-          </div>
+          
         </div>
       </div>
       

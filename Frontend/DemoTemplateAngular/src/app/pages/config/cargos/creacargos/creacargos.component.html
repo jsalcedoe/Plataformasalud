@@ -33,9 +33,10 @@
 
               <div class=" col-md-3 pr-md-1">
                 <div class=" form-group">
-                  <label> Cargos </label>
+                  <label> Roles </label>
                   <select class="form-select" style="width: auto;" formControlName="roluser">
-                    <option *ngFor="let cargo of cargos" [value]="cargo.idrol">{{cargo.desrol}}</option>
+                    <option value="" disabled selected>Seleccione el Rol</option>
+                    <option *ngFor="let cargo of rol" [value]="cargo.idrol">{{cargo.desrol}}</option>
                   </select>
                 </div>
               </div>

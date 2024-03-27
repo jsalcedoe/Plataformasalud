@@ -69,7 +69,6 @@ import { CreauserComponent } from './pages/config/usuarios/creauser/creauser.com
 import { AdministrativoComponent } from './pages/administrativo/administrativo.component';
 import { AsistencialComponent } from './pages/asistencial/asistencial.component';
 import { PacientesComponent } from './pages/pacientes/pacientes.component';
-import { CreapacComponent } from './pages/pacientes/creapac/creapac.component';
 import { MedicoComponent } from './pages/medico/medico.component';
 import { EvolucionenfermeriaComponent } from './pages/asistencial/evolucionenfermeria/evolucionenfermeria.component';
 import { RegistrosignosvitalesComponent } from './pages/asistencial/registrosignosvitales/registrosignosvitales.component';
@@ -80,6 +79,8 @@ import { DescripcionquirurgicaComponent } from "./pages/medico/descripcionquirur
 import { ProcedimientosComponent } from './pages/medico/procedimientos/procedimientos.component';
 import { DiagnosticosatencionComponent } from './pages/medico/diagnosticosatencion/diagnosticosatencion.component';
 import { CreaequipoqxComponent } from './pages/medico/creaequipoqx/creaequipoqx.component';
+import { CreapacienteComponent } from './pages/pacientes/creapaciente/creapaciente.component';
+//import { from } from "rxjs";
 
 
 
@@ -93,9 +94,10 @@ import { CreaequipoqxComponent } from './pages/medico/creaequipoqx/creaequipoqx.
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),    
   ],
   declarations: [
+    
     AppComponent, 
     AdminLayoutComponent, 
     AuthLayoutComponent, 
@@ -153,8 +155,7 @@ import { CreaequipoqxComponent } from './pages/medico/creaequipoqx/creaequipoqx.
     CreauserComponent, 
     AdministrativoComponent, 
     AsistencialComponent, 
-    PacientesComponent, 
-    CreapacComponent, 
+    PacientesComponent,
     MedicoComponent, 
     EvolucionenfermeriaComponent, 
     RegistrosignosvitalesComponent, 
@@ -164,7 +165,8 @@ import { CreaequipoqxComponent } from './pages/medico/creaequipoqx/creaequipoqx.
     DescripcionquirurgicaComponent,
     ProcedimientosComponent,
     DiagnosticosatencionComponent,
-    CreaequipoqxComponent
+    CreaequipoqxComponent,
+    CreapacienteComponent,
     ],
   providers: [],
   bootstrap: [AppComponent]

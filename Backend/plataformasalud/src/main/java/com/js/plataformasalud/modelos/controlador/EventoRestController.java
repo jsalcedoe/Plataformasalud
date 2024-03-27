@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.js.plataformasalud.modelos.entidades.Evento;
 import com.js.plataformasalud.modelos.servicios.IEventoServiceImpl;
 
+
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
@@ -71,8 +72,8 @@ public class EventoRestController {
 			response.put("errors", errors);
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
-		try {
-				Newevent= eventserv.save(event);
+		try {				
+			Newevent= eventserv.save(event);
 		}catch(DataAccessException e) {
 			response.put("mensaje", "Error al registrar el evento en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

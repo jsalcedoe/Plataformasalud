@@ -33,12 +33,12 @@
                 <div class=" form-group">
                   <label> Departamento </label>
                   <select class="form-select" style="width: auto;" formControlName="depciu_fk">
-                    <option *ngFor="let departamento of depart" [value]="departamento.coddep">{{departamento.nomdep}}</option>
+                    <option value="" disabled selected>Seleccione el Departamento</option>
+                    <option *ngFor="let departamento of depart" [value]="departamento.iddep">{{departamento.nomdep}}</option>
                   </select>
                 </div>
               </div>
-              
-              
+                           
             </div>
             <div class=" card-footer">
               <button class=" btn btn-fill btn-danger" type="submit"[disabled]="formCiudad.invalid">Save</button>

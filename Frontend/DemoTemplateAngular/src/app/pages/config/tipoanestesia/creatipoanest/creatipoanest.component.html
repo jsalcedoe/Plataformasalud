@@ -4,7 +4,7 @@
         <div class=" card">
           <div class=" card-header"><h2 class=" title">Creacion de estados</h2></div>
           <div class=" card-body">
-            <form>
+            <form [formGroup]="formTipoAnestesia" (ngSubmit)="creaTipoAnestesia()">
               <div class=" row">
                 <div class=" col-md-3 pr-md-1">
                     <div class=" form-group">
@@ -13,6 +13,7 @@
                         class=" form-control"
                         placeholder="Tipo de Anestesia"
                         type="text"
+                        formControlName="nomtipanest"
                       />
                     </div>
                   </div>
@@ -24,15 +25,17 @@
                       class=" form-control"
                       placeholder="Descripción"
                       type="text"
+                      formControlName="desctipanest"
                     />
                   </div>
                 </div>
               </div>
+              <div class=" card-footer">
+                <button class=" btn btn-fill btn-danger" type="submit" [disabled]="formTipoAnestesia.invalid">Save</button>
+              </div>
             </form>
           </div>
-          <div class=" card-footer">
-            <button class=" btn btn-fill btn-danger" type="submit">Save</button>
-          </div>
+          
         </div>
       </div>
       

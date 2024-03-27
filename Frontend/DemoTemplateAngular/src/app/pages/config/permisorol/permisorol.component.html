@@ -24,8 +24,6 @@
       <thead>
         <tr>
           <th>Item</th>
-          <th>Permiso por rol</th>
-          <th>Detalle permiso por rol</th>
           <th>Fecha de creación</th>
           <th>Rol</th>
           <th>Permiso</th>
@@ -35,8 +33,6 @@
       <tbody>
         <tr *ngFor="let c of perol, let i =index">
           <td>{{i+1}}</td>
-          <td>{{c.nompermrol}}</td>
-          <td>{{c.detpermrol}}</td>
           <td>{{c.datecreatidpermrol}}</td>
           <td>{{c.rolpermrol_fk.desrol}}</td>
           <td>{{c.permrol_fk.detperm}}</td>

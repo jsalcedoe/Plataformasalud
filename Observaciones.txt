@@ -1,5 +1,3 @@
-formulario de creacion de paciente
-verificar los list
 crear datos del responsable del paciente
 
 en el formulario de historia clinica

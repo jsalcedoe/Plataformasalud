@@ -1,16 +1,17 @@
 <div class=" content">
     <div class=" row">
-      <div class=" col-md-8">
+      <div class=" col-md-12">
         <div class=" card">
-          <div class=" card-header"><h2 class=" title">Creacion de Gerentes</h2></div>
+          <div class=" card-header"><h1 class=" title">Creacion de Gerentes</h1></div>
           <div class=" card-body">
-            <form>
+            <form [formGroup]="formreplegal" (ngSubmit)="creareplegal()">
               <div class=" row">
                 <div class=" col-md-3 pr-md-1">
                   <div class=" form-group">
                     <label> Tipo de documento </label>
-                    <select class="form-select" style="width: auto;">
-                      <option>tipo de documento</option>
+                    <select class="form-select" style="width: auto;" formControlName="tipdocrepleg_fk">
+                      <option value="" disabled selected>Seleccione el tipo de documento</option>
+                      <option *ngFor="let td of tipdoc" [value]="td.idtipdoc">{{td.detatipdoc}}</option>
                     </select>
                   </div>
                 </div>
@@ -22,6 +23,7 @@
                       class=" form-control"
                       placeholder="Documento"
                       type="text"
+                      formControlName="docrepleg"
                     />
                   </div>
                 </div>
@@ -34,6 +36,7 @@
                       class=" form-control"
                       placeholder="Primer Nombre"
                       type="text"
+                      formControlName="pnomrepleg"
                     />
                   </div>
                 </div>
@@ -45,6 +48,7 @@
                         class=" form-control"
                         placeholder="Segundo Nombre"
                         type="text"
+                        formControlName="snomrepleg"
                       />
                     </div>
                   </div>
@@ -58,6 +62,7 @@
                         class=" form-control"
                         placeholder="Primer Apellido"
                         type="text"
+                        formControlName="paperepleg"
                       />
                     </div>
                   </div>
@@ -69,6 +74,7 @@
                           class=" form-control"
                           placeholder="Segundo Apellido"
                           type="text"
+                          formControlName="saperepleg"
                         />
                       </div>
                     </div>
@@ -83,30 +89,29 @@
                       class=" form-control"
                       placeholder="Correo electronico"
                       type="email"
+                      formControlName="emailrepleg"
                     />
                   </div>
                 </div>
               </div>
               <div class=" row">
-                <div class=" col-md-6 pr-md-1">
+                <div class=" col-md-3 pr-md-1">
                   <div class=" form-group">
-                    <label> Prestador de servicio </label>
-                    <input
-                      class=" form-control"
-                      placeholder="Prestador de servicio"
-                      type="text"
-                    />
-                    <a routerLink="">Consulta prestador</a>
+                    <label> Entidad prestadora de servicio </label>
+                    <select class="form-select" style="width: auto;" formControlName="idprestservrepleg_fk">
+                      <option value="" disabled selected>Seleccione el prestador</option>
+                        <option *ngFor="let preser of preserv" [value]="preser.idprestserv">{{preser.nomprestserv}}</option>
+                  </select>
                   </div>
                 </div>
                 
               </div>
-              
+              <div class=" card-footer">
+                <button class=" btn btn-fill btn-danger" type="submit" [disabled]="formreplegal.invalid">Save</button>
+              </div>
             </form>
           </div>
-          <div class=" card-footer">
-            <button class=" btn btn-fill btn-danger" type="submit">Save</button>
-          </div>
+          
         </div>
       </div>
       

@@ -1,18 +1,19 @@
 <div class=" content">
     <div class=" row">
-      <div class=" col-md-8">
+      <div class=" col-md-12">
         <div class=" card">
-          <div class=" card-header"><h2 class=" title">Creacion de procedimientos y examenes</h2></div>
+          <div class=" card-header"><h1 class=" title">Creacion de procedimientos y examenes</h1></div>
           <div class=" card-body">
-            <form>
+            <form [formGroup]="formpxex" (ngSubmit)="creapxex()">
               <div class=" row">
-                <div class=" col-md-6 pr-md-1">
+                <div class=" col-md-3 pr-md-1">
                     <div class=" form-group">
                       <label> Codigo CUPS </label>
                       <input
                         class=" form-control"
                         placeholder="CUPS"
                         type="text"
+                        formControlName="codpxex"
                       />
                     </div>
                   </div>
@@ -23,33 +24,40 @@
                       class=" form-control"
                       placeholder="Procedimiento o examen"
                       type="text"
+                      formControlName="nompxex"
                     />
                   </div>
                 </div>
-                <div class=" row">
-                  <div class=" col-md-3 pr-md-1">
-                    <div class=" form-group">
-                      <label> Sexo al que aplica </label>
-                      <select class="form-select" style="width: auto;">
-                        <option>Selecciona el sexo</option>
-                      </select>
-                    </div>
+                
+              </div>
+              <div class=" row">
+                <div class=" col-md-2 pr-md-1">
+                  <div class=" form-group">
+                    <label> Sexo al que aplica  </label>
+                    <select class="form-group" style="width: auto;" formControlName="sexopxex">
+                    <option value="" disabled selected>Seleccione el sexo</option>
+                    <option value="MASCULINO">MASCULINO</option>
+                    <option value="FEMENINO">FEMENINO</option>
+                    <option value="AMBOS">AMBOS</option>
+                    </select>
                   </div>
-                  <div class=" col-md-3 pr-md-1">
-                    <div class=" form-group">
-                      <label> Tipo de procedimiento </label>
-                      <select class="form-select" style="width: auto;">
-                        <option>Seleccione el tipo de procedimiento</option>
-                      </select>
-                    </div>
+                </div>
+                <div class=" col-md-2 pr-md-1">
+                  <div class=" form-group">
+                    <label> Tipo de procedimiento </label>
+                    <select class="form-group" style="width: auto;" formControlName="tpxex">
+                      <option value="" disabled selected>Seleccione el tipo de procedimiento</option>
+                      <option *ngFor="let tpxex of tippx" [value]="tpxex.idtproc">{{tpxex.detproc}}</option>
+                    </select>
                   </div>
                 </div>
               </div>
+              <div class=" card-footer">
+                <button class=" btn btn-fill btn-danger" type="submit">Save</button>
+              </div>
             </form>
           </div>
-          <div class=" card-footer">
-            <button class=" btn btn-fill btn-danger" type="submit">Save</button>
-          </div>
+          
         </div>
       </div>
       

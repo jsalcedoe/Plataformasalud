@@ -62,7 +62,6 @@ import { CreauserComponent } from "src/app/pages/config/usuarios/creauser/creaus
 import { AdministrativoComponent } from "src/app/pages/administrativo/administrativo.component";
 import { AsistencialComponent } from "src/app/pages/asistencial/asistencial.component";
 import { PacientesComponent } from "src/app/pages/pacientes/pacientes.component";
-import { CreapacComponent } from "src/app/pages/pacientes/creapac/creapac.component";
 import { MedicoComponent } from "src/app/pages/medico/medico.component";
 import { EvolucionenfermeriaComponent } from "src/app/pages/asistencial/evolucionenfermeria/evolucionenfermeria.component";
 import { RegistrosignosvitalesComponent } from "src/app/pages/asistencial/registrosignosvitales/registrosignosvitales.component";
@@ -73,6 +72,7 @@ import { DescripcionquirurgicaComponent } from "src/app/pages/medico/descripcion
 import { DiagnosticosatencionComponent } from "src/app/pages/medico/diagnosticosatencion/diagnosticosatencion.component";
 import { ProcedimientosComponent } from "src/app/pages/medico/procedimientos/procedimientos.component";
 import { CreaequipoqxComponent } from "src/app/pages/medico/creaequipoqx/creaequipoqx.component";
+import { CreapacienteComponent } from "src/app/pages/pacientes/creapaciente/creapaciente.component";
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
@@ -140,7 +140,6 @@ export const AdminLayoutRoutes: Routes = [
   { path:'creatipopx',component:CreatipopxComponent},
   { path:'creaubica',component:CreaubicaComponent},
   { path:'creauser',component:CreauserComponent},
-  { path:'creapac',component:CreapacComponent},
   { path:'evolucionenfermeria',component:EvolucionenfermeriaComponent},
   { path:'registrosignosvitales',component:RegistrosignosvitalesComponent},
   { path:'historiaclinica',component:HistoriaclinicaComponent},
@@ -149,8 +148,8 @@ export const AdminLayoutRoutes: Routes = [
   { path:'descripcionquirurgica',component:DescripcionquirurgicaComponent},
   { path:'diagnosticosatencion',component:DiagnosticosatencionComponent},
   { path:'procedimientos',component:ProcedimientosComponent},
-  { path:'creaequipoqx',component:CreaequipoqxComponent}
-
+  { path:'creaequipoqx',component:CreaequipoqxComponent},
+  { path:'creapaciente',component:CreapacienteComponent}
 
   // { path: "rtl", component: RtlComponent }
 ];

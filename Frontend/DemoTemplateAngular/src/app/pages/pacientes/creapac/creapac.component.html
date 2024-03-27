@@ -4,13 +4,14 @@
         <div class=" card">
           <div class=" card-header"><h2 class=" title">Creacion de pacientes</h2></div>
           <div class=" card-body">
-            <form>
+            <form [formGroup]="formpac" (ngSubmit)="creaPaciente()">
             <div class=" row">
                     <div class=" col-md-3 pr-md-1">
                       <div class=" form-group">
-                        <label> Tipo de documento de la entidad </label>
-                        <select class="form-select" style="width: auto;">
-                          <option>tipo de documento</option>
+                        <label> Tipo de documento </label>
+                        <select class="form-select" style="width: auto;" formControlName="typdocpac">
+                          <option value="" disabled selected>Seleccione tipo de documento</option>
+                          <option *ngFor="let td of tipdoc" [value]="td.idtipdoc">{{td.detatipdoc}}</option>
                         </select>
                       </div>
                     </div>
@@ -22,6 +23,7 @@
                       class=" form-control"
                       placeholder="Documento"
                       type="text"
+                      formControlName="numdocpac"
                     />
                   </div>
                 </div>
@@ -34,6 +36,7 @@
                     class=" form-control"
                     placeholder="Primer Nombre"
                     type="text"
+                    formControlName="primernompac"
                   />
                 </div>
               </div>
@@ -44,6 +47,7 @@
                     class=" form-control"
                     placeholder="Segundo Nombre"
                     type="text"
+                    formControlName="segundonompac"
                   />
                 </div>
               </div>
@@ -54,6 +58,7 @@
                     class=" form-control"
                     placeholder="Primer Apellido"
                     type="text"
+                    formControlName="primerapepac"
                   />
                 </div>
               </div>
@@ -64,20 +69,44 @@
                     class=" form-control"
                     placeholder="Segundo Apellido"
                     type="text"
+                    formControlName="segundoapepac"
                   />
                 </div>
               </div>
               <div class=" col-md-3 pr-md-1">
                 <div class=" form-group">
-                  <label> Fecha de nacimiento </label>
+                  <label> Sexo</label>
+                  <p></p>
+                  <select class="form-select" style="width: auto;" formControlName="sexopac">
+                    <option value="" disabled selected>Seleccione el sexo</option>
+                    <option value="FEMENINO">FEMENINO</option>
+                    <option value="MASCULINO">MASCULINO</option>
+                    <option value="INDEFINIDO">INDEFINIDO</option>
+                  </select>
+                </div>
+              </div>
+              <div class=" col-md-3 pr-md-1">
+                <div class=" form-group">
+                 <!-- <label> Fecha de nacimiento </label>
                   <input
                     class=" form-control"
                     placeholder="Segundo Apellido"
                     type="date"
-                  />
+                    formControlName="fechanacpac"
+                    
+                  />-->
+                  <mat-form-field>
+                    <mat-label>Fecha de nacimiento</mat-label>
+                    <input matInput [matDatepicker]="fechanacpac">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="fechanacpac"></mat-datepicker-toggle>
+                    <mat-datepicker #fechanacpac></mat-datepicker>
+                  </mat-form-field>
+                 
                 </div>
               </div>
-
+              
+              
               <div class=" col-md-2 pr-md-1">
                 <div class=" form-group">
                   <label> Edad </label>
@@ -85,20 +114,29 @@
                     class=" form-control"
                     placeholder="Edad"
                     type="text"
-                    disabled = "true"
+                    formControlName="edadpac"                                    
                   />
+                  
                 </div>
               </div>
+              
+                </div>
+                
+            <div class="row">
               <div class=" col-md-3 pr-md-1">
                 <div class=" form-group">
-                  <label> Estado civil del paciente</label>
-                  <select class="form-select" style="width: auto;">
-                    <option>Seleccione el estado civil</option>
+                  <label> Estado civil </label>
+                  <P></P>
+                  <select class="form-select" style="width: auto;" formControlName="estadocivilpac">
+                    <option value="" disabled selected>Seleccione el estado civil</option>
+                    <option value="MENOR DE EDAD">MENOR DE EDAD</option>
+                    <option value="SOLTERO">SOLTERO (A)</option> 
+                    <option value="UNION LIBRE">UNION LIBRE</option>
+                    <option value="CASADO">CASADO (A)</option>
+                    <option value="SEPARADO">SEPARADO (A)</option>
                   </select>
                 </div>
               </div>
-                </div>
-            <div class="row">
                 <div class=" col-md-3 pr-md-1">
                     <div class=" form-group">
                       <label> Dirección </label>
@@ -106,6 +144,7 @@
                           class=" form-control"
                           placeholder="Dirección"
                           type="text"
+                          formControlName="direccionpac"
                         />
                     </div>
                   </div>
@@ -113,12 +152,11 @@
                   <div class=" col-md-3 pr-md-1">
                     <div class=" form-group">
                       <label> Ciudad </label>
-                      <input
-                        class=" form-control"
-                        placeholder="Ciudad"
-                        type="text"
-                      />
-                      <a routerLink="">Consulta ciudad</a>
+                      <P></P>
+                      <select class="form-select" style="width: auto;" formControlName="ciudad">
+                        <option value="" disabled selected>Seleccione la ciudad</option>
+                        <option *ngFor="let ciu of ciudad" [value]="ciu.idciu">{{ciu.nomciu}}</option>
+                      </select>
                     </div>
                   </div>
 
@@ -129,55 +167,78 @@
                         class=" form-control"
                         placeholder="Correo electronico"
                         type="email"
+                        formControlName="emailpac"
                       />
                     </div>
                   </div>
-                  <div class=" col-md-3 pr-md-1">
-                    <div class=" form-group">
-                      <label> Estado civil del paciente</label>
-                      <select class="form-select" style="width: auto;">
-                        <option>Seleccione el estado civil</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class=" col-md-3 pr-md-1">
+                  
+                  <div class=" col-md-2 pr-md-1">
                     <div class=" form-group">
                       <label> Contacto del paciente </label>
                       <input
                         class=" form-control"
                         placeholder="Contacto"
                         type="text"
-                      />
-                    </div>
-                  </div>
-
-                  <div class=" col-md-3 pr-md-1">
-                    <div class=" form-group">
-                      <label> Acompañante del paciente </label>
-                      <input
-                        class=" form-control"
-                        placeholder="Acompañante"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-
-                  <div class=" col-md-3 pr-md-1">
-                    <div class=" form-group">
-                      <label> Contacto de Acompañante </label>
-                      <input
-                        class=" form-control"
-                        placeholder="Contacto"
-                        type="text"
+                        formControlName="contactopac"
                       />
                     </div>
                   </div>
 
                   <div class=" col-md-2 pr-md-1">
                     <div class=" form-group">
+                      <label> Acompañante del paciente </label>
+                      <input
+                        class=" form-control"
+                        placeholder="Acompañante"
+                        type="text"
+                        formControlName="acudientepac"
+                      />
+                    </div>
+                  </div>
+
+                  <div class=" col-md-2 pr-md-1">
+                    <div class=" form-group">
+                      <label> Contacto de Acompañante </label>
+                      <input
+                        class=" form-control"
+                        placeholder="Contacto"
+                        type="text"
+                        formControlName="contactoacudientepac"
+                      />
+                    </div>
+                  </div>
+
+                  <div class=" col-md-2 pr-md-1">
+                    <div class=" form-group">
+                      <label> Responsable del paciente </label>
+                      <input
+                        class=" form-control"
+                        placeholder="Contacto"
+                        type="text"
+                        formControlName="resppac"
+                      />
+                    </div>
+                  </div>
+
+                  <div class=" col-md-2 pr-md-1">
+                    <div class=" form-group">
+                      <label> Contacto del responsable </label>
+                      <input
+                        class=" form-control"
+                        placeholder="Contacto"
+                        type="text"
+                        formControlName="contactrespac"
+                      />
+                    </div>
+                  </div>
+
+                  <div class=" col-md-3 pr-md-1">
+                    <div class=" form-group">
                       <label > Tipo de paciente</label>
-                      <select class="form-select" style="width: auto;">
-                        <option>Seleccione tipo de paciente</option>
+                      <p></p>
+                      <select class="form-select" style="width: auto;" formControlName="tipac">
+                        <option value="" disabled selected>Seleccione tipo de paciente</option>
+                        <option *ngFor="let tp of tipopac" [value]="tp.idtipac">{{tp.dettipac}}</option>
                       </select>
                     </div>
                   </div>
@@ -185,19 +246,17 @@
                   <div class=" col-md-3 pr-md-1">
                     <div class=" form-group">
                       <label>Entidad responsable de pago </label>
-                      <input
-                        class=" form-control"
-                        placeholder="Contacto"
-                        type="text"
-                      />
-                      <a routerLink="">Consulta entidad</a>
+                      <select class="form-select" style="width: auto;" formControlName="entidad">
+                          <option value="" disabled selected>Seleccione la entidad</option>
+                          <option *ngFor="let eapb of entidad" [value]="eapb.ideapb">{{eapb.nomeapb}}</option>
+                       </select>
                     </div>
                   </div>
 
                   
             </div>
             <div class=" card-footer">
-              <button class=" btn btn-fill btn-danger" type="submit" (click)="ircreaevento()">Save</button>
+              <button class=" btn btn-fill btn-danger" type="submit" [disabled]="formpac.invalid">Save</button>
             </div>
             </form>
           </div>
@@ -207,4 +266,3 @@
       
     </div>
   </div>
-

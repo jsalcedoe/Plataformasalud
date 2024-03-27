@@ -4,7 +4,7 @@
       <div class=" card">
         <div class=" card-header"><h2 class=" title">Creacion de Diagnosticos</h2></div>
         <div class=" card-body">
-          <form [formGroup]="formdx" (ngSubmit)="creaDx">
+          <form [formGroup]="formdx" (ngSubmit)="creaDx()">
             <div class=" row">
               <div class=" col-md-4 pr-md-1">
                 <div class=" form-group">
@@ -46,10 +46,10 @@
                 <div class=" form-group">
                   <label> Sexo al que aplica  </label>
                   <select class="form-select" style="width: auto;" formControlName="sexdx">
-                    <option>Seleccione el sexo</option>
-                    <option>MASCULINO</option>
-                    <option>FEMENINO</option>
-                    <option>AMBOS</option>
+                    <option value="" disabled selected>Seleccione el sexo</option>
+                    <option value="MASCULINO">MASCULINO</option>
+                    <option value="FEMENINO">FEMENINO</option>
+                    <option value="AMBOS">AMBOS</option>
                   </select>
                 </div>
               </div>
@@ -60,7 +60,7 @@
                     class=" form-control"
                     placeholder="Edad minima"
                     type="text"
-                    formGroupName="edadmindx"
+                    formControlName="edadmindx"
 
                   />
                 </div>

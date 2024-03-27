@@ -2,18 +2,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class ConfigService {
 
-
   constructor(private http:HttpClient) { }
 
   private endpoint: String ='http://localhost:8080/api/';
   private httpheaders = new HttpHeaders({'Content-Type': 'application/json'});
-
 
   /* metodos Get del service para cada uno de las tablas del config */
 

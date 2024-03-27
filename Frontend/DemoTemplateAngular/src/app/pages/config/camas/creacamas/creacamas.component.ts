@@ -20,8 +20,8 @@ export class CreacamasComponent implements OnInit {
               private fb:FormBuilder
               ) {
                 this.formcamas = fb.group({
-                  nomhab:['',[Validators.required,Validators.minLength(6)]],
-                  dethab:['',[Validators.required]],
+                  nomhab:['',[Validators.required,Validators.minLength(3)]],
+                  dethab:['',[Validators.required, Validators.minLength(10)]],
                   ubicahab:['',[Validators.required]]
                 })
                }
@@ -76,7 +76,12 @@ export class CreacamasComponent implements OnInit {
       catchError((err) => {
         // Maneja el error aquí
         console.error('Error:', err);
-        alert('Error ' + err.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error en la operación',
+          text: err.message // Mostrar el mensaje recibido desde el backend
+        });
+        
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();

@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class CreacargosComponent implements OnInit {
   formCargos:FormGroup
-  cargos:any
+  rol:any
   
   constructor(private service:ConfigService,
               private fb:FormBuilder,
@@ -32,8 +32,8 @@ export class CreacargosComponent implements OnInit {
     .pipe(
       tap((res) => {
         // Maneja la respuesta exitosa aquí
-        console.log('Consulta cargos', res);
-        this.cargos = res;
+        console.log('Consulta rol', res);
+        this.rol = res;
         
       }),
       catchError((err) => {
@@ -74,7 +74,12 @@ export class CreacargosComponent implements OnInit {
       catchError((err) => {
         // Maneja el error aquí
         console.error('Error:', err);
-        alert('Error ' + err.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error en la operación',
+          text: err.message // Mostrar el mensaje recibido desde el backend
+        });
+        
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();

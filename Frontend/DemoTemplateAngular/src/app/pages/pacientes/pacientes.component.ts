@@ -37,7 +37,7 @@ export class PacientesComponent implements OnInit {
   }
 
   irCreapac(){
-    this.router.navigate(['creapac'])
+    this.router.navigate(['creapaciente'])
   }
 
 

@@ -2,7 +2,6 @@ package com.js.plataformasalud.modelos.entidades;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -60,17 +59,13 @@ public class Paciente implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private LocalDate fechanacpac;
 	
+	@Temporal(TemporalType.DATE)
+	private Date fechacreacionpac;
+	
 	@PrePersist
 	private void persistencia() {
 		fechacreacionpac = new Date();
-		
-		if(fechanacpac != null) {
-			LocalDate fechaactual = LocalDate.now();
-			Period periodo = Period.between(fechanacpac, fechaactual);
-			edadpac = (long) periodo.getYears();
 		}
-		
-	}
 	@Column (length = 3 )
 	private Long edadpac;
 	
@@ -97,9 +92,10 @@ public class Paciente implements Serializable {
 	@Column (nullable = false, length = 15 )
 	private String contactoacudientepac;
 	
-	@Temporal(TemporalType.DATE)
-	private Date fechacreacionpac;
+	private String resppac;
 	
+	private String contactrespac;
+		
 	@Temporal(TemporalType.DATE)
 	private Date fechaedipac;
 	

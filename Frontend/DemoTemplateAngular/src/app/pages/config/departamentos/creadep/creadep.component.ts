@@ -50,7 +50,12 @@ export class CreadepComponent implements OnInit {
       catchError((err) => {
         // Maneja el error aquí
         console.error('Error:', err);
-        alert('Error ' + err.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error en la Operación',
+          text: err.message // Mostrar el mensaje recibido desde el backend
+        });
+       
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();	

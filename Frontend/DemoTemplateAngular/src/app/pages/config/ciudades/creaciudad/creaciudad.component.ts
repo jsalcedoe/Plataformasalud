@@ -52,7 +52,7 @@ export class CreaciudadComponent implements OnInit {
       codciu: this.formCiudad.value.codciu,
       nomciu: this.formCiudad.value.nomciu,
       depciu_fk: {
-                    "coddep":this.formCiudad.value.depciu_fk
+                    "iddep":this.formCiudad.value.depciu_fk
                   },
       estciu_fk: {
                    "idstatus":1
@@ -74,7 +74,11 @@ export class CreaciudadComponent implements OnInit {
       catchError((err) => {
         // Maneja el error aquí
         console.error('Error:', err);
-        alert('Error ' + err.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error en la Operación',
+          text: err.message// Mostrar el mensaje recibido desde el backend
+        });
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();

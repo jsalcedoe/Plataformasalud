@@ -18,6 +18,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,7 +38,7 @@ public class Entidad implements Serializable {
 	private String nomeapb;
 	
 	@Column(unique = true, length = 12)
-	@NotEmpty(message = "El campo documento de la entindad no puede ser vacio")
+	@NotNull(message = "El campo documento de la entindad no puede ser vacio")
 	private Long doceapb;
 	
 	@Column(nullable = false, length = 50)

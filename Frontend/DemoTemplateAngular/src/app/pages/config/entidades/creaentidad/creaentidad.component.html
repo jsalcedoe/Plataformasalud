@@ -1,16 +1,17 @@
 <div class=" content">
     <div class=" row">
-      <div class=" col-md-8">
+      <div class=" col-md-12">
         <div class=" card">
-          <div class=" card-header"><h2 class=" title">Creacion de Entidades responsables de pago</h2></div>
+          <div class=" card-header"><h1 class=" title">Creacion de Entidades responsables de pago</h1></div>
           <div class=" card-body">
-            <form>
+            <form [formGroup]="formEntidad" (ngSubmit)="creaEntidad()">
               <div class=" row">
                 <div class=" col-md-3 pr-md-1">
                   <div class=" form-group">
                     <label> Tipo de documento de la entidad </label>
-                    <select class="form-select" style="width: auto;">
-                      <option>tipo de documento</option>
+                    <select class="form-select" style="width: auto;" formControlName="tipdoceapb_fk">
+                      <option value="" disabled selected>Tipo de documento</option>
+                      <option *ngFor="let td of tipodoc" [value]="td.idtipdoc">{{td.detatipdoc}}</option>
                     </select>
                   </div>
                 </div>
@@ -22,6 +23,7 @@
                       class=" form-control"
                       placeholder="Documento"
                       type="text"
+                      formControlName="doceapb"
                     />
                   </div>
                 </div>
@@ -34,6 +36,7 @@
                       class=" form-control"
                       placeholder="Entidad"
                       type="text"
+                      formControlName="nomeapb"
                     />
                   </div>
                 </div>
@@ -44,6 +47,7 @@
                       class=" form-control"
                       placeholder="Correo electronico"
                       type="email"
+                      formControlName="emaileapb"
                     />
                   </div>
                 </div>
@@ -56,6 +60,7 @@
                       class=" form-control"
                       placeholder="Dirección"
                       type="text"
+                      formControlName="direapb"
                     />
                   </div>
                 </div>
@@ -66,6 +71,7 @@
                       class=" form-control"
                       placeholder="Contacto"
                       type="text"
+                      formControlName="contaceapb"
                     />
                   </div>
                 </div>
@@ -78,6 +84,7 @@
                       class=" form-control"
                       placeholder="Nombre de gerente"
                       type="text"
+                      formControlName="gerenteapb"
                     />
                   </div>
                 </div>
@@ -86,18 +93,20 @@
                 <div class=" col-md-3 pr-md-1">
                   <div class=" form-group">
                     <label> Tipo de entidad </label>
-                    <select class="form-select" style="width: auto;">
-                      <option>tipo de entidad</option>
+                    <P></P>
+                    <select class="form-select" style="width: auto;" formControlName="tipent">
+                      <option value="" disabled selected>Tipo de entidad</option>
+                      <option *ngFor="let te of tipoEntidad" [value]="te.idtipeapb">{{te.detipeapb}}</option>
                     </select>
                   </div>
                 </div>
            </div>
-              
+           <div class=" card-footer">
+            <button class=" btn btn-fill btn-danger" type="submit" [disabled]="formEntidad.invalid">Save</button>
+          </div>
             </form>
           </div>
-          <div class=" card-footer">
-            <button class=" btn btn-fill btn-danger" type="submit">Save</button>
-          </div>
+          
         </div>
       </div>
       

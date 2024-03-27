@@ -36,16 +36,16 @@ export class CreadxComponent implements OnInit {
   creaDx(){
     let struckDx = {
 
-      iddx:this.formdx.value.iddx,
-      nomdx:this.formdx.value.nomdx,
-      descdx:this.formdx.value.descdx,
-      sexdx:this.formdx.value.sexdx,
-      edadmindx:this.formdx.value.edadmindx,
-      edadmaxdx:this.formdx.value.edadmaxdx,
-      capdx:this.formdx.value.capdx,
-      estdx_fk:{
-        "idstatus":1
-      }
+                iddx:this.formdx.value.iddx,
+                nomdx:this.formdx.value.nomdx,
+                descdx:this.formdx.value.descdx,
+                sexdx:this.formdx.value.sexdx,
+                edadmindx:this.formdx.value.edadmindx,
+                edadmaxdx:this.formdx.value.edadmaxdx,
+                capdx:this.formdx.value.capdx,
+                estdx_fk:{
+                  "idstatus":1
+                }
 
     }
     this.service.addDx(struckDx)
@@ -64,7 +64,11 @@ export class CreadxComponent implements OnInit {
       catchError((err) => {
         // Maneja el error aquí
         console.error('Error:', err);
-        alert('Error ' + err.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error en la Operación',
+          text: err.message // Mostrar el mensaje recibido desde el backend
+        });
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();

@@ -4,13 +4,14 @@
         <div class=" card">
           <div class=" card-header"><h2 class=" title">Creacion de Usuarios</h2></div>
           <div class=" card-body">
-            <form>
+            <form [formGroup]="formuser" (ngSubmit)="creaUser()" >
               <div class=" row">
                 <div class=" col-md-3 pr-md-1">
                   <div class=" form-group">
                     <label> Tipo de documento </label>
-                    <select class="form-select" style="width: auto;">
-                      <option>tipo de documento</option>
+                    <select class="form-select" style="width: auto;" formControlName="typeiduser_fk">
+                      <option value="" disabled selected> Tipo de documento </option>
+                      <option *ngFor="let td of tipodoc" [value]="td.idtipdoc">{{td.detatipdoc}}</option>
                     </select>
                   </div>
                 </div>
@@ -22,6 +23,7 @@
                       class=" form-control"
                       placeholder="Documento"
                       type="text"
+                      formControlName="docuser"
                     />
                   </div>
                 </div>
@@ -32,6 +34,7 @@
                       class=" form-control"
                       placeholder="Nombres"
                       type="text"
+                      formControlName="firstname"
                     />
                   </div>
                 </div>
@@ -43,6 +46,7 @@
                         class=" form-control"
                         placeholder="Apellidos"
                         type="text"
+                        formControlName="lastname"
                       />
                     </div>
                   </div>
@@ -53,6 +57,7 @@
                         class=" form-control"
                         placeholder="Username"
                         type="text"
+                        formControlName="username"
                       />
                     </div>
                   </div>
@@ -64,6 +69,7 @@
                           class=" form-control"
                           placeholder="pasword"
                           type="password"
+                          formControlName="password"
                         />
                       </div>
                     </div>
@@ -74,28 +80,27 @@
                       class=" form-control"
                       placeholder="Correo electronico"
                       type="email"
+                      formControlName="emailuser"
                     />
+                  </div>
+                </div>
+                <div class=" col-md-3 pr-md-1">
+                  <div class=" form-group">
+                    <label> Cargo </label><p></p>
+                    <select class="form-select" style="width: auto;" formControlName="carguser_fk">
+                      <option value="" disabled selected>Cargo </option>
+                      <option *ngFor="let carg of cargo" [value]="carg.idcarguser">{{carg.detcarguser}}</option>
+                    </select>
                   </div>
                 </div>
               </div>
-              <div class=" row">
-                <div class=" col-md-6 pr-md-1">
-                  <div class=" form-group">
-                    <label> Cargo </label>
-                    <input
-                      class=" form-control"
-                      placeholder="Cargo"
-                      type="text"
-                    />
-                    <a routerLink="">Consulta el cargo</a>
-                  </div>
-                </div>
+              
+              <div class=" card-footer">
+                <button class=" btn btn-fill btn-danger" type="submit" [disabled]="formuser.invalid">Save</button>
               </div>
             </form>
           </div>
-          <div class=" card-footer">
-            <button class=" btn btn-fill btn-danger" type="submit">Save</button>
-          </div>
+          
         </div>
       </div>
    </div>
