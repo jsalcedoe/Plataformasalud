@@ -19,4 +19,7 @@ export class OperacionService {
     return this.http.post<any>(this.endpoint + 'pacientes',datosRegistros,{headers:this.httpheaders})
   }
 
+  getPacientesXnomOdoc():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'pacientes/buscar/${keyword}')
+  }
 }

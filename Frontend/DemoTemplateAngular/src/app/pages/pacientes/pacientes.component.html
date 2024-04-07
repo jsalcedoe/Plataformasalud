@@ -28,8 +28,6 @@
             <th>Apellidos</th>
             <th>Direccion</th>
             <th>Telefono</th>
-            <th>Acudiente</th>
-            <th>Telefono acudiente</th>
             <th>Estado</th>
             <th>Acción</th>
           </tr>
@@ -41,11 +39,9 @@
             <td>{{c.primerapepac}} {{c.segundoapepac}}</td>
             <td>{{c.direccionpac}}</td>
             <td>{{c.contactopac}}</td>
-            <td>{{c.acudientepac}}</td>
-            <td>{{c.contactoacudientepac}}</td>
+            <td>{{c.estpac_fk.detstatus}}</td>
             <td><button>editar</button></td>
-            <td><button>ir al formulario</button></td>
-          </tr>
+           </tr>
         </tbody>
       </table>
     </div>

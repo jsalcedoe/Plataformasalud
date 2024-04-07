@@ -4,7 +4,7 @@
         <div class=" card">
           <div class=" card-header"><h2 class=" title">Creacion de pacientes</h2></div>
           <div class=" card-body">
-            <form [formGroup]="formpac" (ngSubmit)="creaPaciente()">
+            <form [formGroup]="formpac" (ngSubmit)="creaPaciente()" *ngIf="ready">
             <div class=" row">
                     <div class=" col-md-3 pr-md-1">
                       <div class=" form-group">
@@ -92,7 +92,8 @@
                     class=" form-control"
                     placeholder="Segundo Apellido"
                     type="date"
-                    formControlName="fechanacpac"                    
+                    formControlName="fechanacpac"
+                    (input)="calculaedad($event.target.value)"                  
                   />            
                  
                 </div>
@@ -106,7 +107,8 @@
                     class=" form-control"
                     placeholder="Edad"
                     type="text"
-                    formControlName="edadpac"                                    
+                    value="{{edad}}"
+                    disabled = true                     
                   />
                   
                 </div>

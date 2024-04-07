@@ -58,6 +58,30 @@ public class PacienteRestController {
 	return new ResponseEntity<Paciente>(paciente, HttpStatus.OK);
 	
 }
+	
+	@GetMapping("/pacientes/buscar/{keyword}")
+    public ResponseEntity<?> buscarPorNombreODocumento(@PathVariable String keyword) {
+        List<Paciente> pacientes = null;
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            pacientes = pacserv.buscarPacientesPorNombreODocumento(keyword);
+        } catch (DataAccessException e) {
+            response.put("mensaje", "Error al realizar la consulta en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (pacientes.isEmpty()) {
+            response.put("mensaje", "No se encontraron pacientes con el nombre o documento proporcionado: " + keyword);
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<List<Paciente>>(pacientes, HttpStatus.OK);
+    }
+	
+	
+	
 	@PostMapping("/pacientes")
 	public ResponseEntity<?> crear (@Valid @RequestBody Paciente paciente, BindingResult validacion){
 		Paciente pac = null;
@@ -116,7 +140,6 @@ public class PacienteRestController {
 				pacActual.setContactoacudientepac(paciente.getContactoacudientepac());
 				pacActual.setContactopac(paciente.getContactopac());
 				pacActual.setDireccionpac(paciente.getDireccionpac());
-				pacActual.setEdadpac(paciente.getEdadpac());
 				pacActual.setEmailpac(paciente.getEmailpac());
 				pacActual.setEntidad(paciente.getEntidad());
 				pacActual.setEstadocivilpac(paciente.getEstadocivilpac());
@@ -147,5 +170,7 @@ public class PacienteRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		
 	}
+	
+	
 	
 }

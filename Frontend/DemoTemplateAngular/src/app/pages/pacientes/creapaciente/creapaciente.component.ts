@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ConfigComponent } from '../../config/config.component';
 import { ConfigService } from 'src/app/services/config.service';
 import { OperacionService } from 'src/app/services/operacion.service';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-creapaciente',
@@ -16,23 +16,21 @@ export class CreapacienteComponent implements OnInit {
   ciudad:any
   tipopac:any
   entidad:any
-  fechanacimiento:Date
-  edad:number
-  dateObj: any;
+  edad=0;
+  ready=false
 
   constructor(private service:ConfigService,
               private serviceOp:OperacionService,
               private router:Router,
               private fb:FormBuilder) {
-                this.formpac = fb.group({
+               this.formpac = fb.group({
                   numdocpac:['',[Validators.required]],
                   primernompac:['',[Validators.required]],
-                  segundonompac:['',[Validators.min(0)]],
+                  segundonompac:['',[Validators.nullValidator]],
                   primerapepac:['',[Validators.required]],
-                  segundoapepac:['',[Validators.min(0)]],
+                  segundoapepac:['',[Validators.nullValidator]],
                   sexopac:['',[Validators.required]],
-                  fechanacpac:['',[Validators.required]],
-                  edadpac:['',[Validators.required]],
+                  fechanacpac:['',[Validators.required]],                
                   estadocivilpac:['',[Validators.required]],
                   direccionpac:['',[Validators.required]],
                   emailpac:['',[Validators.required,Validators.email]],
@@ -49,49 +47,20 @@ export class CreapacienteComponent implements OnInit {
                }
 
   ngOnInit(): void {
-    this.consultatipdoc(),
-    this.consultaciudad(),
-    this.consultatipopac(),
-    this.consutalentidad(),
-
-    this.formpac.get('fechanacpac').valueChanges.subscribe(() => {
-      this.calculaEdad();
-    });
-
+    this.consultatipdoc()
+    this.consultaciudad()
+    this.consultatipopac()
+    this.consutalentidad()  
   }
-
-calculaEdad() {
-    const fechaNacimientoString = this.formpac.value.fechanacpac;
-    console.log('fecha capturada',fechaNacimientoString)
-  
-    if (fechaNacimientoString) {
-      let fechaNacimiento: Date;
-  
-      // Intenta parsear la fecha
-      fechaNacimiento = new Date(fechaNacimientoString);
-  
-      if (fechaNacimiento instanceof Date && !isNaN(fechaNacimiento.getTime())) {
-        // Calcula la edad
-        const fechaActual = new Date();
-        const edadMilisegundos = fechaActual.getTime() - fechaNacimiento.getTime();
-        const edadAños = Math.floor(edadMilisegundos / (1000 * 60 * 60 * 24 * 365.25)); // Ajuste para años bisiestos
-  
-        // Asigna la edad como un número
-        this.formpac.patchValue({
-          edadpac: edadAños
-        });
-      } else {
-        this.formpac.patchValue({
-          edadpac: null
-        });
-      }
-    } else {
-      this.formpac.patchValue({
-        edadpac: null
-      });
-    }
+  calculaedad(date:string){
+    const fechaNacimiento = new Date(date);
+    const ahora = new Date();
+    const edadMilisegundos = ahora.getTime() - fechaNacimiento.getTime();
+    const edadAños = Math.floor(edadMilisegundos / (1000 * 60 * 60 * 24 * 365.25));
+    this.edad=edadAños
+    console.log('Edad:', this.edad);
+    
   }
-
   consultatipdoc(){
     this.service.getTipoDocumentos()
     .pipe(
@@ -153,7 +122,7 @@ consutalentidad(){
         // Maneja la respuesta exitosa aquí
         console.log('Consulta entidadeas', res);
         this.entidad = res;
-        
+        this.ready=true
       }),
       catchError((err) => {
         // Maneja el error aquí
@@ -165,6 +134,36 @@ consutalentidad(){
   }
 
 creaPaciente(){
+
+  const tipoDocumento = this.formpac.value.typdocpac;
+  const edadPaciente = this.edad;
+  const numDocumento = this.formpac.value.numdocpac;
+  console.log('cantidad de digitos capturados',numDocumento.length)
+  if ((tipoDocumento == 1 && edadPaciente < 18) || (tipoDocumento == 3 || tipoDocumento ==4 && edadPaciente > 18) ){
+    
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'No se puede crear el paciente. El tipo de document y edad no corresponden.',
+    });
+    return; 
+  } 
+
+  if((tipoDocumento == 1) && (numDocumento.length < 7 || numDocumento.length > 10))
+    {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: `La longitud del número de documento no es válida para el tipo de documento seleccionado (${tipoDocumento}).`,
+      });
+      return;
+    }
+    
+  
+  
+  
+  
+
     let strucPaciente = {
 
       numdocpac:this.formpac.value.numdocpac,
@@ -174,7 +173,6 @@ creaPaciente(){
       segundoapepac:this.formpac.value.segundoapepac,
       sexopac:this.formpac.value.sexopac,
       fechanacpac:this.formpac.value.fechanacpac,
-      edadpac:this.formpac.value.edadpac,
       estadocivilpac: this.formpac.value.estadocivilpac,
       direccionpac:this.formpac.value.direccionpac,
       emailpac:this.formpac.value.emailpac,
@@ -200,12 +198,20 @@ creaPaciente(){
       }
 
     }
+
+    
+
     this.serviceOp.addPacientes(strucPaciente)
     .pipe(
       tap((res) => {
         // Maneja la respuesta exitosa aquí
         console.log('PACIENTES', res);
-        return this.router.navigate(['eventos']);
+        Swal.fire({
+          icon: 'success',
+          title: 'Operación exitosa',
+          text: res.mensaje // Mostrar el mensaje recibido desde el backend
+        });
+        return this.router.navigate(['pacientes']);
         
       }),
       catchError((err) => {
@@ -218,8 +224,6 @@ creaPaciente(){
 
   }
 
-ircreaevento(){
-    this.router.navigate(['eventos'])
-  }
+
 
 }

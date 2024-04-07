@@ -14,6 +14,8 @@ public interface ipacienteservice {
 	
 	public Paciente save (Paciente paciente);
 	
+	public List<Paciente> buscarPacientesPorNombreODocumento(String keyword);
+	
 
 	
 }

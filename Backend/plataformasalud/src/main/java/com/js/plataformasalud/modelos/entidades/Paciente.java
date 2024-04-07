@@ -59,16 +59,15 @@ public class Paciente implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private LocalDate fechanacpac;
 	
+		
 	@Temporal(TemporalType.DATE)
 	private Date fechacreacionpac;
 	
 	@PrePersist
-	private void persistencia() {
+	public void persistencia(){
 		fechacreacionpac = new Date();
-		}
-	@Column (length = 3 )
-	private Long edadpac;
-	
+	}
+		
 	@Column (nullable = false)
 	@NotEmpty(message = "El campo estado civil no puede ser vacio, por favor seleccione el estado civil")
 	private String estadocivilpac;

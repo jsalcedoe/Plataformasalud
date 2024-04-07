@@ -5,7 +5,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +30,20 @@ public class Evento implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idevent;
+	
+	@Column(nullable = false)
+	private Long conseventpac;
+	
+	/*
+	 * Lo que buscamos con este atributo es identificar mas detalladamente el evento, es decir
+	 * CONSULTA
+	 * PROCEDIMIENTO
+	 * CONTROL
+	 * Entre otros
+	 * */
+	
+	@Column(nullable = false)
+	private String detevent;
 	
 	@Temporal(TemporalType.DATE)
 	private Date fechainievent;

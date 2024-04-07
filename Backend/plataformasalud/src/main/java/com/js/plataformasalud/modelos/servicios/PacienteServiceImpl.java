@@ -37,6 +37,13 @@ public class PacienteServiceImpl implements ipacienteservice {// en esta clase s
 	public Paciente save(Paciente paciente) {
 		return pacientedao.save(paciente);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Paciente> buscarPacientesPorNombreODocumento(String keyword) {
+		
+		return pacientedao.buscarPorNombreODocumento(keyword); 
+	}
 	
 		
 	
