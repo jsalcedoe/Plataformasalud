@@ -19,6 +19,50 @@ export class PacientesComponent implements OnInit {
     this.getPacientes();
   }
 
+  redirigir(destino:String){
+    console.log('valor que viene del html',destino)
+    switch (destino){
+      case "1":
+        this.router.navigate(['citas']);
+        console.log('1. ir a citas',destino)
+        break;
+      case "2":
+        this.router.navigate(['eventos',this.pac]);
+        console.log('2. ir a eventos',destino)
+        break;
+      case "3":
+        this.router.navigate(['medico']);
+        console.log('3. ir a medico',destino)
+        break;
+      case "4":
+        this.router.navigate(['historiaclinica']);
+        console.log('4. ir a hc',destino)
+        break;  
+      case "5":
+        this.router.navigate(['evolucionmedica']);
+        console.log('5. ir a evolucion medica',destino)
+        break;
+      case "6":
+        this.router.navigate(['descripcionquirurgica']);
+        console.log('6. ir a descripcion',destino)
+        break;
+      case "7":
+        this.router.navigate(['asistencial']);
+        console.log('7. ir a asistencial',destino)
+        break;
+      case "8":
+        this.router.navigate(['evolucionenfermeria']);
+        console.log('8. ir a evolucion enfermeria',destino)
+        break;
+      case "9":
+        this.router.navigate(['registrosignosvitales']);
+        console.log('9. ir a signos vitales',destino) 
+        break;
+
+    }
+    console.log('selecciono:',destino)
+  }
+
   getPacientes(){
     this.servicio.getPacientes().pipe(
       tap((res) => {

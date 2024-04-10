@@ -73,6 +73,7 @@ import { DiagnosticosatencionComponent } from "src/app/pages/medico/diagnosticos
 import { ProcedimientosComponent } from "src/app/pages/medico/procedimientos/procedimientos.component";
 import { CreaequipoqxComponent } from "src/app/pages/medico/creaequipoqx/creaequipoqx.component";
 import { CreapacienteComponent } from "src/app/pages/pacientes/creapaciente/creapaciente.component";
+import { CreaeventosComponent } from "src/app/pages/eventos/creaeventos/creaeventos.component";
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
@@ -149,7 +150,8 @@ export const AdminLayoutRoutes: Routes = [
   { path:'diagnosticosatencion',component:DiagnosticosatencionComponent},
   { path:'procedimientos',component:ProcedimientosComponent},
   { path:'creaequipoqx',component:CreaequipoqxComponent},
-  { path:'creapaciente',component:CreapacienteComponent}
+  { path:'creapaciente',component:CreapacienteComponent},
+  { path:'creaeventos/:idpac',component:CreaeventosComponent}
 
   // { path: "rtl", component: RtlComponent }
 ];

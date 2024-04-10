@@ -61,6 +61,9 @@ export class CreapacienteComponent implements OnInit {
     console.log('Edad:', this.edad);
     
   }
+
+  
+
   consultatipdoc(){
     this.service.getTipoDocumentos()
     .pipe(
@@ -159,11 +162,6 @@ creaPaciente(){
       return;
     }
     
-  
-  
-  
-  
-
     let strucPaciente = {
 
       numdocpac:this.formpac.value.numdocpac,
@@ -198,9 +196,6 @@ creaPaciente(){
       }
 
     }
-
-    
-
     this.serviceOp.addPacientes(strucPaciente)
     .pipe(
       tap((res) => {

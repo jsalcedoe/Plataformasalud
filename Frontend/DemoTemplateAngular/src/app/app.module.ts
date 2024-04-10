@@ -80,6 +80,7 @@ import { ProcedimientosComponent } from './pages/medico/procedimientos/procedimi
 import { DiagnosticosatencionComponent } from './pages/medico/diagnosticosatencion/diagnosticosatencion.component';
 import { CreaequipoqxComponent } from './pages/medico/creaequipoqx/creaequipoqx.component';
 import { CreapacienteComponent } from './pages/pacientes/creapaciente/creapaciente.component';
+import { CreaeventosComponent } from './pages/eventos/creaeventos/creaeventos.component';
 //import { from } from "rxjs";
 
 
@@ -167,6 +168,7 @@ import { CreapacienteComponent } from './pages/pacientes/creapaciente/creapacien
     DiagnosticosatencionComponent,
     CreaequipoqxComponent,
     CreapacienteComponent,
+    CreaeventosComponent,
     ],
   providers: [],
   bootstrap: [AppComponent]

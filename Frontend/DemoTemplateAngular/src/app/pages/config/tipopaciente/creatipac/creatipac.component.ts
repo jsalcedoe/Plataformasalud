@@ -26,6 +26,12 @@ export class CreatipacComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /* 
+  COTIZANTE 
+  BENEFICIARIO
+  NO AFILIADO
+  */
+
   creaTipoPac(){
     let structTipoPac = {
       nomtipac:this.formTipoPac.value.nomtipac,

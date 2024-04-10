@@ -40,7 +40,18 @@
             <td>{{c.direccionpac}}</td>
             <td>{{c.contactopac}}</td>
             <td>{{c.estpac_fk.detstatus}}</td>
-            <td><button>editar</button></td>
+            <td><select class="form-select" style="width: auto;" (change)="redirigir($event.target.value)">
+              <option value="" disabled selected>Seleccione el destino</option>
+              <option value = "1"  >IR CITAS</option>
+              <option value = "2" >IR EVENTOS</option>
+              <option value = "3" >IR MODULO MEDICO</option>
+              <option value = "4" >HISTORIA CLINICA</option>
+              <option value = "5" >EVOLUCION MEDICA</option>
+              <option value = "6" >DESCRIPCION QUIRURGICA</option>
+              <option value = "7" >IR MODULO ENFERMERIA</option>
+              <option value = "8" >EVOLUCION DE ENFERMERIA</option>
+              <option value = "9" >REGISTRO DE SIGNOS VITALES</option>
+          </select></td>
            </tr>
         </tbody>
       </table>

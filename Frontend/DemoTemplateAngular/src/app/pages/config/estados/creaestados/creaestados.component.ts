@@ -27,7 +27,12 @@ export class CreaestadosComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  /* EL ORDEN DE INGRESO DE LOS ESTADOS ES:
+  1. CREADO
+  2. ACTIVO
+  3. EDITADO
+  4. INACTIVO
+   */
   insertstatus(){
     
     let structstatus={

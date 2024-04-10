@@ -25,8 +25,8 @@ export const ROUTES: RouteInfo[] = [
   },
 
   {
-    path:"/eventos",
-    title: "Eventos Pacientes",
+    path:"/creaeventos",
+    title: "Asignación de eventos",
     rtlTitle:"",
     icon:"icon-settings-gear-63",
     class: ""

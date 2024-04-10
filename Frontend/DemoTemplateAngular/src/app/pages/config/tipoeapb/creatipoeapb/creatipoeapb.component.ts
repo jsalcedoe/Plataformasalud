@@ -24,6 +24,12 @@ export class CreatipoeapbComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  /*
+  CONTRIBUTIVO
+  SUBSIDIADO
+  REGIMEN ESPECIAL
+  PARTICULAR
+  */ 
 
   creaTipoEAPB(){
     let structTipoEAPB = {

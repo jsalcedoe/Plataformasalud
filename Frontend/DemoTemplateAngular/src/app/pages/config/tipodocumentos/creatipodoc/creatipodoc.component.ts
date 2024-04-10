@@ -24,7 +24,17 @@ export class CreatipodocComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  /* 
+  1.'CEDULA DE CIUDADANIA'
+  2.'NUMERO DE IDENTIFICACION TRIBUTARIA'
+  3.'REGISTRO CIVIL'
+  4.'TARJETA DE IDENTIDAD'
+  5.'PERMISO DE PERMANENCIA TEMPORAL'
+  6.'CEDULA DE EXTRANJERIA'
+  7.'PASAPORTE'
+  8.'PERMISO ESPECIAL DE PERMANENCIA'
 
+  */
   creaTipoDoc(){
     let struckTipoDoc = {
       tipdoc:this.formTipoDoc.value.tipdoc,
