@@ -4,14 +4,14 @@
       <div class=" card">
         <div class=" card-header"><h2 class=" title">Creacion de Camas</h2></div>
         <div class=" card-body">
-          <form [formGroup]="formcamas" (ngSubmit)="creaCamas()">
+          <form [formGroup]="formcamas">
             <div class=" row">
               <div class=" col-md-3 pr-md-1">
                 <div class=" form-group">
                   <label> Cama </label>
                   <input
                     class=" form-control"
-                    placeholder="Digita la cama "
+                    placeholder=""
                     type="text"
                     formControlName="nomhab"
                   />
@@ -22,7 +22,7 @@
                   <label> Detalle de cama </label>
                   <input
                     class=" form-control"
-                    placeholder="Detalle de cama"
+                    placeholder=""
                     type="text"
                     formControlName="dethab"
                   />
@@ -31,7 +31,7 @@
               <div class=" col-md-3 pr-md-1">
                 <div class=" form-group">
                   <label> Ubicacion </label>
-                  <select class="form-select" style="width: auto;" formControlName="ubicahab">
+                  <select class="form-select" style="width: auto;" formControlName="ubicahab" [compareWith]="compareUbicaciones">
                     <option value="" disabled selected>Seleccione la ubicacion</option>
                     <option *ngFor="let ubica of buscaubica"[value]="ubica.idubica">{{ubica.detubica}}</option>
                   </select>
@@ -41,12 +41,11 @@
               
             </div>
             <div class=" card-footer">
-              <button class=" btn btn-fill btn-danger" type="submit" [disabled]="formcamas.invalid">Save</button>
+              <button class=" btn btn-fill btn-danger" type="submit" (click)="creaCamas()" *ngIf="!camaID else label" [disabled]="formcamas.invalid">Save</button>
+              <ng-template #label>
+                <button class=" btn btn-fill btn-danger" type="submit" (click)="guardarCambios()" [disabled]="formcamas.invalid">Update</button>  
+              </ng-template>
             </div>
-
-            
-            
-            
           </form>
         </div>
         

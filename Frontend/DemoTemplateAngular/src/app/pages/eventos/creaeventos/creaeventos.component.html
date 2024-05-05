@@ -9,28 +9,39 @@
                     <input class="form-control me-2" type="text" placeholder="Digita el paciente a consultar">
                     <button class="btn btn-primary" type="button">Search</button>
                   </form>
-                   <form>
+                   <form [formGroup]="formEvent" (ngSubmit)="creaEvento()" >
                         <div class=" card-header col-md-12"><h3 class=" title">Datos del paciente</h3></div>
                         <div class=" row">
-                          <div class=" col-md-4 pr-md-1">
+                          <div class=" col-md-3 pr-md-1">
+                            <div class=" form-group">
+                              <label> Id Paciente </label>
+                              <input
+                                class=" form-control"
+                                type="text"
+                                formControlName="idpac"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                          <div class=" col-md-3 pr-md-1">
                            <div class=" form-group">
                              <label> Documento </label>
                              <input
                                class=" form-control"
                                type="text"
-                               disabled="true"
-                               value=""
+                               formControlName="numdocpac"
+                               
+                               disabled
                              />
                            </div>
                          </div>
            
-                         <div class=" col-md-4 pr-md-1">
+                         <div class=" col-md-3 pr-md-1">
                            <div class=" form-group">
                              <label> Evento </label>
                              <input
                                class=" form-control"
                                type="text"
-                               disabled="true"
                                formControlName="conseventpac"
                              />
                            </div>
@@ -55,7 +66,9 @@
                             <input
                               class=" form-control"
                               type="text"
-                              disabled="true"
+                              formControlName="primernompac"
+                              
+                              disabled
                             />
                           </div>
                         </div>
@@ -64,9 +77,11 @@
                             <label> Segundo Nombre </label>
                             <input
                               class=" form-control"
-                              disabled="true"
                               type="text"
-                            />
+                              formControlName="segundonompac"
+                              
+                              disabled
+                              />
                           </div>
                         </div>
                         <div class=" col-md-3 pr-md-1">
@@ -74,8 +89,10 @@
                             <label> Primer Apellido </label>
                             <input
                               class=" form-control"
-                              disabled="true"
                               type="text"
+                              formControlName="primerapepac"
+                              
+                              disabled
                             />
                           </div>
                         </div>
@@ -84,8 +101,10 @@
                             <label> Segundo Apellido </label>
                             <input
                               class=" form-control"
-                              disabled="true"
                               type="text"
+                              formControlName="segundoapepac"
+                              
+                              disabled
                             />
                           </div>
                         </div>

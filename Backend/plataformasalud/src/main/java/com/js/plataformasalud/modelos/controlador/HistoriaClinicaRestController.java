@@ -114,6 +114,7 @@ public class HistoriaClinicaRestController {
 			hcpacAct.setAntfarmhcpac(hcpac.getAntfarmhcpac());
 			hcpacAct.setAntpathcpac(hcpac.getAntpathcpac());
 			hcpacAct.setAntqxhcpac(hcpac.getAntqxhcpac());
+			hcpacAct.setAnttxhcpac(hcpac.getAnttxhcpac());
 			//hcpacAct.setAnttoxihcpac(hcpac.getAnttoxihcpac());
 			hcpacAct.setDatecreathcpac(hcpac.getDatecreathcpac());
 			hcpacAct.setDatedithcpac(hcpac.getDatedithcpac());
@@ -122,7 +123,6 @@ public class HistoriaClinicaRestController {
 			hcpacAct.setEsthcpac_fk(hcpac.getEsthcpac_fk());
 			hcpacAct.setFchcpac(hcpac.getFchcpac());
 			hcpacAct.setFrhcpac(hcpac.getFrhcpac());
-			hcpacAct.setImchcpac(hcpac.getImchcpac());
 			hcpacAct.setMedico(hcpac.getMedico());
 			hcpacAct.setMotconshcpac(hcpac.getMotconshcpac());
 			hcpacAct.setObjhcpac(hcpac.getObjhcpac());

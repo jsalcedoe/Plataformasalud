@@ -59,6 +59,13 @@ public class EventoRestController {
 		return new ResponseEntity<Evento>(event, HttpStatus.OK);
 	}
 	
+	/*@GetMapping("/eventos/contar/{numDocPac}")
+    public ResponseEntity<Integer> contarEventosPorNumDocPac(@PathVariable String numDocPac) {
+        int count = eventserv.countEventosByNumDocPac(numDocPac);
+        return new ResponseEntity<>(count, HttpStatus.OK);
+    }*/
+
+	
 	@PostMapping("/evento")
 	public ResponseEntity<?> save (@Valid @RequestBody Evento event, BindingResult result) {
 		Evento Newevent = null;

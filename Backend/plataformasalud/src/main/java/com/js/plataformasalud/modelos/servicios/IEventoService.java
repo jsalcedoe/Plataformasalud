@@ -1,8 +1,10 @@
 package com.js.plataformasalud.modelos.servicios;
 
 import java.util.List;
+ 
 
 import com.js.plataformasalud.modelos.entidades.Evento;
+
 
 public interface IEventoService {
 	
@@ -11,5 +13,7 @@ public interface IEventoService {
 	public Evento findById(Long idevent);
 	
 	public Evento save (Evento event);
+	
+	//public int countEventosByNumDocPac(String numDocPac);
 
 }

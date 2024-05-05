@@ -16,16 +16,12 @@ export class OperacionService {
     return this.http.get<any[]>(this.endpoint+'pacientes')
   }
 
-  getPacientesId():Observable<any[]>{
-    return this.http.get<any[]>(this.endpoint+'pacientes/{idpac}')
+  getPacientesId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'pacientes/'+id)
   }
 
   getPacientesXnomOdoc():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'pacientes/buscar/${keyword}')
-  }
-
-  getEventos():Observable<any[]>{
-    return this.http.get<any[]>(this.endpoint+'evento')
   }
 
   addPacientes(datosRegistros:any):Observable<any>{
@@ -35,6 +31,17 @@ export class OperacionService {
   addEventos(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'evento',datosRegistros,{headers:this.httpheaders})
   }
+  getEventos():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'evento')
+  }
+  addHcpac(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'historiaclinica',datosRegistros,{headers:this.httpheaders})
+  }
+  getHc():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'historiaclinica')
+  }
+
+  
 
   
 }

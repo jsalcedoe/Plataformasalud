@@ -33,12 +33,20 @@ export const ROUTES: RouteInfo[] = [
   },
 
   {
+    path:"/eventos",
+    title: "Eventos",
+    rtlTitle:"",
+    icon:"icon-settings-gear-63",
+    class: ""
+  },
+
+  /*{
     path: "/medico",
     title: "Modulo Medico",
     rtlTitle: "لوحة القيادة",
     icon: "icon-chart-pie-36",
     class: ""
-  },
+  },*/
   {
     path: "/historiaclinica",
     title: "Historia Clinica",

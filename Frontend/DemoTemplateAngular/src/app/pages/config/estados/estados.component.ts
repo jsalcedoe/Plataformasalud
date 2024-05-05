@@ -44,4 +44,8 @@ export class EstadosComponent implements OnInit {
 
   }
 
+  editarEstados(idstatus:number){
+    this.route.navigate(['creaestados', { idstatus: idstatus }]);
+  }
+
 }

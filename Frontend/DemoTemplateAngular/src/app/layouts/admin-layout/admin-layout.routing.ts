@@ -74,6 +74,7 @@ import { ProcedimientosComponent } from "src/app/pages/medico/procedimientos/pro
 import { CreaequipoqxComponent } from "src/app/pages/medico/creaequipoqx/creaequipoqx.component";
 import { CreapacienteComponent } from "src/app/pages/pacientes/creapaciente/creapaciente.component";
 import { CreaeventosComponent } from "src/app/pages/eventos/creaeventos/creaeventos.component";
+import { CreahistoriaclinicaComponent } from "src/app/pages/medico/historiaclinica/creahistoriaclinica/creahistoriaclinica.component";
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
@@ -118,10 +119,12 @@ export const AdminLayoutRoutes: Routes = [
   { path:'usuarios',component:UsuariosComponent},
   { path:'creadep',component:CreadepComponent},
   { path:'creacamas',component:CreacamasComponent},
+  { path:'creacamas/:idhab',component:CreacamasComponent},
   { path:'creacargos',component:CreacargosComponent},
   { path:'creaciudad',component:CreaciudadComponent},
   { path:'creadx',component:CreadxComponent},
   { path:'creaentidad',component:CreaentidadComponent},
+  { path:'creaestados/:idstatus',component:CreaestadosComponent},
   { path:'creaestados',component:CreaestadosComponent},
   { path:'creaorigdes',component:CreaorigdesComponent},
   { path:'creapermisorol',component:CreapermisorolComponent},
@@ -144,6 +147,7 @@ export const AdminLayoutRoutes: Routes = [
   { path:'evolucionenfermeria',component:EvolucionenfermeriaComponent},
   { path:'registrosignosvitales',component:RegistrosignosvitalesComponent},
   { path:'historiaclinica',component:HistoriaclinicaComponent},
+  { path:'creahistoriaclinica',component:CreahistoriaclinicaComponent},
   { path:'eventos',component:EventosComponent},
   { path:'evolucionmedica',component:EvolucionmedicaComponent},
   { path:'descripcionquirurgica',component:DescripcionquirurgicaComponent},
@@ -153,5 +157,7 @@ export const AdminLayoutRoutes: Routes = [
   { path:'creapaciente',component:CreapacienteComponent},
   { path:'creaeventos/:idpac',component:CreaeventosComponent}
 
+
+  //{ path:'creaestados/:idstatus',component:CreaestadosComponent},
   // { path: "rtl", component: RtlComponent }
 ];

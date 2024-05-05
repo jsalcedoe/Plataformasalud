@@ -25,6 +25,7 @@
         <tr>
           <th>Item</th>
           <th>Estado</th>
+          <th>Detalle Estado/th>
           <th>Fecha Creacion</th>
         </tr>
       </thead>
@@ -32,8 +33,10 @@
         <tr *ngFor="let c of estados, let i =index">
           <td>{{i+1}}</td>
           <td>{{c.nomstatus}}</td>
+          <td>{{c.detstatus}}</td>
           <td>{{c.datecreatstatus}}</td>
-          <td><button>editar</button></td>
+
+          <td><button class="btn-primary btn-dark" (click)="editarEstados(c.idstatus)">editar</button></td>
         </tr>
       </tbody>
     </table>

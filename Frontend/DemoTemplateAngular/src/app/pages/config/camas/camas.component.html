@@ -17,7 +17,7 @@
     <h2>Listado de camas creadas</h2>
     <h1 *ngIf="!ready">Cargando...</h1>            
     <form class="d-flex">
-      <button class="btn btn-primary" type="button" (click)="irCreacamas()"  >Crear Camas</button>    
+      <button class="btn btn-primary" type="button" (click)="irCreacamas()"  >Crear Camas</button>     
     </form>  
     <table class="table table-dark table-hover" id="" *ngIf="ready" >
       <!--<table class="table-success">-->
@@ -39,7 +39,7 @@
           <td>{{c.fechacreahab}}</td>
           <td>{{c.ubicahab.detubica}}</td>
           <td>{{c.esthab_fk.nomstatus}}</td>
-          <td><button>editar</button></td>
+          <td><button class="btn-primary btn-dark" (click)="editarCama(c.idhab)">Editar</button></td>
 
         </tr>
       </tbody>

@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -43,6 +44,7 @@ public class Camas implements Serializable{
 	private Date fechacreahab;
 	
 	@PrePersist
+	@PreUpdate
 	public void datecreahab() {
 		fechacreahab = new Date ();
 	}

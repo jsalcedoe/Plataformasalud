@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -14,14 +14,14 @@ export class CamasComponent implements OnInit {
   ready:boolean=false
 
 
-  constructor(private service:ConfigService,private route:Router) { }
+  constructor(private service:ConfigService,
+    private route:Router) { }
 
   ngOnInit(): void {
-
-    this.getCamas()
+    this.getCamas()  
+  }
 
   
-  }
 
   getCamas(){
     this.service.getCamas().pipe(
@@ -45,4 +45,13 @@ export class CamasComponent implements OnInit {
 
   }
 
+  editarCama(idhab: number){
+    this.route.navigate(['creacamas', idhab]);
+
+  }
+
+  
+  
+  
+ 
 }

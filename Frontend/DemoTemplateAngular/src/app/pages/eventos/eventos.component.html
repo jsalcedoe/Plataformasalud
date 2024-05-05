@@ -10,6 +10,52 @@
             <input class="form-control me-2" type="text" placeholder="Digita el paciente a consultar">
             <button class="btn btn-primary" type="button">Search</button>
           </form>
+
+          <div class="container col-md-12 mt-3">
+            <h2>Listado de eventos asignados</h2>
+            <h1 *ngIf="!ready">Cargando...</h1> 
+            <form class="d-flex">
+              <button class="btn btn-primary" type="button" (click)="irCreaEvento()">Asigna Eventos</button>    
+            </form> 
+
+            <table class="table table-dark table-hover" >
+              <!--<table class="table-success">-->
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Evento</th>
+                  <th>Documento</th>
+                  <th>Nombres</th>
+                  <th>Apellidos</th>
+                  <th>Entidad</th>
+                  <th>Estado</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let c of event, let i =index">
+                  <td>{{i+1}}</td> 
+                  <td>{{c.conseventpac}}</td>
+                  <td>{{c.pacevent_fk.numdocpac}}</td>
+                  <td>{{c.pacevent_fk.primernompac}} {{c.pacevent_fk.segundonompac}}</td>
+                  <td>{{c.pacevent_fk.primerapepac}} {{c.pacevent_fk.segundoapepac}}</td>
+                  <td>{{c.pacevent_fk.entidad.nomeapb}} </td>
+                  <td>{{c.estevent_fk.detstatus}} </td>
+                  <td><select class="form-select" style="width: auto;" (change)="redirigir($event.target.value, c)">
+                    <option value="" disabled selected>Seleccione el destino</option>
+                    <hr><hr>
+                    <option value = "1"  >IR CITAS</option>
+                    <option value = "2" >HISTORIA CLINICA</option>
+                    <option value = "3" >EVOLUCION MEDICA</option>
+                    <option value = "4" >DESCRIPCION QUIRURGICA</option>
+                    <option value = "5" >EVOLUCION DE ENFERMERIA</option>
+                    <option value = "6" >REGISTRO DE SIGNOS VITALES</option>
+                </select></td>
+                  
+                 </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         
       </div>

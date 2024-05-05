@@ -1,7 +1,6 @@
-crear datos del responsable del paciente
+crear datos del responsable del paciente ok
 
-en el formulario de historia clinica
-crear antecedentes traumaticos
+en el formulario de historia clinica crear antecedentes traumaticos ok
 
 cambiar el textbox por textarea en hc
 

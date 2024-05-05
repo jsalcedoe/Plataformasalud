@@ -12,11 +12,25 @@ export class ConfigService {
   private endpoint: String ='http://localhost:8080/api/';
   private httpheaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-  /* metodos Get del service para cada uno de las tablas del config */
-
+  // CRUD CAMAS
+  //----------------------------------------------------------------------------
   getCamas():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'camas')
   }
+
+  getCamasByIdHab(idhab: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}camas/${idhab}`);
+  }
+
+  addCamas(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'camas',datosRegistros,{headers:this.httpheaders})
+  }
+  editCamas(idhab: number, datosRegistros: any): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}camas/${idhab}`, datosRegistros, { headers: this.httpheaders });
+  }
+
+//----------------------------------------------------------------------------------
+ 
 
   getCargos():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'cargos')
@@ -37,10 +51,24 @@ export class ConfigService {
   getEntidades():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'entidades')
   }
-
+// CRUD ESTADOS
+//----------------------------------------------------------------------------------------------
   getEstados():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'estados')
   }
+
+  addStatus(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'estados',datosRegistros,{headers:this.httpheaders})
+  }
+
+  getEstadosById(idstatus: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}estados/${idstatus}`);
+  }
+
+  editEstados(idstatus: number, datosRegistros: any): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}estados/${idstatus}`, datosRegistros, { headers: this.httpheaders });
+  }
+  //-----------------------------------------------------------------------------------------------
 
   getOrigendestino():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'origendestino')
@@ -114,19 +142,13 @@ export class ConfigService {
     return this.http.get<any[]>(this.endpoint + 'usuarios')
   }
 
-//metodos post para insertar registros
+
 
   insertarRegistro(datosRegistros: any): Observable<any> {
     return this.http.post<any>(this.endpoint + 'departamentos', datosRegistros,{headers:this.httpheaders})
 
   }
-  addStatus(datosRegistros:any):Observable<any>{
-    return this.http.post<any>(this.endpoint + 'estados',datosRegistros,{headers:this.httpheaders})
-  }
-
-  addCamas(datosRegistros:any):Observable<any>{
-    return this.http.post<any>(this.endpoint + 'camas',datosRegistros,{headers:this.httpheaders})
-  }
+  
   addCargos(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'cargos',datosRegistros,{headers:this.httpheaders})
   }
