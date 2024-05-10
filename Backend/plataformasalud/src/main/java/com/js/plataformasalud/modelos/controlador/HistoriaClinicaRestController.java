@@ -80,7 +80,7 @@ public class HistoriaClinicaRestController {
 			
 		}
 		response.put("mensaje", "La historia clinica ha sido creada con éxito!");
-		response.put("cargo", Newhcpac);
+		response.put("Historia Clinica", Newhcpac);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	

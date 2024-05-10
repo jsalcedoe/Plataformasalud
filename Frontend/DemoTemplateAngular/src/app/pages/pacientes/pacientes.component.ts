@@ -22,8 +22,19 @@ export class PacientesComponent implements OnInit {
     this.getPacientes();
   }
   redirigir2(destino:string, paciente:any){
-    this.router.navigateByUrl(`/creaeventos/${paciente.idpac}`)
-    console.log('valor que pasa desde el componente paciente',paciente)
+    switch(destino){
+      case "1": 
+      this.router.navigateByUrl(`/creaeventos/${paciente.idpac}`)
+      console.log('valor que pasa desde el componente paciente',paciente)
+      break;
+
+      case "2": 
+      this.router.navigateByUrl(`/creaeventos/${paciente.idpac}`)
+      console.log('valor que pasa desde el componente paciente',paciente)
+      break;
+
+    }
+    
   }
   getPacientes(){
     this.servicio.getPacientes().pipe(

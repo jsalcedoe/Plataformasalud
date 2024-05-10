@@ -24,7 +24,9 @@ import lombok.Setter;
  * nota aclaratoria
  * nota adicional
  * nota de registro de examenes
- * nota de efermeria*/
+ * nota de efermeria
+ * historia clinica
+ * descripcion quirurgica*/
 
 @Getter
 @Setter

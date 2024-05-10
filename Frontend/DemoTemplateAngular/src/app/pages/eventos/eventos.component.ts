@@ -15,47 +15,14 @@ export class EventosComponent implements OnInit {
 
   constructor(private router:Router,
               private servicio:OperacionService,
-              private datoscompartidos: ComparteinfService
+              
   ) { }
 
   ngOnInit(): void {
     this.consultaeventos();
   }
 
-  /*redirigir(destino:String, event:any){
-    console.log('valor que viene del html',destino)
-    // Llama a la función para seleccionar el paciente y guardar sus detalles en el servicio
-    this.seleccionarevento(event);
-    switch (destino){
-      case "1":
-        this.router.navigate(['citas']);
-        console.log('1. ir a citas',destino)
-        break;
-      case "2":
-        this.router.navigate(['creahistoriaclinica'], { state: { eventInfo: event } });
-        console.log('2. ir a hc',destino)
-        break;  
-      case "3":
-        this.router.navigate(['evolucionmedica']);
-        console.log('3. ir a evolucion medica',destino)
-        break;
-      case "4":
-        this.router.navigate(['descripcionquirurgica']);
-        console.log('4. ir a descripcion',destino)
-        break;
-      case "5":
-        this.router.navigate(['evolucionenfermeria']);
-        console.log('5. ir a evolucion enfermeria',destino)
-        break;
-      case "6":
-        this.router.navigate(['registrosignosvitales']);
-        console.log('6. ir a signos vitales',destino) 
-        break;
-
-    }
-    console.log('selecciono:',destino)
-  }*/
-
+  
   consultaeventos(){
     this.servicio.getEventos().pipe(
       tap((res) => {
@@ -73,9 +40,21 @@ export class EventosComponent implements OnInit {
     ).subscribe();
   }
 
-  /*seleccionarevento(event:any){
-      this.datoscompartidos.setEventSeleccionado(event)
-  }*/
+  redirigir(destino:string, evento:any){
+    switch(destino){
+      case "1": 
+      this.router.navigateByUrl(`/creaeventos/${evento.idevent}`)
+      console.log('valor que pasa desde el componente paciente',evento)
+      break;
+
+      case "2": 
+      this.router.navigateByUrl(`/creahistoriaclinica/${evento.idevent}`)
+      console.log('valor que pasa desde el componente eventos',evento)
+      break;
+
+    }
+    
+  }
 
   irCreaEvento(){
     this.router.navigate(['creaeventos'])

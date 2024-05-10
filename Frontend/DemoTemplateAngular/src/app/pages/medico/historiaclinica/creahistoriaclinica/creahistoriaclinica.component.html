@@ -38,6 +38,18 @@
                          />
                        </div>
                      </div>
+
+                     <div class=" col-md-4 pr-md-1">
+                      <div class=" form-group">
+                        <label> identificador del evento </label>
+                        <input
+                          class=" form-control"
+                          type="text"
+                          disabled="true"
+                          formControlName="idevent"
+                        />
+                      </div>
+                    </div>
                      
                     </div>
                      <div class="row">
@@ -90,12 +102,13 @@
                         <div class="row">
                           <div class=" col-md-3 pr-md-1">
                             <div class=" form-group">
-                              <label> Estatura en metros </label>
+                              <label> Estatura en centimetros </label>
                               <input
                                 class=" form-control"
                                 type="text"
                                 placeholder="Estatura"
                                 formControlName="estaturahcpac"
+                                (keyup)="calculaIMC()"
                               />
                             </div>
                           </div>
@@ -107,6 +120,7 @@
                                 placeholder="Peso"
                                 type="text"
                                 formControlName="pesohcpac"
+                                (keyup)="calculaIMC()"
                               />
                             </div>
                           </div>
@@ -116,8 +130,8 @@
                               <input
                                 class=" form-control"
                                 type="text"
-                                disabled="true"
-                                value="{{imchcpac}}"
+                                
+                                [value]="imchcpac"
                               />
                             </div>
                           </div>

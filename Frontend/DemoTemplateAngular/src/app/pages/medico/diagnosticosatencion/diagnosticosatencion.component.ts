@@ -5,8 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './diagnosticosatencion.component.html'
 })
 export class DiagnosticosatencionComponent implements OnInit {
-  ready:boolean=false
-  dxate:any;
+  
 
   constructor() { }
 

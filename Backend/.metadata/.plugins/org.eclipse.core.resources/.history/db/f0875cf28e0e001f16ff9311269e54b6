@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import com.js.plataformasalud.modelos.entidades.Evento;
-import com.js.plataformasalud.modelos.servicios.IEventoServiceImpl;
 
+import com.js.plataformasalud.modelos.entidades.Diagnostico;
+import com.js.plataformasalud.modelos.servicios.IDxServiceImpl;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -29,42 +29,58 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
-
-public class EventoRestController {
+public class dxRestController {
 	
-	private IEventoServiceImpl eventserv;
 	
-	@GetMapping("/evento")
+	private IDxServiceImpl dxserv;
+	
+	@GetMapping("/diagnosticos")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<Evento> index(){
-		return eventserv.findAll();
+	public List<Diagnostico> index(){
+		return dxserv.findAll();
 	}
 	
-	@GetMapping("evento/{idevent}")
-	public ResponseEntity<?> mostrar(@PathVariable Long idevent) {
-		Evento event = null;
+	@GetMapping("/diagnosticos/{clavedx}")
+	public ResponseEntity<?> mostrar(@PathVariable Long clavedx) {
+		Diagnostico diagnostico = null;
 		Map<String, Object> response = new HashMap<>();
 	
 		try {
-			event = eventserv.findById(idevent);
+			diagnostico = dxserv.findById(clavedx);
 		}catch(DataAccessException e) {
 			response.put("mensaje", "Error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		if (event == null) {
-			response.put("mensaje", "El evento ID: ".concat(idevent.toString().concat(" no existe en la base de datos!")));
+		if (diagnostico == null) {
+			response.put("mensaje", "El diagnostico ID: ".concat(clavedx.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Evento>(event, HttpStatus.OK);
+		return new ResponseEntity<Diagnostico>(diagnostico, HttpStatus.OK);
 	}
 	
-	
+	@GetMapping("/diagnosticos/{nomdx}")
+	public ResponseEntity<?> buscarPorNombre(@PathVariable String nomdx) {
+	    List<Diagnostico> diagnosticos = null;
+	    Map<String, Object> response = new HashMap<>();
 
+	    try {
+	        diagnosticos = dxserv.findByNomdx(nomdx);
+	    } catch (DataAccessException e) {
+	        response.put("mensaje", "Error al realizar la consulta en la base de datos");
+	        response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	    if (diagnosticos.isEmpty()) {
+	        response.put("mensaje", "No se encontraron diagnósticos con el nombre: ".concat(nomdx));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+	    }
+	    return new ResponseEntity<List<Diagnostico>>(diagnosticos, HttpStatus.OK);
+	}
 	
-	@PostMapping("/evento")
-	public ResponseEntity<?> save (@Valid @RequestBody Evento event, BindingResult result) {
-		Evento Newevent = null;
+	@PostMapping("/diagnosticos")
+	public ResponseEntity<?> save (@Valid @RequestBody Diagnostico diagnostico, BindingResult result) {
+		Diagnostico Nuevodx = null;
 		Map<String, Object> response = new HashMap<>();
 		if(result.hasErrors()) {
 			List<String> errors = result.getFieldErrors()
@@ -75,24 +91,24 @@ public class EventoRestController {
 			response.put("errors", errors);
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
-		try {				
-			Newevent= eventserv.save(event);
+		try {
+				Nuevodx = dxserv.save(diagnostico);
 		}catch(DataAccessException e) {
-			response.put("mensaje", "Error al registrar el evento en la base de datos");
+			response.put("mensaje", "Error al registrar el diagnostico en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			
 		}
-		response.put("mensaje", "El evento ha sido creado con éxito!");
-		response.put("cargo", Newevent);
+		response.put("mensaje", "El diagnostivo ha sido creado con éxito!");
+		response.put("cliente", Nuevodx);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("evento/{idevent}")
-	public ResponseEntity <?> actualizar (@PathVariable Long idevent,@RequestBody Evento event, BindingResult result) {
+	@PutMapping("/diagnosticos/{clavedx}")
+	public ResponseEntity <?> actualizar (@PathVariable Long clavedx,@RequestBody Diagnostico diagnostico, BindingResult result) {
 		
-		Evento eventUpdate = null;
-		Evento eventAct = eventserv.findById(idevent);
+		Diagnostico dxUpdate = null;
+		Diagnostico dxAct = dxserv.findById(clavedx);
 		Map<String, Object> response = new HashMap<>();
 
 		if(result.hasErrors()) {
@@ -106,30 +122,30 @@ public class EventoRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
 		
-		if (eventAct == null) {
-			response.put("mensaje", "Error: no se pudo editar, el evento ID: "
-					.concat(idevent.toString().concat(" no existe en la base de datos!")));
+		if (dxAct == null) {
+			response.put("mensaje", "Error: no se pudo editar, el diagnostico ID: "
+					.concat(clavedx.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		try {
-			eventAct.setEstevent_fk(event.getEstevent_fk());
-			eventAct.setFechafinevent(event.getFechafinevent());
-			eventAct.setFechainievent(event.getFechainievent());
-			eventAct.setPacevent_fk(event.getPacevent_fk());
-			
-			
-			eventUpdate = eventserv.save(eventAct);
-			
+			dxAct.setCapdx(diagnostico.getCapdx());
+			dxAct.setDescdx(diagnostico.getDescdx());
+			dxAct.setEdadmaxdx(diagnostico.getEdadmaxdx());
+			dxAct.setEdadmindx(diagnostico.getEdadmindx());
+			dxAct.setEstdx_fk(diagnostico.getEstdx_fk());
+			dxAct.setNomdx(diagnostico.getNomdx());
+			dxAct.setSexdx(diagnostico.getSexdx());
+						
+			dxUpdate = dxserv.save(dxAct);
 			}catch(DataAccessException e) {
-				response.put("mensaje", "Error al actualizar el event en la base de datos");
+				response.put("mensaje", "Error al actualizar el diagnostico en la base de datos");
 				response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
-		response.put("mensaje", "El evento ha sido actualizado con éxito!");
-		response.put("cargo", eventUpdate);
+		response.put("mensaje", "El diagnostico ha sido actualizada con éxito!");
+		response.put("diagnostico", dxUpdate);
 
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
-	
 
 }

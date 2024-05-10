@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
-import { ComparteinfService } from 'src/app/services/comparteinf.service';
 import { OperacionService } from 'src/app/services/operacion.service';
 import Swal from 'sweetalert2';
 
@@ -15,12 +14,19 @@ export class CreahistoriaclinicaComponent implements OnInit {
 
   formHC:FormGroup
   eventSeleccionado:any
-  imchcpac:number
-
+  imchcpac:any
+  idevent:string
+  idhcpac:any
+  
   constructor(private service:OperacionService,
-    private router:Router,
-    private datoscompartidos:ComparteinfService,
-    private fb:FormBuilder) { this.formHC = fb.group ({
+              private router:Router,
+              private fb:FormBuilder,
+              private paramsrouter: ActivatedRoute,
+  ) { 
+      //asignamos el valor del evento que traemos de la URL a la variable this.idevent
+      this.idevent=this.paramsrouter.snapshot.paramMap.get('idevent')
+
+      this.formHC = fb.group ({
       pesohcpac:['',[Validators.required]],
       estaturahcpac:['',[Validators.required]],
       fchcpac:['',[Validators.required]],
@@ -38,39 +44,66 @@ export class CreahistoriaclinicaComponent implements OnInit {
       objhcpac:['',[Validators.required]],
       analisishcpac:['',[Validators.required]],
       planmanejhcpac:['',[Validators.required]],
+      idevent:['',[Validators.required]],
       conseventpac:['',[Validators.required]],
-      numdocpac: ['', [Validators.required]],
-      primernompac: ['', [Validators.required]],
-      segundonompac: ['', [Validators.nullValidator]],
-      primerapepac: ['', [Validators.required]],
-      segundoapepac: ['', [Validators.nullValidator]]
+      idpac:['',[Validators.required]],
+      numdocpac:['',[Validators.required]],
+      primernompac:['',[Validators.required]],
+      segundonompac:['',[Validators.required]],
+      primerapepac:['',[Validators.required]],
+      segundoapepac:['',[Validators.required]],
+   
     })}
 
   ngOnInit(): void {
-    // Suscríbete a los cambios en el servicio para obtener los detalles del paciente seleccionado
-    /*this.datoscompartidos.getEventSeleccionado().subscribe((event) => {
-      this.eventSeleccionado = event;
-      console.log('evento seleccionado',this.eventSeleccionado)
-      // Actualiza los valores del formulario con los detalles del paciente seleccionado
-      if (this.eventSeleccionado){
-        this.formHC.patchValue({
-          conseventpac:this.eventSeleccionado.conseventpac,
-          numdocpac: this.eventSeleccionado.pacevent_fk.numdocpac,
-          primernompac: this.eventSeleccionado.pacevent_fk.primernompac,
-          segundonompac: this.eventSeleccionado.pacevent_fk.segundonompac,
-          primerapepac: this.eventSeleccionado.pacevent_fk.primerapepac,
-          segundoapepac: this.eventSeleccionado.pacevent_fk.segundoapepac,
-        });
-      }
+
+    if(this.idevent != null){
       
-  })*/
+    console.log('id del evento que llega',this.idevent)
+
+    this.getDataEvent();    
+    
+    }else{
+      this.clearForm();
+    }
+  
+    
+  
   }
-  calculaIMC(pesohcpac:number,estaturahcpac:number){
+
+  getDataEvent() {
+    console.log(this.idevent);
+    this.service.getEventId(this.idevent).subscribe((res:any)=>{
+     console.log('evento a mostrar en el formulario',res);
+     this.eventSeleccionado = res;
+     this.formHC.patchValue({
+       idevent:this.eventSeleccionado.idevent, 
+       conseventpac:this.eventSeleccionado.conseventpac,
+       idpac: this.eventSeleccionado.pacevent_fk.idpac,
+       numdocpac:this.eventSeleccionado.pacevent_fk.numdocpac,
+       primernompac:this.eventSeleccionado.pacevent_fk.primernompac,
+       segundonompac:this.eventSeleccionado.pacevent_fk.segundonompac,
+       primerapepac:this.eventSeleccionado.pacevent_fk.primerapepac,
+       segundoapepac:this.eventSeleccionado.pacevent_fk.segundoapepac,
+     })
+     
+    })
+    
+   }
+
+  calculaIMC(){
+    let pesohcpac = this.formHC.value.pesohcpac;
+    console.log('peso',pesohcpac)
+    let estaturahcpac = this.formHC.value.estaturahcpac;
+    console.log('estatura')
     if (pesohcpac > 0 && estaturahcpac > 0) {
-      let imc = (pesohcpac/100) /(estaturahcpac * estaturahcpac);
+      let imc = (pesohcpac/((estaturahcpac/100)*(estaturahcpac/100))).toFixed(2);
+      //this.imchcpac = parseInt(imc); // Convertimos nuevamente a número flotante
       this.imchcpac=imc
   
       console.log('imc',this.imchcpac)
+    }else {
+      this.imchcpac = null;
     }
     
   
@@ -107,12 +140,16 @@ export class CreahistoriaclinicaComponent implements OnInit {
         tap((res) => {
           // Maneja la respuesta exitosa aquí
           console.log('Historia Clinica', res);
+          const idhcpac = res['Historia Clinica'].idhcpac;
+          console.log('respiesta de backend con el idhcpac', idhcpac)
           Swal.fire({
             icon: 'success',
             title: 'Operación exitosa',
             text: res.mensaje // Mostrar el mensaje recibido desde el backend
+          }).then (() =>{
+            this.router.navigateByUrl(`/creadiagnosticosatencion/${idhcpac}`)
           });
-          return this.router.navigate(['diagnosticosatencion']);
+          
           
         }),
         catchError((err) => {
@@ -127,15 +164,13 @@ export class CreahistoriaclinicaComponent implements OnInit {
           throw err; // Re-throw para que el error se propague al suscriptor
         })
       ).subscribe();
+    }  
+    iradddx(){
+     
     }
 
-   /* redirigir(hc:any){
-      this.router.navigate(['diagnosticosatencion'], { state: { hctInfo: hc } });
-      console.log('hc',hc)
-    }*/
-  
-    iradddx(){
-      this.router.navigate(['diagnosticosatencion'])
+    clearForm() {
+      this.formHC.reset();
     }
 
 }

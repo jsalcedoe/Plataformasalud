@@ -11,6 +11,6 @@ public interface IDxService {
 	
 	public Diagnostico save (Diagnostico dx);
 	
-	public List <Diagnostico> findByNomdx(String nomdx);
+	public List <Diagnostico> findByNomdx(Diagnostico nomdx);
 
 }

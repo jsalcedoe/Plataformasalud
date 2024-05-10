@@ -75,6 +75,7 @@ import { CreaequipoqxComponent } from "src/app/pages/medico/creaequipoqx/creaequ
 import { CreapacienteComponent } from "src/app/pages/pacientes/creapaciente/creapaciente.component";
 import { CreaeventosComponent } from "src/app/pages/eventos/creaeventos/creaeventos.component";
 import { CreahistoriaclinicaComponent } from "src/app/pages/medico/historiaclinica/creahistoriaclinica/creahistoriaclinica.component";
+import { CreadiagnosticosatencionComponent } from "src/app/pages/medico/diagnosticosatencion/creadiagnosticosatencion/creadiagnosticosatencion.component";
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
@@ -148,6 +149,7 @@ export const AdminLayoutRoutes: Routes = [
   { path:'registrosignosvitales',component:RegistrosignosvitalesComponent},
   { path:'historiaclinica',component:HistoriaclinicaComponent},
   { path:'creahistoriaclinica',component:CreahistoriaclinicaComponent},
+  { path:'creahistoriaclinica/:idevent',component:CreahistoriaclinicaComponent},
   { path:'eventos',component:EventosComponent},
   { path:'evolucionmedica',component:EvolucionmedicaComponent},
   { path:'descripcionquirurgica',component:DescripcionquirurgicaComponent},
@@ -155,7 +157,12 @@ export const AdminLayoutRoutes: Routes = [
   { path:'procedimientos',component:ProcedimientosComponent},
   { path:'creaequipoqx',component:CreaequipoqxComponent},
   { path:'creapaciente',component:CreapacienteComponent},
-  { path:'creaeventos/:idpac',component:CreaeventosComponent}
+  { path:'creaeventos/:idpac',component:CreaeventosComponent},
+  { path:'creaeventos',component:CreaeventosComponent},
+  { path:'creadiagnosticosatencion',component:CreadiagnosticosatencionComponent},
+  { path:'creadiagnosticosatencion/:idhcpac',component:CreadiagnosticosatencionComponent},
+
+
 
 
   //{ path:'creaestados/:idstatus',component:CreaestadosComponent},

@@ -59,6 +59,25 @@ public class dxRestController {
 		return new ResponseEntity<Diagnostico>(diagnostico, HttpStatus.OK);
 	}
 	
+	@GetMapping("/diagnosticos/searchxname/{nomdx}")
+	public ResponseEntity<?> buscarPorNombre(@PathVariable String nomdx) {
+	    List<Diagnostico> diagnosticos = null;
+	    Map<String, Object> response = new HashMap<>();
+
+	    try {
+	        diagnosticos = dxserv.findByNomdx(nomdx);
+	    } catch (DataAccessException e) {
+	        response.put("mensaje", "Error al realizar la consulta en la base de datos");
+	        response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	    if (diagnosticos.isEmpty()) {
+	        response.put("mensaje", "No se encontraron diagnósticos con el nombre: ".concat(nomdx));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+	    }
+	    return new ResponseEntity<List<Diagnostico>>(diagnosticos, HttpStatus.OK);
+	}
+	
 	@PostMapping("/diagnosticos")
 	public ResponseEntity<?> save (@Valid @RequestBody Diagnostico diagnostico, BindingResult result) {
 		Diagnostico Nuevodx = null;

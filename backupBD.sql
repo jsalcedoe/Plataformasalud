@@ -1088,7 +1088,7 @@ CREATE TABLE `tynote` (
   UNIQUE KEY `UK_q339n672doyhxtgo9wvy3y9a4` (`nametypnot`),
   KEY `FKhkjsdhxc3c1eo8snctqfswp32` (`estypnot_fk_idstatus`),
   CONSTRAINT `FKhkjsdhxc3c1eo8snctqfswp32` FOREIGN KEY (`estypnot_fk_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1097,6 +1097,7 @@ CREATE TABLE `tynote` (
 
 LOCK TABLES `tynote` WRITE;
 /*!40000 ALTER TABLE `tynote` DISABLE KEYS */;
+INSERT INTO `tynote` VALUES (1,'2024-05-09','HISTORIA CLINICA','HC',1),(2,'2024-05-09','NOTA ACLARATORIA','NA',1),(3,'2024-05-09','DESCRIPCION QUIRURGICA','DQ',1),(4,'2024-05-09','EVOLUCION MEDICA','EM',1),(5,'2024-05-09','NOTA ENFERMERIA','NE',1);
 /*!40000 ALTER TABLE `tynote` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1248,4 +1249,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-05  7:26:34
+-- Dump completed on 2024-05-09 23:14:14

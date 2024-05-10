@@ -41,14 +41,17 @@ export class CreaeventosComponent implements OnInit {
 
     // Limpia el formulario al inicializar el componente
     this.clearForm();
-
-    // Obtener el ID del paciente de los parámetros de la ruta
-    this.idpaciente = this.paramsrouter.snapshot.paramMap.get('idpac');
+    if(this.idpaciente != null){
+      // Obtener el ID del paciente de los parámetros de la ruta
+    //this.idpaciente = this.paramsrouter.snapshot.paramMap.get('idpac');
     console.log('id del paciente que llega',this.idpaciente)
 
     this.getDataPaciente();
     
     this.obtenerUltimoEvento()
+    }
+
+    
   }
   getDataPaciente() {
    console.log(this.idpaciente);

@@ -43,9 +43,18 @@ export class ConfigService {
   getDepart():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'departamentos')
   }
+// CRUD DIAGNOSTICOS ------------------------------------------------------------------------------
 
   getDx():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'diagnosticos')
+  }
+
+  getDxfindByNomdx(nomdx: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}diagnosticos/${nomdx}`);
+  }
+
+  addDx(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'diagnosticos',datosRegistros,{headers:this.httpheaders})
   }
 
   getEntidades():Observable<any[]>{
@@ -109,6 +118,7 @@ export class ConfigService {
   getTipoDocumentos():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'tipodocumento')
   }
+// CRUD TIPOS DE DIAGNOSTICOS ----------------------------------------------
 
   getTipoDx():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'tipodx')
@@ -155,9 +165,7 @@ export class ConfigService {
   addCiudades(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'ciudades',datosRegistros,{headers:this.httpheaders})
   }
-  addDx(datosRegistros:any):Observable<any>{
-    return this.http.post<any>(this.endpoint + 'diagnosticos',datosRegistros,{headers:this.httpheaders})
-  }
+  
   addEntidades(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'entidades',datosRegistros,{headers:this.httpheaders})
   }
