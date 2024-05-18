@@ -39,9 +39,9 @@ public class IDxServiceImpl implements IDxService {
 	}
 
 	@Override
-	public List<Diagnostico> findByNomdx(String nomdx) {
+	public List<Diagnostico> findByNomdx(String term) {
 		
-		return dxdao.findByNomdx(nomdx);
+		return dxdao.findByNomdx(term);
 	}
 
 	

@@ -22,6 +22,9 @@ export class CreadiagnosticosatencionComponent implements OnInit {
   tipnot:any
   diagnosticoAutocompletado: string; // Variable para almacenar el diagnóstico autocompletado
   diagnosticoOptions: any[] = []; // Lista de opciones de diagnóstico para el autocompletado
+  diagnosticos: any[] = []; // Lista completa de diagnósticos
+  diagnosticosFiltrados: any[] = []; // Diagnósticos filtrados según la consulta incremental
+
   
 
 
@@ -36,8 +39,8 @@ export class CreadiagnosticosatencionComponent implements OnInit {
       this.formDxAtencion=fb.group({
         idhcpac:['',[Validators.required]],
         numdocpac:['',[Validators.required]],
-        conseventpac:['',[Validators.required]],    
         primernompac:['',[Validators.required]],
+        conseventpac:['',[Validators.required]],    
         segundonompac:['',[Validators.required]],
         primerapepac:['',[Validators.required]],
         segundoapepac:['',[Validators.required]],
@@ -60,7 +63,8 @@ export class CreadiagnosticosatencionComponent implements OnInit {
       }
       this.consultaTipoDx();
       this.consultaTipoNota();
-      this.consultadx();
+      this.consultaDx();
+      
   }
 
   getDataHcpac(){
@@ -164,14 +168,13 @@ export class CreadiagnosticosatencionComponent implements OnInit {
       })
     ).subscribe();
   }
-
-  consultadx(){
+  consultaDx(){
     this.servicioDx.getDx()
     .pipe(
       tap((res) => {
         // Maneja la respuesta exitosa aquí
         console.log('Consulta Diagnosticos', res);
-        this.tipnot = res;
+        this.diagnosticos = res;
         
       }),
       catchError((err) => {
@@ -183,12 +186,45 @@ export class CreadiagnosticosatencionComponent implements OnInit {
     ).subscribe();
   }
 
-  
-  
-  
-
+  filtrarDiagnosticos(consulta: string) {
+    if (consulta.trim() !== '') {
+      this.diagnosticosFiltrados = this.diagnosticos.filter(diagnostico =>
+        diagnostico.nomdx.toLowerCase().includes(consulta.toLowerCase())
+      );
+    } else {
+      this.diagnosticosFiltrados = []; // Borra la lista de diagnósticos filtrados si la consulta está vacía
+    }
+  }
+/*
+  // Método para manejar la búsqueda incremental
+  handleSearch(term: string): void {
+    if (term.length >= 3) { // Realiza la búsqueda solo si el término tiene al menos 3 caracteres
+      this.servicioDx.getDxfindByNomdx(term)
+        .pipe(
+          tap((res) => {
+            // Maneja la respuesta exitosa aquí
+            console.log('Resultado de la búsqueda:', res);
+            this.diagnosticoOptions = res; // Actualiza la lista de opciones de diagnóstico
+          }),
+          catchError((err) => {
+            // Maneja el error aquí
+            console.error('Error:', err);
+            // Muestra una alerta de error, por ejemplo:
+            Swal.fire({
+              icon: 'error',
+              title: 'Error en la búsqueda',
+              text: 'Hubo un problema al buscar diagnósticos. Por favor, inténtalo de nuevo más tarde.'
+            });
+            throw err; // Re-throw para que el error se propague al suscriptor
+          })
+        ).subscribe();
+    } else {
+      // Si el término es muy corto, vacía la lista de opciones de diagnóstico
+      this.diagnosticoOptions = [];
+    }
+  }*/
   clearForm(){
 
   }
 
-}
+  }

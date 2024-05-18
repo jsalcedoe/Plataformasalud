@@ -49,8 +49,10 @@ export class ConfigService {
     return this.http.get<any[]>(this.endpoint+'diagnosticos')
   }
 
-  getDxfindByNomdx(nomdx: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.endpoint}diagnosticos/${nomdx}`);
+  getDxfindByNomdx(term: string): Observable<any[]> {
+    const url = `${this.endpoint}diagnosticos/searchxname/${term}`;
+    console.log('URL de la solicitud:', url); // Imprime la URL de la solicitud en la consola
+    return this.http.get<any[]>(url);
   }
 
   addDx(datosRegistros:any):Observable<any>{

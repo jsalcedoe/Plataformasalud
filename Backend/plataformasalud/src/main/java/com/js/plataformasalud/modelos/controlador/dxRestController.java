@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -59,23 +60,24 @@ public class dxRestController {
 		return new ResponseEntity<Diagnostico>(diagnostico, HttpStatus.OK);
 	}
 	
-	@GetMapping("/diagnosticos/searchxname/{nomdx}")
-	public ResponseEntity<?> buscarPorNombre(@PathVariable String nomdx) {
+	@GetMapping("/diagnosticos/searchxname")
+	public ResponseEntity<?> buscarPorNombre(@RequestParam("term") String term) {
 	    List<Diagnostico> diagnosticos = null;
 	    Map<String, Object> response = new HashMap<>();
 
 	    try {
-	        diagnosticos = dxserv.findByNomdx(nomdx);
+	        diagnosticos = dxserv.findByNomdx(term);
 	    } catch (DataAccessException e) {
 	        response.put("mensaje", "Error al realizar la consulta en la base de datos");
 	        response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
 	    if (diagnosticos.isEmpty()) {
-	        response.put("mensaje", "No se encontraron diagnósticos con el nombre: ".concat(nomdx));
+	        response.put("mensaje", "No se encontraron diagnósticos con el nombre: ".concat(term));
 	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 	    }
-	    return new ResponseEntity<List<Diagnostico>>(diagnosticos, HttpStatus.OK);
+	    //return new ResponseEntity<List<Diagnostico>>(diagnosticos, HttpStatus.OK);
+	    return ResponseEntity.ok().body(diagnosticos);
 	}
 	
 	@PostMapping("/diagnosticos")
