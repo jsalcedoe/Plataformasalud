@@ -71,7 +71,7 @@ CREATE TABLE `ciudades` (
   KEY `FKpg32nb0o374necjgfg85q6ldp` (`estciu_fk_idstatus`),
   CONSTRAINT `FK25kjuw4cpyo3eoro6ob6tspid` FOREIGN KEY (`depciu_fk_iddep`) REFERENCES `departamentos` (`iddep`),
   CONSTRAINT `FKpg32nb0o374necjgfg85q6ldp` FOREIGN KEY (`estciu_fk_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,7 +80,6 @@ CREATE TABLE `ciudades` (
 
 LOCK TABLES `ciudades` WRITE;
 /*!40000 ALTER TABLE `ciudades` DISABLE KEYS */;
-INSERT INTO `ciudades` VALUES (1,73001,'2024-05-20','IBAGUE',1,1),(2,73002,'2024-05-20','ESPINAL',1,1),(3,11001,'2024-05-20','BOGOTA, D.C.',2,1),(4,11002,'2024-05-20','FUSA',2,1);
 /*!40000 ALTER TABLE `ciudades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +127,7 @@ CREATE TABLE `departamentos` (
   UNIQUE KEY `UK_2xd2ywkw43smmq4fhs9ce7q00` (`nomdep`),
   KEY `FKf1ij1ltfydn1cmedahwowpfxr` (`estdep_fk_idstatus`),
   CONSTRAINT `FKf1ij1ltfydn1cmedahwowpfxr` FOREIGN KEY (`estdep_fk_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +136,6 @@ CREATE TABLE `departamentos` (
 
 LOCK TABLES `departamentos` WRITE;
 /*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
-INSERT INTO `departamentos` VALUES (1,73,'2024-05-20','TOLIMA',1),(2,11,'2024-05-20','CUNDINAMARCA',1);
 /*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +201,7 @@ CREATE TABLE `dx` (
   UNIQUE KEY `UK_mc1uyojln5jktfco4l70dbgs7` (`nomdx`),
   KEY `FKknru1fllgvfbbvavddaxxglr5` (`estdx_fk_idstatus`),
   CONSTRAINT `FKknru1fllgvfbbvavddaxxglr5` FOREIGN KEY (`estdx_fk_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +210,6 @@ CREATE TABLE `dx` (
 
 LOCK TABLES `dx` WRITE;
 /*!40000 ALTER TABLE `dx` DISABLE KEYS */;
-INSERT INTO `dx` VALUES (1,'A09','2024-05-20','DIARREA Y GASTROENTERITIS DE PRESUNTO ORIGEN INFECCIOSO',999,0,'A09X','DIARREA Y GASTROENTERITIS DE PRESUNTO ORIGEN INFECCIOSO','AMBOS',1),(2,'K58','2024-05-20','SINDROME DEL COLON IRRITABLE',100,0,'K581','SINDROME DE  COLON IRRITABLE  CON PREDOMINIO DE DIARREA [IBS-D]','AMBOS',1),(3,'K59','2024-05-20','OTROS TRASTORNOS FUNCIONALES DEL INTESTINO',999,0,'K591','DIARREA FUNCIONAL','AMBOS',1),(4,'D39','2024-05-20','TUMOR DE COMPORTAMIENTO INCIERTO O DESCONOCIDO DE LOS ORGANOS GENITALES FEMENINOS',999,0,'D399','TUMOR DE COMPORTAMIENTO INCIERTO O DESCONOCIDO DE ORGANO GENITAL FEMENINO NO ESPECIFICADO','FEMENINO',1),(5,'N71','2024-05-20','ENFERMEDAD INFLAMATORIA DEL UTERO, EXCEPTO DEL CUELLO UTERINO',120,10,'N711','ENFERMEDAD INFLAMATORIA CRONICA DEL UTERO','FEMENINO',1),(6,'N75','2024-05-20','ENFERMEDADES DE LA GLANDULA DE BARTHOLIN',999,0,'N751','ABSCESO DE LA GLANDULA DE BARTHOLIN','FEMENINO',1),(7,'N42','2024-05-20','OTROS TRASTORNOS DE LA PROSTATA',120,20,'N420','CALCULO DE LA PROSTATA','MASCULINO',1),(8,'D29','2024-05-20','TUMOR BENIGNO DE LOS ORGANOS GENITALES MASCULINOS',999,0,'D292','TUMOR BENIGNO DE LOS TESTICULOS','MASCULINO',1);
 /*!40000 ALTER TABLE `dx` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -283,7 +280,7 @@ CREATE TABLE `eapb` (
   CONSTRAINT `FK8ihg5pwmlxx32n5elt83kwfg7` FOREIGN KEY (`tipdoceapb_fk_idtipdoc`) REFERENCES `tipdoc` (`idtipdoc`),
   CONSTRAINT `FKmy4sf5hsjteo1re3kyte69oyf` FOREIGN KEY (`tipent_idtipeapb`) REFERENCES `tipeapb` (`idtipeapb`),
   CONSTRAINT `FKo9obv6aiertd2quabuaoua25i` FOREIGN KEY (`esteapb_fk_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -292,7 +289,6 @@ CREATE TABLE `eapb` (
 
 LOCK TABLES `eapb` WRITE;
 /*!40000 ALTER TABLE `eapb` DISABLE KEYS */;
-INSERT INTO `eapb` VALUES (1,'3108610210','2024-05-20','EL PAPAYO',999999999,'SANITAS@SANITAS.COM','JULIO','EPS SANITAS',1,2,1),(2,'3108610210','2024-05-20','CENTRO',888888888,'CAFESALUD@CAFESALUD.COM','JULIO','CAFESALUD',1,2,2),(3,'3108610210','2024-05-20','PICALEÑA',111222333,'POLICIA@POLICIA.COM','JULIO','POLICIA',1,2,3),(4,'3108610210','2024-05-20','AV FERROCARRIL # 41-76 MACARENA',123456789,'CESAR@MARTINEZ.COM','CESAR MARTINEZ','CESAR MARTINEZ',1,1,4);
 /*!40000 ALTER TABLE `eapb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -445,7 +441,7 @@ CREATE TABLE `habcami` (
   KEY `FKe3b1b1k09nc1f6cfu94990vcp` (`ubicahab_idubica`),
   CONSTRAINT `FK96p599t8em6li18kje0en2ywm` FOREIGN KEY (`esthab_fk_idstatus`) REFERENCES `status` (`idstatus`),
   CONSTRAINT `FKe3b1b1k09nc1f6cfu94990vcp` FOREIGN KEY (`ubicahab_idubica`) REFERENCES `ubicaciones` (`idubica`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -454,7 +450,6 @@ CREATE TABLE `habcami` (
 
 LOCK TABLES `habcami` WRITE;
 /*!40000 ALTER TABLE `habcami` DISABLE KEYS */;
-INSERT INTO `habcami` VALUES (1,'CAMILLA RECUPERACION 1','2024-05-20','REC1',1,1),(2,'CAMILLA OBSERVACION 1','2024-05-20','OB1',1,2),(3,'SALA DE QUIROFANO 1','2024-05-20','SQX1',1,3),(4,'HOSPITALIZACION PISO 1 CAMA 1','2024-05-20','HXP1C1',1,4);
 /*!40000 ALTER TABLE `habcami` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -873,7 +868,7 @@ CREATE TABLE `status` (
   PRIMARY KEY (`idstatus`),
   UNIQUE KEY `UK_iuh3i634h092l0xlybxoq3xki` (`detstatus`),
   UNIQUE KEY `UK_qu824ukxhb5xl8e1och0jg610` (`nomstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -882,7 +877,6 @@ CREATE TABLE `status` (
 
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
-INSERT INTO `status` VALUES (1,'2024-05-20','CREADO','CRE'),(2,'2024-05-20','ACTIVO','ACT'),(3,'2024-05-20','EDITADO','EDI'),(4,'2024-05-20','INACTIVO','INA');
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -936,7 +930,7 @@ CREATE TABLE `tipac` (
   UNIQUE KEY `UK_539kmwgddn606y7ye94giajcv` (`nomtipac`),
   KEY `FK5eovfvssic0iqgelv3yltqpcj` (`esttippac_idstatus`),
   CONSTRAINT `FK5eovfvssic0iqgelv3yltqpcj` FOREIGN KEY (`esttippac_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -945,7 +939,6 @@ CREATE TABLE `tipac` (
 
 LOCK TABLES `tipac` WRITE;
 /*!40000 ALTER TABLE `tipac` DISABLE KEYS */;
-INSERT INTO `tipac` VALUES (1,'2024-05-20','COTIZANTE','C',1),(2,'2024-05-20','BENEFICIARIO','B',1),(3,'2024-05-20','NO AFILIADO','NA',1),(4,'2024-05-20','ESPECIAL','RE',1);
 /*!40000 ALTER TABLE `tipac` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -968,7 +961,7 @@ CREATE TABLE `tipanest` (
   UNIQUE KEY `UK_n0tnekvhat3pnuvk1luc7n6sa` (`nomtipanest`),
   KEY `FK52qmbscobh22jj15h1yel24uh` (`esttypanest_idstatus`),
   CONSTRAINT `FK52qmbscobh22jj15h1yel24uh` FOREIGN KEY (`esttypanest_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -977,7 +970,6 @@ CREATE TABLE `tipanest` (
 
 LOCK TABLES `tipanest` WRITE;
 /*!40000 ALTER TABLE `tipanest` DISABLE KEYS */;
-INSERT INTO `tipanest` VALUES (1,'08:20:22',NULL,'ANESTESIA LOCAL','AL',1),(2,'08:20:32',NULL,'ANESTESIA REGIONAL','AR',1),(3,'08:20:40',NULL,'ANESTESIA GENERAL','AG',1);
 /*!40000 ALTER TABLE `tipanest` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -995,7 +987,7 @@ CREATE TABLE `tipdoc` (
   `tipdoc` varchar(5) NOT NULL,
   PRIMARY KEY (`idtipdoc`),
   UNIQUE KEY `UK_t4sky2q7dd9l5d0lfuutu35b` (`tipdoc`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1004,7 +996,6 @@ CREATE TABLE `tipdoc` (
 
 LOCK TABLES `tipdoc` WRITE;
 /*!40000 ALTER TABLE `tipdoc` DISABLE KEYS */;
-INSERT INTO `tipdoc` VALUES (1,'2024-05-20','CEDULA DE CIUDADANIA','CC'),(2,'2024-05-20','NUMERO UNICO TRIBUTARIO','NIT'),(3,'2024-05-20','REGISTRO CIVIL','RC'),(4,'2024-05-20','TARJETA DE IDENTIDAD','TI'),(5,'2024-05-20','PERMISO DE PERMANENCIA TEMPORAL','PPT'),(6,'2024-05-20','CEDULA DE EXTRANJERIA','CE'),(7,'2024-05-20','PASAPORTE','PA'),(8,'2024-05-20','PERMISO ESPECIAL DE PERMANENCIA','PEP');
 /*!40000 ALTER TABLE `tipdoc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1026,7 +1017,7 @@ CREATE TABLE `tipeapb` (
   UNIQUE KEY `UK_p4hqlpe3e3wkmdgt1emd8jmrg` (`nomtipeapb`),
   KEY `FKfh26jsd31qr0iqsjpihbuiy3t` (`estyeapb_fk_idstatus`),
   CONSTRAINT `FKfh26jsd31qr0iqsjpihbuiy3t` FOREIGN KEY (`estyeapb_fk_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1035,7 +1026,6 @@ CREATE TABLE `tipeapb` (
 
 LOCK TABLES `tipeapb` WRITE;
 /*!40000 ALTER TABLE `tipeapb` DISABLE KEYS */;
-INSERT INTO `tipeapb` VALUES (1,'2024-05-20','CONTRIBUTIVO','C',1),(2,'2024-05-20','SUBSIDIADA','S',1),(3,'2024-05-20','REGIMEN ESPECIAL','RE',1),(4,'2024-05-20','PARTICULAR','P',1);
 /*!40000 ALTER TABLE `tipeapb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1058,7 +1048,7 @@ CREATE TABLE `tproc` (
   UNIQUE KEY `UK_rkhshswvjvnm6s86rqf26jhis` (`nomtproc`),
   KEY `FKomsv4qbspsqijcb1wikqvljsm` (`estypx_fk_idstatus`),
   CONSTRAINT `FKomsv4qbspsqijcb1wikqvljsm` FOREIGN KEY (`estypx_fk_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1067,7 +1057,6 @@ CREATE TABLE `tproc` (
 
 LOCK TABLES `tproc` WRITE;
 /*!40000 ALTER TABLE `tproc` DISABLE KEYS */;
-INSERT INTO `tproc` VALUES (1,'2024-05-20',NULL,'QUIRURGICO','QX',1),(2,'2024-05-20',NULL,'LABORATORIO','LB',1),(3,'2024-05-20',NULL,'ECOGRAFIAS','EC',1),(4,'2024-05-20',NULL,'RADIOLOGIA','RX',1);
 /*!40000 ALTER TABLE `tproc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1088,7 +1077,7 @@ CREATE TABLE `tynote` (
   UNIQUE KEY `UK_q339n672doyhxtgo9wvy3y9a4` (`nametypnot`),
   KEY `FKhkjsdhxc3c1eo8snctqfswp32` (`estypnot_fk_idstatus`),
   CONSTRAINT `FKhkjsdhxc3c1eo8snctqfswp32` FOREIGN KEY (`estypnot_fk_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1097,7 +1086,6 @@ CREATE TABLE `tynote` (
 
 LOCK TABLES `tynote` WRITE;
 /*!40000 ALTER TABLE `tynote` DISABLE KEYS */;
-INSERT INTO `tynote` VALUES (1,'2024-05-20','EVOLUCION MEDICA','EM',1),(2,'2024-05-20','REGISTRO DE EXAMENES','RE',1),(3,'2024-05-20','DESCRIPCION QUIRURGICA','DQX',1),(4,'2024-05-20','NOTA ACLARATORIA','NA',1),(7,'2024-05-20','NOTA ADICIONAL','NAD',1),(8,'2024-05-20','NOTA DE ENFERMERIA','NE',1);
 /*!40000 ALTER TABLE `tynote` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1118,7 +1106,7 @@ CREATE TABLE `typdx` (
   UNIQUE KEY `UK_ouy91byh7kvj7dcqwvvk92d80` (`namtypdx`),
   KEY `FK5jshbtx6fgyu51dxjurj0b8pq` (`estyodx_fx_idstatus`),
   CONSTRAINT `FK5jshbtx6fgyu51dxjurj0b8pq` FOREIGN KEY (`estyodx_fx_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1127,7 +1115,6 @@ CREATE TABLE `typdx` (
 
 LOCK TABLES `typdx` WRITE;
 /*!40000 ALTER TABLE `typdx` DISABLE KEYS */;
-INSERT INTO `typdx` VALUES (1,NULL,'DIAGNOSTICO PRINCIPAL','DXP',1),(2,NULL,'DIAGNOSTICO SECUNDARIO','DXS',1),(3,NULL,'DIAGNOSTICO EN ESTUDIO','DXE',1),(4,NULL,'DIAGNOSTICO CONFIRMADO','DXV',1),(5,NULL,'DIAGNOSTICO PREQUIRURGICO','DXPREQ',1),(6,NULL,'DIAGNOSTICO POSQUIRURGICO','DXPOQX',1);
 /*!40000 ALTER TABLE `typdx` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1149,7 +1136,7 @@ CREATE TABLE `tytemp` (
   UNIQUE KEY `UK_1a7fje2o9m9a74w2vl15ni3wk` (`nomtytemp`),
   KEY `FKot3huybv7e0iutn8dq6euduwa` (`esttytemp_fk_idstatus`),
   CONSTRAINT `FKot3huybv7e0iutn8dq6euduwa` FOREIGN KEY (`esttytemp_fk_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1158,7 +1145,6 @@ CREATE TABLE `tytemp` (
 
 LOCK TABLES `tytemp` WRITE;
 /*!40000 ALTER TABLE `tytemp` DISABLE KEYS */;
-INSERT INTO `tytemp` VALUES (1,'2024-05-20','PROCEDIMIENTO QUIRURGICO','PXQX',1),(2,'2024-05-20','NOTA DE ENFERMERIA','NE',1);
 /*!40000 ALTER TABLE `tytemp` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1179,7 +1165,7 @@ CREATE TABLE `ubicaciones` (
   UNIQUE KEY `UK_hu2k98yfug5yeyvtmwnp3jy2s` (`nomubicaciones`),
   KEY `FK4j1q84tmdrueqcbhon271lk2b` (`estubica_fk_idstatus`),
   CONSTRAINT `FK4j1q84tmdrueqcbhon271lk2b` FOREIGN KEY (`estubica_fk_idstatus`) REFERENCES `status` (`idstatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1188,7 +1174,6 @@ CREATE TABLE `ubicaciones` (
 
 LOCK TABLES `ubicaciones` WRITE;
 /*!40000 ALTER TABLE `ubicaciones` DISABLE KEYS */;
-INSERT INTO `ubicaciones` VALUES (1,'2024-05-20','RECUPERACION','REC',1),(2,'2024-05-20','OBSERVACION ','OBS',1),(3,'2024-05-20','SALA DE QUIROFANO','SQX',1),(4,'2024-05-20','HOSPITALIZACION PISO 1','HXP1',1);
 /*!40000 ALTER TABLE `ubicaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1232,14 +1217,6 @@ LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'plataformasalud'
---
-
---
--- Dumping routines for database 'plataformasalud'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1250,4 +1227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-20  8:44:15
+-- Dump completed on 2024-05-18 23:05:10

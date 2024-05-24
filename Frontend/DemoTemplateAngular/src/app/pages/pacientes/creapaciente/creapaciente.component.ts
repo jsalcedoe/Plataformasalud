@@ -142,6 +142,7 @@ creaPaciente(){
   const edadPaciente = this.edad;
   const numDocumento = this.formpac.value.numdocpac;
   console.log('cantidad de digitos capturados',numDocumento.length)
+  console.log('tipo de documento',tipoDocumento)
   if ((tipoDocumento == 1 && edadPaciente < 18) || (tipoDocumento == 3 || tipoDocumento ==4 && edadPaciente > 18) ){
     
     Swal.fire({

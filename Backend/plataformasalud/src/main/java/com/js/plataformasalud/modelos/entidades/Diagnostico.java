@@ -30,7 +30,6 @@ public class Diagnostico implements Serializable {
 	
 	
 	@Id
-	@Column(nullable = false, length = 4, unique = true)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long clavedx;
 	

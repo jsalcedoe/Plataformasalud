@@ -1,162 +1,119 @@
-<div class=" content">
-    <div class=" row">
-        <div class=" col-md-12">
-            <div class=" card">
-                <div class=" card-header"><h1 class=" title">Registrar diagnosticos de la atención</h1></div>
-                <div class=" card-body">
-                    <form [formGroup]="formDxAtencion">
-                        <div class=" card-header"><h3 class=" title">Datos del paciente</h3></div>
-                        <div class=" row">
-                            <div class=" col-md-3 pr-md-1">
-                                <div class=" form-group">
-                                  <label> Historia Clinica </label>
-                                  <input
-                                    class=" form-control"
-                                    type="text"
-                                    disabled="true"
-                                    formControlName="idhcpac"
-                                  />
-                                </div>
-                              </div>
-                              <div class=" col-md-3 pr-md-1">
-                                <div class=" form-group">
-                                  <label> Documento  </label>
-                                  <input
-                                    class=" form-control"
-                                    type="text"
-                                    disabled="true"
-                                    formControlName="numdocpac"
-                                  />
-                                </div>
-                              </div>
-                              <div class=" col-md-3 pr-md-1">
-                                <div class=" form-group">
-                                  <label>Evento </label>
-                                  <input
-                                    class=" form-control"
-                                    type="text"
-                                    disabled="true"
-                                    formControlName="conseventpac"
-                                  />
-                                </div>
-                              </div>
-                              <div class=" col-md-3 pr-md-1">
-                                <div class=" form-group">
-                                  <label> identificador de evento </label>
-                                  <input
-                                    class=" form-control"
-                                    type="text"
-                                    disabled="true"
-                                    formControlName="idevent"
-                                  />
-                                </div>
-                              </div>
-                        </div>
-                        <div class="row">
-                            <div class=" col-md-3 pr-md-1">
-                                <div class=" form-group">
-                                  <label> Primer Nombre </label>
-                                  <input
-                                    class=" form-control"
-                                    type="text"
-                                    disabled="true"
-                                    formControlName="primernompac"
-                                    
-                                  />
-                                </div>
-                              </div>
-                              <div class=" col-md-3 pr-md-1">
-                                <div class=" form-group">
-                                  <label> Segundo Nombre </label>
-                                  <input
-                                    class=" form-control"
-                                    disabled="true"
-                                    type="text"
-                                    formControlName="segundonompac"
-                                  />
-                                </div>
-                              </div>
-                              <div class=" col-md-3 pr-md-1">
-                                <div class=" form-group">
-                                  <label> Primer Apellido </label>
-                                  <input
-                                    class=" form-control"
-                                    disabled="true"
-                                    type="text"
-                                    formControlName="primerapepac"
-                                  />
-                                </div>
-                              </div>
-                              <div class=" col-md-3 pr-md-1">
-                                <div class=" form-group">
-                                  <label> Segundo Apellido </label>
-                                  <input
-                                    class=" form-control"
-                                    disabled="true"
-                                    type="text"
-                                    formControlName="segundoapepac"
-                                  />
-                                </div>
-                              </div>
-                                                            
-                            </div>
-                            <div class="row">
-                                <div class=" card-header col-md-12"><h3 class=" title">Adicionar Registros de diagnosticos</h3></div>
-                                  <div class=" col-md-3 pr-md-1">
-                                   <div class=" form-group">
-                                       <label> Tipo de Diagnostico </label>
-                                       <select class="form-select" style="width: auto;" formControlName="typdxatehcpac_fk">
-                                          <option value="" disabled selected>Tipo de diagnostico</option>
-                                          <option *ngFor="let tdx of tipdx" [value]="tdx.idtypdx">{{tdx.detypdx}}</option>
-                                       </select> 
-                                   </div>
-                                  </div>
-
-                                  <div class=" col-md-3 pr-md-1">
-                                    <div class=" form-group">
-                                        <label> Documento origen del diagnostico </label>
-                                        <select class="form-select" style="width: auto;" formControlName="origdx_fk">
-                                           <option value="" disabled selected>Seleccione el documento origen</option>
-                                           <option *ngFor="let tnot of tipnot" [value]="tnot.idtypnot">{{tnot.dettypnot}}</option>
-                                        </select> 
-                                    </div>
-                                   </div>
-
-                                   <div class=" col-md-4   pr-md-1">
-                                    <label> Diagnostico </label>
-                                    <input class="form-control me-2" 
-                                    type="text" 
-                                    placeholder="Consulta diagnóstico"
-                                    (input)="filtrarDiagnosticos($event.target.value)"> <!-- Agregar evento input para filtrar diagnósticos -->
-                                    
-                                  </div>
-                                  <div *ngIf="diagnosticosFiltrados.length > 0">
-                                    <ul class=" col-md-12 pr-md-1">
-                                      <li class="form-control" *ngFor="let diagnostico of diagnosticosFiltrados">
-                                        {{ diagnostico.nomdx }}
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  
-                            </div>
-                            
-                            <div class=" col-md-3   pr-md-1">
-                              <button class="btn btn-primary" type="button">Search</button>
-                            </div>
-                             
-                              
-                              
-                           
-                       
-                            
-                              
-                              <div class=" card-footer">
-                                <button class=" btn btn-fill btn-danger" type="submit" >Save</button>
-                              </div>
-                      </form>
-                      
-                
-            </div>
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="title">Registrar diagnósticos de la atención</h1>
         </div>
+        <div class="card-body">
+          <form [formGroup]="formDxAtencion">
+            <div class="card-header">
+              <h3 class="title">Datos del paciente</h3>
+            </div>
+            <div class="row">
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Historia Clinica</label>
+                  <input class="form-control" type="text" disabled formControlName="idhcpac" />
+                </div>
+              </div>
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Documento</label>
+                  <input class="form-control" type="text" disabled formControlName="numdocpac" />
+                </div>
+              </div>
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Evento</label>
+                  <input class="form-control" type="text" disabled formControlName="conseventpac" />
+                </div>
+              </div>
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Identificador de evento</label>
+                  <input class="form-control" type="text" disabled formControlName="idevent" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Primer Nombre</label>
+                  <input class="form-control" type="text" disabled formControlName="primernompac" />
+                </div>
+              </div>
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Segundo Nombre</label>
+                  <input class="form-control" type="text" disabled formControlName="segundonompac" />
+                </div>
+              </div>
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Primer Apellido</label>
+                  <input class="form-control" type="text" disabled formControlName="primerapepac" />
+                </div>
+              </div>
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Segundo Apellido</label>
+                  <input class="form-control" type="text" disabled formControlName="segundoapepac" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="card-header col-md-12">
+                <h3 class="title">Adicionar Registros de Diagnósticos</h3>
+              </div>
+              <div formArrayName="diagnosticos">
+                <div *ngFor="let diagnostico of diagnosticosArray.controls; let i = index" [formGroupName]="i" class="row">
+                  <div class="col-md-3 pr-md-1">
+                    <div class="form-group">
+                      <label>Tipo de Diagnóstico</label>
+                      <select class="form-select" formControlName="typdxatehcpac_fk">
+                        <option value="" disabled selected>Tipo de diagnóstico</option>
+                        <option *ngFor="let tdx of tipdx" [value]="tdx.idtypdx">{{ tdx.detypdx }}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-3 pr-md-1">
+                    <div class="form-group">
+                      <label>Documento Origen del Diagnóstico</label>
+                      <select class="form-select" formControlName="origdx_fk">
+                        <option value="" disabled selected>Seleccione el documento origen</option>
+                        <option *ngFor="let tnot of tipnot" [value]="tnot.idtypnot">{{ tnot.dettypnot }}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label>Diagnóstico</label>
+                      <input class="form-control me-2" type="text" placeholder="Consulta diagnóstico" formControlName="dxatehcpac_fk" (input)="filtrarDiagnosticos($event.target.value, i)" />
+                      <div *ngIf="diagnosticosFiltrados[i]?.length > 0">
+                        <ul class="list-group">
+                          <li class="list-group" *ngFor="let diagnostico of diagnosticosFiltrados[i]" (click)="seleccionarDiagnostico(diagnostico, i)">
+                            {{ diagnostico.nomdx }}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 pr-md-1">
+                    <button class="btn btn-danger" type="button" (click)="removeDiagnostico(i)">Eliminar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <button class="btn btn-primary" type="button" (click)="addDiagnostico()">Agregar Diagnóstico</button>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-fill btn-danger" type="submit" (click)="creaDxAtencion()">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

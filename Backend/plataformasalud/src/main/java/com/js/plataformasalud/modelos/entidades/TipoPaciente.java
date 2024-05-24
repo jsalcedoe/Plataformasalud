@@ -36,7 +36,7 @@ public class TipoPaciente implements Serializable {
 	@NotEmpty(message = "El campo tipo de paciente no puede ser vacio")
 	private String nomtipac;
 	
-	@Column(nullable = false,length = 15)
+	@Column(nullable = false,length = 30)
 	@NotEmpty(message = "El campo detalle del tipo de paciente no puede ser vacio")
 	private String dettipac;
 	

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { Config } from 'protractor';
-import { catchError, map, tap } from 'rxjs';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 import { OperacionService } from 'src/app/services/operacion.service';
 import Swal from 'sweetalert2';
@@ -20,13 +19,8 @@ export class CreadiagnosticosatencionComponent implements OnInit {
   hcpacseleccionado:any
   tipdx:any
   tipnot:any
-  diagnosticoAutocompletado: string; // Variable para almacenar el diagnóstico autocompletado
-  diagnosticoOptions: any[] = []; // Lista de opciones de diagnóstico para el autocompletado
   diagnosticos: any[] = []; // Lista completa de diagnósticos
   diagnosticosFiltrados: any[] = []; // Diagnósticos filtrados según la consulta incremental
-
-  
-
 
   constructor(
     private router:Router,
@@ -39,15 +33,13 @@ export class CreadiagnosticosatencionComponent implements OnInit {
       this.formDxAtencion=fb.group({
         idhcpac:['',[Validators.required]],
         numdocpac:['',[Validators.required]],
-        primernompac:['',[Validators.required]],
         conseventpac:['',[Validators.required]],    
+        primernompac:['',[Validators.required]],
         segundonompac:['',[Validators.required]],
         primerapepac:['',[Validators.required]],
         segundoapepac:['',[Validators.required]],
-        origdx_fk:['',[Validators.required]],
-        dxatehcpac_fk:['',[Validators.required]],
-        typdxatehcpac_fk:['',[Validators.required]],
         idevent:['',[Validators.required]],
+        diagnosticos: this.fb.array([]) // FormArray para los diagnósticos dinámicos
       })
      }
 
@@ -65,6 +57,41 @@ export class CreadiagnosticosatencionComponent implements OnInit {
       this.consultaTipoNota();
       this.consultaDx();
       
+  }
+
+  get diagnosticosArray(): FormArray {
+    return this.formDxAtencion.get('diagnosticos') as FormArray;
+  }
+
+  filtrarDiagnosticos(consulta: string, index:number) {
+    if (consulta.trim() !== '') {
+      this.diagnosticosFiltrados[index] = this.diagnosticos.filter(diagnostico =>
+        diagnostico.nomdx.toLowerCase().includes(consulta.toLowerCase())
+      );
+    } else {
+      this.diagnosticosFiltrados[index] = []; // Borra la lista de diagnósticos filtrados si la consulta está vacía
+    }
+  }
+
+  addDiagnostico() {
+    const diagnosticos = this.formDxAtencion.get('diagnosticos') as FormArray;
+    diagnosticos.push(this.fb.group({
+      typdxatehcpac_fk: ['', Validators.required],
+      origdx_fk: ['', Validators.required],
+      dxatehcpac_fk: ['', Validators.required]
+    }));
+  }
+
+  removeDiagnostico(index: number) {
+    const diagnosticos = this.formDxAtencion.get('diagnosticos') as FormArray;
+    diagnosticos.removeAt(index);
+    delete this.diagnosticosFiltrados[index]; // Remove filtered diagnostics for this index
+  }
+
+  seleccionarDiagnostico(diagnostico: any, index: number) {
+    const diagnosticos = this.formDxAtencion.get('diagnosticos') as FormArray;
+    diagnosticos.at(index).get('dxatehcpac_fk').setValue(diagnostico.clavedx);
+    this.diagnosticosFiltrados[index] = [];
   }
 
   getDataHcpac(){
@@ -87,50 +114,77 @@ export class CreadiagnosticosatencionComponent implements OnInit {
 
   }
 
-  creaDxAtencion(){
-    let structDxAtencion = {
-      origdx_fk:{
-        "idtypnot":this.formDxAtencion.value.origdx
-      },
-      estdxatehcpac:{
-        "idstatus":1
-      },
-      dxatehcpac_fk:{
-        "clavedx":this.formDxAtencion.value.dxatehcpac_fk
-      },
-      typdxatehcpac_fk:{
-        "idtypdx":this.formDxAtencion.value.typdxatehcpac_fk
-      },
-      eventdxate_fk:{
-        "idevent":this.formDxAtencion.value.eventdxate_fk
-      }
-    }
-    this.service.addDxAtencion(structDxAtencion)
-    .pipe(
-      tap((res) => {
-        // Maneja la respuesta exitosa aquí
-        console.log('DiagnosticoAtención', res);
-        Swal.fire({
-          icon: 'success',
-          title: 'Operación exitosa',
-          text: res.mensaje // Mostrar el mensaje recibido desde el backend
-        });
-        return this.router.navigate(['diagnosticosatencion']);
-        
-      }),
-      catchError((err) => {
-        // Maneja el error aquí
-        console.error('Error:', err);
-        Swal.fire({
-          icon: 'error',
-          title: 'Error en la operación',
-          text: err.message // Mostrar el mensaje recibido desde el backend
-        });
-        
-        throw err; // Re-throw para que el error se propague al suscriptor
-      })
-    ).subscribe();
-  }
+  creaDxAtencion() {
+    console.log('Valores del formulario:', this.formDxAtencion.value);
+
+    // Extrayendo los valores del formulario principal
+    const eventdxate_fk = this.formDxAtencion.get('idevent')?.value;
+    console.log('evento', eventdxate_fk);
+
+    // Extrayendo y construyendo los valores de los diagnósticos
+    const diagnosticosArray = this.formDxAtencion.get('diagnosticos') as FormArray;
+    const diagnosticosValues = diagnosticosArray.value;
+
+    const diagnosticosStruct = diagnosticosValues.map((diagnostico: any) => {
+        const origdx_fk = Number(diagnostico.origdx_fk);
+        const dxatehcpac_fk = Number(diagnostico.dxatehcpac_fk); // Asegúrate de que este campo es un ID y no un nombre
+        const typdxatehcpac_fk = Number(diagnostico.typdxatehcpac_fk);
+
+        console.log('Valores convertidos:', { origdx_fk, dxatehcpac_fk, typdxatehcpac_fk });
+
+
+        return {
+            origdx_fk: {
+                "idtypnot": origdx_fk
+            },
+            estdxatehcpac: {
+                "idstatus": 1
+            },
+            dxatehcpac_fk: {
+                "clavedx": dxatehcpac_fk
+            },
+            typdxatehcpac_fk: {
+                "idtypdx": typdxatehcpac_fk
+            },
+            eventdxate_fk: {
+                "idevent": Number(eventdxate_fk)
+            }
+        };
+    });
+
+    diagnosticosStruct.forEach((dx, index) => {
+        console.log(`Diagnóstico ${index + 1}:`, dx);
+        this.service.addDxAtencion(dx)
+            .pipe(
+                tap((res) => {
+                    // Maneja la respuesta exitosa aquí
+                    console.log('DiagnosticoAtención', res);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Operación exitosa',
+                        text: res.mensaje // Mostrar el mensaje recibido desde el backend
+                    });
+                    if (index === diagnosticosStruct.length - 1) {
+                        this.router.navigate(['eventos']);
+                    }
+                }),
+                catchError((err) => {
+                    // Maneja el error aquí
+                    console.error('Error:', err);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error en la operación',
+                        text: err.message // Mostrar el mensaje recibido desde el backend
+                    });
+
+                    throw err; // Re-throw para que el error se propague al suscriptor
+                })
+            ).subscribe();
+    });
+
+    // Elimina la llamada duplicada a addDxAtencion aquí
+}
+
 
   consultaTipoDx(){
     this.servicioDx.getTipoDx()
@@ -186,45 +240,10 @@ export class CreadiagnosticosatencionComponent implements OnInit {
     ).subscribe();
   }
 
-  filtrarDiagnosticos(consulta: string) {
-    if (consulta.trim() !== '') {
-      this.diagnosticosFiltrados = this.diagnosticos.filter(diagnostico =>
-        diagnostico.nomdx.toLowerCase().includes(consulta.toLowerCase())
-      );
-    } else {
-      this.diagnosticosFiltrados = []; // Borra la lista de diagnósticos filtrados si la consulta está vacía
-    }
-  }
-/*
-  // Método para manejar la búsqueda incremental
-  handleSearch(term: string): void {
-    if (term.length >= 3) { // Realiza la búsqueda solo si el término tiene al menos 3 caracteres
-      this.servicioDx.getDxfindByNomdx(term)
-        .pipe(
-          tap((res) => {
-            // Maneja la respuesta exitosa aquí
-            console.log('Resultado de la búsqueda:', res);
-            this.diagnosticoOptions = res; // Actualiza la lista de opciones de diagnóstico
-          }),
-          catchError((err) => {
-            // Maneja el error aquí
-            console.error('Error:', err);
-            // Muestra una alerta de error, por ejemplo:
-            Swal.fire({
-              icon: 'error',
-              title: 'Error en la búsqueda',
-              text: 'Hubo un problema al buscar diagnósticos. Por favor, inténtalo de nuevo más tarde.'
-            });
-            throw err; // Re-throw para que el error se propague al suscriptor
-          })
-        ).subscribe();
-    } else {
-      // Si el término es muy corto, vacía la lista de opciones de diagnóstico
-      this.diagnosticoOptions = [];
-    }
-  }*/
+  
+
   clearForm(){
-
+    // Método para limpiar el formulario si es necesario
   }
 
-  }
+}
