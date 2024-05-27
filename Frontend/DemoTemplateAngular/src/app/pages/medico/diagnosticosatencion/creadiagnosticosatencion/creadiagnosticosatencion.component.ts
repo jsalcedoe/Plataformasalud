@@ -41,6 +41,7 @@ export class CreadiagnosticosatencionComponent implements OnInit {
         idevent:['',[Validators.required]],
         diagnosticos: this.fb.array([]) // FormArray para los diagnósticos dinámicos
       })
+      this.addDiagnostico(); // Asegúrate de agregar esto en el constructor para inicializar un diagnóstico vacío.
      }
 
   ngOnInit(): void {
@@ -78,7 +79,8 @@ export class CreadiagnosticosatencionComponent implements OnInit {
     diagnosticos.push(this.fb.group({
       typdxatehcpac_fk: ['', Validators.required],
       origdx_fk: ['', Validators.required],
-      dxatehcpac_fk: ['', Validators.required]
+      dxatehcpac_fk: ['', Validators.required],
+      nomdx:['']
     }));
   }
 
@@ -90,7 +92,10 @@ export class CreadiagnosticosatencionComponent implements OnInit {
 
   seleccionarDiagnostico(diagnostico: any, index: number) {
     const diagnosticos = this.formDxAtencion.get('diagnosticos') as FormArray;
-    diagnosticos.at(index).get('dxatehcpac_fk').setValue(diagnostico.clavedx);
+    diagnosticos.at(index).patchValue({
+      dxatehcpac_fk: diagnostico.clavedx,
+      nomdx: diagnostico.nomdx // Actualiza el nombre del diagnóstico
+    });
     this.diagnosticosFiltrados[index] = [];
   }
 
