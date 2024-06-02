@@ -143,12 +143,12 @@ creaPaciente(){
   const numDocumento = this.formpac.value.numdocpac;
   console.log('cantidad de digitos capturados',numDocumento.length)
   console.log('tipo de documento',tipoDocumento)
-  if ((tipoDocumento == 1 && edadPaciente < 18) || (tipoDocumento == 3 || tipoDocumento ==4 && edadPaciente > 18) ){
+  if ((tipoDocumento == 1 && edadPaciente < 18) || (tipoDocumento == 3 && edadPaciente >18 || tipoDocumento ==4 && edadPaciente > 18) ){
     
     Swal.fire({
       icon: 'error',
       title: 'Error',
-      text: 'No se puede crear el paciente. El tipo de document y edad no corresponden.',
+      text: `No se puede crear el paciente. El tipo de documento es ${tipoDocumento} y la edad es ${edadPaciente}, los cuales no corresponden.`,
     });
     return; 
   } 

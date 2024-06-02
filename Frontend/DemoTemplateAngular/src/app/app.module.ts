@@ -83,6 +83,8 @@ import { CreapacienteComponent } from './pages/pacientes/creapaciente/creapacien
 import { CreaeventosComponent } from './pages/eventos/creaeventos/creaeventos.component';
 import { CreahistoriaclinicaComponent } from './pages/medico/historiaclinica/creahistoriaclinica/creahistoriaclinica.component';
 import { CreadiagnosticosatencionComponent } from './pages/medico/diagnosticosatencion/creadiagnosticosatencion/creadiagnosticosatencion.component';
+import { CreaevomedComponent } from './pages/medico/evolucionmedica/creaevomed/creaevomed.component';
+import { CreadesqxComponent } from './pages/medico/descripcionquirurgica/creadesqx/creadesqx.component';
 //import { from } from "rxjs";
 
 
@@ -173,6 +175,8 @@ import { CreadiagnosticosatencionComponent } from './pages/medico/diagnosticosat
     CreaeventosComponent,
     CreahistoriaclinicaComponent,
     CreadiagnosticosatencionComponent,
+    CreaevomedComponent,
+    CreadesqxComponent,
     ],
   providers: [],
   bootstrap: [AppComponent]

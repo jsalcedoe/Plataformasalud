@@ -21,7 +21,7 @@ export class ProcedimientoexamenesComponent implements OnInit {
     this.services.getProcedimientoexamenes().pipe(
       tap((res) => {
         // Maneja la respuesta exitosa aquí
-        console.log('PERMISOS', res);
+        console.log('PROCEDIMIENTOS Y EXAMENES', res);
         this.procedimientos = res;
         this.ready = true;
       }),

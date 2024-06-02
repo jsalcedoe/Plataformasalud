@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, tap } from 'rxjs';
+import { ConfigService } from 'src/app/services/config.service';
+import { OperacionService } from 'src/app/services/operacion.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-evolucionmedica',
@@ -8,12 +13,12 @@ import { Router } from '@angular/router';
 })
 export class EvolucionmedicaComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor( ) { }
 
-  ngOnInit(): void {
-  }
-  iradddx(){
-    this.router.navigate(['diagnosticosatencion'])
-  }
+  ngOnInit(): void {}
+
+  
 
 }
+
+

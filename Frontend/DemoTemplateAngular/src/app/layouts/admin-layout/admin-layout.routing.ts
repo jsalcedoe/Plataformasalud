@@ -76,6 +76,8 @@ import { CreapacienteComponent } from "src/app/pages/pacientes/creapaciente/crea
 import { CreaeventosComponent } from "src/app/pages/eventos/creaeventos/creaeventos.component";
 import { CreahistoriaclinicaComponent } from "src/app/pages/medico/historiaclinica/creahistoriaclinica/creahistoriaclinica.component";
 import { CreadiagnosticosatencionComponent } from "src/app/pages/medico/diagnosticosatencion/creadiagnosticosatencion/creadiagnosticosatencion.component";
+import { CreaevomedComponent } from "src/app/pages/medico/evolucionmedica/creaevomed/creaevomed.component";
+import { CreadesqxComponent } from "src/app/pages/medico/descripcionquirurgica/creadesqx/creadesqx.component";
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
@@ -150,6 +152,8 @@ export const AdminLayoutRoutes: Routes = [
   { path:'historiaclinica',component:HistoriaclinicaComponent},
   { path:'creahistoriaclinica',component:CreahistoriaclinicaComponent},
   { path:'creahistoriaclinica/:idevent',component:CreahistoriaclinicaComponent},
+  { path: 'evolucionmedica',component:EvolucionmedicaComponent},
+  { path: 'evolucionmedica/:idevent',component:EvolucionmedicaComponent},  
   { path:'eventos',component:EventosComponent},
   { path:'evolucionmedica',component:EvolucionmedicaComponent},
   { path:'descripcionquirurgica',component:DescripcionquirurgicaComponent},
@@ -160,7 +164,12 @@ export const AdminLayoutRoutes: Routes = [
   { path:'creaeventos/:idpac',component:CreaeventosComponent},
   { path:'creaeventos',component:CreaeventosComponent},
   { path:'creadiagnosticosatencion',component:CreadiagnosticosatencionComponent},
-  { path:'creadiagnosticosatencion/:idhcpac',component:CreadiagnosticosatencionComponent},
+  { path:'creadiagnosticosatencion/:idevent',component:CreadiagnosticosatencionComponent},
+  { path:'creaevomed',component:CreaevomedComponent},
+  { path:'creaevomed/:idevent',component:CreaevomedComponent},
+  { path:'creadesqx',component:CreadesqxComponent},
+  { path:'creadesqx/:idevent',component:CreadesqxComponent}
+  
 
 
 

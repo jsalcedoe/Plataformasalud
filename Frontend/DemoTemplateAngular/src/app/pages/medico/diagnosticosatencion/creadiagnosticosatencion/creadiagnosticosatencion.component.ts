@@ -15,8 +15,8 @@ export class CreadiagnosticosatencionComponent implements OnInit {
   ready:boolean=false
   dxate:any;
   formDxAtencion:FormGroup
-  idhcpaciente:string
-  hcpacseleccionado:any
+  idevent:string
+  ideventseleccionado:any
   tipdx:any
   tipnot:any
   diagnosticos: any[] = []; // Lista completa de diagnósticos
@@ -29,7 +29,7 @@ export class CreadiagnosticosatencionComponent implements OnInit {
     private servicioDx:ConfigService,
     private paramsrouter: ActivatedRoute
     ) {
-      this.idhcpaciente=this.paramsrouter.snapshot.paramMap.get('idhcpac')
+      this.idevent=this.paramsrouter.snapshot.paramMap.get('idevent')
       this.formDxAtencion=fb.group({
         idhcpac:['',[Validators.required]],
         numdocpac:['',[Validators.required]],
@@ -45,9 +45,9 @@ export class CreadiagnosticosatencionComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    if(this.idhcpaciente != null){
+    if(this.idevent != null){
       
-      console.log('id del evento que llega',this.idhcpaciente)
+      console.log('id del evento que llega',this.idevent)
   
       this.getDataHcpac();    
       
@@ -100,19 +100,19 @@ export class CreadiagnosticosatencionComponent implements OnInit {
   }
 
   getDataHcpac(){
-    console.log('hcpac que viene del snapshop',this.idhcpaciente)
-    this.service.getHCtId(this.idhcpaciente).subscribe((res:any)=>{
-      console.log('historia  a mostrar en el formulario',res);
-      this.hcpacseleccionado = res;
+    console.log('idevent que viene del snapshop',this.idevent)
+    this.service.getHCtId(this.idevent).subscribe((res:any)=>{
+      console.log('evento  a mostrar en el formulario',res);
+      this.ideventseleccionado = res;
       this.formDxAtencion.patchValue({
-        idhcpac:this.hcpacseleccionado.idhcpac, 
-        idevent:this.hcpacseleccionado.eventpac_fk.idevent,
-        conseventpac:this.hcpacseleccionado.eventpac_fk.conseventpac,
-        numdocpac:this.hcpacseleccionado.eventpac_fk.pacevent_fk.numdocpac,
-        primernompac:this.hcpacseleccionado.eventpac_fk.pacevent_fk.primernompac,
-        segundonompac:this.hcpacseleccionado.eventpac_fk.pacevent_fk.segundonompac,
-        primerapepac:this.hcpacseleccionado.eventpac_fk.pacevent_fk.primerapepac,
-        segundoapepac:this.hcpacseleccionado.eventpac_fk.pacevent_fk.segundoapepac,
+        idhcpac:this.ideventseleccionado.idhcpac, 
+        idevent:this.ideventseleccionado.eventpac_fk.idevent,
+        conseventpac:this.ideventseleccionado.eventpac_fk.conseventpac,
+        numdocpac:this.ideventseleccionado.eventpac_fk.pacevent_fk.numdocpac,
+        primernompac:this.ideventseleccionado.eventpac_fk.pacevent_fk.primernompac,
+        segundonompac:this.ideventseleccionado.eventpac_fk.pacevent_fk.segundonompac,
+        primerapepac:this.ideventseleccionado.eventpac_fk.pacevent_fk.primerapepac,
+        segundoapepac:this.ideventseleccionado.eventpac_fk.pacevent_fk.segundoapepac,
       })
       
      })

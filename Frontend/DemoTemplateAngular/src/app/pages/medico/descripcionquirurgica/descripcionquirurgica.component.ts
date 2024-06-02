@@ -13,8 +13,4 @@ export class DescripcionquirurgicaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  iraddpx(){
-    this.router.navigate(['procedimientos']);
-  }
-
 }

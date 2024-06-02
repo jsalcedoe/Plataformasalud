@@ -66,7 +66,17 @@ export class OperacionService {
     return this.http.get<any[]>(this.endpoint+'diagnosticosatencion/'+id)
   }
 
+  // servicios para componente Evoluciones Medicas
 
+  addEvoMed(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'evoluciones',datosRegistros,{headers:this.httpheaders})
+  }
+  getEvoMed():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'evoluciones')
+  }
+  getEvoMedId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'evoluciones/'+id)
+  }
 
   
 

@@ -25,7 +25,7 @@ export class CreahistoriaclinicaComponent implements OnInit {
   ) { 
       //asignamos el valor del evento que traemos de la URL a la variable this.idevent
       this.idevent=this.paramsrouter.snapshot.paramMap.get('idevent')
-
+      console.log('idevent del snapshop',this.idevent)
       this.formHC = fb.group ({
       pesohcpac:['',[Validators.required]],
       estaturahcpac:['',[Validators.required]],
@@ -140,14 +140,12 @@ export class CreahistoriaclinicaComponent implements OnInit {
         tap((res) => {
           // Maneja la respuesta exitosa aquí
           console.log('Historia Clinica', res);
-          const idhcpac = res['Historia Clinica'].idhcpac;
-          console.log('respiesta de backend con el idhcpac', idhcpac)
           Swal.fire({
             icon: 'success',
             title: 'Operación exitosa',
             text: res.mensaje // Mostrar el mensaje recibido desde el backend
           }).then (() =>{
-            this.router.navigateByUrl(`/creadiagnosticosatencion/${idhcpac}`)
+            this.router.navigateByUrl(`/creadiagnosticosatencion/${this.idevent}`)
           });
           
           
