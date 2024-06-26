@@ -1,0 +1,40 @@
+<p>camas works!</p>
+<div class=" content">
+    <div class=" row">
+      <div class=" col-md-6">
+        <div class=" card">
+          <div class=" card-header">
+            <h4 class=" card-title">PANEL DE ADMINISTRACION PARA CONDUCTAS</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-3">
+      <h2>Listado de conductas</h2>
+      <h1 *ngIf="!ready">Cargando...</h1>            
+      <form class="d-flex">
+        <button class="btn btn-primary" type="button" (click)="irCreaConductas()" >Crear Conductas</button>    
+      </form>                
+      <table class="table table-dark table-hover" id="" *ngIf="ready" >
+     
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Conducta</th>
+            <th>Detalle conducta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of conducta, let i =index">
+            <td>{{i+1}}</td>
+            <td>{{c.nomcondpac}}</td>
+            <td>{{c.detcondpac}}</td>
+            <td><button>editar</button></td>
+  
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>

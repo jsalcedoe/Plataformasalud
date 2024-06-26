@@ -111,7 +111,7 @@ public class ProcedimientoQuirurgicoRestController {
 		try {
 			qxAct.setAnestesia_fk(qx.getAnestesia_fk());
 			qxAct.setComplicqx(qx.getComplicqx());
-			qxAct.setConducqx(qx.getConducqx());
+			qxAct.setConducqx_fk(qx.getConducqx_fk());
 			qxAct.setDescqx(qx.getDescqx());
 			qxAct.setFechaprocqx(qx.getFechaprocqx());
 			qxAct.setHallaqx(qx.getHallaqx());
@@ -120,7 +120,7 @@ public class ProcedimientoQuirurgicoRestController {
 			qxAct.setMatprot(qx.getMatprot());
 			qxAct.setMuespato(qx.getMuespato());
 			qxAct.setTimeqx(qx.getTimeqx());
-			qxAct.setTipoherida(qx.getTipoherida());
+			qxAct.setTipohx_fk(qx.getTipohx_fk());
 			qxAct.setTypqx(qx.getTypqx());
 			
 			

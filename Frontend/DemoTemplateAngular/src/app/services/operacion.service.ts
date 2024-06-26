@@ -78,6 +78,29 @@ export class OperacionService {
     return this.http.get<any[]>(this.endpoint+'evoluciones/'+id)
   }
 
+  // servicios para componente creadesqx
+
+  adddesqx(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'procedimientosqx',datosRegistros,{headers:this.httpheaders})
+  }
+  getdesqx():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'procedimientosqx')
+  }
+  getdesqxId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'procedimientosqx/'+id)
+  }
+
+  // Servicio para componenta de equipo quirurgico
+
+  addequipoqx(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'equipoqx',datosRegistros,{headers:this.httpheaders})
+  }
+  getequipoqx():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'equipoqx')
+  }
+  getequipoqxId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'equipoqx/'+id)
+  }
   
 
   

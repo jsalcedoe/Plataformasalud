@@ -141,9 +141,10 @@ creaPaciente(){
   const tipoDocumento = this.formpac.value.typdocpac;
   const edadPaciente = this.edad;
   const numDocumento = this.formpac.value.numdocpac;
+  const estadocivilpac = this.formpac.value.estadocivilpac
   console.log('cantidad de digitos capturados',numDocumento.length)
   console.log('tipo de documento',tipoDocumento)
-  if ((tipoDocumento == 1 && edadPaciente < 18) || (tipoDocumento == 3 && edadPaciente >18 || tipoDocumento ==4 && edadPaciente > 18) ){
+  if ((tipoDocumento == 1 && edadPaciente < 18) ||(tipoDocumento == 1 && estadocivilpac =="MENOR DE EDAD" ) || (tipoDocumento == 3 && edadPaciente >18 || tipoDocumento ==4 && edadPaciente > 18) ){
     
     Swal.fire({
       icon: 'error',

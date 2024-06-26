@@ -56,9 +56,9 @@ public class ProcedimientoQuirurgico implements Serializable {
 		return timeqx;
 	}
 	
-	@Column(nullable = false, length = 20)
-	@NotEmpty(message = "El campo tipo de herida no puede ser vacio, por favor seleccione el tipo de herida")
-	private String tipoherida; // los tipos de herida  
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private TipoHerida tipohx_fk; // los tipos de herida  
 	
 	@Column(nullable = false, length = 2000)
 	@NotEmpty(message = "El campo descripcion no puede ser vacio")
@@ -71,13 +71,13 @@ public class ProcedimientoQuirurgico implements Serializable {
 	private String muespato; 
 	// Descripcion de las muestras anatopatologicas si es el caso incluye el tipo la cantidad la localizacion el aspecto
 	
-	private String complicqx; // si o no
+	private String complicqx; // Describe el tipo de complicacion detalladamente
 	
-	private String hallaqx; // si o no
+	private String hallaqx; // describe los hallazgos encontrados
 	
-	@Column(nullable = false)
-	@NotEmpty(message = "seleccione la conducta del paciente posterior al procedimiento")
-	private String conducqx;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private Conducta conducqx_fk;
 	//la conducta puede ser, hospitalizar, observacion, o salida
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -87,6 +87,10 @@ public class ProcedimientoQuirurgico implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private TipoAnestesia anestesia_fk;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private Estado estpxqx_fk;
 	
 	private static final long serialVersionUID = 1L;
 	

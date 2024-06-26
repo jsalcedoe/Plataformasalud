@@ -4,7 +4,7 @@
             <div class=" card">
                 <div class=" card-header"><h1 class=" title">  DESCRIPCIÓN QUIRURGICA</h1></div>
                 <div class="card-body">
-                    <form>
+                    <form [formGroup]="formdesqx">
                         <div class = "style=">
                             <form class="d-flex">
                               <input class="form-control me-2" type="text" placeholder="Consultar paciente" style="width: 40%;">
@@ -19,7 +19,8 @@
                                   <input
                                     class=" form-control"
                                     type="text"
-                                    disabled="true"
+                                    disabled
+                                    formControlName="numdocpac"
                                   />
                                 </div>
                               </div>
@@ -30,7 +31,8 @@
                                   <input
                                     class=" form-control"
                                     type="text"
-                                    disabled="true"
+                                    disabled
+                                    formControlName="idevent"
                                   />
                                 </div>
                               </div>
@@ -41,7 +43,7 @@
                                   <input
                                     class=" form-control"
                                     type="text"
-                                    disabled="true"
+                                    disabled
                                     formControlName="conseventpac"
                                   />
                                 </div>
@@ -53,7 +55,7 @@
                                   <input
                                     class=" form-control"
                                     type="text"
-                                    disabled="true"
+                                    disabled
                                     formControlName="idpac"
                                   />
                                 </div>
@@ -67,7 +69,8 @@
                                <input
                                  class=" form-control"
                                  type="text"
-                                 disabled="true"
+                                 disabled
+                                 formControlName="primernompac"
                                />
                              </div>
                            </div>
@@ -76,8 +79,9 @@
                                <label> Segundo Nombre </label>
                                <input
                                  class=" form-control"
-                                 disabled="true"
+                                 disabled
                                  type="text"
+                                 formControlName="segundonompac"
                                />
                              </div>
                            </div>
@@ -86,8 +90,9 @@
                                <label> Primer Apellido </label>
                                <input
                                  class=" form-control"
-                                 disabled="true"
+                                 disabled
                                  type="text"
+                                 formControlName="primerapepac"
                                />
                              </div>
                            </div>
@@ -96,8 +101,9 @@
                                <label> Segundo Apellido </label>
                                <input
                                  class=" form-control"
-                                 disabled="true"
+                                 disabled
                                  type="text"
+                                 formControlName="segundoapepac"
                                />
                              </div>
                            </div>
@@ -110,6 +116,7 @@
                                   <input
                                     class=" form-control"
                                     type="date"
+                                    formControlName="fechaprocqx"
                                   />
                                 </div>
                               </div>
@@ -120,7 +127,9 @@
                                   <input
                                     class=" form-control"
                                     placeholder="Hora inicio"
-                                    type="text"
+                                    type="time"
+                                    formControlName="horainicioprocqx"
+                                    (keyup)="calculaTQx()"
                                   />
                                 </div>
                               </div>
@@ -130,7 +139,9 @@
                                   <input
                                     class=" form-control"
                                     placeholder="Hora final"
-                                    type="text"
+                                    type="time"
+                                    formControlName="horafinprocqx"
+                                    (keyup)="calculaTQx()"
                                   />
                                 </div>
                               </div>
@@ -143,72 +154,79 @@
                                     placeholder="Tiempo quirurgico"
                                     disabled = "true"
                                     type="text"
+                                    formControlName="timeqx"
+                                    [value]="tiempoqx"
                                   />
                                 </div>
                               </div>
                               <div class=" col-md-10 pr-md-1">
                                 <div><label>Descripción del procedimiento</label></div>
                                 <div class=" form-group">
-                                   <textarea rows="5" cols="80" class="form-control"></textarea>
+                                   <textarea rows="5" cols="80" class="form-control" formControlName="descqx"></textarea>
                                 </div>
                               </div> 
                               <div class="col-md-3 pr-md-1">
                                 <div class="form-group">
                                 <div><label>Tipo de herida</label></div>
-                                <select class="form-control" style="width: auto;">
-                                  <option>Tipo de herida</option>
+                                <select class="form-group" style="width: auto;" formControlName="tipohx_fk">
+                                  <option value="" disabled selected>Seleccione el tipo de herida</option>
+                                  <option *ngFor="let thx of tipohx" [value]="thx.idthx">{{thx.dethx}}</option>
                                 </select>
                              </div>
                               </div>
                               <div class="col-md-3 pr-md-1">
                                 <div class="form-group">
                                 <div><label>Tipo de procedimiento</label></div>
-                                <select class="form-control" style="width: auto;">
-                                  <option>Tipo de procedimiento</option>
+                                <select class="form-group" style="width: auto;" formControlName="typqx">
+                                  <option value="" disabled selected>Seleccione el tipo de procedimiento</option>
+                                  <option *ngFor="let thp of tipopx" [value]="thp.idtproc">{{thp.detproc}}</option>
                                 </select>
                               </div>
                               </div>
                               <div class="col-md-4 pr-md-1">
-                                <div class="form-group">
+                                <div class="form-group" >
                                 <div><label>Material o protesis</label></div>
                                 <input
                                     class=" form-control"
                                     placeholder="Material o protesis"
                                     type="text"
+                                    formControlName="matprot"
                                   />
                               </div>
                               </div>
                               <div class=" col-md-10 pr-md-1">
                                 <div><label>Muestra de patologia</label></div>
                                 <div class=" form-group">
-                                   <textarea rows="5" cols="80" class="form-control"></textarea>
+                                   <textarea rows="5" cols="80" class="form-control" formControlName="muespato"></textarea>
                                 </div>
                               </div>
                               <div class=" col-md-10 pr-md-1">
                                 <div><label>Complicaciones quirurgicas</label></div>
                                 <div class=" form-group">
-                                   <textarea rows="5" cols="80" class="form-control"></textarea>
+                                   <textarea rows="5" cols="80" class="form-control" formControlName="complicqx"></textarea>
                                 </div>
                               </div>
                               <div class=" col-md-10 pr-md-1">
                                 <div><label>Hallazgos quirurgicos</label></div>
                                 <div class=" form-group">
-                                   <textarea rows="5" cols="80" class="form-control"></textarea>
+                                   <textarea rows="5" cols="80" class="form-control" formControlName="hallaqx"></textarea>
                                 </div>
                               </div>
                               <div class="col-md-3 pr-md-1">
                                 <div class="form-group">
                                 <div><label>Conducta</label></div>
-                                <select class="form-control" style="width: auto;">
-                                  <option>Seleccione la conducta</option>
+                                <select class="form-group" style="width: auto;" formControlName="conducqx_fk">
+                                  <option value="" disabled selected>Seleccione la conducta</option>
+                                  <option *ngFor="let condpac of conductas" [value]="condpac.idcondpac">{{condpac.detcondpac}}</option>
                                 </select>
                               </div>
                               </div>
                               <div class="col-md-4 pr-md-1">
                                 <div class="form-group">
                                 <div><label>Tipo de anestesia</label></div>
-                                <select class="form-control" style="width: auto;">
-                                  <option>Seleccione el tipo de anestesia</option>
+                                <select class="form-group" style="width: auto;" formControlName="anestesia_fk">
+                                  <option value="" disabled selected>Seleccione el tipo de anestesia</option>
+                                  <option *ngFor="let tanes of tipoanest" [value]="tanes.idtipanest">{{tanes.desctipanest}}</option>
                                 </select>
                               </div>
                               </div>

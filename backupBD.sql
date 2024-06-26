@@ -160,13 +160,15 @@ CREATE TABLE `desqx` (
   `matprot` varchar(255) DEFAULT NULL,
   `muespato` varchar(255) DEFAULT NULL,
   `timeqx` bigint DEFAULT NULL,
-  `tipoherida` varchar(20) NOT NULL,
   `typqx` varchar(255) DEFAULT NULL,
   `anestesia_fk_idtipanest` bigint DEFAULT NULL,
   `eventpxqx_fk_idevent` bigint DEFAULT NULL,
+  `tipohx_fk_idthx` bigint DEFAULT NULL,
   PRIMARY KEY (`idqx`),
   KEY `FKj76qcbg6ca803rrsrxunhhk3g` (`anestesia_fk_idtipanest`),
   KEY `FK90sr9nqniwsidj902jqfgj5a6` (`eventpxqx_fk_idevent`),
+  KEY `FK8irpkdb3yly51jmjib4veu1y0` (`tipohx_fk_idthx`),
+  CONSTRAINT `FK8irpkdb3yly51jmjib4veu1y0` FOREIGN KEY (`tipohx_fk_idthx`) REFERENCES `thx` (`idthx`),
   CONSTRAINT `FK90sr9nqniwsidj902jqfgj5a6` FOREIGN KEY (`eventpxqx_fk_idevent`) REFERENCES `eventhcpac` (`idevent`),
   CONSTRAINT `FKj76qcbg6ca803rrsrxunhhk3g` FOREIGN KEY (`anestesia_fk_idtipanest`) REFERENCES `tipanest` (`idtipanest`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -921,6 +923,36 @@ LOCK TABLES `template` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `thx`
+--
+
+DROP TABLE IF EXISTS `thx`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `thx` (
+  `idthx` bigint NOT NULL AUTO_INCREMENT,
+  `datecreathx` datetime(6) DEFAULT NULL,
+  `datedithx` datetime(6) DEFAULT NULL,
+  `dethx` varchar(10000) DEFAULT NULL,
+  `nomthx` varchar(6) DEFAULT NULL,
+  `estadothx_fk_idstatus` bigint DEFAULT NULL,
+  PRIMARY KEY (`idthx`),
+  KEY `FK393u73flg8m9xch2km72d22rq` (`estadothx_fk_idstatus`),
+  CONSTRAINT `FK393u73flg8m9xch2km72d22rq` FOREIGN KEY (`estadothx_fk_idstatus`) REFERENCES `status` (`idstatus`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `thx`
+--
+
+LOCK TABLES `thx` WRITE;
+/*!40000 ALTER TABLE `thx` DISABLE KEYS */;
+INSERT INTO `thx` VALUES (1,'2024-06-03 22:49:12.253000',NULL,'HERIDA LIMPIA','HXL',1),(2,'2024-06-03 22:49:30.724000',NULL,'HERIDA LIMPIA CONTAMINADA','HXLC',1);
+/*!40000 ALTER TABLE `thx` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tipac`
 --
 
@@ -930,7 +962,7 @@ DROP TABLE IF EXISTS `tipac`;
 CREATE TABLE `tipac` (
   `idtipac` bigint NOT NULL AUTO_INCREMENT,
   `datecreatipac` date DEFAULT NULL,
-  `dettipac` varchar(15) NOT NULL,
+  `dettipac` varchar(30) NOT NULL,
   `nomtipac` varchar(6) NOT NULL,
   `esttippac_idstatus` bigint DEFAULT NULL,
   PRIMARY KEY (`idtipac`),
@@ -1251,4 +1283,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-02  2:28:14
+-- Dump completed on 2024-06-03 22:51:18

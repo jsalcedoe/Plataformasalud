@@ -49,9 +49,9 @@ export class CreahistoriaclinicaComponent implements OnInit {
       idpac:['',[Validators.required]],
       numdocpac:['',[Validators.required]],
       primernompac:['',[Validators.required]],
-      segundonompac:['',[Validators.required]],
+      segundonompac:['',[]],
       primerapepac:['',[Validators.required]],
-      segundoapepac:['',[Validators.required]],
+      segundoapepac:['',[]],
    
     })}
 

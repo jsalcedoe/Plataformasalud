@@ -225,9 +225,36 @@ export class ConfigService {
   addUser(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'usuarios',datosRegistros,{headers:this.httpheaders})
   }
+
+  // CRUD tipo de heridas
+
+  addthx(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'tipoherida',datosRegistros,{headers:this.httpheaders})
+  }
+
+  getthx():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint + 'tipoherida')
+  }
   
-      
-      
+  getthxByIdthx(idthx: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}tipoherida/${idthx}`);
+  }
+
+  //CRUD conductas
+
+  addcondpac(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'conducta',datosRegistros,{headers:this.httpheaders})
+  }
+
+  getcondpac():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint + 'conducta')
+  }
+  
+  getcondpacById(idcondpac: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}conducta/${idcondpac}`);
+  }
+   
+   
     
     
 

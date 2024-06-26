@@ -20,6 +20,7 @@ import lombok.Setter;
 @Setter
 @Table(name = "procqx")
 
+// Esta entidad se encarga de la creacion de todos los procedimientos que se puedan realizar 
 
 public class ProcedimientoDescripcionQX implements Serializable{
 

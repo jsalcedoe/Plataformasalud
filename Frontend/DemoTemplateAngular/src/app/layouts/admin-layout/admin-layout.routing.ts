@@ -78,6 +78,10 @@ import { CreahistoriaclinicaComponent } from "src/app/pages/medico/historiaclini
 import { CreadiagnosticosatencionComponent } from "src/app/pages/medico/diagnosticosatencion/creadiagnosticosatencion/creadiagnosticosatencion.component";
 import { CreaevomedComponent } from "src/app/pages/medico/evolucionmedica/creaevomed/creaevomed.component";
 import { CreadesqxComponent } from "src/app/pages/medico/descripcionquirurgica/creadesqx/creadesqx.component";
+import { TipohxComponent } from "src/app/pages/config/tipohx/tipohx.component";
+import { CreatipohxComponent } from "src/app/pages/config/tipohx/creatipohx/creatipohx.component";
+import { ConductaComponent } from "src/app/pages/config/conducta/conducta.component";
+import { CreacondpacComponent } from "src/app/pages/config/conducta/creacondpac/creacondpac.component";
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
@@ -152,14 +156,15 @@ export const AdminLayoutRoutes: Routes = [
   { path:'historiaclinica',component:HistoriaclinicaComponent},
   { path:'creahistoriaclinica',component:CreahistoriaclinicaComponent},
   { path:'creahistoriaclinica/:idevent',component:CreahistoriaclinicaComponent},
-  { path: 'evolucionmedica',component:EvolucionmedicaComponent},
-  { path: 'evolucionmedica/:idevent',component:EvolucionmedicaComponent},  
+  { path:'evolucionmedica',component:EvolucionmedicaComponent},
+  { path:'evolucionmedica/:idevent',component:EvolucionmedicaComponent},  
   { path:'eventos',component:EventosComponent},
   { path:'evolucionmedica',component:EvolucionmedicaComponent},
   { path:'descripcionquirurgica',component:DescripcionquirurgicaComponent},
   { path:'diagnosticosatencion',component:DiagnosticosatencionComponent},
   { path:'procedimientos',component:ProcedimientosComponent},
   { path:'creaequipoqx',component:CreaequipoqxComponent},
+  { path:'creaequipoqx/:idevent',component:CreaequipoqxComponent},
   { path:'creapaciente',component:CreapacienteComponent},
   { path:'creaeventos/:idpac',component:CreaeventosComponent},
   { path:'creaeventos',component:CreaeventosComponent},
@@ -168,7 +173,12 @@ export const AdminLayoutRoutes: Routes = [
   { path:'creaevomed',component:CreaevomedComponent},
   { path:'creaevomed/:idevent',component:CreaevomedComponent},
   { path:'creadesqx',component:CreadesqxComponent},
-  { path:'creadesqx/:idevent',component:CreadesqxComponent}
+  { path:'creadesqx/:idevent',component:CreadesqxComponent},
+  { path:'tipohx', component:TipohxComponent},
+  { path:'creatipohx',component:CreatipohxComponent},
+  { path:'conducta',component:ConductaComponent},
+  { path:'creacondpac',component:CreacondpacComponent}
+
   
 
 
