@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import com.js.plataformasalud.modelos.entidades.ProcedimientoQuirurgico;
+import com.js.plataformasalud.modelos.entidades.DescripcionQuirurgica;
 import com.js.plataformasalud.modelos.servicios.IProcedimientoQuirurgicoServiceImpl;
 
 import jakarta.validation.Valid;
@@ -36,13 +36,13 @@ public class ProcedimientoQuirurgicoRestController {
 	
 	@GetMapping("/procedimientosqx")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<ProcedimientoQuirurgico> index(){
+	public List<DescripcionQuirurgica> index(){
 		return qxserv.findAll();
 	}
 	
 	@GetMapping("/procedimientosqx/{idqx}")
 	public ResponseEntity<?> mostrar(@PathVariable Long idqx) {
-		ProcedimientoQuirurgico qx = null;
+		DescripcionQuirurgica qx = null;
 		Map<String, Object> response = new HashMap<>();
 	
 		try {
@@ -56,12 +56,12 @@ public class ProcedimientoQuirurgicoRestController {
 			response.put("mensaje", "El procedimiento quirurgico ID: ".concat(idqx.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<ProcedimientoQuirurgico>(qx, HttpStatus.OK);
+		return new ResponseEntity<DescripcionQuirurgica>(qx, HttpStatus.OK);
 	}
 	
 	@PostMapping("/procedimientosqx")
-	public ResponseEntity<?> save (@Valid @RequestBody ProcedimientoQuirurgico qx, BindingResult result) {
-		ProcedimientoQuirurgico Newqx = null;
+	public ResponseEntity<?> save (@Valid @RequestBody DescripcionQuirurgica qx, BindingResult result) {
+		DescripcionQuirurgica Newqx = null;
 		Map<String, Object> response = new HashMap<>();
 		if(result.hasErrors()) {
 			List<String> errors = result.getFieldErrors()
@@ -86,10 +86,10 @@ public class ProcedimientoQuirurgicoRestController {
 	}
 	
 	@PutMapping("/procedimientosqx/{idqx}")
-	public ResponseEntity <?> actualizar (@PathVariable Long idqx,@RequestBody ProcedimientoQuirurgico qx, BindingResult result) {
+	public ResponseEntity <?> actualizar (@PathVariable Long idqx,@RequestBody DescripcionQuirurgica qx, BindingResult result) {
 		
-		ProcedimientoQuirurgico qxUpdate = null;
-		ProcedimientoQuirurgico qxAct = qxserv.findById(idqx);
+		DescripcionQuirurgica qxUpdate = null;
+		DescripcionQuirurgica qxAct = qxserv.findById(idqx);
 		Map<String, Object> response = new HashMap<>();
 
 		if(result.hasErrors()) {
@@ -120,8 +120,8 @@ public class ProcedimientoQuirurgicoRestController {
 			qxAct.setMatprot(qx.getMatprot());
 			qxAct.setMuespato(qx.getMuespato());
 			qxAct.setTimeqx(qx.getTimeqx());
-			qxAct.setTipohx_fk(qx.getTipohx_fk());
-			qxAct.setTypqx(qx.getTypqx());
+			qxAct.setTyphxqx_fk(qx.getTyphxqx_fk());
+			qxAct.setTypxqx_fk(qx.getTypxqx_fk());
 			
 			
 			qxUpdate = qxserv.save(qxAct);

@@ -20,7 +20,8 @@ import lombok.Setter;
 @Setter
 @Table(name = "procqx")
 
-// Esta entidad se encarga de la creacion de todos los procedimientos que se puedan realizar 
+// Esta entidad se encarga de la creacion de todos los procedimientos que se puedan realizar
+//en el procedimiento quirurgico del paciente
 
 public class ProcedimientoDescripcionQX implements Serializable{
 
@@ -31,7 +32,7 @@ public class ProcedimientoDescripcionQX implements Serializable{
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private ProcedimientoQuirurgico descqx_fk;
+	private DescripcionQuirurgica descqx_fk;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})

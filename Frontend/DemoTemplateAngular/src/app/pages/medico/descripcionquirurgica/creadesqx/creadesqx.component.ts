@@ -16,11 +16,13 @@ export class CreadesqxComponent implements OnInit {
   formdesqx:FormGroup
   eventSeleccionado:any
   idevent:string
+  idqx:any
   tiempoqx: any
   tipohx:any
   tipopx:any
   tipoanest: any
   conductas:any
+  desqx:any
 
   constructor(private router:Router,
     private service:OperacionService,
@@ -44,17 +46,15 @@ export class CreadesqxComponent implements OnInit {
         horainicioprocqx:['',[Validators.required]],
         horafinprocqx:['',[Validators.required]],
         timeqx:['',[Validators.required]],
-        tipohx_fk:['',[Validators.required]],
         descqx:['',[Validators.required]],
-        typqx:['',[Validators.required]],
+        typhxqx_fk:['',[Validators.required]],
+        typxqx_fk:['',[Validators.required]],
         matprot:['',[Validators.required]],
         muespato:['',[Validators.required]],
-        conducqx_fk:['',[Validators.required]],
+        complicqx:['',[Validators.required]],
         hallaqx:['',[Validators.required]],
-        conducqx:['',[Validators.required]],
+        conducqx_fk:['',[Validators.required]],
         anestesia_fk:['',[Validators.required]],
-
-
         })
     }
 
@@ -193,40 +193,50 @@ gettipoanestesia(){
 }
 
 creaDesQx(){
+  console.log('idevent value:', this.idevent);
   let struckDesQx={
     fechaprocqx:this.formdesqx.value.fechaprocqx,
     horainicioprocqx:this.formdesqx.value.horainicioprocqx,
     horafinprocqx:this.formdesqx.value.horafinprocqx,
     timeqx:this.formdesqx.value.timeqx,
     descqx:this.formdesqx.value.descqx,
-    typqx: this.formdesqx.value.typqx,
+   typhxqx_fk:{
+      "idthx":this.formdesqx.value.typhxqx_fk
+    },
+    typxqx_fk:{
+      "idtproc":this.formdesqx.value.typxqx_fk
+    },
     matprot: this.formdesqx.value.matprot,
-    muespato: this.formdesqx.value.matprot,
+    muespato: this.formdesqx.value.muespato,
     complicqx: this.formdesqx.value.complicqx,
     hallaqx:this.formdesqx.value.hallaqx,
     conducqx_fk:{
       "idcondpac":this.formdesqx.value.conducqx_fk
      },
-    eventpxqx_fk:{
-      "idevent":this.eventSeleccionado.value.idevent
-     },
-    anestesia_fk:{
+     eventpxqx_fk:{
+      "idevent":this.eventSeleccionado.idevent
+          
+      },
+     anestesia_fk:{
       "idtipanest":this.formdesqx.value.anestesia_fk
     },
-    tipohx_fk:{
-      "idthx":this.formdesqx.value.tipohx_fk
-    } 
+    estpxqx_fk:{
+      "idstatus":1
+    }
+    
   }
+  console.log('Estructura Descripción Quirúrgica:', struckDesQx);
   this.service.adddesqx(struckDesQx).pipe(
     tap((res) => {
       // Maneja la respuesta exitosa aquí
-      console.log('Descripcion Quirurgica', res);
+      this.desqx=res
+      console.log('Descripcion Quirurgica', this.desqx);
       Swal.fire({
         icon: 'success',
         title: 'Operación exitosa',
         text: res.mensaje // Mostrar el mensaje recibido desde el backend
       }).then (() =>{
-        this.router.navigateByUrl(`/creaequipoqx/${this.idevent}`)
+        this.router.navigateByUrl(`/creapxqx/${this.idqx}`)
       });
       
       
@@ -244,10 +254,6 @@ creaDesQx(){
     })
   ).subscribe();
 }
-
-
-
-
 
    clearForm(){}
 

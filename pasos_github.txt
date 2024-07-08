@@ -9,4 +9,6 @@ NVM para instalar varios Node.js
 
 Estructura de una aplicacion en Angular
 
+43.30 - 47.50
+
 

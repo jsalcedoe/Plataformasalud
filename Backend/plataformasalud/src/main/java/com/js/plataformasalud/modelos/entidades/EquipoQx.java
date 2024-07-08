@@ -52,7 +52,7 @@ public class EquipoQx implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private ProcedimientoQuirurgico pxqx_fk;
+	private DescripcionQuirurgica pxqx_fk;
 	
 	private static final long serialVersionUID = 1L;
 

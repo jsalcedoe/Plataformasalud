@@ -25,20 +25,20 @@ export class CreaevomedComponent implements OnInit {
     private fb:FormBuilder,
     private paramsrouter: ActivatedRoute,
 ) {
-this.idevent=this.paramsrouter.snapshot.paramMap.get('idevent')
+      this.idevent=this.paramsrouter.snapshot.paramMap.get('idevent')
 
-this.formEvoMedi = fb.group({
-idevent:['',[Validators.required]],
-conseventpac:['',[Validators.required]],
-idpac:['',[Validators.required]],
-numdocpac:['',[Validators.required]],
-primernompac:['',[Validators.required]],
-segundonompac:['',[Validators.required]],
-primerapepac:['',[Validators.required]],
-segundoapepac:['',[Validators.required]],
-detevol:['',[Validators.required]],
-notaevol_fk:['',[Validators.required]]
-})
+      this.formEvoMedi = fb.group({
+      idevent:['',[Validators.required]],
+      conseventpac:['',[Validators.required]],
+      idpac:['',[Validators.required]],
+      numdocpac:['',[Validators.required]],
+      primernompac:['',[Validators.required]],
+      segundonompac:['',[Validators.required]],
+      primerapepac:['',[Validators.required]],
+      segundoapepac:['',[Validators.required]],
+      detevol:['',[Validators.required]],
+      notaevol_fk:['',[Validators.required]]
+      })
 }
 
   ngOnInit(): void {

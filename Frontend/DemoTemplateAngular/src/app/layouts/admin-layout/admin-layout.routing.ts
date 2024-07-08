@@ -82,6 +82,7 @@ import { TipohxComponent } from "src/app/pages/config/tipohx/tipohx.component";
 import { CreatipohxComponent } from "src/app/pages/config/tipohx/creatipohx/creatipohx.component";
 import { ConductaComponent } from "src/app/pages/config/conducta/conducta.component";
 import { CreacondpacComponent } from "src/app/pages/config/conducta/creacondpac/creacondpac.component";
+import { CreapxqxComponent } from "src/app/pages/medico/procedimientos/creapxqx/creapxqx.component";
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
@@ -177,7 +178,9 @@ export const AdminLayoutRoutes: Routes = [
   { path:'tipohx', component:TipohxComponent},
   { path:'creatipohx',component:CreatipohxComponent},
   { path:'conducta',component:ConductaComponent},
-  { path:'creacondpac',component:CreacondpacComponent}
+  { path:'creacondpac',component:CreacondpacComponent},
+  { path:'creapxqx',component:CreapxqxComponent},
+  { path:'creapxqx/:idqx'}
 
   
 

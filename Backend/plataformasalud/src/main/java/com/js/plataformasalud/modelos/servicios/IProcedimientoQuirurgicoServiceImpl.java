@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.js.plataformasalud.modelos.dao.IProcedimientoQuirurgicoDao;
-import com.js.plataformasalud.modelos.entidades.ProcedimientoQuirurgico;
+import com.js.plataformasalud.modelos.entidades.DescripcionQuirurgica;
 
 import lombok.AllArgsConstructor;
 
@@ -22,21 +22,21 @@ public class IProcedimientoQuirurgicoServiceImpl implements IProcedimientoQuirur
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<ProcedimientoQuirurgico> findAll() {
+	public List<DescripcionQuirurgica> findAll() {
 		
-		return (List<ProcedimientoQuirurgico>) qxdao.findAll();
+		return (List<DescripcionQuirurgica>) qxdao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public ProcedimientoQuirurgico findById(Long idqx) {
+	public DescripcionQuirurgica findById(Long idqx) {
 		
 		return qxdao.findById(idqx).orElse(null);
 	}
 
 	@Override
 	@Transactional
-	public ProcedimientoQuirurgico save(ProcedimientoQuirurgico qx) {
+	public DescripcionQuirurgica save(DescripcionQuirurgica qx) {
 		
 		return qxdao.save(qx);
 	}
