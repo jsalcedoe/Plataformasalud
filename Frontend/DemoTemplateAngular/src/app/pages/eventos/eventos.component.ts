@@ -58,7 +58,7 @@ export class EventosComponent implements OnInit {
       break;
 
       case "4": 
-      this.router.navigateByUrl(`/creadesqx/${evento.idevent}`)
+      this.router.navigateByUrl(`/creadesqxcompleta/${evento.idevent}`)
       console.log('valor que pasa desde el componente eventos',evento)
       break;
 

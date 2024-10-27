@@ -83,6 +83,8 @@ import { CreatipohxComponent } from "src/app/pages/config/tipohx/creatipohx/crea
 import { ConductaComponent } from "src/app/pages/config/conducta/conducta.component";
 import { CreacondpacComponent } from "src/app/pages/config/conducta/creacondpac/creacondpac.component";
 import { CreapxqxComponent } from "src/app/pages/medico/procedimientos/creapxqx/creapxqx.component";
+import { CreadesqxcompletaComponent } from "src/app/pages/medico/descripcionquirurgica/creadesqxcompleta/creadesqxcompleta.component";
+
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
@@ -165,7 +167,7 @@ export const AdminLayoutRoutes: Routes = [
   { path:'diagnosticosatencion',component:DiagnosticosatencionComponent},
   { path:'procedimientos',component:ProcedimientosComponent},
   { path:'creaequipoqx',component:CreaequipoqxComponent},
-  { path:'creaequipoqx/:idevent',component:CreaequipoqxComponent},
+  { path:'creaequipoqx/:idqx',component:CreaequipoqxComponent},
   { path:'creapaciente',component:CreapacienteComponent},
   { path:'creaeventos/:idpac',component:CreaeventosComponent},
   { path:'creaeventos',component:CreaeventosComponent},
@@ -180,7 +182,8 @@ export const AdminLayoutRoutes: Routes = [
   { path:'conducta',component:ConductaComponent},
   { path:'creacondpac',component:CreacondpacComponent},
   { path:'creapxqx',component:CreapxqxComponent},
-  { path:'creapxqx/:idqx'}
+  { path:'creapxqx/:idqx', component:CreapxqxComponent},
+  { path:'creadesqxcompleta/:idevent',component:CreadesqxcompletaComponent}
 
   
 

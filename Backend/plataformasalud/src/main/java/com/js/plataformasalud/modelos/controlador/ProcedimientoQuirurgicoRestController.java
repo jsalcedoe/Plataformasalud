@@ -81,7 +81,8 @@ public class ProcedimientoQuirurgicoRestController {
 			
 		}
 		response.put("mensaje", "El procedimiento quirurgico ha sido creado con éxito!");
-		response.put("cargo", Newqx);
+		response.put("Descripcion Quirurgica", Newqx);
+		response.put("idqx", Newqx.getIdqx());
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -119,9 +120,6 @@ public class ProcedimientoQuirurgicoRestController {
 			qxAct.setHorainicioprocqx(qx.getHorainicioprocqx());
 			qxAct.setMatprot(qx.getMatprot());
 			qxAct.setMuespato(qx.getMuespato());
-			qxAct.setTimeqx(qx.getTimeqx());
-			qxAct.setTyphxqx_fk(qx.getTyphxqx_fk());
-			qxAct.setTypxqx_fk(qx.getTypxqx_fk());
 			
 			
 			qxUpdate = qxserv.save(qxAct);

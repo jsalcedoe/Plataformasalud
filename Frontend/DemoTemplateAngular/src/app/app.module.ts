@@ -90,6 +90,7 @@ import { CreatipohxComponent } from './pages/config/tipohx/creatipohx/creatipohx
 import { ConductaComponent } from './pages/config/conducta/conducta.component';
 import { CreacondpacComponent } from './pages/config/conducta/creacondpac/creacondpac.component';
 import { CreapxqxComponent } from './pages/medico/procedimientos/creapxqx/creapxqx.component';
+import { CreadesqxcompletaComponent } from './pages/medico/descripcionquirurgica/creadesqxcompleta/creadesqxcompleta.component';
 //import { from } from "rxjs";
 
 
@@ -187,6 +188,7 @@ import { CreapxqxComponent } from './pages/medico/procedimientos/creapxqx/creapx
     ConductaComponent,
     CreacondpacComponent,
     CreapxqxComponent,
+    CreadesqxcompletaComponent,
     ],
   providers: [],
   bootstrap: [AppComponent]

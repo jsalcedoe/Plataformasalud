@@ -68,6 +68,10 @@ public class DiagnosticoAtencion implements Serializable {
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Evento eventdxate_fk;
 	
+	/*@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private DescripcionQuirurgica desqx_fk;*/
+	
 		
 	private static final long serialVersionUID = 1L;
 

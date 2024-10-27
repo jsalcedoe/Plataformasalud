@@ -32,7 +32,7 @@
                                     class=" form-control"
                                     type="text"
                                     disabled
-                                    formControlName="idevent"
+                                    formControlName="eventpxqx_fk"
                                   />
                                 </div>
                               </div>
@@ -154,8 +154,7 @@
                                     placeholder="Tiempo quirurgico"
                                     disabled = "true"
                                     type="text"
-                                    formControlName="timeqx"
-                                    [value]="tiempoqx"
+                                    value="{{tiempoqx}}"
                                   />
                                 </div>
                               </div>
@@ -235,6 +234,9 @@
                           <button class=" btn btn-fill btn-danger" type="submit" >Save</button>
                         </div>
                     </form>
+                    <!--<app-creapxqx></app-creapxqx>-->
+                    <app-creaequipoqx></app-creaequipoqx>
+                    <!--<app-creadiagnosticosatencion></app-creadiagnosticosatencion>-->
                 </div>
             </div>
         </div>

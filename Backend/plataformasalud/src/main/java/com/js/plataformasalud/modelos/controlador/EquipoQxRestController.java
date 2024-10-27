@@ -81,7 +81,7 @@ public class EquipoQxRestController {
 			
 		}
 		response.put("mensaje", "El equipo quirurgico ha sido registrado con éxito!");
-		response.put("dxate", Neweqqx);
+		response.put("EquipoQuirurgico", Neweqqx);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -112,7 +112,7 @@ public class EquipoQxRestController {
 			eqqxAct.setDatecreateqqx(eqqx.getDatecreateqqx());
 			eqqxAct.setDateediteqqx(eqqx.getDateediteqqx());
 			eqqxAct.setInteqqx(eqqx.getInteqqx());
-			eqqxAct.setPxqx_fk(eqqx.getPxqx_fk());
+			eqqxAct.setDesqx_fk(eqqx.getDesqx_fk());
 			
 			eqqxUpdate = eqqxserv.save(eqqxAct);
 			

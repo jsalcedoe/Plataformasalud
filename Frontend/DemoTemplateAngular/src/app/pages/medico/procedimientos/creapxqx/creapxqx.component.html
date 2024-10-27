@@ -1,1 +1,108 @@
-<p>creapxqx works!</p>
+<!--<div class="content">-->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="title">Registrar procedimientos de la atención</h1>
+        </div>
+        <div class="card-body">
+          <!-- <form>
+            Información del paciente 
+            <div class="card-header">
+              <h3 class="title">Datos del paciente</h3>
+            </div>
+            <div class="row">
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Documento</label>
+                  <input class="form-control" type="text" disabled formControlName="numdocpac" />
+                </div>
+              </div>
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Evento</label>
+                  <input class="form-control" type="text" disabled formControlName="idevent" />
+                </div>
+              </div>
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Identificador de evento</label>
+                  <input class="form-control" type="text" disabled formControlName="conseventpac" />
+                </div>
+              </div>
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Descripción quirúrgica</label>
+                  <input class="form-control" type="text" disabled formControlName="idqx" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Primer Nombre</label>
+                  <input class="form-control" type="text" disabled formControlName="primernompac" />
+                </div>
+              </div>
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Segundo Nombre</label>
+                  <input class="form-control" type="text" disabled formControlName="segundonompac" />
+                </div>
+              </div>
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Primer Apellido</label>
+                  <input class="form-control" type="text" disabled formControlName="primerapepac" />
+                </div>
+              </div>
+              <div class="col-md-3 pr-md-1">
+                <div class="form-group">
+                  <label>Segundo Apellido</label>
+                  <input class="form-control" type="text" disabled formControlName="segundoapepac" />
+                </div>
+              </div>
+            </div>
+
+            <div formArrayName="procqx_fk">
+              <div *ngFor="let proc of procqxArray.controls; let i = index" [formGroupName]="i" class="row">
+                <div class="col-md-8 pr-md-1">
+                  <div class="form-group">
+                    <label>Procedimiento</label>
+                    <input 
+                      class="form-control" 
+                      type="text" 
+                      formControlName="nombreProcedimiento" 
+                      (input)="filterProcedimientos($event, i)" 
+                      placeholder="Escriba para buscar procedimiento" 
+                    />
+                    <ul class="list-group" *ngIf="filteredProcedimientos[i]?.length">
+                      <li 
+                        class="list-group" 
+                        *ngFor="let item of filteredProcedimientos[i]" 
+                        (click)="selectProcedimiento(item, i)">
+                        {{ item.nompxex }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-danger" (click)="removeProcedimiento(i)">Eliminar</button>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" (click)="addProcedimiento()">Agregar Procedimiento</button>
+            </div>
+            
+            
+
+            <div class="card-footer">
+              <button class="btn btn-fill btn-danger" type="submit" (click)="creapxqx()">Guardar</button>
+            </div>
+          </form>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+

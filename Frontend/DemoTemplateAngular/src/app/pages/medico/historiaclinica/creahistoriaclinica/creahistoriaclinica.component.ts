@@ -60,6 +60,7 @@ export class CreahistoriaclinicaComponent implements OnInit {
     if(this.idevent != null){
       
     console.log('id del evento que llega',this.idevent)
+    //this.checkEventState();
 
     this.getDataEvent();    
     
@@ -71,7 +72,7 @@ export class CreahistoriaclinicaComponent implements OnInit {
   
   }
 
-  getDataEvent() {
+ getDataEvent() {
     console.log(this.idevent);
     this.service.getEventId(this.idevent).subscribe((res:any)=>{
      console.log('evento a mostrar en el formulario',res);

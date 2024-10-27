@@ -36,11 +36,20 @@ public class TipoHerida implements Serializable{
 	@NotEmpty(message = "El campo de nombre del tipo de herida no puede ser vacio")
 	private String nomthx;
 	
+	/*
+	 1. Limpia
+	 2. Herida Limpia-Contaminada
+	 3. Herida Contaminada
+	 4. Herida Sucia
+	 
+	  */
+	 
+	
 	@Column(length = 10000)
 	@NotEmpty(message = "El campo de detalle para el tipo de herida  no puede ser vacio")
 	private String dethx;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date datecreathx;
 	
 	@PrePersist
@@ -48,7 +57,7 @@ public class TipoHerida implements Serializable{
 		datecreathx = new Date();
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date datedithx;
 	
 	@PreUpdate

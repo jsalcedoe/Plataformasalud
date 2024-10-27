@@ -3,6 +3,7 @@ package com.js.plataformasalud.modelos.entidades;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -52,8 +53,12 @@ public class EquipoQx implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private DescripcionQuirurgica pxqx_fk;
+	@JsonBackReference
+	private DescripcionQuirurgica desqx_fk;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private Estado esteqqx_fk;
 	
 	private static final long serialVersionUID = 1L;
-
 }

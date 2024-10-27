@@ -119,7 +119,7 @@ export class CreadiagnosticosatencionComponent implements OnInit {
 
   }
 
-  creaDxAtencion() {
+  public creaDxAtencion() {
     console.log('Valores del formulario:', this.formDxAtencion.value);
 
     // Extrayendo los valores del formulario principal
@@ -131,11 +131,11 @@ export class CreadiagnosticosatencionComponent implements OnInit {
     const diagnosticosValues = diagnosticosArray.value;
 
     const diagnosticosStruct = diagnosticosValues.map((diagnostico: any) => {
-        const origdx_fk = Number(diagnostico.origdx_fk);
-        const dxatehcpac_fk = Number(diagnostico.dxatehcpac_fk); // Asegúrate de que este campo es un ID y no un nombre
-        const typdxatehcpac_fk = Number(diagnostico.typdxatehcpac_fk);
+    const origdx_fk = Number(diagnostico.origdx_fk);
+    const dxatehcpac_fk = Number(diagnostico.dxatehcpac_fk); // Asegúrate de que este campo es un ID y no un nombre
+    const typdxatehcpac_fk = Number(diagnostico.typdxatehcpac_fk);
 
-        console.log('Valores convertidos:', { origdx_fk, dxatehcpac_fk, typdxatehcpac_fk });
+    console.log('Valores convertidos:', { origdx_fk, dxatehcpac_fk, typdxatehcpac_fk });
 
 
         return {
@@ -170,7 +170,8 @@ export class CreadiagnosticosatencionComponent implements OnInit {
                         text: res.mensaje // Mostrar el mensaje recibido desde el backend
                     });
                     if (index === diagnosticosStruct.length - 1) {
-                        this.router.navigate(['eventos']);
+                        //this.router.navigate(['eventos']);
+                        console.log('evento',this.idevent)
                     }
                 }),
                 catchError((err) => {

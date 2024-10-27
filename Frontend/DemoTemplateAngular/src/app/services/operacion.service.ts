@@ -83,12 +83,19 @@ export class OperacionService {
   adddesqx(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'procedimientosqx',datosRegistros,{headers:this.httpheaders})
   }
+
+  adddesqxcompleta(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'descripcionesquirurgicas',datosRegistros,{headers:this.httpheaders})
+  }
+
   getdesqx():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'procedimientosqx')
   }
   getdesqxId(id:any):Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'procedimientosqx/'+id)
   }
+
+  
 
   // Servicio para componenta de equipo quirurgico
 
@@ -101,7 +108,19 @@ export class OperacionService {
   getequipoqxId(id:any):Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'equipoqx/'+id)
   }
-  
+
+
+  // servicio para componente de procedimientos ProcedimientoDescripcionQX
+
+   addprocedimientosdescripcion(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'procedimientosdescripcion',datosRegistros,{headers:this.httpheaders})
+  }
+  geteprocedimientosdescripcion():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'equprocedimientosdescripcionipoqx')
+  }
+  getprocedimientosdescripcionXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'procedimientosdescripcion/'+id)
+  }
 
   
 }

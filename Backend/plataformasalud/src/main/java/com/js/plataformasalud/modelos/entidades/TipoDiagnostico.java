@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -39,6 +40,7 @@ public class TipoDiagnostico implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date datecreatypdx;
 	
+	@PrePersist
 	public void datecreat () {
 		datecreatypdx = new Date ();
 	}

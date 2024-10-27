@@ -110,7 +110,7 @@ public class ProcedimientoDescripcionQXRestController {
 		}
 		try {
 			procdescqxAct.setDescqx_fk(procdescqx.getDescqx_fk());
-			//procdescqxAct.setEventprocqx_fk(procdescqx.getEventprocqx_fk());
+			procdescqxAct.setEstadopxdesqx_fk(procdescqx.getEstadopxdesqx_fk());
 			procdescqxAct.setProcqx_fk(procdescqx.getProcqx_fk());
 			
 			

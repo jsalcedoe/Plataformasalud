@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, tap } from 'rxjs';
+import { catchError, pipe, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 import { OperacionService } from 'src/app/services/operacion.service';
 import Swal from 'sweetalert2';
@@ -25,16 +25,16 @@ export class CreadesqxComponent implements OnInit {
   desqx:any
 
   constructor(private router:Router,
-    private service:OperacionService,
-    private services:ConfigService,
-    private fb:FormBuilder,
-    private paramsrouter: ActivatedRoute,) { 
+              private service:OperacionService,
+              private services:ConfigService,
+              private fb:FormBuilder,
+              private paramsrouter: ActivatedRoute,) { 
 
       this.idevent=this.paramsrouter.snapshot.paramMap.get('idevent')
       console.log('idevent del snapshop',this.idevent)
 
         this.formdesqx = fb.group({
-        idevent:['',[Validators.required]],
+        eventpxqx_fk:['',[Validators.required]],
         conseventpac:['',[Validators.required]],
         idpac:['',[Validators.required]],
         numdocpac:['',[Validators.required]],
@@ -45,7 +45,6 @@ export class CreadesqxComponent implements OnInit {
         fechaprocqx:['',[Validators.required]],
         horainicioprocqx:['',[Validators.required]],
         horafinprocqx:['',[Validators.required]],
-        timeqx:['',[Validators.required]],
         descqx:['',[Validators.required]],
         typhxqx_fk:['',[Validators.required]],
         typxqx_fk:['',[Validators.required]],
@@ -81,7 +80,7 @@ export class CreadesqxComponent implements OnInit {
      console.log('evento a mostrar en el formulario',res);
      this.eventSeleccionado = res;
      this.formdesqx.patchValue({
-       idevent:this.eventSeleccionado.idevent, 
+       eventpxqx_fk:this.eventSeleccionado.idevent, 
        conseventpac:this.eventSeleccionado.conseventpac,
        idpac: this.eventSeleccionado.pacevent_fk.idpac,
        numdocpac:this.eventSeleccionado.pacevent_fk.numdocpac,
@@ -198,7 +197,6 @@ creaDesQx(){
     fechaprocqx:this.formdesqx.value.fechaprocqx,
     horainicioprocqx:this.formdesqx.value.horainicioprocqx,
     horafinprocqx:this.formdesqx.value.horafinprocqx,
-    timeqx:this.formdesqx.value.timeqx,
     descqx:this.formdesqx.value.descqx,
    typhxqx_fk:{
       "idthx":this.formdesqx.value.typhxqx_fk
@@ -226,17 +224,18 @@ creaDesQx(){
     
   }
   console.log('Estructura Descripción Quirúrgica:', struckDesQx);
-  this.service.adddesqx(struckDesQx).pipe(
+  
+  this.service.adddesqx(struckDesQx)
+  .pipe(      
     tap((res) => {
       // Maneja la respuesta exitosa aquí
-      this.desqx=res
-      console.log('Descripcion Quirurgica', this.desqx);
+      console.log('Descripcion Quirurgica', res);
       Swal.fire({
         icon: 'success',
         title: 'Operación exitosa',
-        text: res.mensaje // Mostrar el mensaje recibido desde el backend
+        text: res.idqx // Mostrar el mensaje recibido desde el backend
       }).then (() =>{
-        this.router.navigateByUrl(`/creapxqx/${this.idqx}`)
+        console.log('y el idqx es : ',res.idqx)
       });
       
       
@@ -252,9 +251,9 @@ creaDesQx(){
       
       throw err; // Re-throw para que el error se propague al suscriptor
     })
-  ).subscribe();
+ 
+).subscribe();
 }
 
    clearForm(){}
-
 }

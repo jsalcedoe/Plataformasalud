@@ -3,10 +3,12 @@ package com.js.plataformasalud.modelos.entidades;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.Date;
-
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,6 +16,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -47,19 +50,19 @@ public class DescripcionQuirurgica implements Serializable {
 	@NotNull(message = "El campo hora final no puede ser vacio")
 	private LocalTime horafinprocqx;
 	
-	private Long timeqx;
+	//private Long timeqx;
 	
 	@Column(nullable = false, length = 2000)
 	@NotEmpty(message = "El campo descripcion no puede ser vacio")
 	private String descqx;
 		
-	@ManyToOne(fetch = FetchType.LAZY)
+	/*@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private TipoHerida typhxqx_fk;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private TipoProcedimiento typxqx_fk;
+	private TipoProcedimiento typxqx_fk;*/
 	
 	private String matprot; // describe si se coloco material o protesis y si se coloca lo describe
 	
@@ -86,6 +89,14 @@ public class DescripcionQuirurgica implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Estado estpxqx_fk;
+	
+	@OneToMany(mappedBy = "descqx_fk", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonManagedReference
+    private List<ProcedimientoDescripcionQX> procedimientos;
+
+    @OneToMany(mappedBy = "desqx_fk", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<EquipoQx> equipoQx;
 	
 	private static final long serialVersionUID = 1L;
 	
