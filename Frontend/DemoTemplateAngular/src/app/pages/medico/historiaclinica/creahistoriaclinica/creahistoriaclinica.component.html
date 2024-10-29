@@ -4,7 +4,7 @@
         <div class=" card">
           <div class=" card-header"><h1 class=" title">  HISTORIA CLINICA</h1></div>
             <div class="card-body">
-              <form [formGroup]="formHC" (ngSubmit)=" creahcpac()">
+              <form [formGroup]="formHC">
                     <div class = "style=">
                       <form class="d-flex">
                         <input class="form-control me-2" type="text" placeholder="Consultar paciente" style="width: 40%;">
@@ -291,10 +291,10 @@
                             </div>
                           </div>
                         </div>
-                        
+                        <app-creadiagnosticosatencion #diagnosticosComp></app-creadiagnosticosatencion>
                     
                         <div class=" card-footer">
-                          <button class=" btn btn-fill btn-danger" type="submit" [disabled]="formHC.invalid">Save</button>
+                          <button class=" btn btn-fill btn-danger" type="submit" (click)="guardarTodo()">Save</button>
                         </div>
                </form>
               </div>

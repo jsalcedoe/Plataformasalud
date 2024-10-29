@@ -47,7 +47,7 @@ export class CreadiagnosticosatencionComponent implements OnInit {
   ngOnInit(): void {
     if(this.idevent != null){
       
-      console.log('id del evento que llega',this.idevent)
+      console.log('id del evento que llega al diagnostico',this.idevent)
   
       this.getDataHcpac();    
       

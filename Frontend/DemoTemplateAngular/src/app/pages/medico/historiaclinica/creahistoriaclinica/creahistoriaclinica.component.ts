@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { OperacionService } from 'src/app/services/operacion.service';
 import Swal from 'sweetalert2';
+import { CreadiagnosticosatencionComponent } from '../../diagnosticosatencion/creadiagnosticosatencion/creadiagnosticosatencion.component';
 
 @Component({
   selector: 'app-creahistoriaclinica',
@@ -11,6 +12,8 @@ import Swal from 'sweetalert2';
   
 })
 export class CreahistoriaclinicaComponent implements OnInit {
+
+  @ViewChild('diagnosticosComp') diagnosticosComponent: CreadiagnosticosatencionComponent;
 
   formHC:FormGroup
   eventSeleccionado:any
@@ -46,7 +49,7 @@ export class CreahistoriaclinicaComponent implements OnInit {
       planmanejhcpac:['',[Validators.required]],
       idevent:['',[Validators.required]],
       conseventpac:['',[Validators.required]],
-      idpac:['',[Validators.required]],
+      idpac:[''],
       numdocpac:['',[Validators.required]],
       primernompac:['',[Validators.required]],
       segundonompac:['',[]],
@@ -59,7 +62,7 @@ export class CreahistoriaclinicaComponent implements OnInit {
 
     if(this.idevent != null){
       
-    console.log('id del evento que llega',this.idevent)
+    console.log('id del evento que llega a la hc',this.idevent)
     //this.checkEventState();
 
     this.getDataEvent();    
@@ -146,7 +149,7 @@ export class CreahistoriaclinicaComponent implements OnInit {
             title: 'Operación exitosa',
             text: res.mensaje // Mostrar el mensaje recibido desde el backend
           }).then (() =>{
-            this.router.navigateByUrl(`/creadiagnosticosatencion/${this.idevent}`)
+            this.router.navigateByUrl(`/historiaclinica`)
           });
           
           
@@ -166,6 +169,11 @@ export class CreahistoriaclinicaComponent implements OnInit {
     }  
     iradddx(){
      
+    }
+
+    guardarTodo(){
+      this.creahcpac(),
+      this.diagnosticosComponent.creaDxAtencion()
     }
 
     clearForm() {

@@ -67,8 +67,9 @@
               <div class="card-header col-md-12">
                 <h3 class="title">Adicionar Registros de Diagnósticos</h3>
               </div>
+              <div class="col-md-12">
               <div formArrayName="diagnosticos">
-                <div *ngFor="let diagnostico of diagnosticosArray.controls; let i = index" [formGroupName]="i" class="row">
+                <div *ngFor="let diagnostico of diagnosticosArray.controls; let i = index" [formGroupName]="i" class="row align-items-center">
                   <div class="col-md-3 pr-md-1">
                     <div class="form-group">
                       <label>Tipo de Diagnóstico</label>
@@ -105,6 +106,7 @@
                   </div>
                 </div>
               </div>
+            </div>
               <div class="col-md-12">
                 <button class="btn btn-primary" type="button" (click)="addDiagnostico()">Agregar Diagnóstico</button>
               </div>
