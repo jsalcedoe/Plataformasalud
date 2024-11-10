@@ -63,6 +63,8 @@ export class CreadesqxcompletaComponent implements OnInit {
               procedimientos: this.fb.array([]),
               equipoQx: this.fb.array([])
         });
+        this.addProcedimiento();
+        this.addUser();
   }
 
   ngOnInit(): void {

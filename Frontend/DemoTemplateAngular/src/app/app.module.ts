@@ -91,6 +91,7 @@ import { ConductaComponent } from './pages/config/conducta/conducta.component';
 import { CreacondpacComponent } from './pages/config/conducta/creacondpac/creacondpac.component';
 import { CreapxqxComponent } from './pages/medico/procedimientos/creapxqx/creapxqx.component';
 import { CreadesqxcompletaComponent } from './pages/medico/descripcionquirurgica/creadesqxcompleta/creadesqxcompleta.component';
+import { RegistromedicamentosComponent } from './pages/asistencial/registromedicamentos/registromedicamentos.component';
 //import { from } from "rxjs";
 
 
@@ -189,6 +190,7 @@ import { CreadesqxcompletaComponent } from './pages/medico/descripcionquirurgica
     CreacondpacComponent,
     CreapxqxComponent,
     CreadesqxcompletaComponent,
+    RegistromedicamentosComponent,
     ],
   providers: [],
   bootstrap: [AppComponent]

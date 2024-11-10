@@ -34,7 +34,7 @@
                            class=" form-control"
                            type="text"
                            disabled="true"
-                           formControlName="conseventpac"
+                           formControlName="idevent"
                          />
                        </div>
                      </div>
@@ -46,7 +46,7 @@
                           class=" form-control"
                           type="text"
                           disabled="true"
-                          formControlName="idevent"
+                          formControlName="conseventpac"
                         />
                       </div>
                     </div>
@@ -291,7 +291,7 @@
                             </div>
                           </div>
                         </div>
-                        <app-creadiagnosticosatencion #diagnosticosComp></app-creadiagnosticosatencion>
+                        <app-creadiagnosticosatencion #diagnosticosComp [idevent]="idevent"></app-creadiagnosticosatencion>
                     
                         <div class=" card-footer">
                           <button class=" btn btn-fill btn-danger" type="submit" (click)="guardarTodo()">Save</button>

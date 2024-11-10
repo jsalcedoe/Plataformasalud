@@ -183,7 +183,8 @@ export const AdminLayoutRoutes: Routes = [
   { path:'creacondpac',component:CreacondpacComponent},
   { path:'creapxqx',component:CreapxqxComponent},
   { path:'creapxqx/:idqx', component:CreapxqxComponent},
-  { path:'creadesqxcompleta/:idevent',component:CreadesqxcompletaComponent}
+  { path:'creadesqxcompleta/:idevent',component:CreadesqxcompletaComponent},
+  { path:'evolucionenfermeria/:idevent',component:EvolucionenfermeriaComponent}
 
   
 

@@ -4,7 +4,7 @@
             <div class=" card">
                 <div class=" card-header"><h1 class=" title">  EVOLUCIONES</h1></div>
                 <div class=" card-body">
-                        <form [formGroup]="formEvoMedi" (ngSubmit)=" creaevomed();checkFormValidation()">
+                        <form [formGroup]="formEvoMedi">
                           <div class = "style=">
                             <form class="d-flex">
                               <input class="form-control me-2" type="text" placeholder="Consultar paciente" style="width: 40%;">
@@ -126,10 +126,10 @@
                                        <textarea rows="5" cols="50" class="form-control" formControlName="detevol"></textarea>
                                     </div>
                                   </div> 
-                                                                      
+                                  <app-creadiagnosticosatencion #diagnosticosComp [idevent]="idevent"></app-creadiagnosticosatencion>                                
                             </div> 
                             <div class=" card-footer">
-                              <button class=" btn btn-fill btn-danger">Save</button>
+                              <button class=" btn btn-fill btn-danger"type="submit" (click)="guardarTodo()">Save</button>
                             </div>       
                         </form>
                 </div>  

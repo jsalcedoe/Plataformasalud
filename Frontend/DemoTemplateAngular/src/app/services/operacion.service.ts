@@ -122,5 +122,17 @@ export class OperacionService {
     return this.http.get<any[]>(this.endpoint+'procedimientosdescripcion/'+id)
   }
 
+  // servicio para componente de evolucion de enfermeria
+
+  addevoenf(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'evolucionenfermeria',datosRegistros,{headers:this.httpheaders})
+  }
+  getevoenf():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'evolucionenfermeria')
+  }
+  getevoenfXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'evolucionenfermeria/'+id)
+  }
+
   
 }

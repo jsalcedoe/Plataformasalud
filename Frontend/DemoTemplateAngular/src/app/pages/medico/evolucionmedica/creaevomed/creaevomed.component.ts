@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 import { OperacionService } from 'src/app/services/operacion.service';
 import Swal from 'sweetalert2';
+import { CreadiagnosticosatencionComponent } from '../../diagnosticosatencion/creadiagnosticosatencion/creadiagnosticosatencion.component';
 
 @Component({
   selector: 'app-creaevomed',
@@ -12,6 +13,8 @@ import Swal from 'sweetalert2';
   
 })
 export class CreaevomedComponent implements OnInit {
+
+  @ViewChild('diagnosticosComp') diagnosticosComponent: CreadiagnosticosatencionComponent;
 
   formEvoMedi:FormGroup
   eventSeleccionado:any
@@ -105,10 +108,10 @@ export class CreaevomedComponent implements OnInit {
           icon: 'success',
           title: 'Operación exitosa',
           text: res.mensaje // Mostrar el mensaje recibido desde el backend
-        }).then (() =>{
+        })/*.then (() =>{
           this.router.navigateByUrl(`/creadiagnosticosatencion/${this.idevent}`)
          
-        });
+        });*/
         
         
       }),
@@ -139,6 +142,11 @@ export class CreaevomedComponent implements OnInit {
 
   irCreaDxAtencion(idevent:any){
     this.router.navigateByUrl(`/creadiagnosticosatencion/${idevent}`)
+  }
+
+  guardarTodo(){
+    this.creaevomed(),
+    this.diagnosticosComponent.creaDxAtencion()
   }
 
 }

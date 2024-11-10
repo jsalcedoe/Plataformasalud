@@ -14,6 +14,7 @@ import { CreadiagnosticosatencionComponent } from '../../diagnosticosatencion/cr
 export class CreahistoriaclinicaComponent implements OnInit {
 
   @ViewChild('diagnosticosComp') diagnosticosComponent: CreadiagnosticosatencionComponent;
+  
 
   formHC:FormGroup
   eventSeleccionado:any
@@ -62,23 +63,19 @@ export class CreahistoriaclinicaComponent implements OnInit {
 
     if(this.idevent != null){
       
-    console.log('id del evento que llega a la hc',this.idevent)
-    //this.checkEventState();
-
+    console.log('id del evento que llega a la hc',this.idevent,'tipo de dato en creahistoria:', typeof this.idevent)
     this.getDataEvent();    
-    
     }else{
       this.clearForm();
     }
-  
-    
-  
   }
 
+
+
  getDataEvent() {
-    console.log(this.idevent);
+    console.log(this.idevent,'tipo de dato en getdataevent en creahistoriaclinica',typeof this.idevent);
     this.service.getEventId(this.idevent).subscribe((res:any)=>{
-     console.log('evento a mostrar en el formulario',res);
+     console.log('evento a mostrar en el formulario getdataevent de historia clinica',res);
      this.eventSeleccionado = res;
      this.formHC.patchValue({
        idevent:this.eventSeleccionado.idevent, 
@@ -134,6 +131,7 @@ export class CreahistoriaclinicaComponent implements OnInit {
         planmanejhcpac:this.formHC.value.planmanejhcpac,
         eventpac_fk:{
           "idevent":this.eventSeleccionado.idevent
+          
         },
         esthcpac_fk:{
           "idstatus":1
@@ -149,7 +147,8 @@ export class CreahistoriaclinicaComponent implements OnInit {
             title: 'Operación exitosa',
             text: res.mensaje // Mostrar el mensaje recibido desde el backend
           }).then (() =>{
-            this.router.navigateByUrl(`/historiaclinica`)
+            //this.router.navigateByUrl(`/creadiagnosticosatencion/${res.idevent}`)
+            console.log('La historia clinica almacenada es:', res)
           });
           
           

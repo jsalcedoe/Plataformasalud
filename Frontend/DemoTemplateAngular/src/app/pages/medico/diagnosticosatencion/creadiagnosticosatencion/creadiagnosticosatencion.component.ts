@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
@@ -12,15 +12,18 @@ import Swal from 'sweetalert2';
 })
 export class CreadiagnosticosatencionComponent implements OnInit {
 
+  @Input() idevent: any;
+ 
+
   ready:boolean=false
   dxate:any;
   formDxAtencion:FormGroup
-  idevent:string
   ideventseleccionado:any
   tipdx:any
   tipnot:any
   diagnosticos: any[] = []; // Lista completa de diagnósticos
   diagnosticosFiltrados: any[] = []; // Diagnósticos filtrados según la consulta incremental
+  
 
   constructor(
     private router:Router,
@@ -30,8 +33,9 @@ export class CreadiagnosticosatencionComponent implements OnInit {
     private paramsrouter: ActivatedRoute
     ) {
       this.idevent=this.paramsrouter.snapshot.paramMap.get('idevent')
+      
+      console.log('el idevent que llega en el snapshop de creadiagnosticosatencion',this.idevent,'tipo de dato en snapshop creadxate', typeof this.idevent)
       this.formDxAtencion=fb.group({
-        idhcpac:['',[Validators.required]],
         numdocpac:['',[Validators.required]],
         conseventpac:['',[Validators.required]],    
         primernompac:['',[Validators.required]],
@@ -46,10 +50,8 @@ export class CreadiagnosticosatencionComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.idevent != null){
-      
+      this.getDataEvent(),
       console.log('id del evento que llega al diagnostico',this.idevent)
-  
-      this.getDataHcpac();    
       
       }else{
         this.clearForm();
@@ -59,6 +61,26 @@ export class CreadiagnosticosatencionComponent implements OnInit {
       this.consultaDx();
       
   }
+
+  getDataEvent() {
+    console.log(this.idevent,'tipo de dato en getdataevent en creadiagnosticosatencion',typeof this.idevent);
+    this.service.getEventId(this.idevent).subscribe((res:any)=>{
+     console.log('evento a mostrar en el formulario getdataevent de creadiagnosticosatencion',res);
+     this.ideventseleccionado = res;
+     /*this.formHC.patchValue({
+       idevent:this.eventSeleccionado.idevent, 
+       conseventpac:this.eventSeleccionado.conseventpac,
+       idpac: this.eventSeleccionado.pacevent_fk.idpac,
+       numdocpac:this.eventSeleccionado.pacevent_fk.numdocpac,
+       primernompac:this.eventSeleccionado.pacevent_fk.primernompac,
+       segundonompac:this.eventSeleccionado.pacevent_fk.segundonompac,
+       primerapepac:this.eventSeleccionado.pacevent_fk.primerapepac,
+       segundoapepac:this.eventSeleccionado.pacevent_fk.segundoapepac,
+     })*/
+     
+    })
+    
+   }
 
   get diagnosticosArray(): FormArray {
     return this.formDxAtencion.get('diagnosticos') as FormArray;
@@ -98,33 +120,16 @@ export class CreadiagnosticosatencionComponent implements OnInit {
     });
     this.diagnosticosFiltrados[index] = [];
   }
+public creaDxAtencion() {
+    console.log('Valores del formulario de diagnostico:', this.ideventseleccionado);
 
-  getDataHcpac(){
-    console.log('idevent que viene del snapshop',this.idevent)
-    this.service.getHCtId(this.idevent).subscribe((res:any)=>{
-      console.log('evento  a mostrar en el formulario',res);
-      this.ideventseleccionado = res;
-      this.formDxAtencion.patchValue({
-        idhcpac:this.ideventseleccionado.idhcpac, 
-        idevent:this.ideventseleccionado.eventpac_fk.idevent,
-        conseventpac:this.ideventseleccionado.eventpac_fk.conseventpac,
-        numdocpac:this.ideventseleccionado.eventpac_fk.pacevent_fk.numdocpac,
-        primernompac:this.ideventseleccionado.eventpac_fk.pacevent_fk.primernompac,
-        segundonompac:this.ideventseleccionado.eventpac_fk.pacevent_fk.segundonompac,
-        primerapepac:this.ideventseleccionado.eventpac_fk.pacevent_fk.primerapepac,
-        segundoapepac:this.ideventseleccionado.eventpac_fk.pacevent_fk.segundoapepac,
-      })
-      
-     })
+    // Extrayendo los valores del formulario principalx
+    const eventdxate_fk = Number(this.ideventseleccionado.idevent); // Asegúrate de que 'idevent' exista en el JSON
+    console.log('Evento:', eventdxate_fk);
 
-  }
-
-  public creaDxAtencion() {
-    console.log('Valores del formulario:', this.formDxAtencion.value);
-
-    // Extrayendo los valores del formulario principal
-    const eventdxate_fk = this.formDxAtencion.get('idevent')?.value;
-    console.log('evento', eventdxate_fk);
+    
+    /*const eventdxate_fk = this.ideventseleccionado.get('idevent')?.value;
+    console.log('evento', eventdxate_fk);*/
 
     // Extrayendo y construyendo los valores de los diagnósticos
     const diagnosticosArray = this.formDxAtencion.get('diagnosticos') as FormArray;
@@ -152,7 +157,7 @@ export class CreadiagnosticosatencionComponent implements OnInit {
                 "idtypdx": typdxatehcpac_fk
             },
             eventdxate_fk: {
-                "idevent": Number(eventdxate_fk)
+                "idevent": eventdxate_fk
             }
         };
     });
@@ -190,6 +195,7 @@ export class CreadiagnosticosatencionComponent implements OnInit {
 
     // Elimina la llamada duplicada a addDxAtencion aquí
 }
+  
 
 
   consultaTipoDx(){

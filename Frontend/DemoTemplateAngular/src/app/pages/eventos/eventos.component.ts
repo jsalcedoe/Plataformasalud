@@ -21,7 +21,6 @@ export class EventosComponent implements OnInit {
   ngOnInit(): void {
     this.consultaeventos();
   }
-
   
   consultaeventos(){
     this.servicio.getEventos().pipe(
@@ -59,6 +58,11 @@ export class EventosComponent implements OnInit {
 
       case "4": 
       this.router.navigateByUrl(`/creadesqxcompleta/${evento.idevent}`)
+      console.log('valor que pasa desde el componente eventos',evento)
+      break;
+
+      case "5": 
+      this.router.navigateByUrl(`/evolucionenfermeria/${evento.idevent}`)
       console.log('valor que pasa desde el componente eventos',evento)
       break;
 

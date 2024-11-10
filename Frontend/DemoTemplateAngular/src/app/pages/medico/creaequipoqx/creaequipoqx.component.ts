@@ -40,6 +40,7 @@ export class CreaequipoqxComponent implements OnInit {
                   integrante:this.fb.array([]) // FormArray para los procedimientos
 
                 })*/
+                this.addUser();
               }
 
   ngOnInit(): void {
