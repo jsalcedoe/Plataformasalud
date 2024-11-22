@@ -184,7 +184,8 @@ export const AdminLayoutRoutes: Routes = [
   { path:'creapxqx',component:CreapxqxComponent},
   { path:'creapxqx/:idqx', component:CreapxqxComponent},
   { path:'creadesqxcompleta/:idevent',component:CreadesqxcompletaComponent},
-  { path:'evolucionenfermeria/:idevent',component:EvolucionenfermeriaComponent}
+  { path:'evolucionenfermeria/:idevent',component:EvolucionenfermeriaComponent},
+  { path:'registrosignosvitales/:idevent',component:RegistrosignosvitalesComponent}
 
   
 

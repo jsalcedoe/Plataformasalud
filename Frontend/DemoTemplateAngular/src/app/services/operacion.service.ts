@@ -134,5 +134,17 @@ export class OperacionService {
     return this.http.get<any[]>(this.endpoint+'evolucionenfermeria/'+id)
   }
 
+  // servicio para componente registro de signos vitales
+
+  addsignosvitales(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'regsignosvitales',datosRegistros,{headers:this.httpheaders})
+  }
+  getsignosvitales():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'regsignosvitales')
+  }
+  getsignosvitalesXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'regsignosvitales/'+id)
+  }
+
   
 }
