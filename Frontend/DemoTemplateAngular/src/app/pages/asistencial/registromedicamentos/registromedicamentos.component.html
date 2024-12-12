@@ -1,1 +1,152 @@
-<p>registromedicamentos works!</p>
+ <div class="content">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h1 class="title">Registrar medicamentos o insumos</h1>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="formregmedins">
+                
+                <div class="card-header">
+                  <h3 class="title">Datos del paciente</h3>
+                </div>
+                <div class="row">
+                  
+                  <div class="col-md-3 pr-md-1">
+                    <div class="form-group">
+                      <label>Documento</label>
+                      <input class="form-control" type="text" disabled formControlName="numdocpac" />
+                    </div>
+                  </div>
+
+                  <div class="col-md-3 pr-md-1">
+                    <div class="form-group">
+                      <label>Evento</label>
+                      <input class="form-control" type="text" disabled formControlName="conseventpac" />
+                    </div>
+                  </div>
+                  <div class="col-md-3 pr-md-1">
+                    <div class="form-group">
+                      <label>Evento</label>
+                      <input class="form-control" type="text" disabled formControlName="idevent" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 pr-md-1">
+                    <div class="form-group">
+                      <label>Primer Nombre</label>
+                      <input class="form-control" type="text" disabled formControlName="primernompac" />
+                    </div>
+                  </div>
+                  <div class="col-md-3 pr-md-1">
+                    <div class="form-group">
+                      <label>Segundo Nombre</label>
+                      <input class="form-control" type="text" disabled formControlName="segundonompac" />
+                    </div>
+                  </div>
+                  <div class="col-md-3 pr-md-1">
+                    <div class="form-group">
+                      <label>Primer Apellido</label>
+                      <input class="form-control" type="text" disabled formControlName="primerapepac" />
+                    </div>
+                  </div>
+                  <div class="col-md-3 pr-md-1">
+                    <div class="form-group">
+                      <label>Segundo Apellido</label>
+                      <input class="form-control" type="text" disabled formControlName="segundoapepac" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="card-header col-md-12">
+                    <h3 class="title">Adicionar Registros de Medicamentos o insumos</h3>
+                  </div>
+                  <div class="col-md-12">
+                  <div formArrayName="medicamentoinsumo">
+                    <div *ngFor="let medicamentoinsumo of medinsArray.controls; let i = index" [formGroupName]="i" class="row align-items-center">
+                      
+                        <div class="col-md-4 pr-md-1">
+                            <div class="form-group">
+                              <label>Medicamento o insumo</label>
+                              <input class="form-control me-2" type="text" placeholder="Consulta medins" formControlName="medins" (input)="filtrarMedicamentosInsumos($event.target.value, i)" />
+                              <div *ngIf="medinsfiltrado[i]?.length > 0">
+                                <ul class="list-group">
+                                  <li class="list-group" *ngFor="let medicamentoinsumo of medinsfiltrado[i]" (click)="seleccionarMedicamentosInsumos(medicamentoinsumo, i)">
+                                    {{ medicamentoinsumo.medins }}
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+    
+
+
+                        <div class="col-md-3 pr-md-1">
+                            <div class="form-group">
+                              <label>Dosis aplicada</label>
+                              <input class="form-control" 
+                              type="text" 
+                              formControlName="regdosismedins" />
+                            </div>
+                          </div>
+
+                          <div class="col-md-3 pr-md-1">
+                            <div class="form-group">
+                              <label>Fecha aplicacion</label>
+                              <input class="form-control" 
+                              type="date" 
+                              formControlName="dateregpmedins" />
+                            </div>
+                          </div>
+
+                          <div class="col-md-3 pr-md-1">
+                            <div class="form-group">
+                              <label>Hora aplicacion</label>
+                              <input class="form-control" 
+                              type="time" 
+                              formControlName="horaaplmedins" />
+                            </div>
+                          </div>
+
+                          <div class="col-md-3 pr-md-1">
+                            <div class="form-group">
+                              <label>Observaciones adicionales</label>
+                              <input class="form-control" 
+                              type="text" 
+                              formControlName="obsregmedins" />
+                            </div>
+                          </div>
+                                     
+                      <div class="col-md-3 pr-md-1">
+                        <div class="form-group">
+                          <label>Via de administración</label>
+                          <select class="form-select" formControlName="viadm_fk">
+                            <option value="" disabled selected>Via</option>
+                            <option *ngFor="let via of viadm" [value]="via.idviadm">{{ via.detviadm }}</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      
+                      <div class="col-md-2 pr-md-1">
+                        <button class="btn btn-danger" type="button" (click)="removeMedicamentosInsumos(i)">Eliminar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="col-md-12">
+                    <button class="btn btn-primary" type="button" (click)="addMedicamentosInsumos()">Agregar medins</button>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-fill btn-danger" type="submit" (click)="crearegistromedins()">Guardar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    

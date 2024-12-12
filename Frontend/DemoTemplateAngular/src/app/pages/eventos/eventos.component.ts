@@ -71,6 +71,11 @@ export class EventosComponent implements OnInit {
       console.log('valor que pasa desde el componente eventos',evento)
       break;
 
+      case "7": 
+      this.router.navigateByUrl(`/registromedicamentos/${evento.idevent}`)
+      console.log('valor que pasa desde el componente eventos',evento)
+      break;
+
     }
     
   }

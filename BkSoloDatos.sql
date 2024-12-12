@@ -18,6 +18,24 @@ USE `plataformasalud`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Dumping data for table `agmed`
+--
+
+LOCK TABLES `agmed` WRITE;
+/*!40000 ALTER TABLE `agmed` DISABLE KEYS */;
+/*!40000 ALTER TABLE `agmed` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `ascit`
+--
+
+LOCK TABLES `ascit` WRITE;
+/*!40000 ALTER TABLE `ascit` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ascit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `cargo_user`
 --
 
@@ -33,7 +51,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `ciudades` WRITE;
 /*!40000 ALTER TABLE `ciudades` DISABLE KEYS */;
-INSERT INTO `ciudades` VALUES (1,73001,'2024-08-25','IBAGUE',1,1),(2,73002,'2024-08-25','ESPINAL',1,1),(3,11001,'2024-08-25','BOGOTA',2,1),(4,1103,'2024-08-25','CHIA',2,1),(5,11004,'2024-08-25','GIRARDOT',2,1);
+INSERT INTO `ciudades` VALUES (1,73001,'2024-08-25','IBAGUE',1,1),(2,73002,'2024-08-25','ESPINAL',1,1),(3,11001,'2024-08-25','BOGOTA',2,1),(4,1103,'2024-08-25','CHIA',2,1),(5,11004,'2024-08-25','GIRARDOT',2,1),(6,76001,'2024-12-06','CALI',5,1);
 /*!40000 ALTER TABLE `ciudades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +80,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `departamentos` WRITE;
 /*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
-INSERT INTO `departamentos` VALUES (1,73,'2024-08-25','TOLIMA',1),(2,11,'2024-08-25','CUNDINAMARCA',1),(3,5,'2024-08-25','ANTIOQUIA',1),(4,7,'2024-08-25','ATLANTICO',1);
+INSERT INTO `departamentos` VALUES (1,73,'2024-08-25','TOLIMA',1),(2,11,'2024-08-25','CUNDINAMARCA',1),(3,5,'2024-08-25','ANTIOQUIA',1),(4,7,'2024-08-25','ATLANTICO',1),(5,76,'2024-12-06','VALLE',1);
 /*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,12 +152,31 @@ INSERT INTO `eventhcpac` VALUES (1,1,'CONSULTA',NULL,'2024-08-26',1,1);
 UNLOCK TABLES;
 
 --
+-- Dumping data for table `evoenf`
+--
+
+LOCK TABLES `evoenf` WRITE;
+/*!40000 ALTER TABLE `evoenf` DISABLE KEYS */;
+/*!40000 ALTER TABLE `evoenf` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `evoevent`
 --
 
 LOCK TABLES `evoevent` WRITE;
 /*!40000 ALTER TABLE `evoevent` DISABLE KEYS */;
 /*!40000 ALTER TABLE `evoevent` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `fabmedins`
+--
+
+LOCK TABLES `fabmedins` WRITE;
+/*!40000 ALTER TABLE `fabmedins` DISABLE KEYS */;
+INSERT INTO `fabmedins` VALUES (1,'2024-12-06',NULL,'Calle 42N #4N-103','Advance Scientific de Colombia',6,1),(2,'2024-12-06',NULL,'Av. de las Américas 57-52','Bayer S.A.',3,1),(3,'2024-12-06',NULL,'Carrera 22 #166-66','Biochem Farmacéutica de Colombia',3,1),(4,'2024-12-06',NULL,'Cra. 7 #156-10, Oficina 3004','INNOFAR S.A.',3,1);
+/*!40000 ALTER TABLE `fabmedins` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -160,6 +197,25 @@ LOCK TABLES `hcpac` WRITE;
 /*!40000 ALTER TABLE `hcpac` DISABLE KEYS */;
 INSERT INTO `hcpac` VALUES (1,'prueba de historia clinica','na','na','na','na','na','na','2024-08-26',NULL,'prueba de historia clinica',178,'80','60','prueba de historia clinica','prueba de historia clinica',80,'prueba de historia clinica','110/80','37',1,1,NULL);
 /*!40000 ALTER TABLE `hcpac` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `medins`
+--
+
+LOCK TABLES `medins` WRITE;
+/*!40000 ALTER TABLE `medins` DISABLE KEYS */;
+INSERT INTO `medins` VALUES (1,'A04AA01','8MG/4ML','20095751-03','2024-12-07',NULL,'ONDASETRON','2016M-0017422',1,1,2,2,1),(2,'B05XA03','500 ml','29523','2024-12-07',NULL,'CLORURO DE SODIO AL 0.9%','2020M-001117-R4',1,2,4,5,1);
+/*!40000 ALTER TABLE `medins` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `ordmedins`
+--
+
+LOCK TABLES `ordmedins` WRITE;
+/*!40000 ALTER TABLE `ordmedins` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ordmedins` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -202,6 +258,16 @@ INSERT INTO `permrol` VALUES (1,'2024-09-03',1,1,1),(2,'2024-09-04',1,2,1),(3,'2
 UNLOCK TABLES;
 
 --
+-- Dumping data for table `pmedins`
+--
+
+LOCK TABLES `pmedins` WRITE;
+/*!40000 ALTER TABLE `pmedins` DISABLE KEYS */;
+INSERT INTO `pmedins` VALUES (1,'2024-12-04',NULL,'CAPSULAS','CAP',1),(2,'2024-12-04',NULL,'AMPOLLAS','AMP',1),(3,'2024-12-04',NULL,'TABLETAS','TAB',1),(4,'2024-12-07',NULL,'SOLUCION INYECTABLE','SOL',1);
+/*!40000 ALTER TABLE `pmedins` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `prestserv`
 --
 
@@ -239,6 +305,15 @@ LOCK TABLES `regest` WRITE;
 UNLOCK TABLES;
 
 --
+-- Dumping data for table `regmedins`
+--
+
+LOCK TABLES `regmedins` WRITE;
+/*!40000 ALTER TABLE `regmedins` DISABLE KEYS */;
+/*!40000 ALTER TABLE `regmedins` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `repleg`
 --
 
@@ -255,6 +330,15 @@ LOCK TABLES `rol` WRITE;
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
 INSERT INTO `rol` VALUES (1,'2024-09-03','AUXILIAR ADMINISTRATIVO','AUXADM',1),(2,'2024-09-03','AUXILIAR DE ENFERMERIA','AUXENF',1),(3,'2024-09-03','MEDICO ESPECIALISTA','MEDESP',1),(4,'2024-09-03','ENFERMERA JEFE','ENFSUP',1),(5,'2024-09-03','AUDITORA DE CALIDAD','AUDCAL',1);
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `sigvit`
+--
+
+LOCK TABLES `sigvit` WRITE;
+/*!40000 ALTER TABLE `sigvit` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sigvit` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -337,6 +421,16 @@ INSERT INTO `tproc` VALUES (1,'2024-08-25',NULL,'QUIRURGICOS','QX',1),(2,'2024-0
 UNLOCK TABLES;
 
 --
+-- Dumping data for table `tymedins`
+--
+
+LOCK TABLES `tymedins` WRITE;
+/*!40000 ALTER TABLE `tymedins` DISABLE KEYS */;
+INSERT INTO `tymedins` VALUES (1,'2024-12-04',NULL,'ANTIBIOTICO','MEDANT',1),(2,'2024-12-04',NULL,'ANALGESICO','MEDANAL',1),(3,'2024-12-04',NULL,'PROTESIS','INSPROT',1),(4,'2024-12-04',NULL,'ORTESIS','INSORT',1),(5,'2024-12-07',NULL,'SOLUCION ELECTROLITICA','SOLH',1);
+/*!40000 ALTER TABLE `tymedins` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `tynote`
 --
 
@@ -376,6 +470,16 @@ INSERT INTO `ubicaciones` VALUES (1,'2024-08-25','OBSERVACION','OBS',1),(2,'2024
 UNLOCK TABLES;
 
 --
+-- Dumping data for table `unimed`
+--
+
+LOCK TABLES `unimed` WRITE;
+/*!40000 ALTER TABLE `unimed` DISABLE KEYS */;
+INSERT INTO `unimed` VALUES (1,'2024-12-05',NULL,'MILITROS','ML',1),(2,'2024-12-05',NULL,'GOTAS','GOT',1),(3,'2024-12-05',NULL,'CENTIMETROS CUBICOS','CC',1),(4,'2024-12-05',NULL,'KILOGRAMOS','KG',1);
+/*!40000 ALTER TABLE `unimed` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `user`
 --
 
@@ -383,6 +487,16 @@ LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES (1,'2024-09-05',93414046,'julio_salcedo2@hotmail.com',NULL,'JULIO ERNESTO','SALCEDO PELAEZ','1234','jsalcedo',5,1,1),(2,'2024-09-05',65748200,'ssandrapatridiaz@hotmail.com',NULL,'SANDRA PATRICIA','DIAZ GUTIERREZ','1234','sdiaz',6,1,1),(3,'2024-09-05',123123123,'SINDATOS@SINDATOS.COM',NULL,'pepito','perez','1234','pperez',4,1,1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `viadm`
+--
+
+LOCK TABLES `viadm` WRITE;
+/*!40000 ALTER TABLE `viadm` DISABLE KEYS */;
+INSERT INTO `viadm` VALUES (1,'2024-12-08',NULL,'VIA ORAL','VO',1),(2,'2024-12-08',NULL,'VIA INTRAVENOSA','VIV',1),(3,'2024-12-08',NULL,'VIA SUBLINGUAL','VS',1),(4,'2024-12-08',NULL,'VIA SUBCUTANEA','VSC',1),(5,'2024-12-08',NULL,'VIA TRANSDERMICA','VTD',1),(6,'2024-12-08',NULL,'VIA INTRAMUSCULAR','VIM',1);
+/*!40000 ALTER TABLE `viadm` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -402,4 +516,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-13  7:55:23
+-- Dump completed on 2024-12-08  7:59:44

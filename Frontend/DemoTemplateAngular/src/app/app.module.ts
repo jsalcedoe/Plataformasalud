@@ -92,6 +92,18 @@ import { CreacondpacComponent } from './pages/config/conducta/creacondpac/creaco
 import { CreapxqxComponent } from './pages/medico/procedimientos/creapxqx/creapxqx.component';
 import { CreadesqxcompletaComponent } from './pages/medico/descripcionquirurgica/creadesqxcompleta/creadesqxcompleta.component';
 import { RegistromedicamentosComponent } from './pages/asistencial/registromedicamentos/registromedicamentos.component';
+import { TipomedinsComponent } from './pages/config/tipomedins/tipomedins.component';
+import { PresentacionmedinsComponent } from './pages/config/presentacionmedins/presentacionmedins.component';
+import { UnidadmedidamedinsComponent } from './pages/config/unidadmedidamedins/unidadmedidamedins.component';
+import { FabricantemedinsComponent } from './pages/config/fabricantemedins/fabricantemedins.component';
+import { MedinsComponent } from './pages/config/medins/medins.component';
+import { CreatipomedinsComponent } from './pages/config/tipomedins/creatipomedins/creatipomedins.component';
+import { CreapresentacionmedinsComponent } from './pages/config/presentacionmedins/creapresentacionmedins/creapresentacionmedins.component';
+import { CreaunimedinsComponent } from './pages/config/unidadmedidamedins/creaunimedins/creaunimedins.component';
+import { CreafabricanteComponent } from './pages/config/fabricantemedins/creafabricante/creafabricante.component';
+import { CreamedinsComponent } from './pages/config/medins/creamedins/creamedins.component';
+import { ViaadministracionComponent } from './pages/config/viaadministracion/viaadministracion.component';
+import { CreaviaadmComponent } from './pages/config/viaadministracion/creaviaadm/creaviaadm.component';
 //import { from } from "rxjs";
 
 
@@ -191,6 +203,18 @@ import { RegistromedicamentosComponent } from './pages/asistencial/registromedic
     CreapxqxComponent,
     CreadesqxcompletaComponent,
     RegistromedicamentosComponent,
+    TipomedinsComponent,
+    PresentacionmedinsComponent,
+    UnidadmedidamedinsComponent,
+    FabricantemedinsComponent,
+    MedinsComponent,
+    CreatipomedinsComponent,
+    CreapresentacionmedinsComponent,
+    CreaunimedinsComponent,
+    CreafabricanteComponent,
+    CreamedinsComponent,
+    ViaadministracionComponent,
+    CreaviaadmComponent,
     ],
   providers: [],
   bootstrap: [AppComponent]

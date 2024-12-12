@@ -1,0 +1,125 @@
+<div class=" content">
+    <div class=" row">
+      <div class=" col-md-12">
+        <div class=" card">
+          <div class=" card-header"><h2 class=" title">Creacion de medicamentos e insumos</h2></div>
+          <div class=" card-body">
+                 <form [formGroup]="formmedins" (ngSubmit)="creamedins()">
+              <div class=" row">
+                <div class=" col-md-2 pr-md-1">
+                  <div class=" form-group">
+                    <label> Codigo codigo CUM</label>
+                    <input
+                      class=" form-control "
+                      placeholder="Digita el codigo"
+                      type="text"
+                      formControlName = "cummedins"
+                    />
+                  </div>
+                </div>
+
+                <div class=" col-md-3 pr-md-1">
+                    <div class=" form-group">
+                      <label> Medicamento o insumo</label>
+                      <input
+                        class=" form-control"
+                        placeholder="Digita el medicamento o insumo"
+                        type="text"
+                        formControlName = "medins"
+                      />
+                    </div>
+                  </div>
+
+                  <div class=" col-md-2 pr-md-1">
+                    <div class=" form-group">
+                      <label> Consentración</label>
+                      <input
+                        class=" form-control"
+                        placeholder="consentración"
+                        type="text"
+                        formControlName = "consmedins"
+                      />
+                    </div>
+                  </div>
+
+                  <div class=" col-md-1 pr-md-1">
+                    <div class=" form-group">
+                      <label> Codigo ATC</label>
+                      <input
+                        class=" form-control"
+                        placeholder="ATC"
+                        type="text"
+                        formControlName = "atcmedins"
+                      />
+                    </div>
+                  </div>
+
+                <div class=" col-md-3 px-md-1">
+                  <div class=" form-group">
+                    <label> Registro Invima </label>
+                    <input
+                      class=" form-control"
+                      placeholder="Digita el registro invima"
+                      type="text"
+                      formControlName = "reginvmedinv"
+                    />
+                  </div>
+                </div>
+
+                <div class=" col-md-6 pr-md-1">
+                  <div class=" form-group">
+                    <label> Tipo de medicamento o insumo </label>
+                    <p></p>
+                    <select class="form-select" style="width: auto;" formControlName="tmedins_fk">
+                      <option value="" disabled selected>Seleccione el tipo</option>
+                      <option *ngFor="let tipos of tmedins" [value]="tipos.idtmedins">{{tipos.detypmedins}}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class=" col-md-6 pr-md-1">
+                    <div class=" form-group">
+                      <label> Presentación </label>
+                      <p></p>
+                      <select class="form-select" style="width: auto;" formControlName="pmedins_fk">
+                        <option value="" disabled selected>Seleccione la presentación</option>
+                        <option *ngFor="let presentacion of pmedins" [value]="presentacion.idpmedins">{{presentacion.detpmedins}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class=" col-md-6 pr-md-1">
+                    <div class=" form-group">
+                      <label> Unidad de medida </label>
+                      <p></p>
+                      <select class="form-select" style="width: auto;" formControlName="umedins_fk">
+                        <option value="" disabled selected>Seleccione la unidad de medida</option>
+                        <option *ngFor="let unidad of unimed" [value]="unidad.idunimed">{{unidad.detunimedi}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class=" col-md-6 pr-md-1">
+                  <div class=" form-group">
+                    <label> Fabricante </label>
+                    <p></p>
+                    <select class="form-select" style="width: auto;" formControlName="fmedins_fk">
+                      <option value="" disabled selected>Seleccione el fabricante</option>
+                      <option *ngFor="let fabricante of fmedins" [value]="fabricante.idfabmedins">{{fabricante.nomfabmedins}}</option>
+                    </select>
+                  </div>
+                </div>
+                             
+              </div>
+              <div class=" card-footer">
+                <button class=" btn btn-fill btn-danger" type="submit"[disabled]="formmedins.invalid">Save</button>
+              </div>
+              
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+

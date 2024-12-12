@@ -84,6 +84,19 @@ import { ConductaComponent } from "src/app/pages/config/conducta/conducta.compon
 import { CreacondpacComponent } from "src/app/pages/config/conducta/creacondpac/creacondpac.component";
 import { CreapxqxComponent } from "src/app/pages/medico/procedimientos/creapxqx/creapxqx.component";
 import { CreadesqxcompletaComponent } from "src/app/pages/medico/descripcionquirurgica/creadesqxcompleta/creadesqxcompleta.component";
+import { CreatipomedinsComponent } from "src/app/pages/config/tipomedins/creatipomedins/creatipomedins.component";
+import { TipomedinsComponent } from "src/app/pages/config/tipomedins/tipomedins.component";
+import { PresentacionmedinsComponent } from "src/app/pages/config/presentacionmedins/presentacionmedins.component";
+import { CreapresentacionmedinsComponent } from "src/app/pages/config/presentacionmedins/creapresentacionmedins/creapresentacionmedins.component";
+import { UnidadmedidamedinsComponent } from "src/app/pages/config/unidadmedidamedins/unidadmedidamedins.component";
+import { CreaunimedinsComponent } from "src/app/pages/config/unidadmedidamedins/creaunimedins/creaunimedins.component";
+import { FabricantemedinsComponent } from "src/app/pages/config/fabricantemedins/fabricantemedins.component";
+import { CreafabricanteComponent } from "src/app/pages/config/fabricantemedins/creafabricante/creafabricante.component";
+import { MedinsComponent } from "src/app/pages/config/medins/medins.component";
+import { CreamedinsComponent } from "src/app/pages/config/medins/creamedins/creamedins.component";
+import { ViaadministracionComponent } from "src/app/pages/config/viaadministracion/viaadministracion.component";
+import { CreaviaadmComponent } from "src/app/pages/config/viaadministracion/creaviaadm/creaviaadm.component";
+import { RegistromedicamentosComponent } from "src/app/pages/asistencial/registromedicamentos/registromedicamentos.component";
 
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
@@ -185,7 +198,24 @@ export const AdminLayoutRoutes: Routes = [
   { path:'creapxqx/:idqx', component:CreapxqxComponent},
   { path:'creadesqxcompleta/:idevent',component:CreadesqxcompletaComponent},
   { path:'evolucionenfermeria/:idevent',component:EvolucionenfermeriaComponent},
-  { path:'registrosignosvitales/:idevent',component:RegistrosignosvitalesComponent}
+  { path:'registrosignosvitales/:idevent',component:RegistrosignosvitalesComponent},
+  { path:'tipomedins',component:TipomedinsComponent},
+  { path:'creatipomedins',component:CreatipomedinsComponent},
+  { path:'presentacionmedins',component:PresentacionmedinsComponent},
+  { path:'creapresentacionmedins',component:CreapresentacionmedinsComponent},
+  { path:'unidadmedidamedins',component:UnidadmedidamedinsComponent},
+  { path:'creaunimedins',component:CreaunimedinsComponent},
+  { path:'fabricantemedins', component:FabricantemedinsComponent},
+  { path:'creafabricante',component:CreafabricanteComponent},
+  { path:'medins',component:MedinsComponent},
+  { path:'creamedins',component:CreamedinsComponent},
+  { path:'viaadministracion',component:ViaadministracionComponent},
+  { path:'creaviaadm',component:CreaviaadmComponent},
+  { path:'registromedicamentos/:idevent',component:RegistromedicamentosComponent},
+
+
+
+
 
   
 

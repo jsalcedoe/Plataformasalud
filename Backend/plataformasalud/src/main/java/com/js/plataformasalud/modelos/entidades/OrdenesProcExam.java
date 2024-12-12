@@ -14,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -38,8 +39,17 @@ public class OrdenesProcExam implements Serializable{
 	private Date fechaordprocexam;
 	
 	@PrePersist
-	public void capturafecha() {
+	public void fechaordprocexam() {
 		fechaordprocexam = new Date();
+	}
+	
+	@Column(nullable = false, length = 12)
+	@Temporal(TemporalType.DATE)
+	private Date fechaeditordprocexam;
+	
+	@PreUpdate
+	public void fechaeditordprocexam() {
+		fechaeditordprocexam = new Date();
 	}
 	
 	@Column(nullable = false, length = 3)
@@ -49,7 +59,9 @@ public class OrdenesProcExam implements Serializable{
 	@Column(length = 500)
 	private String obsprocexam;
 	
-	
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private TipoProcedimiento tprocexamord_fk;
 	
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
@@ -57,7 +69,8 @@ public class OrdenesProcExam implements Serializable{
 	
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private Usuario user;
+	private Evento eventprocexamord_fk;
+	
 	
 	private static final long serialVersionUID = 1L;
 

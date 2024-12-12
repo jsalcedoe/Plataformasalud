@@ -94,95 +94,100 @@
             </div>
           </div>
           <div class=" card-header col-md-12"><h3 class=" title">Signos vitales</h3></div>
-          <div formArrayName="signosvitales">
-            <div *ngFor="let sigvital of sigvitArray.controls; let i = index" [formGroupName]="i" class="row mb-3">
-              <!-- Campos para signos vitales -->
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label>TA</label>
-                  <input class="form-control" formControlName="ta" placeholder="TA" />
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label>FC</label>
-                  <input class="form-control" formControlName="fc" placeholder="FC" />
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label>FR</label>
-                  <input class="form-control" formControlName="fr" placeholder="FR" />
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label>SAT</label>
-                  <input class="form-control" formControlName="sat" placeholder="SAT" />
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label>Temperatura</label>
-                  <input class="form-control" formControlName="tem" placeholder="Temperatura" />
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label>Fecha</label>
-                  <input class="form-control" formControlName="dateregsigvit" type="date" />
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label>Hora</label>
-                  <input class="form-control" formControlName="houregsigvit" type="time" />
-                </div>
-              </div>
-          
-              <!-- Campos para usuarios -->
-              <div formArrayName="userregsigvit">
-                <div *ngFor="let user of getUserArray(i).controls; let j = index" [formGroupName]="j" class="row align-items-center mb-3">
-                  <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-12">
+              <div formArrayName="signosvitales">
+                <div *ngFor="let sigvital of sigvitArray.controls; let i = index" [formGroupName]="i" class="row mb-3">
+                  <!-- Campos para signos vitales -->
+                  <div class="col-md-2">
                     <div class="form-group">
-                      <label>Buscar usuario</label>
-                      <input
-                        class="form-control"
-                        type="text"
-                        placeholder="Buscar usuario"
-                        (input)="filterUsuarios($event, i, j)"
-                        formControlName="firstname"
-                      />
+                      <label>TA</label>
+                      <input class="form-control" formControlName="ta" placeholder="TA" />
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label>FC</label>
+                      <input class="form-control" formControlName="fc" placeholder="FC" />
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label>FR</label>
+                      <input class="form-control" formControlName="fr" placeholder="FR" />
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="form-group">
+                      <label>SAT</label>
+                      <input class="form-control" formControlName="sat" placeholder="SAT" />
                     </div>
                   </div>
                   <div class="col-md-2">
-                    <ul class="list-group" *ngIf="filterUser[i]?.length > 0">
-                      <li
-                        class="list-group-item list-group-item-action"
-                        *ngFor="let user of filterUser[i]"
-                        (click)="selectUsuarios(user, i, j)"
-                      >
-                        {{ user.firstname }} {{ user.lastname }} - {{ user.carguser_fk?.detcarguser }}
-                      </li>
-                    </ul>
+                    <div class="form-group">
+                      <label>Temperatura</label>
+                      <input class="form-control" formControlName="tem" placeholder="Temperatura" />
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Fecha</label>
+                      <input class="form-control" formControlName="dateregsigvit" type="date" />
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Hora</label>
+                      <input class="form-control" formControlName="houregsigvit" type="time" />
+                    </div>
+                  </div>
+                 
+                  <!-- Campos para usuarios -->
+                  <div formArrayName="userregsigvit">
+                    <div *ngFor="let user of getUserArray(i).controls; let j = index" [formGroupName]="j" class="row align-items-center mb-3">
+                      <div class="col-md-10 ml-3">
+                        <div class="form-group">
+                          <label>Buscar usuario</label>
+                          <input
+                            class="form-control"
+                            type="text"
+                            placeholder="Buscar usuario"
+                            (input)="filterUsuarios($event, i, j)"
+                            formControlName="firstname"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-10 ml-3">
+                        <ul class=list-group *ngIf="filterUser[i]?.length > 0">
+                          <li
+                            class=list-group
+                            *ngFor="let user of filterUser[i]"
+                            (click)="selectUsuarios(user, i, j)"
+                          >
+                            {{ user.firstname }} {{ user.lastname }} - {{ user.carguser_fk?.detcarguser }}
+                             
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Botón para eliminar registro -->
+                  <div class="col-md-12 text-right">
+                    <button type="button" class="btn btn-danger btn-sm" (click)="removeSignosVitales(i)">Eliminar Registro</button>
                   </div>
                 </div>
-              </div>
-          
-              <!-- Botón para eliminar registro -->
-              <div class="col-md-12 text-right">
-                <button type="button" class="btn btn-danger btn-sm" (click)="removeSignosVitales(i)">Eliminar Registro</button>
-              </div>
+              
+                <!-- Botón para agregar registro -->
+                <div class="row">
+                  <div class="col-md-12 text-right">
+                    <button type="button" class="btn btn-primary btn-sm" (click)="addSignosVitales()">Agregar Registro y Usuario</button>
+                  </div>
+                </div>
+              </div>  
             </div>
-          
-            <!-- Botón para agregar registro -->
-            <div class="row">
-              <div class="col-md-12 text-right">
-                <button type="button" class="btn btn-primary btn-sm" (click)="addSignosVitales()">Agregar Registro y Usuario</button>
-              </div>
-            </div>
+            
           </div>
-          
           <div class="card-footer">
             <button class="btn btn-fill btn-danger" type="submit" (click)="createsigvit()">Guardar</button>
           </div>

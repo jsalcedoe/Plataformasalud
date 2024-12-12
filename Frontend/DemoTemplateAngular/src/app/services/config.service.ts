@@ -253,6 +253,92 @@ export class ConfigService {
   getcondpacById(idcondpac: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.endpoint}conducta/${idcondpac}`);
   }
+
+  //CRUD para Tipo de medicamento e insumos
+
+  addtmedins(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'tipomedicamentosinsumos',datosRegistros,{headers:this.httpheaders})
+  }
+
+  gettmedins():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint + 'tipomedicamentosinsumos')
+  }
+  
+  gettmedinsById(idtmedins: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}tipomedicamentosinsumos/${idtmedins}`);
+  }
+
+  // CRUD para Presentacion de Medicamentos
+
+  addpmedins(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'pmedins',datosRegistros,{headers:this.httpheaders})
+  }
+
+  getpmedins():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint + 'pmedins')
+  }
+  
+  getpmedinsById(idpmedins: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}pmedins/${idpmedins}`);
+  }
+
+  // CRUD para Unidad de Medida
+
+  addunidadmedida(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'unidadesmedida',datosRegistros,{headers:this.httpheaders})
+  }
+
+  getunidadmedida():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint + 'unidadesmedida')
+  }
+  
+  getunidadmedidaById(idunimed: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}unidadesmedida/${idunimed}`);
+  }
+
+  // CRUD para Fabricante de medicamentos e insumos
+
+  addfabricantemedins(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'fabricantes',datosRegistros,{headers:this.httpheaders})
+  }
+
+  getfabricantemedins():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint + 'fabricantes')
+  }
+  
+  getfabricantemedinsById(idfabmedins: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}fabricantes/${idfabmedins}`);
+  }
+
+  // CRUD para medicamentos
+
+  addmedins(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'medicamentosinsumos',datosRegistros,{headers:this.httpheaders})
+  }
+
+  getmedins():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint + 'medicamentosinsumos')
+  }
+  
+  getmedinsById(idmedins: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}medicamentosinsumos/${idmedins}`);
+  }
+
+  // CRUD para vias de administracion
+
+  addviadm(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'viasadministracion',datosRegistros,{headers:this.httpheaders})
+  }
+
+  getviadm():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint + 'viasadministracion')
+  }
+  
+  getviadmById(idviadm: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}viasadministracion/${idviadm}`);
+  }
+
+
    
    
     

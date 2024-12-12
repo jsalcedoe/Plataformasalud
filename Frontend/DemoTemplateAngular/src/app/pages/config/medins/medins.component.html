@@ -1,0 +1,51 @@
+<div class=" content">
+    <div class=" row">
+      <div class=" col-md-6">
+        <div class=" card">
+          <div class=" card-header">
+            <h4 class=" card-title">PANEL DE ADMINISTRACION PARA MEDICAMENTOS E INSUMOS</h4>
+            <form class="d-flex">
+              <input class="form-control me-2" type="text" placeholder="Digita el medicamento o insumo a consultar">
+              <button class="btn btn-primary" type="button">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>  
+    
+    <div class="container mt-4">
+      <h2>Listado de medicamentos e insumos creados</h2>
+      <h1 *ngIf="!ready">Cargando...</h1> 
+      <form class="d-flex">
+        <button class="btn btn-primary" type="button" (click)="ircreamedins()"  >Crear medins</button>    
+  </form>           
+       <table class="table table-dark table-hover" id="" *ngIf="ready" >
+        <!--<table class="table-success">-->
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Codigo CUM</th>
+            <th>Medicamento o insumo</th>
+            <th>Registro invima</th>
+            <th>Fabricante</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of medins, let i =index">
+            <td>{{i+1}}</td>
+            <td>{{c.cummedins}}</td>
+            <td>{{c.medins}}</td>
+            <td>{{c.reginvmedinv}}</td>
+            <td>{{c.fmedins_fk.nomfabmedins}}</td>
+            <td>{{c.tmedins_fk.detypmedins}}</td>
+            <td>{{c.estmedins_fk.nomstatus}}</td>
+            <td><button>editar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+   </div>
+  
+

@@ -146,5 +146,17 @@ export class OperacionService {
     return this.http.get<any[]>(this.endpoint+'regsignosvitales/'+id)
   }
 
+  // servicio para componente registro para aplicacion de medicamentos
+
+  addregistromedicamentos(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'registromedicamentos',datosRegistros,{headers:this.httpheaders})
+  }
+  getregistromedicamentos():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'registromedicamentos')
+  }
+  getregistromedicamentosesXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'registromedicamentos/'+id)
+  }
+
   
 }

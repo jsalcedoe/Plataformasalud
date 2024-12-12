@@ -54,7 +54,9 @@ public class OrdenesProcExamRestController {
 		ordenesActual.setFechaordprocexam(ordenes.getFechaordprocexam());
 		ordenesActual.setObsprocexam(ordenes.getObsprocexam());
 		ordenesActual.setProcexamord(ordenes.getProcexamord());
-		ordenesActual.setUser(ordenes.getUser());
+		ordenesActual.setEventprocexamord_fk(ordenes.getEventprocexamord_fk());
+		ordenesActual.setFechaeditordprocexam(ordenes.getFechaeditordprocexam());
+		ordenesActual.setTprocexamord_fk(ordenes.getTprocexamord_fk());
 		
 		return ordenservice.save(ordenesActual);
 	}

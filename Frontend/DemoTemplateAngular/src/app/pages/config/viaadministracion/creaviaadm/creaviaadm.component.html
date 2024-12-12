@@ -1,0 +1,45 @@
+<div class=" content">
+    <div class=" row">
+      <div class=" col-md-8">
+        <div class=" card">
+          <div class=" card-header"><h2 class=" title">Creacion vias de administración</h2></div>
+          <div class=" card-body">
+            <form [formGroup]="formviaadm" (ngSubmit)="creaviadm()">
+              <div class=" row">
+                <div class=" col-md-3 pr-md-1">
+                    <div class=" form-group">
+                      <label> Via de administración </label>
+                      <input
+                        class=" form-control"
+                        placeholder="via administracion"
+                        type="text"
+                        formControlName="nomviadm"
+                      />
+                    </div>
+                  </div>
+
+                <div class=" col-md-3 pr-md-1">
+                  <div class=" form-group">
+                    <label> Detalle</label>
+                    <input
+                      class=" form-control"
+                      placeholder="Detalle "
+                      type="text"
+                      formControlName="detviadm"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class=" card-footer">
+                <button class=" btn btn-fill btn-danger" type="submit" [disabled]="formviaadm.invalid">Save</button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
