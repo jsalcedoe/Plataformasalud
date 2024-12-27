@@ -1,0 +1,21 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import org.springframework.stereotype.Service;
+
+import com.js.plataformasalud.modelos.entidades.EpicrisisDTO;
+import com.js.plataformasalud.modelos.entidades.Evento;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+@Service
+
+
+public class IEpicrisisServiceImpl implements IEpicrisisService{@Override
+	public EpicrisisDTO getEpicrisisByEventoId(Evento idevent) {
+		// TODO Auto-generated method stub
+		return null;
+	}	
+
+	
+	}

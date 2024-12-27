@@ -12,5 +12,6 @@ public interface IHistoriaClinicaService {
 	
 	public HistoriaClinica save (HistoriaClinica hcpac);
 	
+	
 
 }

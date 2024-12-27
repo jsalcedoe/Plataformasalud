@@ -14,6 +14,4 @@ public interface IEventoService {
 	
 	public Evento save (Evento event);
 	
-	//public int countEventosByNumDocPac(String numDocPac);
-
 }

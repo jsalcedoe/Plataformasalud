@@ -59,21 +59,6 @@ public class HistoriaClinica implements Serializable {
 	@NotNull(message = "Por favor digite la estatura en centimetros del paciente")
 	private Long estaturahcpac;
 	
-	/*@Column(nullable = false, length = 6)
-	private Long imchcpac;
-	
-
-	public void calculaIMC(Long pesohcpac, Long estaturahcpac) {
-		this.pesohcpac = pesohcpac;
-		this.estaturahcpac = estaturahcpac;
-		
-		if (pesohcpac > 0 && estaturahcpac > 0) {
-			Long imc = pesohcpac /(estaturahcpac * estaturahcpac);
-			this.imchcpac = imc;
-		}
-	}*/
-	
-	
 	@Column(nullable = false, length = 3)
 	@NotEmpty(message = "Digite por favor la frecuencia cardiaca")
 	private String fchcpac;
@@ -113,10 +98,6 @@ public class HistoriaClinica implements Serializable {
 	@Column(nullable = false, length = 200)
 	@NotEmpty(message = "Digite los antecedentes farmacologicos del paciente")
 	private String antfarmhcpac;
-	
-	/*@Column(nullable = false)
-	@NotEmpty(message = "Digite los antecedentes toxicologicos del paciente")
-	private String anttoxihcpac;*/
 	
 	@Column(nullable = false, length = 200)
 	@NotEmpty(message = "Digite los antecedentes familiares del paciente")

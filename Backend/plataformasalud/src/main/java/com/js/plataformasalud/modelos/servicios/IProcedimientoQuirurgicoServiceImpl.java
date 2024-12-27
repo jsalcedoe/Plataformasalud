@@ -40,4 +40,6 @@ public class IProcedimientoQuirurgicoServiceImpl implements IProcedimientoQuirur
 		
 		return qxdao.save(qx);
 	}
+
+	
 }

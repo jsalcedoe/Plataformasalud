@@ -104,6 +104,7 @@ import { CreafabricanteComponent } from './pages/config/fabricantemedins/creafab
 import { CreamedinsComponent } from './pages/config/medins/creamedins/creamedins.component';
 import { ViaadministracionComponent } from './pages/config/viaadministracion/viaadministracion.component';
 import { CreaviaadmComponent } from './pages/config/viaadministracion/creaviaadm/creaviaadm.component';
+import { EpicrisisComponent } from './pages/medico/epicrisis/epicrisis.component';
 //import { from } from "rxjs";
 
 
@@ -215,6 +216,7 @@ import { CreaviaadmComponent } from './pages/config/viaadministracion/creaviaadm
     CreamedinsComponent,
     ViaadministracionComponent,
     CreaviaadmComponent,
+    EpicrisisComponent,
     ],
   providers: [],
   bootstrap: [AppComponent]

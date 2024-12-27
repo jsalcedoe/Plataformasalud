@@ -11,5 +11,6 @@ public interface IProcedimientoQuirurgicoService {
 	public DescripcionQuirurgica findById(Long idqx);
 	
 	public DescripcionQuirurgica save(DescripcionQuirurgica qx);
+	
 
 }

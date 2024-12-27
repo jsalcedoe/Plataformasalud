@@ -1,0 +1,39 @@
+package com.js.plataformasalud.modelos.servicios;
+
+import org.hibernate.mapping.List;
+import org.springframework.stereotype.Service;
+
+import com.js.plataformasalud.modelos.dao.IEvolucionEventoDao;
+import com.js.plataformasalud.modelos.dao.IHistoriaClinicaDao;
+import com.js.plataformasalud.modelos.entidades.EpicrisisDTO;
+import com.js.plataformasalud.modelos.entidades.Evento;
+import com.js.plataformasalud.modelos.entidades.EvolucionEvento;
+import com.js.plataformasalud.modelos.entidades.HistoriaClinica;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+@Service
+
+
+public class IEpicrisisServiceImpl implements IEpicrisisService{
+	
+	private IHistoriaClinicaDao hcpacdao;
+	private IEvolucionEventoDao evoeventdao;
+	
+	@Override
+	public EpicrisisDTO getEpicrisisByEventoId(Evento idevent) {
+		
+		HistoriaClinica hcpacepi = hcpacdao.findByEventpac_Fk(idevent);
+		EvolucionEvento evoeventepi = (EvolucionEvento) evoeventdao.findByEventevo_Fk(idevent);
+		
+		EpicrisisDTO epicrisisDTO = new EpicrisisDTO();
+		epicrisisDTO.setHcpacepi(hcpacepi);
+		epicrisisDTO.setEvoeventepi(null);
+
+		
+		return null;
+	}	
+
+	
+	}

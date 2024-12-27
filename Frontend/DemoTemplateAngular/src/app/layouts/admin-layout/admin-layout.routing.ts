@@ -97,6 +97,7 @@ import { CreamedinsComponent } from "src/app/pages/config/medins/creamedins/crea
 import { ViaadministracionComponent } from "src/app/pages/config/viaadministracion/viaadministracion.component";
 import { CreaviaadmComponent } from "src/app/pages/config/viaadministracion/creaviaadm/creaviaadm.component";
 import { RegistromedicamentosComponent } from "src/app/pages/asistencial/registromedicamentos/registromedicamentos.component";
+import { EpicrisisComponent } from "src/app/pages/medico/epicrisis/epicrisis.component";
 
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
@@ -212,6 +213,8 @@ export const AdminLayoutRoutes: Routes = [
   { path:'viaadministracion',component:ViaadministracionComponent},
   { path:'creaviaadm',component:CreaviaadmComponent},
   { path:'registromedicamentos/:idevent',component:RegistromedicamentosComponent},
+  { path:'epicrisis',component:EpicrisisComponent},
+  { path:'epicrisis/:idevent',component:EpicrisisComponent}
 
 
 

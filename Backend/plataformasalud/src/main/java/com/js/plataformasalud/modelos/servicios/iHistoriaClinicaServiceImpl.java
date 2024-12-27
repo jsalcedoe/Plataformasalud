@@ -39,4 +39,5 @@ public class IHistoriaClinicaServiceImpl implements IHistoriaClinicaService {
 		return hcpacdao.save(hcpac);
 	}
 
+
 }

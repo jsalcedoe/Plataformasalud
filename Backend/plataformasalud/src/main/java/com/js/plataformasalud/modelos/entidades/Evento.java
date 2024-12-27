@@ -70,6 +70,12 @@ public class Evento implements Serializable{
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Estado estevent_fk;
 	
+	public Evento() {}
+	
+	public Evento(Long idevent) {
+        this.idevent = idevent;
+    }
+	
 
 	
 	private static final long serialVersionUID = 1L;

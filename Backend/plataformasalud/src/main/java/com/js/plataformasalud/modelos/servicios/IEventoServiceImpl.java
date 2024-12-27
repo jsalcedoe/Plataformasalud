@@ -38,14 +38,4 @@ public class IEventoServiceImpl implements IEventoService {
 		return eventdao.save(event);
 	}
 
-	/*@Override
-	public int countEventosByNumDocPac(String numDocPac) {
-        List<Evento> eventos = eventdao.findByPaceventFkNumdocpac(numDocPac);
-        return eventos.size(); // Devuelve el tamaño de la lista de eventos
-    }*/
-
-	
-
-	
-
 }

@@ -11,5 +11,7 @@ public interface IDiagnosticoAtencionService {
 	public DiagnosticoAtencion findById(Long iddxathcpac);
 	
 	public DiagnosticoAtencion save (DiagnosticoAtencion dxatehcpac);
+	
+	
 
 }

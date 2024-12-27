@@ -76,6 +76,11 @@ export class EventosComponent implements OnInit {
       console.log('valor que pasa desde el componente eventos',evento)
       break;
 
+      case "8": 
+      this.router.navigateByUrl(`/epicrisis/${evento.idevent}`)
+      console.log('valor que pasa desde el componente eventos',evento)
+      break;
+
     }
     
   }

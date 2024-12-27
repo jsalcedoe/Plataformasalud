@@ -37,4 +37,8 @@ public class IDiagnostivoAtencionServiceImpl implements IDiagnosticoAtencionServ
 		return dxatedao.save(dxatehcpac);
 	}
 
+	
+
+	
+
 }

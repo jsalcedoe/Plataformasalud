@@ -158,5 +158,11 @@ export class OperacionService {
     return this.http.get<any[]>(this.endpoint+'registromedicamentos/'+id)
   }
 
+  // Servicio para componente de epicrisis
+
+  getEpicrisis(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'epicrisis/'+id)
+  }
+
   
 }
