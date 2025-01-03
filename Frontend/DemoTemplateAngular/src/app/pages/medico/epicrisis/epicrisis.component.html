@@ -11,153 +11,93 @@
                 <div class="card-header">
                   <h3 class="title">Datos del paciente</h3>
                 </div>
+
                 <div class="row">
-                    <div class="col-md-3 pr-md-1">
-                        <div class="form-group">
-                          <label>Documento</label>
-                          <input class="form-control" type="text" disabled formControlName="numdocpac" />
-                        </div>
-                      </div>
-    
-                      <div class="col-md-3 pr-md-1">
-                        <div class="form-group">
-                          <label>Consecutivo Paciente</label>
-                          <input class="form-control" type="text" disabled formControlName="conseventpac" />
-                        </div>
-                      </div>
-                      <div class="col-md-3 pr-md-1">
-                        <div class="form-group">
-                          <label>Evento</label>
-                          <input class="form-control" type="text" disabled formControlName="idevent" />
-                        </div>
+                  <div class="col-md-3 pr-md-1" *ngFor="let campo of camposEpicrisis">
+                    <div class="form-group">
+                      <label>{{ campo.label }}</label>
+                      <input class="form-control" 
+                             disabled [formControlName]="campo.nombre" />
+                    </div>
+                  </div>       
+                </div>
+
+                <style> 
+                  .centro { 
+                    display: flex; 
+                    justify-content: center; 
+                    align-items: center; 
+                    /* height: 100vh; Para centrar verticalmente */ 
+                    } 
+                    .texto{ 
+                      font-size: 20px; 
+                      font-weight: bold; 
+                      /*color: #000000;*/ 
+                    }
+            </style>
+
+                <div class="row">
+                  <div class="col-md-12 pr-md-1">
+                    <div class="form-group">
+                      <label class="texto">Historia Clinica</label>
+                      <div class="form-control-static">
+                        {{ formEpicrisis.get('hcpacepi')?.value }}
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-3 pr-md-1">
-                        <div class="form-group">
-                          <label>Primer Nombre</label>
-                          <input class="form-control" type="text" disabled formControlName="primernompac" />
-                        </div>
-                      </div>
-                      <div class="col-md-3 pr-md-1">
-                        <div class="form-group">
-                          <label>Segundo Nombre</label>
-                          <input class="form-control" type="text" disabled formControlName="segundonompac" />
-                        </div>
-                      </div>
-                      <div class="col-md-3 pr-md-1">
-                        <div class="form-group">
-                          <label>Primer Apellido</label>
-                          <input class="form-control" type="text" disabled formControlName="primerapepac" />
-                        </div>
-                      </div>
-                      <div class="col-md-3 pr-md-1">
-                        <div class="form-group">
-                          <label>Segundo Apellido</label>
-                          <input class="form-control" type="text" disabled formControlName="segundoapepac" />
-                        </div>
-                      </div>
+                  </div>
 
-                      <style> 
-                      .form-control { text-align: justify; /* Alinea el texto de manera justificada */ 
-                                      height: fit-content; /* Ajusta la altura al contenido */ 
-                                      width: 100%; /* Ajuste el ancho según sea necesario */ 
-                                      box-sizing: border-box; /* Incluye padding y border en el ancho y alto */
-                                     }
-                      </style>
-
-                      <div class=" col-md-6 pr-md-1">
-                        <div><label>Historia Clinica</label></div>
-                        <div class=" form-group">
-                           <textarea 
-                                    rows="20" 
-                                    cols="100" 
-                                    class="form-control" 
-                                    formControlName="hcpacepi"
-                                    style="height: fit-content;"
-                                    readonly>
-                            </textarea>
-                        </div>
+                  <div class="col-md-12 pr-md-1">
+                    <div class="form-group">
+                      <label class="texto">Evoluciones</label>
+                      <div class="form-control-static">
+                        {{ formEpicrisis.get('evoeventepi')?.value }}
                       </div>
+                    </div>
+                  </div>
 
-                      <div class=" col-md-6 pr-md-1">
-                        <div><label>Evoluciones Medicas</label></div>
-                        <div class=" form-group">
-                           <textarea 
-                                    rows="20" 
-                                    cols="100" 
-                                    text-align="justify"
-                                    style="height: fit-content;"
-                                    class="form-control" 
-                                    formControlName="evoeventepi"
-                                    readonly>
-                            </textarea>
-                        </div>
+                  <div class="col-md-12 pr-md-1">
+                    <div class="form-group">
+                      <label class="texto">Descripciones Quirurgicas</label>
+                      <div class="form-control-static">
+                        {{ formEpicrisis.get('desqxepi')?.value }}
                       </div>
+                    </div>
+                  </div>
 
-                      <div class=" col-md-6 pr-md-1">
-                        <div><label>Descripciones Quirurgicas</label></div>
-                        <div class=" form-group">
-                           <textarea 
-                                    rows="20" 
-                                    cols="100" 
-                                    text-align="justify"
-                                    style="height: fit-content;"
-                                    class="form-control" 
-                                    formControlName="desqxepi"
-                                    readonly>
-                          </textarea>
-                        </div>
+                  <div class="col-md-12 pr-md-1">
+                    <div class="form-group">
+                      <label class="texto">Medicamentos Aplicados</label>
+                      <div class="form-control-static">
+                        {{ formEpicrisis.get('regmedinsepi')?.value }}
                       </div>
+                    </div>
+                  </div>
 
-                      <div class=" col-md-6 pr-md-1">
-                        <div><label>Medicamentos Aplicados</label></div>
-                        <div class=" form-group">
-                           <textarea 
-                                    rows="20" 
-                                    cols="100" 
-                                    text-align="justify"
-                                    style="height: fit-content;"
-                                    class="form-control" 
-                                    formControlName="regmedinsepi"
-                                    readonly>
-                            </textarea>
-                        </div>
+                  <div class="col-md-12 pr-md-1">
+                    <div class="form-group">
+                      <label class="texto">Signos Vitales</label>
+                      <div class="form-control-static">
+                        {{ formEpicrisis.get('sigvitepi')?.value }}
                       </div>
+                    </div>
+                  </div>
 
-                      <div class=" col-md-6 pr-md-1">
-                        <div><label>Signos Vitales</label></div>
-                        <div class=" form-group">
-                           <textarea 
-                           rows="20" 
-                           cols="100" 
-                           text-align="justify"
-                           style="height: fit-content;"
-                           class="form-control" 
-                           formControlName="sigvitepi"
-                           readonly>
-                           </textarea>
-                        </div>
+                  <div class="col-md-12 pr-md-1">
+                    <div class="form-group">
+                      <label class="texto">Diagnosticos Atención</label>
+                      <div class="form-control-static">
+                        {{ formEpicrisis.get('dxateepi')?.value }}
                       </div>
+                    </div>
+                  </div>
 
-                      <div class=" col-md-6 pr-md-1">
-                        <div><label>Diagnosticos</label></div>
-                        <div class=" form-group">
-                           <textarea 
-                                    rows="20" 
-                                    cols="100" 
-                                    text-align="justify"
-                                    style="height: fit-content;"
-                                    class="form-control" 
-                                    formControlName="dxateepi"
-                                    readonly>
-                            </textarea>
-                        </div>
-                      </div>
+
+                </div>
+                                    
                       <div class="card-footer">
                         <button class="btn btn-fill btn-danger" type="submit" (click)="generaPDF()">Generar PDF</button>
                       </div>
-                    </div>
+                   
               </form>
             </div>
           </div>
