@@ -5,35 +5,33 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.js.plataformasalud.modelos.dao.IOrdenesMedicamentoInsumoDao;
-import com.js.plataformasalud.modelos.entidades.OrdenesMedicamentosInsumos;
-
+import com.js.plataformasalud.modelos.dao.IOrdenMedicamentoInsumoDao;
+import com.js.plataformasalud.modelos.entidades.OrdenMedicamentoInsumo;
 import lombok.AllArgsConstructor;
 
-@Service
 @AllArgsConstructor
+@Service
 
-public class IOrdenMedicamentoInsumoServiceImpl implements IOrdeneMedicamentoInsumoService {
+public class IOrdenMedicamentoInsumoServiceImpl implements IOrdenMedicamentoInsumoService {
 	
-	private IOrdenesMedicamentoInsumoDao ordmedinsdao;
+	private IOrdenMedicamentoInsumoDao ordmedinsdao;
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<OrdenesMedicamentosInsumos> findAll() {
+	public List<OrdenMedicamentoInsumo> findAll() {
 		
-		return (List<OrdenesMedicamentosInsumos>) ordmedinsdao.findAll();
+		return (List<OrdenMedicamentoInsumo>)ordmedinsdao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public OrdenesMedicamentosInsumos findById(Long idordmedins) {
+	public OrdenMedicamentoInsumo findById(Long idordmedins) {
 		
 		return ordmedinsdao.findById(idordmedins).orElse(null);
 	}
 
 	@Override
-	@Transactional
-	public OrdenesMedicamentosInsumos save(OrdenesMedicamentosInsumos ordmedins) {
+	public OrdenMedicamentoInsumo save(OrdenMedicamentoInsumo ordmedins) {
 		
 		return ordmedinsdao.save(ordmedins);
 	}

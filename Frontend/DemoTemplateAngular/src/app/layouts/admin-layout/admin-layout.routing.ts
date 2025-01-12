@@ -98,6 +98,8 @@ import { ViaadministracionComponent } from "src/app/pages/config/viaadministraci
 import { CreaviaadmComponent } from "src/app/pages/config/viaadministracion/creaviaadm/creaviaadm.component";
 import { RegistromedicamentosComponent } from "src/app/pages/asistencial/registromedicamentos/registromedicamentos.component";
 import { EpicrisisComponent } from "src/app/pages/medico/epicrisis/epicrisis.component";
+import { CreaordenmedinsComponent } from "src/app/pages/medico/ordenesmedins/creaordenmedins/creaordenmedins.component";
+import { CreaordenprocexamComponent } from "src/app/pages/medico/ordenprocexam/creaordenprocexam/creaordenprocexam.component";
 
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
@@ -214,7 +216,13 @@ export const AdminLayoutRoutes: Routes = [
   { path:'creaviaadm',component:CreaviaadmComponent},
   { path:'registromedicamentos/:idevent',component:RegistromedicamentosComponent},
   { path:'epicrisis',component:EpicrisisComponent},
-  { path:'epicrisis/:idevent',component:EpicrisisComponent}
+  { path:'epicrisis/:idevent',component:EpicrisisComponent},
+  { path:'creaordemedins',component:CreaordenmedinsComponent},
+  { path:'creaordemedins/:idevent',component:CreaordenmedinsComponent},
+  { path:'ordenesmedins',component:CreaordenmedinsComponent},
+  { path:'ordenesmedins/:idevent',component:CreaordenmedinsComponent},
+  { path:'creaordenprocexam',component:CreaordenprocexamComponent},
+  { path:'creaordenprocexam/:idevent',component:CreaordenprocexamComponent},
 
 
 

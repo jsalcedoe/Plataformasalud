@@ -117,23 +117,23 @@ export class EpicrisisComponent implements OnInit {
 
       //construyo el campo  hcpacepi
       const hcpacepiText = `
-                Motivo de consulta:\n ${this.epicrisis.hcpacepi?.motconshcpac || ''}
-                Enfermedad Actual:\n ${this.epicrisis.hcpacepi?.enfacthcpac || ''}
-                Analisis:\n ${this.epicrisis.hcpacepi?.analisishcpac || ''}
-                Objeto:\n ${this.epicrisis.hcpacepi?.objhcpac || ''}
-                Plan de manejo:\n ${this.epicrisis.hcpacepi?.planmanejhcpac || ''}
-                Alergicos:\n ${this.epicrisis.hcpacepi?.antalerhcpac || ''}
-                Familiares:\n ${this.epicrisis.hcpacepi?.antfamyhcpac || ''}
-                Farmacologicos:\n ${this.epicrisis.hcpacepi?.antfarmhcpac || ''}
-                Patologicos:\n ${this.epicrisis.hcpacepi?.antpathcpac || ''}
-                Quirurgicos:\n ${this.epicrisis.hcpacepi?.antqxhcpac || ''}
-                Traumaticos:\n ${this.epicrisis.hcpacepi?.anttxhcpac || ''}
-                Estatura:\n ${this.epicrisis.hcpacepi?.estaturahcpac || ''}
-                Frecuencia Cardiaca:\n ${this.epicrisis.hcpacepi?.fchcpac || ''}
-                Frecuencia Respiratoria:\n ${this.epicrisis.hcpacepi?.frhcpac || ''}
-                Peso:\n ${this.epicrisis.hcpacepi?.pesohcpac || ''}
-                TA:\n ${this.epicrisis.hcpacepi?.tahcpac || ''}
-                Temperatura:\n ${this.epicrisis.hcpacepi?.temphcpac || ''}
+                Motivo de consulta: ${this.epicrisis.hcpacepi?.motconshcpac || ''}
+                Enfermedad Actual: ${this.epicrisis.hcpacepi?.enfacthcpac || ''}
+                Analisis: ${this.epicrisis.hcpacepi?.analisishcpac || ''}
+                Objeto: ${this.epicrisis.hcpacepi?.objhcpac || ''}
+                Plan de manejo: ${this.epicrisis.hcpacepi?.planmanejhcpac || ''}
+                Alergicos: ${this.epicrisis.hcpacepi?.antalerhcpac || ''}
+                Familiares: ${this.epicrisis.hcpacepi?.antfamyhcpac || ''}
+                Farmacologicos: ${this.epicrisis.hcpacepi?.antfarmhcpac || ''}
+                Patologicos: ${this.epicrisis.hcpacepi?.antpathcpac || ''}
+                Quirurgicos: ${this.epicrisis.hcpacepi?.antqxhcpac || ''}
+                Traumaticos: ${this.epicrisis.hcpacepi?.anttxhcpac || ''}
+                Estatura: ${this.epicrisis.hcpacepi?.estaturahcpac || ''}
+                Frecuencia Cardiaca: ${this.epicrisis.hcpacepi?.fchcpac || ''}
+                Frecuencia Respiratoria: ${this.epicrisis.hcpacepi?.frhcpac || ''}
+                Peso: ${this.epicrisis.hcpacepi?.pesohcpac || ''}
+                TA: ${this.epicrisis.hcpacepi?.tahcpac || ''}
+                Temperatura: ${this.epicrisis.hcpacepi?.temphcpac || ''}
             `;
     // construyo el campo para evoluciones
 
@@ -213,37 +213,51 @@ generaPDF() {
   }
   
   const documentDefinition: any = {
-    content: [
-      {
-        table: {
-          body: [
-            [
-              {
-                image: this.logoBase64,
-                width: 100, // Ajusta el ancho según sea necesario
-                colSpan: 2,
-                alignment: 'center',
-              },
-              {},
-              {
-                text: [
-                  'UNIDAD MEDICO QUIRURGICA DE CIRUGIA PLASTICA AMBULATORIA S.A.S.\n',
-                  'AV. FERROCARRIL # 41-76 BARRIO MACARENA\n',
-                  'NIT: 900.192.013-3\n',
-                ],
-                alignment: 'center'
-              },              
-             
+    pageSize: 'A4',
+    pageMargins: [40, 80, 40, 60], // Ajusta los márgenes según sea necesario
+    header:{
+      table: {
+        widths: ['auto', 'auto', '*'], // Ajusta los anchos de las columnas según sea necesario
+      body: [
+        [
+          {
+            image: this.logoBase64,
+            width: 100, // Ajusta el ancho según sea necesario
+            colSpan: 2,
+            alignment: 'center',
+          },
+          {},
+          {
+            text: [
+              'UNIDAD MEDICO QUIRURGICA DE CIRUGIA PLASTICA AMBULATORIA S.A.S.\n',
+              'AV. FERROCARRIL # 41-76 BARRIO MACARENA\n',
+              'NIT: 900.192.013-3\n',
             ],
-            
-          ]
-        },
-      },
-      {
+            alignment: 'center'
+          },              
+         
+        ],
+        
+      ]
+    },
+    margin: [35, 10, 35, 10], // Ajusta el margen del encabezado según sea necesario
+    },
+
+    footer: (currentPage:number, pageCount:number) => {
+      return {
+        text: `Página ${currentPage} de ${pageCount}`,
+        alignment: 'center',
+        margin: [0, 10, 0, 0], // Ajusta el margen del pie de página
+        fontSize: 10,
+      };
+    },
+
+    content: [
+           {
         text: 'EPICRISIS',
         style: 'header',
         alignment: 'center',
-        margin: [0, 20, 0, 10], // Margen para separar del resto
+        //margin: [0, 20, 0, 10], // Margen para separar del resto
       },
       {
         table: {

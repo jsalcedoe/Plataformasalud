@@ -1,0 +1,29 @@
+package com.js.plataformasalud.modelos.entidades;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "ordmedins")
+
+public class OrdenMedicamentoInsumo implements Serializable {
+	
+	private Long idordmedins;
+	private Long cantmedins;
+	private String dosismedins;
+	private String obsordmedins;
+	private MedicamentoInsumo ordmedins_fk;
+	private PresentacionMedicamentoInsumo pordmedins_fk;
+	private UnidadMedida uniordmedins_fk;
+	private Evento eventordmedins_fk;
+	private Estado estordmedins_fk;
+	
+	private static final long serialVersionUID = 1L;
+
+}

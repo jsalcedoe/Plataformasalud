@@ -105,6 +105,10 @@ import { CreamedinsComponent } from './pages/config/medins/creamedins/creamedins
 import { ViaadministracionComponent } from './pages/config/viaadministracion/viaadministracion.component';
 import { CreaviaadmComponent } from './pages/config/viaadministracion/creaviaadm/creaviaadm.component';
 import { EpicrisisComponent } from './pages/medico/epicrisis/epicrisis.component';
+import { OrdenesmedinsComponent } from './pages/medico/ordenesmedins/ordenesmedins.component';
+import { CreaordenmedinsComponent } from './pages/medico/ordenesmedins/creaordenmedins/creaordenmedins.component';
+import { CreaordenprocexamComponent } from './pages/medico/ordenprocexam/creaordenprocexam/creaordenprocexam.component';
+import { OrdenprocexamComponent } from "./pages/medico/ordenprocexam/ordenprocexam.component";
 
 //import { from } from "rxjs";
 
@@ -217,7 +221,11 @@ import { EpicrisisComponent } from './pages/medico/epicrisis/epicrisis.component
     CreamedinsComponent,
     ViaadministracionComponent,
     CreaviaadmComponent,
-    EpicrisisComponent
+    EpicrisisComponent,
+    OrdenesmedinsComponent,
+    CreaordenmedinsComponent,
+    CreaordenprocexamComponent,
+    OrdenprocexamComponent
     ],
   providers: [],
   bootstrap: [AppComponent]

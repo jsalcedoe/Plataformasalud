@@ -1,0 +1,122 @@
+<div class="content"> 
+    <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h1 class="title">Ordenes de medicamentos</h1>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="formOrdmedins">
+                 
+                <div class="card-header">
+                  <h3 class="title">Datos del paciente</h3>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3 pr-md-1" *ngFor="let campo of camposOrdenesMedIns">
+                    <div class="form-group">
+                      <label>{{ campo.label }}</label>
+                      <input class="form-control" 
+                             disabled [formControlName]="campo.nombre" />
+                    </div>
+                  </div>       
+                </div>
+      
+            
+                <div class="row">
+                    <div class="card-header col-md-12">
+                        <h3 class="title">Ordena medicamentos o insumos</h3>
+                      </div>
+                </div>
+
+                <div formArrayName="ordenmedicamentoinsumo">
+                  <div *ngFor="let ordenmedicamentoinsumo of OrdenesMedInsArray.controls; let i = index" [formGroupName]="i" class="row align-items-center">
+
+                    <div class="col-md-4 pr-md-1">
+                      <div class="form-group">
+                        <label>Medicamento o insumo</label>
+                        <input class="form-control me-2" 
+                              type="text" placeholder="Consulta medins" 
+                              formControlName="medins" 
+                              (input)="filtrarOrdenMedicamentosInsumos($event.target.value, i)" />
+                        <div *ngIf="ordenesmedinsfiltrado[i]?.length > 0">
+                          <ul class="list-group">
+                            <li class="list-group" *ngFor="let medicamento of ordenesmedinsfiltrado[i]" (click)="seleccionarOrdenMedicamentosInsumos(medicamento, i)">
+                              {{medicamento.medins}}
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 pr-md-1">
+                      <div class="form-group">
+                        <label>Presentación</label><br>
+                        <select class="form-select" formControlName="pordmedins_fk">
+                          <option value="" disabled selected>Presentación</option>
+                          <option *ngFor="let presentacion of pmedins" [value]="presentacion.idpmedins">{{ presentacion.detpmedins }}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 pr-md-1">
+                      <div class="form-group">
+                        <label>Unidad de medida</label><br>
+                        <select class="form-select" formControlName="uniordmedins_fk">
+                          <option value="" disabled selected>Unidades</option>
+                          <option *ngFor="let unidad of unimedins" [value]="unidad.idunimed">{{ unidad.detunimedi }}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 pr-md-1">
+                      <div class="form-group">
+                        <label>Cantidad</label>
+                        <input class="form-control" 
+                        type="text" 
+                        formControlName="cantmedins" />
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 pr-md-1">
+                      <div class="form-group">
+                        <label>Dosis</label>
+                        <input class="form-control" 
+                        type="text" 
+                        formControlName="dosismedins" />
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 pr-md-1">
+                      <div class="form-group">
+                        <label>Observación</label>
+                        <input class="form-control" 
+                        type="text" 
+                        formControlName="obsordmedins" />
+                      </div>
+                    </div>
+
+                    <div class="col-md-2 pr-md-1">
+                      <button class="btn btn-danger" type="button" (click)="removeOrdenMedicamentosInsumos(i)">Eliminar</button>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <button class="btn btn-primary" type="button" (click)="addMedicamentosInsumos()">Agregar</button>
+                </div>
+
+                                    
+                      <div class="card-footer">
+                        <button class="btn btn-fill btn-danger" type="submit" (click)="creaordenmedins()">Save</button>
+                      </div>
+                   
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+                   
+                  

@@ -164,5 +164,31 @@ export class OperacionService {
     return this.http.get<any[]>(this.endpoint+'epicrisis/'+id)
   }
 
+  // Servicio para componente de ordenes de medicamentos o insumos
+
+  addordenmedins(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'ordenmedicamentoinsumo',datosRegistros,{headers:this.httpheaders})
+  }
+  getordenmedins():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'ordenmedicamentoinsumo')
+  }
+  getordenmedinsXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'ordenmedicamentoinsumo/'+id)
+  }
+
+  // Servicio para componente de ordenes de procedimientos y examenes
+
+
+  addordprocexam(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'ordenesprocedimientos',datosRegistros,{headers:this.httpheaders})
+  }
+  getordprocexam():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'ordenesprocedimientos')
+  }
+  getordprocexamXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'ordenesprocedimientos/'+id)
+  }
+
+
   
 }
