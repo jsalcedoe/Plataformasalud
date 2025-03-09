@@ -36,4 +36,11 @@ public class IOrdenMedicamentoInsumoServiceImpl implements IOrdenMedicamentoInsu
 		return ordmedinsdao.save(ordmedins);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<OrdenMedicamentoInsumo> findByEventordmedins_fk(Long idevent) {
+		
+		return (List<OrdenMedicamentoInsumo>)ordmedinsdao.findByEventordmedins_fk(idevent);
+	}
+
 }

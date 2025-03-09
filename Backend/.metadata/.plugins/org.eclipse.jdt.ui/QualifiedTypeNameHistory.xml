@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.time.LocalTime"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.AsignaCitaDao"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IAsignaCitaServiceImpl"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.AsignaCita"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.Paciente"/>
-    <fullyQualifiedTypeName name="org.springframework.data.rest.webmvc.ResourceNotFoundException"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.ipacientedao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.DescripcionQuirurgicaDTO"/>
     <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
@@ -19,8 +12,6 @@
     <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.EpicrisisDTO"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IEpicrisisServiceImpl"/>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
-    <fullyQualifiedTypeName name="org.springframework.data.repository.query.Param"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IHistoriaClinicaDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IEvolucionEventoDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.HistoriaClinica"/>
@@ -29,7 +20,6 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.Evento"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IDiagnosticoAtencionDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.DiagnosticoAtencion"/>
@@ -44,6 +34,16 @@
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IOrdenMedicamentoInsumoDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IOrdenMedicamentoInsumoServiceImpl"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.OrdenMedicamentoInsumo"/>
+    <fullyQualifiedTypeName name="jakarta.transaction.Transactional"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IOrdenProcedimientoExamenDao"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IOrdenProcedimientoExamenServiceImpl"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.OrdenProcedimientoExamen"/>
+    <fullyQualifiedTypeName name="org.springframework.data.repository.query.Param"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IConsentimientoDao"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IConsentimientoServiceImpl"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.Consentimiento"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Lob"/>
     <fullyQualifiedTypeName name="lombok.Getter"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
@@ -52,12 +52,12 @@
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="jakarta.persistence.PreUpdate"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="jakarta.transaction.Transactional"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IOrdenProcedimientoExamenDao"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IConsentimientoPacienteDao"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IConsentimientoPacienteServiceImpl"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.ConsentimientoPaciente"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IOrdenProcedimientoExamenServiceImpl"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.OrdenProcedimientoExamen"/>
 </qualifiedTypeNameHistroy>

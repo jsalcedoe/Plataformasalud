@@ -11,5 +11,7 @@ public interface IOrdenMedicamentoInsumoService {
 	public OrdenMedicamentoInsumo findById(Long idordmedins);
 	
 	public OrdenMedicamentoInsumo save (OrdenMedicamentoInsumo ordmedins);
+	
+	public List<OrdenMedicamentoInsumo> findByEventordmedins_fk(Long idevent);
 
 }
