@@ -175,6 +175,11 @@ export class OperacionService {
   getordenmedinsXId(id:any):Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'ordenmedicamentoinsumo/'+id)
   }
+  getordenmedinsXIdEvent(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'ordenmedicamentoinsumo/listar/'+id)
+  }
+
+
 
   // Servicio para componente de ordenes de procedimientos y examenes
 
@@ -188,6 +193,22 @@ export class OperacionService {
   getordprocexamXId(id:any):Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'ordenesprocedimientos/'+id)
   }
+
+  // Servicio para componente de consentimiento de pacientes
+
+  addconsinfpac(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'consentimientopaciente',datosRegistros,{headers:this.httpheaders})
+  }
+  getconsinfpac():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'consentimientopaciente')
+  }
+  getconsinfpacXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'consentimientopaciente/'+id)
+  }
+  getconsinfpacXIdEvent(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'consentimientopaciente/listar/'+id)
+  }
+  
 
 
   

@@ -219,7 +219,7 @@ export class CreaordenprocexamComponent implements OnInit {
                               text: res.mensaje // Mostrar el mensaje recibido desde el backend
                           });
                           if (index === StructOrdenProcedimiento.length - 1) {
-                              //this.router.navigate(['eventos']);
+                            this.router.navigateByUrl(`/eventos`)
                               console.log('evento',this.idevent)
                           }
                       }),

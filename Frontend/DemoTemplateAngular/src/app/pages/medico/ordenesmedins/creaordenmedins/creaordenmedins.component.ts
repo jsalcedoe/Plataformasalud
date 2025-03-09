@@ -39,10 +39,10 @@ export class CreaordenmedinsComponent implements OnInit {
 
 
   constructor(private router:Router,
-      private service:OperacionService,
-      private services:ConfigService,
-      private fb:FormBuilder,
-      private paramsrouter: ActivatedRoute,) { 
+              private service:OperacionService,
+              private services:ConfigService,
+              private fb:FormBuilder,
+              private paramsrouter: ActivatedRoute,) { 
 
         this.idevent=this.paramsrouter.snapshot.paramMap.get('idevent')
 
@@ -248,7 +248,7 @@ export class CreaordenmedinsComponent implements OnInit {
                             text: res.mensaje // Mostrar el mensaje recibido desde el backend
                         });
                         if (index === StructOrdenMedins.length - 1) {
-                            //this.router.navigate(['eventos']);
+                          this.router.navigateByUrl(`/eventos`)
                             console.log('evento',this.idevent)
                         }
                     }),

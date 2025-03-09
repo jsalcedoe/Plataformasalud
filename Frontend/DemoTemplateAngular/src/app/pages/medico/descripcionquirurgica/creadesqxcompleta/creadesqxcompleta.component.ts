@@ -355,6 +355,7 @@ consultapxexam() {
 guardarTodo(){
   this.almacenarpxuser(),
   this.diagnosticosComponent.creaDxAtencion()
+  this.router.navigateByUrl(`/eventos`)
 }
 
 

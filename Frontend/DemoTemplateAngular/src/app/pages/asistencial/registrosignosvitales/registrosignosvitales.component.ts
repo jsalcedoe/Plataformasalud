@@ -37,6 +37,7 @@ export class RegistrosignosvitalesComponent implements OnInit {
       segundoapepac: ['', [Validators.required]],
       signosvitales: this.fb.array([]), // Inicializa como un array vacío
     });
+    this.addSignosVitales()
   }
 
   ngOnInit(): void {
@@ -167,6 +168,7 @@ export class RegistrosignosvitalesComponent implements OnInit {
           .pipe(
             tap((res) => {
               Swal.fire('Éxito', 'Registro guardado correctamente', 'success');
+              this.router.navigateByUrl(`/eventos`)
             }),
             catchError((err) => {
               Swal.fire('Error', 'Ocurrió un problema al guardar', 'error');

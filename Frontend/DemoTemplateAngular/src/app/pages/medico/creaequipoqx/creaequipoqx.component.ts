@@ -52,22 +52,7 @@ export class CreaequipoqxComponent implements OnInit {
   }
 
   getDataEqQx(){
-   /* console.log('idqx que viene del snapshop',this.idqx)
-    this.service.getdesqxId(this.idqx).subscribe((res:any)=>{
-        console.log('descripcion  a mostrar en el formulario',res);
-        this.idqxSeleccionado = res;
-        this.formequipoqx.patchValue({
-        numdocpac:this.idqxSeleccionado.eventpxqx_fk.pacevent_fk.numdocpac,
-        idevent:this.idqxSeleccionado.eventpxqx_fk.idevent,
-        conseventpac:this.idqxSeleccionado.eventpxqx_fk.conseventpac,
-        idqx: this.idqxSeleccionado.idqx,
-        primernompac:this.idqxSeleccionado.eventpxqx_fk.pacevent_fk.primernompac,
-        segundonompac:this.idqxSeleccionado.eventpxqx_fk.pacevent_fk.segundonompac,
-        primerapepac:this.idqxSeleccionado.eventpxqx_fk.pacevent_fk.primerapepac,
-        segundoapepac:this.idqxSeleccionado.eventpxqx_fk.pacevent_fk.segundoapepac,
-        })
-      
-     })*/
+   
 
   }
 

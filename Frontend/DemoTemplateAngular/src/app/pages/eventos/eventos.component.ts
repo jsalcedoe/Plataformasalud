@@ -91,6 +91,16 @@ export class EventosComponent implements OnInit {
       console.log('valor que pasa desde el componente eventos',evento)
       break;
 
+      case "11": 
+      this.router.navigateByUrl(`/ordenesmedins/${evento.idevent}`)
+     
+      break;
+
+      case "12": 
+      this.router.navigateByUrl(`/asignaconsentimientopaciente/${evento.idevent}`)
+     
+      break;
+
 
     }
     

@@ -100,6 +100,12 @@ import { RegistromedicamentosComponent } from "src/app/pages/asistencial/registr
 import { EpicrisisComponent } from "src/app/pages/medico/epicrisis/epicrisis.component";
 import { CreaordenmedinsComponent } from "src/app/pages/medico/ordenesmedins/creaordenmedins/creaordenmedins.component";
 import { CreaordenprocexamComponent } from "src/app/pages/medico/ordenprocexam/creaordenprocexam/creaordenprocexam.component";
+import { OrdenesmedinsComponent } from "src/app/pages/medico/ordenesmedins/ordenesmedins.component";
+import { EditordmedinsComponent } from "src/app/pages/medico/ordenesmedins/editordmedins/editordmedins.component";
+import { CreaconsentimientosComponent } from "src/app/pages/config/consentimientos/creaconsentimientos/creaconsentimientos.component";
+import { ConsentimientosComponent } from "src/app/pages/config/consentimientos/consentimientos.component";
+import { ConsentimientospacienteComponent } from "src/app/pages/medico/consentimientospaciente/consentimientospaciente.component";
+import { AsignaconsentimientopacienteComponent } from "src/app/pages/medico/consentimientospaciente/asignaconsentimientopaciente/asignaconsentimientopaciente.component";
 
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
@@ -219,10 +225,17 @@ export const AdminLayoutRoutes: Routes = [
   { path:'epicrisis/:idevent',component:EpicrisisComponent},
   { path:'creaordemedins',component:CreaordenmedinsComponent},
   { path:'creaordemedins/:idevent',component:CreaordenmedinsComponent},
-  { path:'ordenesmedins',component:CreaordenmedinsComponent},
-  { path:'ordenesmedins/:idevent',component:CreaordenmedinsComponent},
+  { path:'editordenesmedins/:idordmedins',component:EditordmedinsComponent},
   { path:'creaordenprocexam',component:CreaordenprocexamComponent},
   { path:'creaordenprocexam/:idevent',component:CreaordenprocexamComponent},
+  { path:'ordenesmedins',component:OrdenesmedinsComponent},
+  { path:'ordenesmedins/:idevent',component:OrdenesmedinsComponent},
+  { path:'creaconsentimientos',component:CreaconsentimientosComponent},
+  { path:'consentimientos',component:ConsentimientosComponent},
+  { path:'consentimientospaciente',component:ConsentimientospacienteComponent},
+  { path:'consentimientospaciente/:idevent',component:ConsentimientospacienteComponent},
+  { path:'asignaconsentimientopaciente',component:AsignaconsentimientopacienteComponent},
+  { path:'asignaconsentimientopaciente/:idevent',component:AsignaconsentimientopacienteComponent},
 
 
 

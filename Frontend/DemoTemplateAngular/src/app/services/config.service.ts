@@ -338,6 +338,20 @@ export class ConfigService {
     return this.http.get<any[]>(`${this.endpoint}viasadministracion/${idviadm}`);
   }
 
+  // CRUD para configuracion de consentimientos informados
+
+  addconinf(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'consentimientos',datosRegistros,{headers:this.httpheaders})
+  }
+
+  getconinf():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint + 'consentimientos')
+  }
+  
+  getconinfById(idconsinf: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}consentimientos/${idconsinf}`);
+  }
+
 
    
    

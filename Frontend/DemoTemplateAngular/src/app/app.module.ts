@@ -109,6 +109,12 @@ import { OrdenesmedinsComponent } from './pages/medico/ordenesmedins/ordenesmedi
 import { CreaordenmedinsComponent } from './pages/medico/ordenesmedins/creaordenmedins/creaordenmedins.component';
 import { CreaordenprocexamComponent } from './pages/medico/ordenprocexam/creaordenprocexam/creaordenprocexam.component';
 import { OrdenprocexamComponent } from "./pages/medico/ordenprocexam/ordenprocexam.component";
+import { EditordmedinsComponent } from './pages/medico/ordenesmedins/editordmedins/editordmedins.component';
+import { ConsentimientosComponent } from './pages/config/consentimientos/consentimientos.component';
+import { CreaconsentimientosComponent } from './pages/config/consentimientos/creaconsentimientos/creaconsentimientos.component';
+import { ConsentimientospacienteComponent } from './pages/medico/consentimientospaciente/consentimientospaciente.component';
+import { AsignaconsentimientopacienteComponent } from './pages/medico/consentimientospaciente/asignaconsentimientopaciente/asignaconsentimientopaciente.component';
+import { GenerapdfconsentimientoComponent } from './pages/medico/consentimientospaciente/generapdfconsentimiento/generapdfconsentimiento.component';
 
 //import { from } from "rxjs";
 
@@ -225,7 +231,13 @@ import { OrdenprocexamComponent } from "./pages/medico/ordenprocexam/ordenprocex
     OrdenesmedinsComponent,
     CreaordenmedinsComponent,
     CreaordenprocexamComponent,
-    OrdenprocexamComponent
+    OrdenprocexamComponent,
+    EditordmedinsComponent,
+    ConsentimientosComponent,
+    CreaconsentimientosComponent,
+    ConsentimientospacienteComponent,
+    AsignaconsentimientopacienteComponent,
+    GenerapdfconsentimientoComponent
     ],
   providers: [],
   bootstrap: [AppComponent]

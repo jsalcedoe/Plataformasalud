@@ -1,0 +1,82 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="title">Asignación de consentimientos informados</h1>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="formConsentimiento">
+            
+            <!-- Datos del Paciente -->
+            <div class="card-header">
+              <h3 class="title">Datos del paciente</h3>
+            </div>
+            <div class="row">
+              <div class="col-md-3 pr-md-1" *ngFor="let campo of camposConsentimientoPaciente">
+                <div class="form-group">
+                  <label>{{ campo.label }}</label>
+                  <input class="form-control" disabled [formControlName]="campo.nombre" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Asignación de Consentimientos -->
+            <div class="row">
+              <div class="card-header col-md-12">
+                <h3 class="title">Asigna consentimiento</h3>
+              </div>
+
+              <div class="col-md-12">
+                <div formArrayName="consinfpac">
+                  <div *ngFor="let consinfpac of consinfpacArray.controls; let i = index" [formGroupName]="i" class="row align-items-center">
+                    
+                      <div class="col-md-4 pr-md-1">
+                          <div class="form-group">
+                            <label>Consentimientos</label>
+                            <input class="form-control me-2" type="text" placeholder="Consulta Consentimientos" formControlName="codconinf" (input)="filtrarConsentimientos($event.target.value, i)" />
+                            <div *ngIf="consinfpacfiltrado[i]?.length > 0">
+                              <ul class="list-group">
+                                <li class="list-group" *ngFor="let consinfpac of consinfpacfiltrado[i]" (click)="seleccionarConsentimientos(consinfpac, i)">
+                                  {{ consinfpac.codconinf }}
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4 pr-md-1">
+                          <div class="form-group">
+                            <label>Cirujano</label>
+                            <input class="form-control me-2" type="text" placeholder="Consulta Cirujano" formControlName="username" (input)="filtrarMedicos($event.target.value, i)" />
+                            <div *ngIf="medicosFiltrados[i]?.length > 0">
+                              <ul class="list-group">
+                                <li class="list-group" *ngFor="let medico of medicosFiltrados[i]" (click)="seleccionarMedicos(medico, i)">
+                                  {{ medico.username }}
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+  
+                      <div class="col-md-2 pr-md-1">
+                      <button class="btn btn-danger" type="button" (click)="removeconsinfpac(i)">Eliminar</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+                    <div class="col-md-12">
+                      <button class="btn btn-primary" type="button" (click)="addconsinfpac()">Agregar</button>
+                    </div>
+
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn btn-fill btn-danger" type="submit" (click)="asignarconsentimientos()">Guardar</button>
+                  </div>
+                </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

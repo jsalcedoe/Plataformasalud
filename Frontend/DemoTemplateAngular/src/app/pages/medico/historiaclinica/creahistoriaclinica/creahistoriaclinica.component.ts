@@ -147,7 +147,7 @@ export class CreahistoriaclinicaComponent implements OnInit {
             title: 'Operación exitosa',
             text: res.mensaje // Mostrar el mensaje recibido desde el backend
           }).then (() =>{
-            //this.router.navigateByUrl(`/creadiagnosticosatencion/${res.idevent}`)
+            this.router.navigateByUrl(`/eventos`)
             console.log('La historia clinica almacenada es:', res)
           });
           

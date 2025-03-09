@@ -83,10 +83,10 @@ export class EvolucionenfermeriaComponent implements OnInit {
           icon: 'success',
           title: 'Operación exitosa',
           text: res.mensaje // Mostrar el mensaje recibido desde el backend
-        })/*.then (() =>{
-          this.router.navigateByUrl(`/creadiagnosticosatencion/${this.idevent}`)
+        }).then (() =>{
+          this.router.navigateByUrl(`/eventos`)
          
-        });*/
+        });
         
         
       }),
