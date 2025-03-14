@@ -1,1 +1,50 @@
-<p>consentimientospaciente works!</p>
+<div class=" content">
+    <div class=" row">
+      <div class=" col-md-6">
+        <div class=" card">
+          <div class=" card-header">
+            <h4 class=" card-title">PANEL CONSENTIMIENTOS INFORMADOS</h4>
+            <form class="d-flex">
+              <input class="form-control me-2" type="text" placeholder="Digita el consentimiento a consultar">
+              <button class="btn btn-primary" type="button">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>  
+    
+    <div class="container col-md-12 mt-3">
+      <h2>Listado de consentimientos</h2>
+      <h1 *ngIf="!ready">Cargando...</h1>   
+              
+       <table class="table table-dark table-hover" >
+        <!--<table class="table-success">-->
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Consentimiento</th>
+            <th>Medico</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr *ngFor="let c of consinfpac, let i =index">
+            <td>{{c.idconsinfpac}}</td>
+            <td>{{c.eventconsinfpac_fk.pacevent_fk.primernompac}} {{c.eventconsinfpac_fk.pacevent_fk.segundonompac}}</td>
+            <td>{{c.eventconsinfpac_fk.pacevent_fk.primerapepac}} {{c.eventconsinfpac_fk.pacevent_fk.segundoapepac}}</td>
+            <td>{{c.conspxpac_fk.codconinf}}</td>
+            <td>{{c.medpxpac_fk.username}}</td>
+            <td><button class="btn-primary btn-dark" (click)="irgenerapdfconsentimiento(c.idconsinfpac)">GeneraPDF</button></td>
+            
+           </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+  
+
+

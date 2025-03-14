@@ -101,6 +101,11 @@ export class EventosComponent implements OnInit {
      
       break;
 
+      case "13": 
+      this.router.navigateByUrl(`/consentimientospaciente/${evento.idevent}`)
+     
+      break;
+
 
     }
     

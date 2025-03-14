@@ -43,7 +43,8 @@ export class OrdenesmedinsComponent implements OnInit {
       ).subscribe();
     }
     irEditOrdenMedIns(idordmedins:any){
-      this.router.navigateByUrl(`/editordenesmedins/${idordmedins}`)      
+      this.router.navigateByUrl(`/editordenesmedins/${idordmedins}`)  
+      console.log('orden a editar',idordmedins)    
     }
 
 }

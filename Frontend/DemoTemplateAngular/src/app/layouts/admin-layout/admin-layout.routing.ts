@@ -106,6 +106,7 @@ import { CreaconsentimientosComponent } from "src/app/pages/config/consentimient
 import { ConsentimientosComponent } from "src/app/pages/config/consentimientos/consentimientos.component";
 import { ConsentimientospacienteComponent } from "src/app/pages/medico/consentimientospaciente/consentimientospaciente.component";
 import { AsignaconsentimientopacienteComponent } from "src/app/pages/medico/consentimientospaciente/asignaconsentimientopaciente/asignaconsentimientopaciente.component";
+import { GenerapdfconsentimientoComponent } from "src/app/pages/medico/consentimientospaciente/generapdfconsentimiento/generapdfconsentimiento.component";
 
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
@@ -236,6 +237,9 @@ export const AdminLayoutRoutes: Routes = [
   { path:'consentimientospaciente/:idevent',component:ConsentimientospacienteComponent},
   { path:'asignaconsentimientopaciente',component:AsignaconsentimientopacienteComponent},
   { path:'asignaconsentimientopaciente/:idevent',component:AsignaconsentimientopacienteComponent},
+  { path:'generapdfconsentimiento/:idconsinfpac',component:GenerapdfconsentimientoComponent},
+  { path:'generapdfconsentimiento',component:GenerapdfconsentimientoComponent}
+  
 
 
 
