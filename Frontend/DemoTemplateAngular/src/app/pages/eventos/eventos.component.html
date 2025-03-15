@@ -22,8 +22,8 @@
               <!--<table class="table-success">-->
               <thead>
                 <tr>
-                  <th>Item</th>
                   <th>Evento</th>
+                  <th>Consecutivo</th>
                   <th>Documento</th>
                   <th>Nombres</th>
                   <th>Apellidos</th>
@@ -34,7 +34,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let c of event, let i =index">
-                  <td>{{i+1}}</td> 
+                  <td>{{c.idevent}}</td> 
                   <td>{{c.conseventpac}}</td>
                   <td>{{c.pacevent_fk.numdocpac}}</td>
                   <td>{{c.pacevent_fk.primernompac}} {{c.pacevent_fk.segundonompac}}</td>
