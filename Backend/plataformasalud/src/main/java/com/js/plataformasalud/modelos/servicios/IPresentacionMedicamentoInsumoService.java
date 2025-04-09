@@ -11,5 +11,7 @@ public interface IPresentacionMedicamentoInsumoService {
 	public PresentacionMedicamentoInsumo FindById(Long idpmedins);
 	
 	public PresentacionMedicamentoInsumo save(PresentacionMedicamentoInsumo pmedins);
+	
+	public List<PresentacionMedicamentoInsumo> findByPmedins(String detpmedins);
 
 }

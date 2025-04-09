@@ -12,5 +12,7 @@ public interface IUnidadMedidaService {
 	public UnidadMedida FindById(Long idunimedi);
 	
 	public UnidadMedida save(UnidadMedida unimedi);
+	
+	public List<UnidadMedida> findByUmedins(String detunimedi);
 
 }

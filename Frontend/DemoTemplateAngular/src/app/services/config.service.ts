@@ -282,6 +282,10 @@ export class ConfigService {
     return this.http.get<any[]>(`${this.endpoint}pmedins/${idpmedins}`);
   }
 
+  getmedinsBypmedins(detpmedins: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}pmedins/search/${detpmedins}`);
+  }
+
   // CRUD para Unidad de Medida
 
   addunidadmedida(datosRegistros:any):Observable<any>{
@@ -294,6 +298,10 @@ export class ConfigService {
   
   getunidadmedidaById(idunimed: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.endpoint}unidadesmedida/${idunimed}`);
+  }
+
+  getmedinsByUmedins(detunimedin: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}unidadesmedida/search/${detunimedin}`);
   }
 
   // CRUD para Fabricante de medicamentos e insumos
@@ -322,6 +330,10 @@ export class ConfigService {
   
   getmedinsById(idmedins: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.endpoint}medicamentosinsumos/${idmedins}`);
+  }
+
+  getmedinsByMedins(medins: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}medicamentosinsumos/search/${medins}`);
   }
 
   // CRUD para vias de administracion

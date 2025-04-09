@@ -26,22 +26,96 @@
                 <div class="card-header col-md-12">
                     <h3 class="title">Orden de medicamentos o insumos a editar</h3>
                   </div>
-            </div>
+              </div>
 
-            <div class="row">
-              <div class="col-md-3 pr-md-1" *ngFor="let campo of camposOrdenMedins">
-                <div class="form-group">
-                  <label>{{ campo.label }}</label>
-                  <input class="form-control" 
-                         disabled [formControlName]="campo.nombre" />
+              <div class="row">
+                <div class="col-md-2 pr-md-1" >
+                  <div class="form-group">
+                    <label>Orden Medica</label>
+                    <input class="form-control" 
+                           formControlName="idordmedins"
+                           disabled="true"
+                           style="margin-right: 8px;"/>
+                  </div>
+                </div>  
+              </div>
+
+              <div class="row" *ngFor="let campo of camposOrdenMedins; let i = index" style="margin-bottom: 16px;">
+                <div class="col">
+                  <label class="form-label">{{ campo.etiqueta }}</label>
+              
+                  <!-- Campo general que no es ninguno de los especiales -->
+                  <input *ngIf="campo.nombre !== 'ordmedins_fk' && campo.nombre !== 'pordmedins_fk' && campo.nombre !== 'uniordmedins_fk'"
+                         class="form-control"
+                         [formControlName]="campo.nombre" />
+              
+                  <!-- Campo Medicamento -->
+                  <ng-container *ngIf="campo.nombre === 'ordmedins_fk'">
+                    <input *ngIf="!camposHabilitados[i]"
+                           class="form-control"
+                           [value]="formEditOrdmedins.get('medins')?.value"
+                           disabled />
+                           
+                    <input *ngIf="camposHabilitados[i]"
+                           class="form-control"
+                           [formControlName]="campo.nombre"
+                           (keyup)="onKeyUpBuscar($event.target.value, campo.nombre)"
+                           (focus)="onFocusBuscar(campo.nombre)" />
+                  </ng-container>
+              
+                  <!-- Campo Presentación -->
+                  <ng-container *ngIf="campo.nombre === 'pordmedins_fk'">
+                    <input *ngIf="!camposHabilitados[i]"
+                           class="form-control"
+                           [value]="formEditOrdmedins.get('detpmedins')?.value"
+                           disabled />
+                           
+                    <input *ngIf="camposHabilitados[i]"
+                           class="form-control"
+                           [formControlName]="campo.nombre"
+                           (keyup)="onKeyUpBuscar($event.target.value, campo.nombre)"
+                           (focus)="onFocusBuscar(campo.nombre)" />
+                  </ng-container>
+              
+                  <!-- Campo Unidad -->
+                  <ng-container *ngIf="campo.nombre === 'uniordmedins_fk'">
+                    <input *ngIf="!camposHabilitados[i]"
+                           class="form-control"
+                           [value]="formEditOrdmedins.get('detunimedi')?.value"
+                           disabled />
+                           
+                    <input *ngIf="camposHabilitados[i]"
+                           class="form-control"
+                           [formControlName]="campo.nombre"
+                           (keyup)="onKeyUpBuscar($event.target.value, campo.nombre)"
+                           (focus)="onFocusBuscar(campo.nombre)" />
+                  </ng-container>
                 </div>
-              </div>       
-            </div>
-
-
+              
+                <!-- Botón de acción -->
+                <div class="col-auto">
+                  <!-- Botón lápiz -->
+                  <button class="btn btn-sm btn-outline-primary"
+                          type="button"
+                          *ngIf="!camposHabilitados[i]"
+                          (click)="habilitarCampo(i)">
+                    <i class="bi bi-pencil"></i>
+                  </button>
+              
+                  <!-- Botón cancelar -->
+                  <button class="btn btn-sm btn-outline-secondary"
+                          type="button"
+                          *ngIf="camposHabilitados[i]"
+                          (click)="cancelarCampo(i)">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+              </div>
+              
               
                     <div class="card-footer">
-                      <button class="btn btn-fill btn-danger" type="submit">Save</button>
+                      <button class="btn btn-fill btn-danger" type="submit" (click)="updateordmedins()">Save</button>
+                      
                     </div>
                  
             </form>

@@ -38,7 +38,6 @@
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IOrdenProcedimientoExamenDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IOrdenProcedimientoExamenServiceImpl"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.OrdenProcedimientoExamen"/>
-    <fullyQualifiedTypeName name="org.springframework.data.repository.query.Param"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IConsentimientoDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IConsentimientoServiceImpl"/>
@@ -59,5 +58,6 @@
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.ConsentimientoPaciente"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.data.repository.query.Param"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
 </qualifiedTypeNameHistroy>

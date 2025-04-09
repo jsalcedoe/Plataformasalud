@@ -39,4 +39,11 @@ public class IMedicamentoInsumoServiceImpl implements IMedicamentoInsumoService 
 		return medinsdao.save(medins);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<MedicamentoInsumo> findByMedins(String medins) {
+		
+		return (List<MedicamentoInsumo>)medinsdao.findByMedins(medins);
+	}
+
 }

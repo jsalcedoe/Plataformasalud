@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.js.plataformasalud.modelos.entidades.UnidadMedida;
 import com.js.plataformasalud.modelos.servicios.IUnidadMedidaServiceImpl;
 
@@ -58,6 +57,27 @@ public class UnidadMedidaRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<UnidadMedida>(unimedi, HttpStatus.OK);
+	}
+	
+	@GetMapping("/unidadesmedida/search/{detunimedi}")
+	public ResponseEntity<?> buscarPorUmedins(@PathVariable String detunimedi) {
+	    List<UnidadMedida> unidadmedins = null;
+	    Map<String, Object> response = new HashMap<>();
+
+	    try {
+	        unidadmedins = unimediserv.findByUmedins(detunimedi);
+	    } catch (DataAccessException e) {
+	        response.put("mensaje", "Error al realizar la consulta en la base de datos");
+	        response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+
+	    if (unidadmedins.isEmpty()) {
+	        response.put("mensaje", "No se encontraron unidades de medida que coincidan con: ".concat(detunimedi));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+	    }
+
+	    return new ResponseEntity<List<UnidadMedida>>(unidadmedins, HttpStatus.OK);
 	}
 	
 	@PostMapping("/unidadesmedida")

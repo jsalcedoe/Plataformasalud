@@ -38,5 +38,11 @@ public class IPresentacionMedicamentoInsumoServiceImpl implements IPresentacionM
 		return pmedinsdao.save(pmedins);
 	}
 
+	@Override
+	public List<PresentacionMedicamentoInsumo> findByPmedins(String detpmedins) {
+		
+		return (List<PresentacionMedicamentoInsumo>) pmedinsdao.findByPmedins(detpmedins);
+	}
+
 	
 }

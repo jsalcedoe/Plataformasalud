@@ -73,7 +73,7 @@ public class PresentacionMedicamentoInsumoRestController {
 	    }
 
 	    if (pmedicamentos.isEmpty()) {
-	        response.put("mensaje", "No se encontraron presentaciones de los medicamentos o insumos que coincidan con: ".concat(detpmedins));
+	        response.put("mensaje", "No se encontraron presentaciones de los medicamentos o insumos que coincidan con: ".concat(pmedins));
 	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 	    }
 

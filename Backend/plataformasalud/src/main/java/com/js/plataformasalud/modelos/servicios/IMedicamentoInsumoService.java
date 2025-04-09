@@ -12,6 +12,8 @@ public interface IMedicamentoInsumoService {
 	
 	public MedicamentoInsumo save (MedicamentoInsumo medins);
 	
+	public List<MedicamentoInsumo> findByMedins(String medins);
+	
 	
 
 }

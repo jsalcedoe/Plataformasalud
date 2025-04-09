@@ -60,6 +60,29 @@ public class MedicamentoInsumoRestController {
 		return new ResponseEntity<MedicamentoInsumo>(medins, HttpStatus.OK);
 	}
 	
+	@GetMapping("/medicamentosinsumos/search/{medins}")
+	public ResponseEntity<?> buscarPorMedins(@PathVariable String medins) {
+	    List<MedicamentoInsumo> medicamentos = null;
+	    Map<String, Object> response = new HashMap<>();
+
+	    try {
+	        medicamentos = medinsserv.findByMedins(medins);
+	    } catch (DataAccessException e) {
+	        response.put("mensaje", "Error al realizar la consulta en la base de datos");
+	        response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+
+	    if (medicamentos.isEmpty()) {
+	        response.put("mensaje", "No se encontraron medicamentos o insumos que coincidan con: ".concat(medins));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+	    }
+
+	    return new ResponseEntity<List<MedicamentoInsumo>>(medicamentos, HttpStatus.OK);
+	}
+	
+	
+	
 	@PostMapping("/medicamentosinsumos")
 	public ResponseEntity<?> save (@Valid @RequestBody MedicamentoInsumo medins, BindingResult result) {
 		MedicamentoInsumo Newmedins = null;

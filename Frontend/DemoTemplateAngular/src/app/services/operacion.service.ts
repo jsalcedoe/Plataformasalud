@@ -178,6 +178,9 @@ export class OperacionService {
   getordenmedinsXIdEvent(id:any):Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'ordenmedicamentoinsumo/listar/'+id)
   }
+  editordmedins(idordmedins: Number, datosRegistros: any): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}ordenmedicamentoinsumo/${idordmedins}`, datosRegistros, { headers: this.httpheaders });
+  }
 
 
 

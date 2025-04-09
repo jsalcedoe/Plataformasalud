@@ -37,6 +37,13 @@ public class IUnidadMedidaServiceImpl implements IUnidadMedidaService {
 		return unimedidao.save(unimedi);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<UnidadMedida> findByUmedins(String detunimedi) {
+		
+		return (List<UnidadMedida>)unimedidao.findByUmedins(detunimedi);
+	}
+
 	
 
 }
