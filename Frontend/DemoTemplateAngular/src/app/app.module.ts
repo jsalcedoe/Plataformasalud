@@ -115,6 +115,7 @@ import { CreaconsentimientosComponent } from './pages/config/consentimientos/cre
 import { ConsentimientospacienteComponent } from './pages/medico/consentimientospaciente/consentimientospaciente.component';
 import { AsignaconsentimientopacienteComponent } from './pages/medico/consentimientospaciente/asignaconsentimientopaciente/asignaconsentimientopaciente.component';
 import { GenerapdfconsentimientoComponent } from './pages/medico/consentimientospaciente/generapdfconsentimiento/generapdfconsentimiento.component';
+import { EditordprocexamComponent } from './pages/medico/ordenprocexam/editordprocexam/editordprocexam.component';
 
 //import { from } from "rxjs";
 
@@ -237,7 +238,8 @@ import { GenerapdfconsentimientoComponent } from './pages/medico/consentimientos
     CreaconsentimientosComponent,
     ConsentimientospacienteComponent,
     AsignaconsentimientopacienteComponent,
-    GenerapdfconsentimientoComponent
+    GenerapdfconsentimientoComponent,
+    EditordprocexamComponent
     ],
   providers: [],
   bootstrap: [AppComponent]

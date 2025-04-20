@@ -2,7 +2,7 @@ import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, tap } from 'rxjs';
+import { catchError, of, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 import { OperacionService } from 'src/app/services/operacion.service';
 import Swal from 'sweetalert2';
@@ -37,11 +37,11 @@ export class EditordmedinsComponent implements OnInit {
 
   camposOrdenMedins = [
     
-    {label:'Medicamento',nombre:'ordmedins_fk',type:'text',editable:false},
+    {label:'Medicamento',nombre:'medins',type:'text',editable:false},    
     {label:'Cantidad',nombre:'cantmedins',type:'text',editable:false},
     {label:'Dosis',nombre:'dosismedins',type:'text',editable:false},
-    {label:'Presentacion',nombre:'pordmedins_fk',type:'text',editable:false},
-    {label:'Unidades',nombre:'uniordmedins_fk',type:'text',editable:false},
+    {label:'Presentacion',nombre:'detpmedins',type:'text',editable:false},   
+    {label:'Unidades',nombre:'detunimedi',type:'text',editable:false},    
     {label:'Observacion',nombre:'obsordmedins',type:'text',editable:false},
     
   ]
@@ -73,8 +73,7 @@ export class EditordmedinsComponent implements OnInit {
                     detunimedi:[''],
                     ordmedins_fk:[{ value: '', disabled: true }, Validators.required],
                     medins:[''],                        
-                  })
-                  
+                  })                  
  
                  }
 
@@ -83,74 +82,92 @@ export class EditordmedinsComponent implements OnInit {
    
     this.getdataordmedins()
     this.camposHabilitados = this.camposOrdenMedins.map(() => false);
+    document.addEventListener('keydown', this.handleKeydown.bind(this));
   }
 
-habilitarCampos(index: number) {
-  const campoNombre = this.camposOrdenMedins[index].nombre;
-
-  if (this.camposHabilitados[index]) {
-    this.camposHabilitados[index] = false;
-    this.formEditOrdmedins.get(campoNombre)?.disable(); // Deshabilitar
-  } else {
+  getdataordmedins(){
+    this.service.getordenmedinsXId(this.idordmedins)
+    .pipe(
+      tap((res) => {
+        // Maneja la respuesta exitosa aquí
+        console.log('Orden medica por ID', res);
+        this.ordmedins = res;
+        this.cargaOrdenMedins();
+        
+      }),
+      catchError((err) => {
+        // Maneja el error aquí
+        console.error('Error:', err);
+        alert('Error ' + err.message);
+        throw err; // Re-throw para que el error se propague al suscriptor
+      })
+    ).subscribe();
     
-    this.camposHabilitados = this.camposOrdenMedins.map(() => false);
-    
-    
-    this.camposHabilitados[index] = true;
-    this.formEditOrdmedins.get(campoNombre)?.enable(); // Habilitar
   }
-}
 
+  cargaOrdenMedins(){
 
-onKeyUpBuscar(termino: string, campo: string) {
-  if (campo === 'ordmedins_fk') {
-    this.getMedins(termino);
-  } else if (campo === 'pordmedins_fk') {
-    this.getPresentacionmedins(termino);
-    console.log('Termino',termino)
-  } else if (campo === 'uniordmedins_fk') {
-    this.getUnimedins(termino);
-    console.log('Termino',termino)
+    console.log('Datos del patchValue',this.ordmedins)
+    this.formEditOrdmedins.patchValue({
+      idordmedins: this.ordmedins.idordmedins,
+      idevent: this.ordmedins.eventordmedins_fk.idevent,
+      conseventpac: this.ordmedins.eventordmedins_fk.conseventpac,
+      idpac: this.ordmedins.eventordmedins_fk.pacevent_fk.idpac,
+      numdocpac: this.ordmedins.eventordmedins_fk.pacevent_fk.numdocpac,
+      primernompac: this.ordmedins.eventordmedins_fk.pacevent_fk.primernompac,
+      segundonompac: this.ordmedins.eventordmedins_fk.pacevent_fk.segundonompac,
+      primerapepac: this.ordmedins.eventordmedins_fk.pacevent_fk.primerapepac,
+      segundoapepac: this.ordmedins.eventordmedins_fk.pacevent_fk.segundoapepac,
+      cantmedins: this.ordmedins.cantmedins,
+      dosismedins: this.ordmedins.dosismedins,
+      obsordmedins: this.ordmedins.obsordmedins,
+      pordmedins_fk: this.ordmedins.pordmedins_fk.idpmedins,
+      uniordmedins_fk: this.ordmedins.uniordmedins_fk.idunimed,
+      ordmedins_fk: this.ordmedins.ordmedins_fk.idmedins,
+      detpmedins:this.ordmedins.pordmedins_fk.detpmedins,
+      detunimedi:this.ordmedins.uniordmedins_fk.detunimedi,
+      medins:this.ordmedins.ordmedins_fk.medins,
+      
+    })
+   }
+
+  handleKeydown(event: KeyboardEvent): void {
+    if (event.ctrlKey && event.key.toLowerCase() === 'e') {
+      event.preventDefault(); // Previene el comportamiento por defecto del navegador
+  
+      this.camposOrdenMedins.forEach((campo, index) => {
+        const control = this.formEditOrdmedins.get(campo.nombre);
+        if (control) {
+          control.enable();
+          this.camposHabilitados[index] = true;
+        }
+      });
+  
+      console.log('Campos de orden médica habilitados por Ctrl + E');
+    }
   }
-}
-
-onFocusBuscar(campo: string) {
-  if (campo === 'ordmedins_fk') {
-    this.medins = []; // Limpiar lista al enfocar
-  } else if (campo === 'pordmedins_fk') {
-    this.pmedins = [];
-  } else if (campo === 'uniordmedins_fk') {
-    this.unimedins = [];
-  }
-}
-
-
   getMedins(termino: string): void{
     console.log('Buscando medicamentos o insumos:', termino);
     if (termino.length > 2){
       this.services.getmedinsByMedins(termino)
        .pipe(
-             tap((res) => {
-               // Maneja la respuesta exitosa aquí
-               console.log('Medicamentos', res);
-               this.medins = res.filter((medicamento:any)=>
-                medicamento.medins.toLowerCase().includes(termino.toLowerCase())
-              );
-               
-             }),
+              tap((res: any[]) => {
+                this.medins = res.filter(med =>
+                  med.medins.toLowerCase().includes(termino.toLowerCase())
+                );
+                
+              }),
+             
              catchError((err) => {
                // Maneja el error aquí
                console.error('Error al buscar medicamento o insumo:', err);
                alert('Error ' + err.message);
-               throw err; // Re-throw para que el error se propague al suscriptor
-               return [];
+               return of([]);
              })
            ).subscribe();
     }else{
       this.medins = []
     }
-       
-       
   }
 
   seleccionarMedicamento(medicamento: any): void {
@@ -166,31 +183,25 @@ onFocusBuscar(campo: string) {
         if (termino.length > 2){
           this.services.getmedinsBypmedins(termino)
            .pipe(
-                 tap((res) => {
-                   // Maneja la respuesta exitosa aquí
-                   console.log('presentacion', res);
-                   this.pmedins = res.filter((presentacion:any)=>
-                    presentacion.detpmedins.toLowerCase().includes(termino.toLowerCase())
-                  );
-                   
-                 }),
-                 catchError((err) => {
-                   // Maneja el error aquí
-                   console.error('Error al buscar la presentación:', err);
-                   alert('Error ' + err.message);
-                   throw err; // Re-throw para que el error se propague al suscriptor
-                   return [];
-                 })
+                  tap((res: any[]) => {
+                    this.pmedins = res.filter(pmed =>
+                      pmed.detpmedins.toLowerCase().includes(termino.toLowerCase())
+                    );
+                  }),                
+                  catchError((err) => {
+                    // Maneja el error aquí
+                    console.error('Error al buscar la presentacion:', err);
+                    alert('Error ' + err.message);
+                    return of([]);
+                  })
                ).subscribe();
         }else{
           this.pmedins = []
-        }
-           
-           
+        }  
       }
 
   seleccionarpresentacion(pmedicamento: any): void {
-        console.log('Presentacion seleccionada:', pmedicamento);
+        console.log('Presentacion seleccionada:', pmedicamento.idpmedins);
         this.formEditOrdmedins.get('pordmedins_fk')?.setValue(pmedicamento.idpmedins);
         this.formEditOrdmedins.get('detpmedins')?.setValue(pmedicamento.detpmedins);
         this.pmedins = []; // Limpia los resultados después de seleccionar
@@ -202,109 +213,61 @@ onFocusBuscar(campo: string) {
             if (termino.length > 2){
               this.services.getmedinsByUmedins(termino)
                .pipe(
-                tap((res) => {
-                  console.log('Respuesta completa de unidades:', res); // Agrega esta línea
-                  this.unimedins = res.filter((unidades: any) =>
-                    unidades.detunimedi && unidades.detunimedi.toLowerCase().includes(termino.toLowerCase())
-                    
-                  );
-                  console.log('el valor de unidades es: ', this.unimedins)
-                }),
+                    tap((res: any[]) => {
+                      this.unimedins = res.filter(umed =>
+                        umed.detunimedi.toLowerCase().includes(termino.toLowerCase())
+                      );
+                    }),  
+               
                 
-                     catchError((err) => {
-                       // Maneja el error aquí
-                       console.error('Error al buscar las unidades:', err);
-                       alert('Error ' + err.message);
-                       throw err; // Re-throw para que el error se propague al suscriptor
-                       return [];
-                     })
+                catchError((err) => {
+                  // Maneja el error aquí
+                  console.error('Error al buscar las unidades:', err);
+                  alert('Error ' + err.message);
+                  return of([]);
+                })
                    ).subscribe();
             }else{
               this.unimedins = []
             }
                
                
-          }              
-   
-
+          }   
       seleccionarunidades(unimedins: any, index: number){
         console.log('Unidades seleccionada seleccionada:', unimedins);
-        this.formEditOrdmedins.get('uniordmedins_fk')?.setValue(unimedins.idunimedi);
+        this.formEditOrdmedins.get('uniordmedins_fk')?.setValue(unimedins.idunimed);
         this.formEditOrdmedins.get('detunimedi')?.setValue(unimedins.detunimedi);
         this.unimedins = []; // Limpia los resultados después de seleccionar
     
       }
-      getdataordmedins(){
-        this.service.getordenmedinsXId(this.idordmedins)
-        .pipe(
-          tap((res) => {
-            // Maneja la respuesta exitosa aquí
-            console.log('Orden medica por ID', res);
-            this.ordmedins = res;
-            this.cargaOrdenMedins();
-            
-          }),
-          catchError((err) => {
-            // Maneja el error aquí
-            console.error('Error:', err);
-            alert('Error ' + err.message);
-            throw err; // Re-throw para que el error se propague al suscriptor
-          })
-        ).subscribe();
+       
+      updateordmedins(){
         
-      } 
-      
-      cargaOrdenMedins(){
+      const rawValues = this.formEditOrdmedins.getRawValue(); // Incluye deshabilitados
 
-        console.log('Datos del patchValue',this.ordmedins)
-        this.formEditOrdmedins.patchValue({
-          idordmedins: this.ordmedins.idordmedins,
-          idevent: this.ordmedins.eventordmedins_fk.idevent,
-          conseventpac: this.ordmedins.eventordmedins_fk.conseventpac,
-          idpac: this.ordmedins.eventordmedins_fk.pacevent_fk.idpac,
-          numdocpac: this.ordmedins.eventordmedins_fk.pacevent_fk.numdocpac,
-          primernompac: this.ordmedins.eventordmedins_fk.pacevent_fk.primernompac,
-          segundonompac: this.ordmedins.eventordmedins_fk.pacevent_fk.segundonompac,
-          primerapepac: this.ordmedins.eventordmedins_fk.pacevent_fk.primerapepac,
-          segundoapepac: this.ordmedins.eventordmedins_fk.pacevent_fk.segundoapepac,
-          cantmedins: this.ordmedins.cantmedins,
-          dosismedins: this.ordmedins.dosismedins,
-          obsordmedins: this.ordmedins.obsordmedins,
-          pordmedins_fk: this.ordmedins.pordmedins_fk.pmedins,
-          uniordmedins_fk: this.ordmedins.uniordmedins_fk.unimedi,
-          ordmedins_fk: this.ordmedins.ordmedins_fk.idmedins,
-          detpmedins:this.ordmedins.pordmedins_fk.detpmedins,
-          detunimedi:this.ordmedins.uniordmedins_fk.detunimedi,
-          medins:this.ordmedins.ordmedins_fk.medins,
-
-          
-        })
-       }
-
-       updateordmedins(){
-        console.log('Form value:', this.formEditOrdmedins.value);
-        const Structeditordmedins = {
-          cantmedins:this.formEditOrdmedins.value.cantmedins,
-          dosismedins:this.formEditOrdmedins.value.dosismedins,
-          obsordmedins:this.formEditOrdmedins.value.obsordmedins,
-          ordmedins_fk:{
-            "idmedins":this.formEditOrdmedins.value.ordmedins_fk
-          },
-          pordmedins_fk:{
-            "idpmedins":this.formEditOrdmedins.value.pordmedins_fk
-          },
-          uniordmedins_fk:{
-            "idunimedi":this.formEditOrdmedins.value.uniordmedins_fk
-          },
-          eventordmedins_fk:{
-            "idevent":this.formEditOrdmedins.value.idevent
-          },
-          estordmedins_fk: {
-            "idstatus":2
-          }
-      }
+      const Structeditordmedins = {
+        cantmedins: rawValues.cantmedins,
+        dosismedins: rawValues.dosismedins,
+        obsordmedins: rawValues.obsordmedins,
+        ordmedins_fk: {
+          idmedins: rawValues.ordmedins_fk
+        },
+        pordmedins_fk: {
+          idpmedins: rawValues.pordmedins_fk
+        },
+        uniordmedins_fk: {
+          idunimed: rawValues.uniordmedins_fk
+        },
+        eventordmedins_fk: {
+          idevent: rawValues.idevent
+        },
+        estordmedins_fk: {
+          idstatus: 2
+        }
+      };
       console.log('Estructura para editar orden medica',Structeditordmedins)
       let id = parseInt(this.paramsrouter.snapshot.paramMap.get('idordmedins'))
+      console.log('ID de la orden medica',id)
       this.service.editordmedins(id,Structeditordmedins)
       .pipe(
             tap((res) => {

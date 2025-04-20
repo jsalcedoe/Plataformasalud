@@ -40,78 +40,81 @@
                 </div>  
               </div>
 
-              <div class="row" *ngFor="let campo of camposOrdenMedins; let i = index" style="margin-bottom: 16px;">
-                <div class="col">
-                  <label class="form-label">{{ campo.etiqueta }}</label>
+              <div class="row">
+                <!-- Iterar campos de orden de medicamentos -->
+                <div class="col-md-3 pr-md-1" *ngFor="let campo of camposOrdenMedins; let i = index">
+                  <div class="form-group">                    
+                    <label>{{ campo.label }}</label>
+                    
+                    <!-- Campo con búsqueda dinámica para Medicamento -->
+                    <div class="position-relative">
+                    <ng-container *ngIf="campo.nombre === 'medins'">
+                      <input class="form-control"
+                             type="text"
+                             [formControlName]="campo.nombre"
+                             disabled
+                             (input)="getMedins($event.target.value)"                                                          
+                             autocomplete="off"/>
               
-                  <!-- Campo general que no es ninguno de los especiales -->
-                  <input *ngIf="campo.nombre !== 'ordmedins_fk' && campo.nombre !== 'pordmedins_fk' && campo.nombre !== 'uniordmedins_fk'"
-                         class="form-control"
-                         [formControlName]="campo.nombre" />
+                      <ul *ngIf="medins.length > 0" class="list-group position-absolute w-100" style="z-index: 1050;">
+                        <li *ngFor="let med of medins" 
+                            class="list-group"
+                            (click)="seleccionarMedicamento(med)">
+                          {{ med.medins }}
+                        </li>
+                      </ul>
+                    </ng-container>
+                  </div>
+                    <!-- Campo con búsqueda dinámica para Presentación -->
+                    <ng-container *ngIf="campo.nombre === 'detpmedins'">
+                      <input class="form-control"
+                             type="text"
+                             [formControlName]="campo.nombre"
+                             disabled
+                             (input)="getPresentacionmedins($event.target.value)"                              
+                             autocomplete="off"/>
               
-                  <!-- Campo Medicamento -->
-                  <ng-container *ngIf="campo.nombre === 'ordmedins_fk'">
-                    <input *ngIf="!camposHabilitados[i]"
-                           class="form-control"
-                           [value]="formEditOrdmedins.get('medins')?.value"
-                           disabled />
-                           
-                    <input *ngIf="camposHabilitados[i]"
-                           class="form-control"
-                           [formControlName]="campo.nombre"
-                           (keyup)="onKeyUpBuscar($event.target.value, campo.nombre)"
-                           (focus)="onFocusBuscar(campo.nombre)" />
-                  </ng-container>
+                      <ul *ngIf="pmedins.length > 0" class="list-group position-absolute w-100 zindex-dropdown">
+                        <li *ngFor="let p of pmedins" 
+                        class="list-group"
+                            (click)="seleccionarpresentacion(p)">
+                          {{ p.detpmedins }}
+                        </li>
+                      </ul>
+                    </ng-container>
               
-                  <!-- Campo Presentación -->
-                  <ng-container *ngIf="campo.nombre === 'pordmedins_fk'">
-                    <input *ngIf="!camposHabilitados[i]"
-                           class="form-control"
-                           [value]="formEditOrdmedins.get('detpmedins')?.value"
-                           disabled />
-                           
-                    <input *ngIf="camposHabilitados[i]"
-                           class="form-control"
-                           [formControlName]="campo.nombre"
-                           (keyup)="onKeyUpBuscar($event.target.value, campo.nombre)"
-                           (focus)="onFocusBuscar(campo.nombre)" />
-                  </ng-container>
+                    <!-- Campo con búsqueda dinámica para Unidades -->
+                    <ng-container *ngIf="campo.nombre === 'detunimedi'">
+                      <input class="form-control"
+                             type="text"
+                             [formControlName]="campo.nombre"
+                             disabled
+                             (input)="getUnimedins($event.target.value)"                              
+                             autocomplete="off"/>
               
-                  <!-- Campo Unidad -->
-                  <ng-container *ngIf="campo.nombre === 'uniordmedins_fk'">
-                    <input *ngIf="!camposHabilitados[i]"
-                           class="form-control"
-                           [value]="formEditOrdmedins.get('detunimedi')?.value"
-                           disabled />
-                           
-                    <input *ngIf="camposHabilitados[i]"
-                           class="form-control"
-                           [formControlName]="campo.nombre"
-                           (keyup)="onKeyUpBuscar($event.target.value, campo.nombre)"
-                           (focus)="onFocusBuscar(campo.nombre)" />
-                  </ng-container>
-                </div>
+                      <ul *ngIf="unimedins.length > 0" class="list-group position-absolute w-100 zindex-dropdown">
+                        <li *ngFor="let u of unimedins" 
+                        class="list-group"
+                            (click)="seleccionarunidades(u, i)">
+                          {{ u.detunimedi }}
+                        </li>
+                      </ul>
+                    </ng-container>
               
-                <!-- Botón de acción -->
-                <div class="col-auto">
-                  <!-- Botón lápiz -->
-                  <button class="btn btn-sm btn-outline-primary"
-                          type="button"
-                          *ngIf="!camposHabilitados[i]"
-                          (click)="habilitarCampo(i)">
-                    <i class="bi bi-pencil"></i>
-                  </button>
-              
-                  <!-- Botón cancelar -->
-                  <button class="btn btn-sm btn-outline-secondary"
-                          type="button"
-                          *ngIf="camposHabilitados[i]"
-                          (click)="cancelarCampo(i)">
-                    <i class="bi bi-x-lg"></i>
-                  </button>
+                    <!-- Campos normales -->
+                    <ng-container *ngIf="campo.nombre !== 'medins' && campo.nombre !== 'detpmedins' && campo.nombre !== 'detunimedi'">
+                      <input class="form-control"
+                             [type]="campo.type"
+                             [formControlName]="campo.nombre"
+                            disabled/>
+                    </ng-container>
+                  </div>
                 </div>
               </div>
               
+
+              
+
               
                     <div class="card-footer">
                       <button class="btn btn-fill btn-danger" type="submit" (click)="updateordmedins()">Save</button>
