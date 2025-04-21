@@ -37,6 +37,13 @@ public class IOrdenProcedimientoExamenServiceImpl implements IOrdenProcedimiento
 		
 		return ordprocexamdao.save(ordprocesxam);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<OrdenProcedimientoExamen> findByEventpordprocexam_fk(Long idevent) {
+		
+		return (List<OrdenProcedimientoExamen>) ordprocexamdao.findByEventpordprocexam_fk(idevent);
+	}
 	
 
 }

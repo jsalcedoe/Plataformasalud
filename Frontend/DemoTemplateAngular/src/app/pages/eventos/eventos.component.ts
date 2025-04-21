@@ -97,11 +97,16 @@ export class EventosComponent implements OnInit {
       break;
 
       case "12": 
-      this.router.navigateByUrl(`/asignaconsentimientopaciente/${evento.idevent}`)
+      this.router.navigateByUrl(`/ordenprocexam/${evento.idevent}`)
      
       break;
 
       case "13": 
+      this.router.navigateByUrl(`/asignaconsentimientopaciente/${evento.idevent}`)
+     
+      break;
+
+      case "14": 
       this.router.navigateByUrl(`/consentimientospaciente/${evento.idevent}`)
      
       break;

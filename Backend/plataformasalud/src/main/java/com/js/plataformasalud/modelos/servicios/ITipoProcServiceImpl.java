@@ -43,6 +43,12 @@ public class ITipoProcServiceImpl implements ITipoProcService {
 	public void delete(Long idtproc) {
 		tproc.deleteById(idtproc);
 	}
+
+	@Override
+	public List<TipoProcedimiento> findByTipoProcexam(String detproc) {
+		
+		return (List<TipoProcedimiento>)tproc.findByTipoProcexam(detproc);
+	}
 	
 	
 }

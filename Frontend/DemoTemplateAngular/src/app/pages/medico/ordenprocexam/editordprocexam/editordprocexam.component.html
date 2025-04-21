@@ -1,1 +1,114 @@
-<p>editordprocexam works!</p>
+<div class="content"> 
+    <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h1 class="title">Edicion de Ordenes de procedimientos o examenes</h1>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="FormEditOrdProcExam">
+                 
+                <div class="card-header">
+                  <h3 class="title">Datos del paciente</h3>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-3 pr-md-1" *ngFor="let campo of camposPaciente">
+                    <div class="form-group">
+                      <label>{{ campo.label }}</label>
+                      <input class="form-control" 
+                             disabled [formControlName]="campo.nombre" />
+                    </div>
+                  </div>       
+                </div>
+  
+                <div class="row">
+                  <div class="card-header col-md-12">
+                      <h3 class="title">Orden de procedomiento o examen a verificar</h3>
+                    </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-2 pr-md-1" >
+                    <div class="form-group">
+                      <label>Orden Procedimiento</label>
+                      <input class="form-control" 
+                             formControlName="idordprocexam"
+                             disabled="true"
+                             style="margin-right: 8px;"/>
+                    </div>
+                  </div>  
+                </div>
+  
+                <div class="row">
+                  <!-- Iterar campos de orden de medicamentos -->
+                  <div class="col-md-3 pr-md-1" *ngFor="let campo of camposOrdenProcExam; let i = index">
+                    <div class="form-group">                    
+                      <label>{{ campo.label }}</label>
+                      
+                      <!-- Campo con búsqueda dinámica para Medicamento -->
+                      <div class="position-relative">
+                      <ng-container *ngIf="campo.nombre === 'detproc'">
+                        <input class="form-control"
+                               type="text"
+                               [formControlName]="campo.nombre"
+                               disabled
+                               (input)="getTipoProcedimientosExamenes($event.target.value)"                                                          
+                               autocomplete="off"/>
+                
+                        <ul *ngIf="detproc.length > 0" class="list-group position-absolute w-100" style="z-index: 1050;">
+                          <li *ngFor="let tpe of detproc" 
+                              class="list-group"
+                              (click)="selecttipoprocexam(tpe)">
+                            {{ tpe.detproc }}
+                          </li>
+                        </ul>
+                      </ng-container>
+                    </div>
+                      <!-- Campo con búsqueda dinámica para Presentación -->
+                      <ng-container *ngIf="campo.nombre === 'nompxex'">
+                        <input class="form-control"
+                               type="text"
+                               [formControlName]="campo.nombre"
+                               disabled
+                               (input)="getProcedimientosExamenes($event.target.value)"                              
+                               autocomplete="off"/>
+                
+                        <ul *ngIf="nompxex.length > 0" class="list-group position-absolute w-100 zindex-dropdown">
+                          <li *ngFor="let pe of nompxex" 
+                          class="list-group"
+                              (click)="selectprocexam(pe)">
+                            {{ pe.nompxex }}
+                          </li>
+                        </ul>
+                      </ng-container>                      
+                
+                      <!-- Campos normales -->
+                      <ng-container *ngIf="campo.nombre !== 'detproc' && campo.nombre !== 'nompxex'">
+                        <input class="form-control"
+                               [type]="campo.type"
+                               [formControlName]="campo.nombre"
+                              disabled/>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+                
+  
+                
+  
+                
+                      <div class="card-footer">
+                        <button class="btn btn-fill btn-danger" type="submit" (click)="updateordprocexam()">Save</button>
+                        
+                      </div>
+                   
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+                   
+                  
+  

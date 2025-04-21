@@ -196,6 +196,13 @@ export class OperacionService {
   getordprocexamXId(id:any):Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'ordenesprocedimientos/'+id)
   }
+  getordenprocexamXIdEvent(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'ordenesprocedimientos/listar/'+id)
+  }
+
+  editordprocexam(idordprocexam: Number, datosRegistros: any): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}ordenesprocedimientos/${idordprocexam}`, datosRegistros, { headers: this.httpheaders });
+  }
 
   // Servicio para componente de consentimiento de pacientes
 

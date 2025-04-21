@@ -101,10 +101,6 @@ export class ConfigService {
     return this.http.get<any[]>(this.endpoint + 'prestadorservicio')
   }
 
-  getProcedimientoexamenes():Observable<any[]>{
-    return this.http.get<any[]>(this.endpoint + 'procedimientosyexamenes')
-  }
-
   getRepresentanteLegal():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'representantelegal')
   }
@@ -142,9 +138,7 @@ export class ConfigService {
     return this.http.get<any[]>(this.endpoint + 'tipoplantilla')
   }
 
-  getTipopx():Observable<any[]>{
-    return this.http.get<any[]>(this.endpoint + 'tipoprocedimiento')
-  }
+ 
 
   getUbicaciones():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'ubicaciones')
@@ -186,9 +180,7 @@ export class ConfigService {
   addPrestadorServicio(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'prestadorservicio',datosRegistros,{headers:this.httpheaders})
   }
-  addProcedimientoexamenes(datosRegistros:any):Observable<any>{
-    return this.http.post<any>(this.endpoint + 'procedimientosyexamenes',datosRegistros,{headers:this.httpheaders})
-  }
+  
   addRepresentanteLegal(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'representantelegal',datosRegistros,{headers:this.httpheaders})
   }
@@ -216,9 +208,7 @@ export class ConfigService {
   addTipoPlantilla(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'tipoplantilla',datosRegistros,{headers:this.httpheaders})
   }
-  addTipoPx(datosRegistros:any):Observable<any>{
-    return this.http.post<any>(this.endpoint + 'tipoprocedimiento',datosRegistros,{headers:this.httpheaders})
-  }
+  
   addUbicaciones(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'ubicaciones',datosRegistros,{headers:this.httpheaders})
   }
@@ -363,6 +353,42 @@ export class ConfigService {
   getconinfById(idconsinf: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.endpoint}consentimientos/${idconsinf}`);
   }
+
+  // CRUD para procedimientos y examenes
+
+  addProcedimientoexamenes(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'procedimientosyexamenes',datosRegistros,{headers:this.httpheaders})
+  }
+
+  getProcedimientoexamenes():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint + 'procedimientosyexamenes')
+  }
+
+  getProcedimientoexamenesById(idpxex: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}procedimientosyexamenes/${idpxex}`);
+  }
+  getProcedimientoexamenBynompxex(nompxex: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}procedimientosyexamenes/search/${nompxex}`);
+  }
+
+  // CRUD para tipo de procedimientos y examenes
+
+  addTipoPx(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'tipoprocedimiento',datosRegistros,{headers:this.httpheaders})
+  }
+
+  getTipopx():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint + 'tipoprocedimiento')
+  }
+
+  getTipopxById(idtproc: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}tipoprocedimiento/${idtproc}`);
+  }
+
+  getTipopxBydetproc(detproc: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}tipoprocedimiento/search/${detproc}`);
+  }
+
 
 
    

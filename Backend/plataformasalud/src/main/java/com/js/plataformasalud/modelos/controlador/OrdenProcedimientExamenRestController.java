@@ -58,6 +58,27 @@ public class OrdenProcedimientExamenRestController {
 		return new ResponseEntity<OrdenProcedimientoExamen>(ordprocexam, HttpStatus.OK);
 	}
 	
+	@GetMapping("/ordenesprocedimientos/listar/{idevent}")
+	public ResponseEntity<?> ListarOrdenes (@PathVariable Long idevent){
+		List<OrdenProcedimientoExamen> ordprocexam = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			ordprocexam = ordprocexamserv.findByEventpordprocexam_fk(idevent);
+			} catch(DataAccessException e) {
+		response.put("mensaje", "Error al realizar la consulta en la base de datos");
+		response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	if(ordprocexam == null) {
+		response.put("mensaje", "El evento ID: ".concat(idevent.toString().concat(" no tiene ordenes en la base de datos!")));
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+	}
+	
+	return new ResponseEntity<>(ordprocexam, HttpStatus.OK);
+	
+}
+	
 	@PostMapping("/ordenesprocedimientos")
 	public ResponseEntity<?> save (@Valid @RequestBody OrdenProcedimientoExamen ordprocexam, BindingResult result) {
 		OrdenProcedimientoExamen Newordprocexam = null;

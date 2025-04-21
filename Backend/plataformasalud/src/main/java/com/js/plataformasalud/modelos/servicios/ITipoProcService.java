@@ -13,5 +13,7 @@ public interface ITipoProcService {
 	public TipoProcedimiento save (TipoProcedimiento tproc);
 	
 	public void delete (Long idtproc);
+	
+	public List<TipoProcedimiento> findByTipoProcexam(String detproc);
 
 }

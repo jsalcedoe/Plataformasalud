@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.js.plataformasalud.modelos.entidades.ProcedimientosExamenes;
 import com.js.plataformasalud.modelos.servicios.IProcedimientoExamenesImpl;
 
@@ -57,6 +56,26 @@ public class ProcedimientoExamenesRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<ProcedimientosExamenes>(pxex, HttpStatus.OK);
+	}
+	@GetMapping("/procedimientosyexamenes/search/{nompxex}")
+	public ResponseEntity<?> buscarPornompxex(@PathVariable String nompxex) {
+	    List<ProcedimientosExamenes> buscanompxex = null;
+	    Map<String, Object> response = new HashMap<>();
+
+	    try {
+	    	buscanompxex = pxexserv.findBynompxex(nompxex);
+	    } catch (DataAccessException e) {
+	        response.put("mensaje", "Error al realizar la consulta en la base de datos");
+	        response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+
+	    if (buscanompxex.isEmpty()) {
+	        response.put("mensaje", "No se encontraron procedimientos ni examenes que coincidan con: ".concat(nompxex));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+	    }
+
+	    return new ResponseEntity<List<ProcedimientosExamenes>>(buscanompxex, HttpStatus.OK);
 	}
 	
 	@PostMapping("/procedimientosyexamenes")

@@ -59,6 +59,27 @@ public class TipoProcedimientoRestController {
 		return new ResponseEntity<TipoProcedimiento>(tpx, HttpStatus.OK);
 	}
 	
+	@GetMapping("/tipoprocedimiento/search/{detproc}")
+	public ResponseEntity<?> buscarPorprocexam(@PathVariable String detproc) {
+	    List<TipoProcedimiento> detprocexam = null;
+	    Map<String, Object> response = new HashMap<>();
+
+	    try {
+	    	detprocexam = typxserv.findByTipoProcexam(detproc);
+	    } catch (DataAccessException e) {
+	        response.put("mensaje", "Error al realizar la consulta en la base de datos");
+	        response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+
+	    if (detprocexam.isEmpty()) {
+	        response.put("mensaje", "No se encontraron tipos de procedimientos o examenes que coincidan con: ".concat(detproc));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+	    }
+
+	    return new ResponseEntity<List<TipoProcedimiento>>(detprocexam, HttpStatus.OK);
+	}
+	
 	@PostMapping("/tipoprocedimiento")
 	public ResponseEntity<?> save (@Valid @RequestBody TipoProcedimiento tpx, BindingResult result) {
 		TipoProcedimiento Newtpx = null;

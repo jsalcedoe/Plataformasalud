@@ -107,6 +107,8 @@ import { ConsentimientosComponent } from "src/app/pages/config/consentimientos/c
 import { ConsentimientospacienteComponent } from "src/app/pages/medico/consentimientospaciente/consentimientospaciente.component";
 import { AsignaconsentimientopacienteComponent } from "src/app/pages/medico/consentimientospaciente/asignaconsentimientopaciente/asignaconsentimientopaciente.component";
 import { GenerapdfconsentimientoComponent } from "src/app/pages/medico/consentimientospaciente/generapdfconsentimiento/generapdfconsentimiento.component";
+import { OrdenprocexamComponent } from "src/app/pages/medico/ordenprocexam/ordenprocexam.component";
+import { EditordprocexamComponent } from "src/app/pages/medico/ordenprocexam/editordprocexam/editordprocexam.component";
 
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
@@ -229,6 +231,9 @@ export const AdminLayoutRoutes: Routes = [
   { path:'editordenesmedins/:idordmedins',component:EditordmedinsComponent},
   { path:'creaordenprocexam',component:CreaordenprocexamComponent},
   { path:'creaordenprocexam/:idevent',component:CreaordenprocexamComponent},
+  { path:'editordprocexam/:idordprocexam',component:EditordprocexamComponent}, 
+  { path:'ordenprocexam',component:OrdenprocexamComponent},
+  { path:'ordenprocexam/:idevent',component:OrdenprocexamComponent},
   { path:'ordenesmedins',component:OrdenesmedinsComponent},
   { path:'ordenesmedins/:idevent',component:OrdenesmedinsComponent},
   { path:'creaconsentimientos',component:CreaconsentimientosComponent},

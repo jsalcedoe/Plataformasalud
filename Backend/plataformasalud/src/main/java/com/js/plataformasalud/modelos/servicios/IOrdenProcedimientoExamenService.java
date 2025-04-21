@@ -11,5 +11,7 @@ public interface IOrdenProcedimientoExamenService {
 	public OrdenProcedimientoExamen findById(Long idordprocexam);
 	
 	public OrdenProcedimientoExamen save (OrdenProcedimientoExamen ordprocesxam);
+	
+	public List<OrdenProcedimientoExamen> findByEventpordprocexam_fk(Long idevent);
 
 }

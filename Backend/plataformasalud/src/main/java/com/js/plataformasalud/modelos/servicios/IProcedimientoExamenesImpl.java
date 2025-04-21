@@ -39,6 +39,13 @@ public class IProcedimientoExamenesImpl implements IProcedimientoExamenesService
 		return pxexdao.save(procexam);
 	}
 
+	@Override
+	public List<ProcedimientosExamenes> findBynompxex(String nompxex) {
+		
+		return (List<ProcedimientosExamenes>)pxexdao.findBynompxex(nompxex);
+	}
+	
+
 	
 
 }
