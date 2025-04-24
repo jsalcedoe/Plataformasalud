@@ -122,7 +122,7 @@ export class EditordprocexamComponent implements OnInit {
       segundoapepac: this.ordprocexam.eventordprocexam_fk.pacevent_fk.segundoapepac,
       canordprocexam: this.ordprocexam.canordprocexam,
       obsordprocexam: this.ordprocexam.obsordprocexam,
-      pordprocexam_fk: this.ordprocexam.pordprocexam_fk.idpmedins,
+      pordprocexam_fk: this.ordprocexam.pordprocexam_fk.idpxex,
       nompxex: this.ordprocexam.pordprocexam_fk.nompxex,
       tordprocexam_fk: this.ordprocexam.tordprocexam_fk.idtproc,
       detproc: this.ordprocexam.tordprocexam_fk.detproc,

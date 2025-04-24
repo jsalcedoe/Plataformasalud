@@ -24,7 +24,8 @@ export class HistoriaclinicaComponent implements OnInit {
   }
 
   irCreaHC(){
-    this.service.getHc().pipe(
+    this.service.getHc()
+    .pipe(
       tap((res) => {
         // Maneja la respuesta exitosa aquí
         console.log('HC', res);
@@ -38,6 +39,11 @@ export class HistoriaclinicaComponent implements OnInit {
         throw err; // Re-throw para que el error se propague al suscriptor
       })
     ).subscribe();
+  }
+  redirigir(destino:string, hc:any){
+    const idevent = hc.eventpac_fk.idevent;
+    console.log('valor que pasa desde el componente eventos',idevent)
+    this.router.navigateByUrl(`/verifhc/${idevent}`)
   }
 
 

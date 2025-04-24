@@ -109,6 +109,8 @@ import { AsignaconsentimientopacienteComponent } from "src/app/pages/medico/cons
 import { GenerapdfconsentimientoComponent } from "src/app/pages/medico/consentimientospaciente/generapdfconsentimiento/generapdfconsentimiento.component";
 import { OrdenprocexamComponent } from "src/app/pages/medico/ordenprocexam/ordenprocexam.component";
 import { EditordprocexamComponent } from "src/app/pages/medico/ordenprocexam/editordprocexam/editordprocexam.component";
+import { VerifhcComponent } from "src/app/pages/medico/historiaclinica/verifhc/verifhc.component";
+import { VerifevomedComponent } from "src/app/pages/medico/evolucionmedica/verifevomed/verifevomed.component";
 
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
@@ -243,7 +245,9 @@ export const AdminLayoutRoutes: Routes = [
   { path:'asignaconsentimientopaciente',component:AsignaconsentimientopacienteComponent},
   { path:'asignaconsentimientopaciente/:idevent',component:AsignaconsentimientopacienteComponent},
   { path:'generapdfconsentimiento/:idconsinfpac',component:GenerapdfconsentimientoComponent},
-  { path:'generapdfconsentimiento',component:GenerapdfconsentimientoComponent}
+  { path:'generapdfconsentimiento',component:GenerapdfconsentimientoComponent},
+  { path:'verifhc/:idevent',component:VerifhcComponent},
+  { path:'verifevomed/:idevent',component:VerifevomedComponent},
   
 
 

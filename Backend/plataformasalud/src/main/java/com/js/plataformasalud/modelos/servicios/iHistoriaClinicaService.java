@@ -12,6 +12,8 @@ public interface IHistoriaClinicaService {
 	
 	public HistoriaClinica save (HistoriaClinica hcpac);
 	
+	public HistoriaClinica findByEventpac_Fk (Long idevent);
+	
 	
 
 }

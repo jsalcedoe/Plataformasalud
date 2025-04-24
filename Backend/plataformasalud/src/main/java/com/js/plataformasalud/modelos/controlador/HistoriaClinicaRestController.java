@@ -58,6 +58,25 @@ public class HistoriaClinicaRestController {
 		return new ResponseEntity<HistoriaClinica>(hcpac, HttpStatus.OK);
 	}
 	
+	@GetMapping("/historiaclinica/search/{idevent}")
+	public ResponseEntity<?> mostrarXidevent(@PathVariable Long idevent) {
+		HistoriaClinica hcpac = null;
+		Map<String, Object> response = new HashMap<>();
+	
+		try {
+			hcpac = hcpacserv.findByEventpac_Fk(idevent);
+		}catch(DataAccessException e) {
+			response.put("mensaje", "Error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if (hcpac == null) {
+			response.put("mensaje", "La historia clínica ID: ".concat(idevent.toString().concat(" no existe en la base de datos!")));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<HistoriaClinica>(hcpac, HttpStatus.OK);
+	}
+	
 	@PostMapping("/historiaclinica")
 	public ResponseEntity<?> save (@Valid @RequestBody HistoriaClinica hcpac, BindingResult result) {
 		HistoriaClinica Newhcpac = null;

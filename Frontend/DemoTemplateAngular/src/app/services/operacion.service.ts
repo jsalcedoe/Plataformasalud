@@ -54,6 +54,14 @@ export class OperacionService {
     return this.http.get<any[]>(this.endpoint+'historiaclinica/'+id)
   }
 
+  getHCXIdEvent(idevent:any):Observable<any[]>{
+    return this.http.get<any[]>(`${this.endpoint}historiaclinica/search/${idevent}`)
+  }
+
+  editHC(idhcpac: Number, datosRegistros: any): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}historiaclinica/${idhcpac}`, datosRegistros, { headers: this.httpheaders });
+  }
+
   // Servicios para componente DiagnosticosAtencion
 
   addDxAtencion(datosRegistros:any):Observable<any>{

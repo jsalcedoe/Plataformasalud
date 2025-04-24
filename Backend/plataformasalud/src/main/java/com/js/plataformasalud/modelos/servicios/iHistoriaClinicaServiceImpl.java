@@ -39,5 +39,12 @@ public class IHistoriaClinicaServiceImpl implements IHistoriaClinicaService {
 		return hcpacdao.save(hcpac);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public HistoriaClinica findByEventpac_Fk(Long idevent) {
+		
+		return hcpacdao.findByEventpac_Fk(idevent);
+	}
+
 
 }

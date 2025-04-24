@@ -1,0 +1,65 @@
+<div class="content"> 
+    <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h1 class="title">Verificación de Historia Clinica</h1>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="FormVerifHC">
+                 
+                <div class="card-header">
+                  <h3 class="title">Datos del paciente</h3>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-3 pr-md-1" *ngFor="let campo of camposPaciente">
+                    <div class="form-group">
+                      <label>{{ campo.label }}</label>
+                      <input class="form-control" 
+                             disabled [formControlName]="campo.nombre" />
+                    </div>
+                  </div>       
+                </div>
+  
+                <div class="row">
+                  <div class="card-header col-md-12">
+                      <h3 class="title">Historia Clinica</h3>
+                    </div>
+                </div>
+                <div class="row">
+                  <!-- Iterar campos de la historia clinica -->
+                  <div class="col-md-4 pr-md-1" *ngFor="let campo of camposHistoriaClinica; let i = index">
+                    <div class="form-group">
+                      <label>{{ campo.label }}</label>
+                
+                      <!-- Verificar el tipo de campo -->
+                      <ng-container *ngIf="campo.type === 'textarea'; else inputField">
+                        <textarea class="form-control"
+                                  [formControlName]="campo.nombre"
+                                  disabled></textarea>
+                      </ng-container>
+                      <ng-template #inputField>
+                        <input class="form-control"
+                               [type]="campo.type"
+                               [formControlName]="campo.nombre"
+                               disabled />
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+                 <div class="card-footer">
+                        <button class="btn btn-fill btn-danger" type="submit" (click)="updatehcpac()">Confirmar</button>
+                        
+                      </div>
+                   
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+                   
+                  
+  
+

@@ -116,6 +116,9 @@ import { ConsentimientospacienteComponent } from './pages/medico/consentimientos
 import { AsignaconsentimientopacienteComponent } from './pages/medico/consentimientospaciente/asignaconsentimientopaciente/asignaconsentimientopaciente.component';
 import { GenerapdfconsentimientoComponent } from './pages/medico/consentimientospaciente/generapdfconsentimiento/generapdfconsentimiento.component';
 import { EditordprocexamComponent } from './pages/medico/ordenprocexam/editordprocexam/editordprocexam.component';
+import { GenerahcComponent } from './pages/medico/historiaclinica/generahc/generahc.component';
+import { VerifhcComponent } from './pages/medico/historiaclinica/verifhc/verifhc.component';
+import { VerifevomedComponent } from './pages/medico/evolucionmedica/verifevomed/verifevomed.component';
 
 //import { from } from "rxjs";
 
@@ -239,7 +242,10 @@ import { EditordprocexamComponent } from './pages/medico/ordenprocexam/editordpr
     ConsentimientospacienteComponent,
     AsignaconsentimientopacienteComponent,
     GenerapdfconsentimientoComponent,
-    EditordprocexamComponent
+    EditordprocexamComponent,
+    GenerahcComponent,
+    VerifhcComponent,
+    VerifevomedComponent
     ],
   providers: [],
   bootstrap: [AppComponent]

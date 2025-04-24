@@ -1,1 +1,49 @@
-<p>componente evoluciones medicas</p>
+<div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class=" card-header">
+            <h1 class=" title">Listado de evoluciones medicas</h1>
+          </div>
+          <div class="card-body">
+            <form class="d-flex" style="width: 60%;">
+              <input class="form-control me-2" type="text" placeholder="Digita el paciente a consultar">
+              <button class="btn btn-primary" type="button">Search</button>
+            </form>
+  
+            <div class="container col-md-12 mt-3">
+              <h2>Listado de historias por eventos</h2>
+              <h1 *ngIf="!ready">Cargando...</h1> 
+              <table class="table table-dark table-hover" >
+                <!--<table class="table-success">-->
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Evento</th>
+                    <th>Documento</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Entidad</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let c of evomed, let i =index">
+                    <td>{{i+1}}</td> 
+                    <td>{{c.eventevo_fk.idevent}}</td>
+                    <td>{{c.eventevo_fk.pacevent_fk.numdocpac}}</td>
+                    <td>{{c.eventevo_fk.pacevent_fk.primernompac}} {{c.eventevo_fk.pacevent_fk.segundonompac}}</td>
+                    <td>{{c.eventevo_fk.pacevent_fk.primerapepac}} {{c.eventevo_fk.pacevent_fk.segundoapepac}}</td>
+                    <td>{{c.eventevo_fk.pacevent_fk.entidad.nomeapb}} </td>
+                    <td><button class="btn-primary btn-dark" (click)="redirigir('verifevomed', c)">Verificar</button></td>
+                    
+                   </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
