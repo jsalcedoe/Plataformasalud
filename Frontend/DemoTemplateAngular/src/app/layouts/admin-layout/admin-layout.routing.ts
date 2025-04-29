@@ -247,7 +247,7 @@ export const AdminLayoutRoutes: Routes = [
   { path:'generapdfconsentimiento/:idconsinfpac',component:GenerapdfconsentimientoComponent},
   { path:'generapdfconsentimiento',component:GenerapdfconsentimientoComponent},
   { path:'verifhc/:idevent',component:VerifhcComponent},
-  { path:'verifevomed/:idevent',component:VerifevomedComponent},
+  { path:'verifevomed/:idevol',component:VerifevomedComponent},
   
 
 

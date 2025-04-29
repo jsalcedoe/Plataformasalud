@@ -11,5 +11,7 @@ public interface ITipoNotaService {
 	public TipoNota findById(Long idtypnot);
 	
 	public TipoNota save (TipoNota typnot);
+	
+	public List<TipoNota> findByTipoNota(String dettypnot);
 
 }

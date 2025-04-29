@@ -125,11 +125,7 @@ export class ConfigService {
   getTipoeapb():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'tipoentidades')
   }
-
-  getTiponota():Observable<any[]>{
-    return this.http.get<any[]>(this.endpoint + 'tiponotas')
-  }
-
+  
   getTipopaciente():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'tipopaciente')
   }
@@ -199,9 +195,7 @@ export class ConfigService {
   addTipoEAPB(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'tipoentidades',datosRegistros,{headers:this.httpheaders})
   }
-  addTipoNota(datosRegistros:any):Observable<any>{
-    return this.http.post<any>(this.endpoint + 'tiponotas',datosRegistros,{headers:this.httpheaders})
-  }
+  
   addTipoPaciente(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'tipopaciente',datosRegistros,{headers:this.httpheaders})
   }
@@ -387,6 +381,18 @@ export class ConfigService {
 
   getTipopxBydetproc(detproc: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.endpoint}tipoprocedimiento/search/${detproc}`);
+  }
+
+  // CRUD para tipo de notas
+
+  addTipoNota(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'tiponotas',datosRegistros,{headers:this.httpheaders})
+  }
+  getByXTipoNota(tipnot: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}tiponotas/search/${tipnot}`);
+  }
+  getTiponota():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint + 'tiponotas')
   }
 
 

@@ -44,9 +44,9 @@ export class EvolucionmedicaComponent implements OnInit {
   }
 
   redirigir(destino:string, evomed:any){
-    const idevomed = evomed.idevomed;
-    console.log('valor que pasa evoluciones',idevomed)
-    this.router.navigateByUrl(`/verifevomed/${idevomed}`)
+    //const idevomed = evomed.idevol;
+    console.log('valor que pasa evoluciones', evomed.idevol)
+    this.router.navigateByUrl(`/verifevomed/${evomed.idevol}`);
   }
 
   

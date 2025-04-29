@@ -85,6 +85,9 @@ export class OperacionService {
   getEvoMedId(id:any):Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'evoluciones/'+id)
   }
+  editevomed(idevol: Number, datosRegistros: any): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}evoluciones/${idevol}`, datosRegistros, { headers: this.httpheaders });
+  }
 
   // servicios para componente creadesqx
 

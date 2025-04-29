@@ -38,4 +38,10 @@ public class ITipoNotaServiceImpl implements ITipoNotaService {
 		return typnotdao.save(typnot);
 	}
 
+	@Override
+	public List<TipoNota> findByTipoNota(String dettypnot) {
+		
+		return (List<TipoNota>) typnotdao.findByTipoNota(dettypnot);
+	}
+
 }

@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+
 import com.js.plataformasalud.modelos.entidades.TipoNota;
 import com.js.plataformasalud.modelos.servicios.ITipoNotaServiceImpl;
 
@@ -56,6 +58,27 @@ public class TipoNotaRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<TipoNota>(tipnot, HttpStatus.OK);
+	}
+	
+	@GetMapping("/tiponotas/search/{dettypnot}")
+	public ResponseEntity<?> buscarPorTipoNota(@PathVariable String dettypnot) {
+	    List<TipoNota> buscadettypnot = null;
+	    Map<String, Object> response = new HashMap<>();
+
+	    try {
+	    	buscadettypnot = typnotserv.findByTipoNota(dettypnot);
+	    } catch (DataAccessException e) {
+	        response.put("mensaje", "Error al realizar la consulta en la base de datos");
+	        response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+
+	    if (buscadettypnot.isEmpty()) {
+	        response.put("mensaje", "No se encontraron tipos de notas que  coincidan con: ".concat(dettypnot));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+	    }
+
+	    return new ResponseEntity<List<TipoNota>>(buscadettypnot, HttpStatus.OK);
 	}
 	
 	@PostMapping("/tiponotas")
