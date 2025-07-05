@@ -13,7 +13,7 @@ public class EpicrisisDTO {
 	private Evento evento;
     private HistoriaClinica hcpacepi;
     private List<EvolucionEvento> evoeventepi;
-    private List<DiagnosticoAtencion> dxateepi;
+    private List<DiagnosticoDescripcionQx> dxateepi;
     private List<DescripcionQuirurgica> desqxepi;
     private List<RegistroMedicamento> regmedinsepi;
     private List<SignosVitales> sigvitepi;

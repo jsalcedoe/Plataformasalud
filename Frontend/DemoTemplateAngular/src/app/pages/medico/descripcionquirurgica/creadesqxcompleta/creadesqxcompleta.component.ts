@@ -204,6 +204,8 @@ consultapxexam() {
       );
       console.log('Resultados filtrados:', this.filteredProcedimientos[index]); // Verifica los resultados filtrados
     }
+    
+    //Seleccionar procedimiento
 
     selectProcedimiento(item: any, index: number) {
 

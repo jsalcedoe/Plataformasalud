@@ -2,24 +2,22 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class=" card-header">
-          <h1 class=" title">Listado de eventos por paciente activos</h1>
+        <div class="card-header">
+          <h1 class="title">Listado de eventos por paciente activos</h1>
         </div>
         <div class="card-body">
           <form class="d-flex" style="width: 60%;">
             <input class="form-control me-2" type="text" placeholder="Digita el paciente a consultar">
-            <button class="btn btn-primary" type="button">Search</button>
+            <button class="btn btn-primary" type="button">Buscar</button>
           </form>
 
           <div class="container col-md-12 mt-3">
             <h2>Listado de eventos asignados</h2>
-            <h1 *ngIf="!ready">Cargando...</h1> 
-            <form class="d-flex">
-              <button class="btn btn-primary" type="button" (click)="irCreaEvento()">Asigna Eventos</button>    
-            </form> 
+            <h1 *ngIf="!ready">Cargando...</h1>
 
-            <table class="table table-dark table-hover" >
-              <!--<table class="table-success">-->
+            <button class="btn btn-primary mb-3" (click)="irCreaEvento()">Asignar Eventos</button>
+
+            <table class="table table-dark table-hover">
               <thead>
                 <tr>
                   <th>Evento</th>
@@ -33,40 +31,30 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let c of event, let i =index">
-                  <td>{{c.idevent}}</td> 
+                <tr *ngFor="let c of event; let i = index">
+                  <td>{{c.idevent}}</td>
                   <td>{{c.conseventpac}}</td>
                   <td>{{c.pacevent_fk.numdocpac}}</td>
                   <td>{{c.pacevent_fk.primernompac}} {{c.pacevent_fk.segundonompac}}</td>
                   <td>{{c.pacevent_fk.primerapepac}} {{c.pacevent_fk.segundoapepac}}</td>
-                  <td>{{c.pacevent_fk.entidad.nomeapb}} </td>
-                  <td>{{c.estevent_fk.detstatus}} </td>
-                  <td><select class="form-select" style="width: auto;" (change)="redirigir($event.target.value, c)">
-                    <option value="" disabled selected>Seleccione el destino</option>
-                    <hr><hr>
-                    <option value = "1"  >IR CITAS</option>
-                    <option value = "2" >HISTORIA CLINICA</option>
-                    <option value = "3" >EVOLUCION MEDICA</option>
-                    <option value = "4" >DESCRIPCION QUIRURGICA</option>
-                    <option value = "5" >EVOLUCION DE ENFERMERIA</option>
-                    <option value = "6" >REGISTRO DE SIGNOS VITALES</option>
-                    <option value = "7" >REGISTRO DE MEDICAMENTOS O INSUMOS</option>
-                    <option value = "8" >GENERA EPICRISIS</option>
-                    <option value = "9" >ORDEN MEDICAMENTO O INSUMOS</option> 
-                    <option value = "10">ORDEN PROCEDIMIENTOS Y EXAMENES</option>
-                    <option value = "11">LISTAR ORDENES MEDINS</option> 
-                    <option value = "12">LISTAR ORDENES PROCEXAM</option> 
-                    <option value = "13">ASIGNAR CONSENTIMIENTOS A PACIENTES</option>
-                    <option value = "14">CONSENTIMIENTOS PACIENTES</option>
-                    
-                </select></td>
+                  <td>{{c.pacevent_fk.entidad.nomeapb}}</td>
+                  <td>{{c.estevent_fk.detstatus}}</td>
+                  <td>
+                    <select class="form-select" (change)="redirigir($event.target.value, c)">
+                      <option value="" disabled selected>Seleccione el destino</option>
+                      <option *ngFor="let key of objectKeys(rutasDestino)" [value]="key">
+                        {{ rutasDestino[key] | titlecase }}
+                      </option>
+                    </select>
+                  </td>
                   
-                 </tr>
+                  
+                  
+                </tr>
               </tbody>
             </table>
           </div>
         </div>
-        
       </div>
     </div>
   </div>

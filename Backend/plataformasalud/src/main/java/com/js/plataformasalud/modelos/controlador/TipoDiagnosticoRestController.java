@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.js.plataformasalud.modelos.entidades.TipoDiagnostico;
 import com.js.plataformasalud.modelos.servicios.ITipoDiagnosticoServiceImpl;
 
@@ -57,6 +56,26 @@ public class TipoDiagnosticoRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<TipoDiagnostico>(typdx, HttpStatus.OK);
+	}
+	@GetMapping("tipodx/searchxtipo/{term}")
+	public ResponseEntity<?> buscarPorTerm(@PathVariable String term) {
+	    List<TipoDiagnostico> tydx = null;
+	    Map<String, Object> response = new HashMap<>();
+
+	    try {
+	        tydx = typdxserv.findByDetypdx(term);
+	    } catch (DataAccessException e) {
+	        response.put("mensaje", "Error al realizar la consulta en la base de datos");
+	        response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+
+	    if (tydx.isEmpty()) {
+	        response.put("mensaje", "No se encontraron tipos de diagnosticos que coincidan con: ".concat(term));
+	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+	    }
+
+	    return new ResponseEntity<List<TipoDiagnostico>>(tydx, HttpStatus.OK);
 	}
 	
 	@PostMapping("/tipodx")

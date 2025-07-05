@@ -14,6 +14,8 @@ public interface IHistoriaClinicaService {
 	
 	public HistoriaClinica findByEventpac_Fk (Long idevent);
 	
+	public boolean existsById(Long idhcpac);
+	
 	
 
 }

@@ -74,6 +74,42 @@ export class OperacionService {
     return this.http.get<any[]>(this.endpoint+'diagnosticosatencion/'+id)
   }
 
+  //Servicio para componente de DiagnosticoDescripcionQx
+
+  addDxDescQx(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'diagnosticodescqx',datosRegistros,{headers:this.httpheaders})
+  }
+  getDxDescQx():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'diagnosticodescqx')
+  }
+  getDxDescQxXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'diagnosticodescqx/'+id)
+  }
+
+  //Servicio para componente de DiagnosticoEvolucion
+
+  addDxEvoMed(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'diagnosticoevolucion',datosRegistros,{headers:this.httpheaders})
+  }
+  getDxEvoMed():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'diagnosticoevolucion')
+  }
+  getDxEvoMedXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'diagnosticoevolucion/'+id)
+  }
+
+  // Servicio para componente de DiagnosticoHistoriaClinica
+
+  addDxHcPac(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'diagnosticohcpac',datosRegistros,{headers:this.httpheaders})
+  }
+  getDxHcPac():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'diagnosticohcpac')
+  }
+  getDxHcPacXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'diagnosticohcpac/'+id)
+  }
+
   // servicios para componente Evoluciones Medicas
 
   addEvoMed(datosRegistros:any):Observable<any>{
@@ -89,14 +125,14 @@ export class OperacionService {
     return this.http.put<any>(`${this.endpoint}evoluciones/${idevol}`, datosRegistros, { headers: this.httpheaders });
   }
 
-  // servicios para componente creadesqx
+  // servicios para componente creadesqx 
 
   adddesqx(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'procedimientosqx',datosRegistros,{headers:this.httpheaders})
   }
 
   adddesqxcompleta(datosRegistros:any):Observable<any>{
-    return this.http.post<any>(this.endpoint + 'descripcionesquirurgicas',datosRegistros,{headers:this.httpheaders})
+    return this.http.post<any>(this.endpoint + 'descripcionquirurgica',datosRegistros,{headers:this.httpheaders})
   }
 
   getdesqx():Observable<any[]>{
@@ -229,7 +265,19 @@ export class OperacionService {
   getconsinfpacXIdEvent(id:any):Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'consentimientopaciente/listar/'+id)
   }
+
+  // Servicio para componente de historia clinica completa
   
+   addhcpac(datosRegistros:any): Observable<any> {
+   return this.http.post<any>(this.endpoint + 'historiaclinicacompleta',datosRegistros,{headers:this.httpheaders})
+    
+  }
+   gethcpacXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'historiaclinicacompleta/'+id)
+  }
+   edithcpac(id: Number, datosRegistros: any): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}historiaclinicacompleta/${id}`, datosRegistros, { headers: this.httpheaders });
+  }
 
 
   

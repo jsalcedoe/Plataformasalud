@@ -4,10 +4,8 @@ import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,13 +22,10 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-
-
 @Getter
 @Setter
 @Entity
 @Table(name = "desqx")
-
 public class DescripcionQuirurgica implements Serializable {
 	
 	@Id
@@ -50,24 +45,13 @@ public class DescripcionQuirurgica implements Serializable {
 	@NotNull(message = "El campo hora final no puede ser vacio")
 	private LocalTime horafinprocqx;
 	
-	//private Long timeqx;
-	
 	@Column(nullable = false, length = 2000)
 	@NotEmpty(message = "El campo descripcion no puede ser vacio")
 	private String descqx;
-		
-	/*@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private TipoHerida typhxqx_fk;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private TipoProcedimiento typxqx_fk;*/
 	
 	private String matprot; // describe si se coloco material o protesis y si se coloca lo describe
 	
-	private String muespato; 
-	// Descripcion de las muestras anatopatologicas si es el caso incluye el tipo la cantidad la localizacion el aspecto
+	private String muespato; // Descripcion de las muestras anatopatologicas si es el caso incluye el tipo la cantidad la localizacion el aspecto
 	
 	private String complicqx; // Describe el tipo de complicacion detalladamente
 	
@@ -75,8 +59,7 @@ public class DescripcionQuirurgica implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private Conducta conducqx_fk;
-	//la conducta puede ser, hospitalizar, observacion, o salida
+	private Conducta conducqx_fk;//la conducta puede ser, hospitalizar, observacion, o salida
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
@@ -97,6 +80,10 @@ public class DescripcionQuirurgica implements Serializable {
     @OneToMany(mappedBy = "desqx_fk", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<EquipoQx> equipoQx;
+    
+    @OneToMany(mappedBy = "desqx_fk", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<DiagnosticoDescripcionQx> dxdesqx;
 	
 	private static final long serialVersionUID = 1L;
 	

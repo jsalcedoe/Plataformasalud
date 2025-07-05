@@ -12,6 +12,7 @@ import com.js.plataformasalud.modelos.entidades.ProcedimientoDescripcionQX;
 public interface IProcedimientoDescripcionQXDao extends JpaRepository<ProcedimientoDescripcionQX, Long>{
 	@Query("select p from ProcedimientoDescripcionQX p where p.descqx_fk = :desqx")
 	List<ProcedimientoDescripcionQX> findByDescqx_Fk(@Param("desqx")DescripcionQuirurgica descqx_fk);
+	
 
 
 }

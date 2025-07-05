@@ -111,6 +111,7 @@ import { OrdenprocexamComponent } from "src/app/pages/medico/ordenprocexam/orden
 import { EditordprocexamComponent } from "src/app/pages/medico/ordenprocexam/editordprocexam/editordprocexam.component";
 import { VerifhcComponent } from "src/app/pages/medico/historiaclinica/verifhc/verifhc.component";
 import { VerifevomedComponent } from "src/app/pages/medico/evolucionmedica/verifevomed/verifevomed.component";
+import { DiagnosticohcpacComponent } from "src/app/pages/medico/diagnosticosatencion/diagnosticohcpac/diagnosticohcpac.component";
 
 
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
@@ -200,6 +201,8 @@ export const AdminLayoutRoutes: Routes = [
   { path:'creaeventos',component:CreaeventosComponent},
   { path:'creadiagnosticosatencion',component:CreadiagnosticosatencionComponent},
   { path:'creadiagnosticosatencion/:idevent',component:CreadiagnosticosatencionComponent},
+  { path:'diagnosticohcpac',component:DiagnosticohcpacComponent},
+  { path:'diagnosticohcpac/:idhcpac',component:DiagnosticohcpacComponent},
   { path:'creaevomed',component:CreaevomedComponent},
   { path:'creaevomed/:idevent',component:CreaevomedComponent},
   { path:'creadesqx',component:CreadesqxComponent},
@@ -246,7 +249,7 @@ export const AdminLayoutRoutes: Routes = [
   { path:'asignaconsentimientopaciente/:idevent',component:AsignaconsentimientopacienteComponent},
   { path:'generapdfconsentimiento/:idconsinfpac',component:GenerapdfconsentimientoComponent},
   { path:'generapdfconsentimiento',component:GenerapdfconsentimientoComponent},
-  { path:'verifhc/:idevent',component:VerifhcComponent},
+  { path:'verifhc/:id',component:VerifhcComponent},
   { path:'verifevomed/:idevol',component:VerifevomedComponent},
   
 

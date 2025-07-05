@@ -1,0 +1,56 @@
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">        
+        <div class="card-body">
+          <form [formGroup]="formDxHcpac">
+           
+            <div class="row">
+              <div class="card-header col-md-12">
+                <h3 class="title">Adicionar Registros de Diagnósticos</h3>
+              </div>
+              <div class="col-md-12">
+              <div formArrayName="diagnosticos">
+                <div *ngFor="let diagnostico of diagnosticosArray.controls; let i = index" [formGroupName]="i" class="row align-items-center">
+                  <div class="col-md-3 pr-md-1">
+                    <div class="form-group">
+                      <label>Tipo de Diagnóstico</label>
+                      <select class="form-select" formControlName="typdxhcpac_fk">
+                        <option value="" disabled selected>Tipo de diagnóstico</option>
+                        <option *ngFor="let tdx of tipdx" [value]="tdx.idtypdx">{{ tdx.detypdx }}</option>
+                      </select>
+                    </div>
+                  </div>                  
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label>Diagnóstico</label>
+                      <input class="form-control me-2" type="text" placeholder="Consulta diagnóstico" formControlName="nomdx" (input)="filtrarDiagnosticos($event.target.value, i)" />
+                      <div *ngIf="diagnosticosFiltrados[i]?.length > 0">
+                        <ul class="list-group">
+                          <li class="list-group" *ngFor="let diagnostico of diagnosticosFiltrados[i]" (click)="seleccionarDiagnostico(diagnostico, i)">
+                            {{ diagnostico.nomdx }}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 pr-md-1">
+                    <button class="btn btn-danger" type="button" (click)="removeDiagnostico(i)">Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <div class="col-md-12">
+                <button class="btn btn-primary" type="button" (click)="addDiagnostico()">Agregar Diagnóstico</button>
+              </div>
+            </div>
+            <div class="card-footer">
+             
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

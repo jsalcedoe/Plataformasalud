@@ -20,10 +20,10 @@ export class HistoriaclinicaComponent implements OnInit {
               private datoscompartidos: ComparteinfService
   ) {}
   ngOnInit(): void {
-    this.irCreaHC()
+    this.GetHC()
   }
 
-  irCreaHC(){
+  GetHC(){
     this.service.getHc()
     .pipe(
       tap((res) => {
@@ -41,9 +41,9 @@ export class HistoriaclinicaComponent implements OnInit {
     ).subscribe();
   }
   redirigir(destino:string, hc:any){
-    const idevent = hc.eventpac_fk.idevent;
-    console.log('valor que pasa desde el componente eventos',idevent)
-    this.router.navigateByUrl(`/verifhc/${idevent}`)
+    const id = hc.idhcpac;
+    console.log('valor que pasa desde el componente eventos',id)
+    this.router.navigateByUrl(`/verifhc/${id}`)
   }
 
 

@@ -31,14 +31,17 @@ export class ConfigService {
 
 //----------------------------------------------------------------------------------
  
+  // crud para cargos
 
   getCargos():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'cargos')
   }
-
+  //crud para ciudades
   getCity():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'ciudades')
   }
+
+  // crud para departamentos
 
   getDepart():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'departamentos')
@@ -59,11 +62,13 @@ export class ConfigService {
     return this.http.post<any>(this.endpoint + 'diagnosticos',datosRegistros,{headers:this.httpheaders})
   }
 
+  //crud para entidades
+
   getEntidades():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'entidades')
   }
 // CRUD ESTADOS
-//----------------------------------------------------------------------------------------------
+
   getEstados():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'estados')
   }
@@ -79,47 +84,67 @@ export class ConfigService {
   editEstados(idstatus: number, datosRegistros: any): Observable<any> {
     return this.http.put<any>(`${this.endpoint}estados/${idstatus}`, datosRegistros, { headers: this.httpheaders });
   }
-  //-----------------------------------------------------------------------------------------------
+  // crud para origenes destinos
 
   getOrigendestino():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'origendestino')
   }
 
+  // crud para pemisos por rol
+
   getPermisorol():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'permisosporrol')
   }
+
+  // crud para permisos
 
   getPermisos():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'permisos')
   }
 
+  // crud para plantillas
+
   getPlantillas():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'plantillas')
   }
+
+  // crud para prestadores
 
   getPrestadorservicio():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'prestadorservicio')
   }
 
+  // crud para representantes de ips
+
   getRepresentanteLegal():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'representantelegal')
   }
+
+  // crud para roles
 
   getRoles():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'roles')
   }
 
+  // crud para tipo de anestesia
+
   getTipoAnestesia():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'tipoanestesia')
   }
 
+  // crud para tipo de documento
+
   getTipoDocumentos():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'tipodocumento')
   }
-// CRUD TIPOS DE DIAGNOSTICOS ----------------------------------------------
+// CRUD TIPOS DE DIAGNOSTICOS 
 
   getTipoDx():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint + 'tipodx')
+  }
+
+   getTipoDxXDet(term: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}tipodx/searchxtipo/${term}`);
   }
 
   getTipoeapb():Observable<any[]>{

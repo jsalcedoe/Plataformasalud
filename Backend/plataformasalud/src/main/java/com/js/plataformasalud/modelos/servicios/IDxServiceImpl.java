@@ -39,11 +39,13 @@ public class IDxServiceImpl implements IDxService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Diagnostico> findByNomdx(String term) {
 		
-		return dxdao.findByNomdx(term);
+		return (List<Diagnostico>)dxdao.findByNomdx(term);
 	}
 
+	
 	
 
 	

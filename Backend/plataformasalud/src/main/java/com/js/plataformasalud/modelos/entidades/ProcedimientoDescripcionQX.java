@@ -44,7 +44,6 @@ public class ProcedimientoDescripcionQX implements Serializable{
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Estado estadopxdesqx_fk;
 		
-	
 	private static final long serialVersionUID = 1L;
 
 }

@@ -119,6 +119,10 @@ import { EditordprocexamComponent } from './pages/medico/ordenprocexam/editordpr
 import { GenerahcComponent } from './pages/medico/historiaclinica/generahc/generahc.component';
 import { VerifhcComponent } from './pages/medico/historiaclinica/verifhc/verifhc.component';
 import { VerifevomedComponent } from './pages/medico/evolucionmedica/verifevomed/verifevomed.component';
+import { ConfdesqxComponent } from './pages/medico/descripcionquirurgica/confdesqx/confdesqx.component';
+import { DiagnosticodescqxComponent } from './pages/medico/diagnosticosatencion/diagnosticodescqx/diagnosticodescqx.component';
+import { DiagnosticoevomedComponent } from './pages/medico/diagnosticosatencion/diagnosticoevomed/diagnosticoevomed.component';
+import { DiagnosticohcpacComponent } from './pages/medico/diagnosticosatencion/diagnosticohcpac/diagnosticohcpac.component';
 
 //import { from } from "rxjs";
 
@@ -245,7 +249,11 @@ import { VerifevomedComponent } from './pages/medico/evolucionmedica/verifevomed
     EditordprocexamComponent,
     GenerahcComponent,
     VerifhcComponent,
-    VerifevomedComponent
+    VerifevomedComponent,
+    ConfdesqxComponent,
+    DiagnosticodescqxComponent,
+    DiagnosticoevomedComponent,
+    DiagnosticohcpacComponent
     ],
   providers: [],
   bootstrap: [AppComponent]

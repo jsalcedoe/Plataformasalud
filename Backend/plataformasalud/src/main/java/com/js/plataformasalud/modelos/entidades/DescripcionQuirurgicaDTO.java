@@ -12,7 +12,6 @@ public class DescripcionQuirurgicaDTO {
 	private DescripcionQuirurgica descripcionQuirurgica;
     private List<ProcedimientoDescripcionQX> procedimientos;
     private List<EquipoQx> equipoQx;
-    private List<DiagnosticoAtencion>dxatencion;
+    private List<DiagnosticoDescripcionQx>dxdexqx;
     
-
 }

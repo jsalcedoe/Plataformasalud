@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
@@ -12,11 +12,12 @@ import Swal from 'sweetalert2';
 })
 export class CreadiagnosticosatencionComponent implements OnInit {
 
-  @Input() idevent: any;
+//@Input() idevent: any;
  
 
   ready:boolean=false
   dxate:any;
+  idevent:string
   formDxAtencion:FormGroup
   ideventseleccionado:any
   tipdx:any
@@ -32,7 +33,7 @@ export class CreadiagnosticosatencionComponent implements OnInit {
     private servicioDx:ConfigService,
     private paramsrouter: ActivatedRoute
     ) {
-      this.idevent=this.paramsrouter.snapshot.paramMap.get('idevent')
+     this.idevent=this.paramsrouter.snapshot.paramMap.get('idevent')
       
       console.log('el idevent que llega en el snapshop de creadiagnosticosatencion',this.idevent,'tipo de dato en snapshop creadxate', typeof this.idevent)
       this.formDxAtencion=fb.group({
@@ -57,7 +58,6 @@ export class CreadiagnosticosatencionComponent implements OnInit {
         this.clearForm();
       }
       this.consultaTipoDx();
-      this.consultaTipoNota();
       this.consultaDx();
       
   }

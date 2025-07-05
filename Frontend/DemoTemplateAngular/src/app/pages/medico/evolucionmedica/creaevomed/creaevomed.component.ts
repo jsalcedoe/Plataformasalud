@@ -14,7 +14,7 @@ import { CreadiagnosticosatencionComponent } from '../../diagnosticosatencion/cr
 })
 export class CreaevomedComponent implements OnInit {
 
-  @ViewChild('diagnosticosComp') diagnosticosComponent: CreadiagnosticosatencionComponent;
+  //@ViewChild('diagnosticosComp') diagnosticosComponent: CreadiagnosticosatencionComponent;
 
   formEvoMedi:FormGroup
   eventSeleccionado:any
@@ -145,8 +145,8 @@ export class CreaevomedComponent implements OnInit {
   }
 
   guardarTodo(){
-    this.creaevomed(),
-    this.diagnosticosComponent.creaDxAtencion()
+    this.creaevomed()
+    //this.diagnosticosComponent.creaDxAtencion()
   }
 
 }

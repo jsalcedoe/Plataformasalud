@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import com.js.plataformasalud.modelos.entidades.Diagnostico;
 
 public interface IDxDao extends JpaRepository<Diagnostico, Long>{
-	 @Query("SELECT d FROM Diagnostico d WHERE LOWER(d.nomdx) LIKE LOWER(CONCAT('%', :term, '%'))")
+	 @Query("SELECT d FROM Diagnostico d WHERE LOWER(d.descdx) LIKE LOWER(CONCAT('%', :term, '%'))")
 	    List<Diagnostico> findByNomdx(@Param("term") String term);
 
 }

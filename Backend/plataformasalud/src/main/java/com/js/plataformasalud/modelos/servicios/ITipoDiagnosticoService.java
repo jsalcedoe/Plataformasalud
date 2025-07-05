@@ -11,5 +11,7 @@ public interface ITipoDiagnosticoService {
 	public TipoDiagnostico findById (Long idtypdx);
 	
 	public TipoDiagnostico save (TipoDiagnostico typdx);
+	
+	public List <TipoDiagnostico> findByDetypdx (String term);
 
 }

@@ -107,11 +107,7 @@ UNLOCK TABLES;
 -- Dumping data for table `desqx`
 --
 
-LOCK TABLES `desqx` WRITE;
-/*!40000 ALTER TABLE `desqx` DISABLE KEYS */;
-INSERT INTO `desqx` VALUES (1,'complicaciones','Descripcion del procedimiento','2024-12-01','hallazgos','09:45:00','06:00:00','material si aplica','muestra de patologia',3,2,1,1),(2,'COMPLICACIONES QUIRURGICAS JULIO','DESCRIPCION DEL PROCEDIMIENTO JULIO','2024-12-19','HALLAZGOS JULIO','07:45:00','06:00:00','MATERIAL JULIO','MUESTRA PATOLOGIA JULIO',3,2,1,2),(3,'COMPILCACIONES QUIRURGICAS SANDRA','DESCRIPCION PROCEDIMIENTO SANDRA','2024-12-19','HALLAZGOS SANDRA','08:00:00','07:00:00','MATERIAL SANDRA','MUESTRA PATOLOGIA SANDRA',3,2,1,3);
-/*!40000 ALTER TABLE `desqx` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `dx`
@@ -127,11 +123,7 @@ UNLOCK TABLES;
 -- Dumping data for table `dxatehcpac`
 --
 
-LOCK TABLES `dxatehcpac` WRITE;
-/*!40000 ALTER TABLE `dxatehcpac` DISABLE KEYS */;
-INSERT INTO `dxatehcpac` VALUES (1,'2024-08-26',NULL,1,1,1,2,3),(2,'2024-12-17',NULL,3,1,1,2,1),(3,'2024-12-17',NULL,1,1,1,1,1),(4,'2024-12-17',NULL,1,1,1,6,1),(5,'2024-12-19',NULL,1,1,2,2,1),(6,'2024-12-19',NULL,1,1,2,1,1),(7,'2024-12-19',NULL,1,1,2,6,5),(8,'2024-12-19',NULL,1,1,3,2,1),(9,'2024-12-19',NULL,1,1,3,1,1),(10,'2024-12-19',NULL,1,1,3,6,5),(11,'2024-12-22',NULL,1,1,3,1,1),(12,'2024-12-22',NULL,1,1,3,4,1);
-/*!40000 ALTER TABLE `dxatehcpac` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `eapb`
@@ -147,11 +139,7 @@ UNLOCK TABLES;
 -- Dumping data for table `eqqx`
 --
 
-LOCK TABLES `eqqx` WRITE;
-/*!40000 ALTER TABLE `eqqx` DISABLE KEYS */;
-INSERT INTO `eqqx` VALUES (1,'2024-12-17',NULL,1,NULL,1),(2,'2024-12-19',NULL,2,NULL,1),(3,'2024-12-19',NULL,3,NULL,1);
-/*!40000 ALTER TABLE `eqqx` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `estpac`
@@ -166,31 +154,18 @@ UNLOCK TABLES;
 -- Dumping data for table `eventhcpac`
 --
 
-LOCK TABLES `eventhcpac` WRITE;
-/*!40000 ALTER TABLE `eventhcpac` DISABLE KEYS */;
-INSERT INTO `eventhcpac` VALUES (1,1,'CONSULTA',NULL,'2024-08-26',1,1),(2,1,'PROCEDIMIENTO',NULL,'2024-12-19',1,2),(3,1,'PROCEDIMIENTO',NULL,'2024-12-19',1,3);
-/*!40000 ALTER TABLE `eventhcpac` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `evoenf`
 --
 
-LOCK TABLES `evoenf` WRITE;
-/*!40000 ALTER TABLE `evoenf` DISABLE KEYS */;
-INSERT INTO `evoenf` VALUES (1,'2024-12-19 07:49:54.773000',NULL,'EVOLUCION DE ENFERMERIA PARA  JULIO',1,2),(2,'2024-12-19 08:04:36.105000',NULL,'EVOLUCION DE ENFERMERIA SANDRA',1,3);
-/*!40000 ALTER TABLE `evoenf` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Dumping data for table `evoevent`
 --
 
-LOCK TABLES `evoevent` WRITE;
-/*!40000 ALTER TABLE `evoevent` DISABLE KEYS */;
-INSERT INTO `evoevent` VALUES (1,'2024-12-17 15:46:45.222000',NULL,'Nota adicional de evolucion',1,1,1),(2,'2024-12-19 07:45:32.957000',NULL,'ESTO ES UNA NOTA ADICIONAL PARA JULIO',1,2,1),(3,'2024-12-19 07:55:12.180000',NULL,'EVOLUCION MEDICA SANDRA',1,3,1),(4,'2024-12-22 08:45:28.958000',NULL,'nota adicional para probar epicrisis',1,3,1),(5,'2024-12-22 08:46:05.451000',NULL,'Esta es una nota aclaratoria para la epicrisis',1,3,4);
-/*!40000 ALTER TABLE `evoevent` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `fabmedins`
@@ -216,11 +191,7 @@ UNLOCK TABLES;
 -- Dumping data for table `hcpac`
 --
 
-LOCK TABLES `hcpac` WRITE;
-/*!40000 ALTER TABLE `hcpac` DISABLE KEYS */;
-INSERT INTO `hcpac` VALUES (1,'prueba de historia clinica','na','na','na','na','na','na','2024-08-26',NULL,'prueba de historia clinica',178,'80','60','prueba de historia clinica','prueba de historia clinica',80,'prueba de historia clinica','110/80','37',1,1,NULL),(2,'analisis','alergicos','familiares','farmacologicos','patologicos','quirurgicos','traumaticos','2024-12-17',NULL,'enfermedad actual',179,'60','60','motivo de consulta','objetivo',80,'plan de manejo','110/80','37',1,1,NULL),(3,'ANALISIS JULIO','ALERGICOS JULIO','FAMILIARES JULIO','FARMACOLOGICOS JULIO','PATOLOGICOS JULIO','QUIRURGICOS JULIO','TRAUMATICOS JULIO','2024-12-19',NULL,'ENFERMEDAD ACTUAL JULIO',179,'70','20','MOTIVO DE CONSULTA JULIO','OBJETIVO JULIO',79,'PLAN DE MANEJO JULIO','110/80','37',1,2,NULL),(4,'ANALISIS SANDRA','ALERGICOS SANDRA','FAMILIARES SANDRA','FARMACOLOGICOS SANDRA','PATOLOGICOS SANDRA','QUIRURGICOS SANDRA','TRAUMATICOS SANDRA','2024-12-19',NULL,'ENFERMEDAD ACTUAL SANDRA',160,'60','16','MOTIVO DE CONSULTA SANDRA','OBJETO SANDRA',60,'PLAN DE MANEJO SANDRA','110/80','37',1,3,NULL);
-/*!40000 ALTER TABLE `hcpac` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `medins`
@@ -236,21 +207,13 @@ UNLOCK TABLES;
 -- Dumping data for table `ordmedins`
 --
 
-LOCK TABLES `ordmedins` WRITE;
-/*!40000 ALTER TABLE `ordmedins` DISABLE KEYS */;
-INSERT INTO `ordmedins` VALUES (1,8,'2025-01-15 13:39:41.388000',NULL,'100 cc','cada 12 horas',1,1,2,4,1),(2,2,'2025-01-15 13:39:41.388000',NULL,'4 mg','cada 12 horas',1,1,1,2,4),(3,8,'2025-01-15 13:40:14.702000',NULL,'2 mg','cada 6 horas',1,2,1,2,1),(4,8,'2025-01-15 13:42:07.213000',NULL,'2 mg','cada 12 horas',1,3,1,2,1),(5,6,'2025-01-15 13:42:07.213000',NULL,'150 cc','cada 6 horas',1,3,3,4,1),(6,4,'2025-01-15 13:42:07.213000',NULL,'150 cc','cada 4 horas',1,3,2,4,1);
-/*!40000 ALTER TABLE `ordmedins` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `ordprocexam`
 --
 
-LOCK TABLES `ordprocexam` WRITE;
-/*!40000 ALTER TABLE `ordprocexam` DISABLE KEYS */;
-INSERT INTO `ordprocexam` VALUES (1,1,'2025-04-20 08:07:17.112000',NULL,'',1,1,6,1),(2,1,'2025-04-20 08:07:17.112000',NULL,'',1,1,8,1),(3,1,'2025-04-20 08:08:51.650000',NULL,'',1,2,7,1),(4,1,'2025-04-20 08:14:03.203000',NULL,'',1,3,9,1),(5,1,'2025-04-20 08:14:03.203000',NULL,'',1,3,6,1);
-/*!40000 ALTER TABLE `ordprocexam` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `pac`
@@ -315,11 +278,7 @@ UNLOCK TABLES;
 -- Dumping data for table `procqx`
 --
 
-LOCK TABLES `procqx` WRITE;
-/*!40000 ALTER TABLE `procqx` DISABLE KEYS */;
-INSERT INTO `procqx` VALUES (1,1,NULL,5),(2,2,NULL,5),(3,3,NULL,5);
-/*!40000 ALTER TABLE `procqx` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `regest`
@@ -363,11 +322,7 @@ UNLOCK TABLES;
 -- Dumping data for table `sigvit`
 --
 
-LOCK TABLES `sigvit` WRITE;
-/*!40000 ALTER TABLE `sigvit` DISABLE KEYS */;
-INSERT INTO `sigvit` VALUES (1,NULL,'2024-12-01',90,90,NULL,'07:15:00','98','150/100','37',1,1,2),(2,NULL,'2024-12-01',80,60,NULL,'07:00:00','98','110/80','37',1,1,2),(3,NULL,'2024-12-19',85,22,NULL,'06:15:00','95','120/100','37',1,2,1),(4,NULL,'2024-12-19',78,20,NULL,'06:00:00','98','110/80','37',1,2,2),(5,NULL,'2024-12-19',50,20,NULL,'08:00:00','98','110/80','37',1,3,2),(6,NULL,'2024-12-19',55,20,NULL,'08:20:00','98','110/90','37',1,3,2);
-/*!40000 ALTER TABLE `sigvit` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `status`

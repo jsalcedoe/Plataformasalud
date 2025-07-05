@@ -38,4 +38,11 @@ public class ITipoDiagnosticoServiceImpl implements ITipoDiagnosticoService {
 		return typdxdao.save(typdx);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<TipoDiagnostico> findByDetypdx(String term) {
+		
+		return (List<TipoDiagnostico>) typdxdao.findByDetypdx(term);
+	}
+
 }

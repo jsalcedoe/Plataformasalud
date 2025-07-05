@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +32,7 @@ public class DescripcionQuirurgicaDTORestController {
 	
 	private final IDescripcionQuirurgicaDTOServiceImpl procedimientoService;
 	
-	@PostMapping("/descripcionesquirurgicas")
+	@PostMapping("/descripcionquirurgica")
 	public ResponseEntity<?> saveProcedimientosCentralizados(@Valid @RequestBody List<DescripcionQuirurgicaDTO> dtoList, BindingResult result) {
 	    Map<String, Object> response = new HashMap<>();
 	    
@@ -58,5 +60,21 @@ public class DescripcionQuirurgicaDTORestController {
 	        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
 	}
+	@GetMapping("/descripcionquirurgica/{idqx}")
+	public ResponseEntity<?> getDescripcionQuirurgicaById(@PathVariable Long idqx) {
+	    try {
+	        DescripcionQuirurgicaDTO dto = procedimientoService.findByIdqx(idqx);
+	        return new ResponseEntity<>(dto, HttpStatus.OK);
+	    } catch (Exception e) {
+	        Map<String, Object> response = new HashMap<>();
+	        response.put("mensaje", "Error al consultar la descripción quirúrgica");
+	        response.put("error", e.getMessage());
+	        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+	    }
+	}
+
+	
+	
+
     
 }

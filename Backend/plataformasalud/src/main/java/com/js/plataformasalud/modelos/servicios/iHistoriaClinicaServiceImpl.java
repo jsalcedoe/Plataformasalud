@@ -45,6 +45,12 @@ public class IHistoriaClinicaServiceImpl implements IHistoriaClinicaService {
 		
 		return hcpacdao.findByEventpac_Fk(idevent);
 	}
+	
+	
+	@Override
+	public boolean existsById(Long idhcpac) {
+	    return hcpacdao.existsById(idhcpac);
+	}
 
 
 }

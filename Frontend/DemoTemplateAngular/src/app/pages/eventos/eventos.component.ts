@@ -1,8 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
-import { ComparteinfService } from 'src/app/services/comparteinf.service';
 import { OperacionService } from 'src/app/services/operacion.service';
+
+interface Evento {
+  idevent: number;
+  conseventpac: string;
+  pacevent_fk: {
+    numdocpac: string;
+    primernompac: string;
+    segundonompac: string;
+    primerapepac: string;
+    segundoapepac: string;
+    entidad: { nomeapb: string };
+  };
+  estevent_fk: { detstatus: string };
+}
 
 @Component({
   selector: 'app-eventos',
@@ -10,8 +23,26 @@ import { OperacionService } from 'src/app/services/operacion.service';
   
 })
 export class EventosComponent implements OnInit {
+  objectKeys = Object.keys;
   event:any
   ready:boolean=false;
+
+  rutasDestino: { [key: string]: string } = {
+    '1': 'creaeventos',
+    '2': 'creahistoriaclinica',
+    '3': 'creaevomed',
+    '4': 'creadesqxcompleta',
+    '5': 'evolucionenfermeria',
+    '6': 'registrosignosvitales',
+    '7': 'registromedicamentos',
+    '8': 'epicrisis',
+    '9': 'creaordemedins',
+    '10': 'creaordenprocexam',
+    '11': 'ordenesmedins',
+    '12': 'ordenprocexam',
+    '13': 'asignaconsentimientopaciente',
+    '14': 'consentimientospaciente',
+  };
 
   constructor(private router:Router,
               private servicio:OperacionService,
@@ -39,81 +70,11 @@ export class EventosComponent implements OnInit {
     ).subscribe();
   }
 
-  redirigir(destino:string, evento:any){
-    switch(destino){
-      case "1": 
-      this.router.navigateByUrl(`/creaeventos/${evento.idevent}`)
-      console.log('valor que pasa desde el componente paciente',evento)
-      break;
-
-      case "2": 
-      this.router.navigateByUrl(`/creahistoriaclinica/${evento.idevent}`)
-      console.log('valor que pasa desde el componente eventos',evento)
-      break;
-
-      case "3": 
-      this.router.navigateByUrl(`/creaevomed/${evento.idevent}`)
-      console.log('valor que pasa desde el componente eventos',evento)
-      break;
-
-      case "4": 
-      this.router.navigateByUrl(`/creadesqxcompleta/${evento.idevent}`)
-      console.log('valor que pasa desde el componente eventos',evento)
-      break;
-
-      case "5": 
-      this.router.navigateByUrl(`/evolucionenfermeria/${evento.idevent}`)
-      console.log('valor que pasa desde el componente eventos',evento)
-      break;
-
-      case "6": 
-      this.router.navigateByUrl(`/registrosignosvitales/${evento.idevent}`)
-      console.log('valor que pasa desde el componente eventos',evento)
-      break;
-
-      case "7": 
-      this.router.navigateByUrl(`/registromedicamentos/${evento.idevent}`)
-      console.log('valor que pasa desde el componente eventos',evento)
-      break;
-
-      case "8": 
-      this.router.navigateByUrl(`/epicrisis/${evento.idevent}`)
-      console.log('valor que pasa desde el componente eventos',evento)
-      break;
-
-      case "9": 
-      this.router.navigateByUrl(`/creaordemedins/${evento.idevent}`)
-      console.log('valor que pasa desde el componente eventos',evento)
-      break;
-
-      case "10": 
-      this.router.navigateByUrl(`/creaordenprocexam/${evento.idevent}`)
-      console.log('valor que pasa desde el componente eventos',evento)
-      break;
-
-      case "11": 
-      this.router.navigateByUrl(`/ordenesmedins/${evento.idevent}`)
-     
-      break;
-
-      case "12": 
-      this.router.navigateByUrl(`/ordenprocexam/${evento.idevent}`)
-     
-      break;
-
-      case "13": 
-      this.router.navigateByUrl(`/asignaconsentimientopaciente/${evento.idevent}`)
-     
-      break;
-
-      case "14": 
-      this.router.navigateByUrl(`/consentimientospaciente/${evento.idevent}`)
-     
-      break;
-
-
+  redirigir(destino: string, evento: Evento): void {
+    const ruta = this.rutasDestino[destino];
+    if (ruta) {
+      this.router.navigateByUrl(`/${ruta}/${evento.idevent}`);
     }
-    
   }
 
   irCreaEvento(){

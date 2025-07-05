@@ -48,7 +48,76 @@
                     </div>
                   </div>
                 </div>
-                 <div class="card-footer">
+                <!-- Campos para los diagnosticos -->
+               
+                    <div class="card-header">
+                      <h4>Diagnósticos</h4>
+                    </div>
+
+                    <div formArrayName="diagnosticos">
+                      <div *ngFor="let diagnostico of diagnosticosFormArray.controls; let i = index" [formGroupName]="i" class="mb-3">
+                        
+                        <div class="row align-items-end g-2">
+                        <!-- Tipo de Diagnóstico -->
+                        <div class="col-md-4 position-relative">
+                          <label for="tipoDx">Tipo de diagnóstico</label>
+                          <input
+                            id="tipoDx"
+                            class="form-control"
+                            type="text"
+                            formControlName="detypdx"
+                            (input)="getTipoDxDetalle($event.target.value, i)"
+                            autocomplete="off"
+                          />
+                          <ul *ngIf="detypdx.length > 0" class="list-group position-absolute w-100 zindex-dropdown">
+                            <li *ngFor="let ddx of detypdx" class="list-group" (click)="selecttipDx(ddx, i)">
+                              {{ ddx.detypdx }}
+                            </li>
+                          </ul>
+                        </div> 
+                        
+
+                        <!-- Diagnóstico -->
+                        <div class="col-md-4 position-relative">
+                          <label for="descDx">Diagnóstico</label>
+                          <input
+                            id="descDx"
+                            class="form-control"
+                            type="text"
+                            formControlName="descdx"
+                            (input)="getDxDetalle($event.target.value, i)"
+                            autocomplete="off"
+                          />
+                          <ul *ngIf="detdx.length > 0" class="list-group position-absolute w-100 zindex-dropdown">
+                            <li *ngFor="let dx of detdx" class="list-group" (click)="selectDx(dx, i)">
+                              {{ dx.descdx }}
+                            </li>
+                          </ul>
+                        </div>
+
+                        <!-- Botón Agregar -->
+                        <div class="col-md-2">
+                          <div class="d-flex flex-column gap-2">
+
+                          <button class="btn btn-primary" type="button" (click)="agregarDiagnostico()">
+                            Agregar
+                          </button>
+                                                  
+                          <!-- Botón eliminar -->
+                         <div class="col-md-2">
+                          <button class="btn btn-primary" type="button" (click)="removeDiagnostico(i)">
+                            Eliminar
+                          </button>
+                          </div>
+                        </div> 
+                      </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div *ngIf="diagnosticosFormArray.length === 0" class="alert alert-info">
+                      No hay diagnósticos registrados para esta historia clínica.
+                    </div>
+                      <div class="card-footer">
                         <button class="btn btn-fill btn-danger" type="submit" (click)="updatehcpac()">Confirmar</button>
                         
                       </div>
