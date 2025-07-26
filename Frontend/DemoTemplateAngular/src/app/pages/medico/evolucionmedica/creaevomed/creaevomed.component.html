@@ -1,141 +1,138 @@
-<div class="content">
+<div class="content"> 
     <div class="row">
-        <div class=" col-md-12">
-            <div class=" card">
-                <div class=" card-header"><h1 class=" title">  EVOLUCIONES</h1></div>
-                <div class=" card-body">
-                        <form [formGroup]="formEvoMedi">
-                          <div class = "style=">
-                            <form class="d-flex">
-                              <input class="form-control me-2" type="text" placeholder="Consultar paciente" style="width: 40%;">
-                              <button class="btn btn-primary" type="button">Search</button>
-                            </form>
-                          </div>
-                            <div class=" card-header col-md-12"><h3 class=" title">Datos personales</h3></div>
-                            <div class = "row">
-                                <div class=" col-md-3 pr-md-1">
-                                    <div class=" form-group">
-                                      <label> Documento </label>
-                                      <input
-                                        class=" form-control"
-                                        type="text"
-                                        disabled="true"
-                                        formControlName="numdocpac"
-                                      />
-                                    </div>
-                                  </div>
-                    
-                                  <div class=" col-md-3 pr-md-1">
-                                    <div class=" form-group">
-                                      <label> Evento </label>
-                                      <input
-                                        class=" form-control"
-                                        type="text"
-                                        disabled="true"
-                                        formControlName="idevent"
-                                      />
-                                    </div>
-                                  </div>
-
-                                  <div class=" col-md-3 pr-md-1">
-                                    <div class=" form-group">
-                                      <label> Consecutivo evento </label>
-                                      <input
-                                        class=" form-control"
-                                        type="text"
-                                        disabled="true"
-                                        formControlName="conseventpac"
-                                      />
-                                    </div>
-                                  </div>
-
-                                  <div class=" col-md-3 pr-md-1">
-                                    <div class=" form-group">
-                                      <label> Id Paciente </label>
-                                      <input
-                                        class=" form-control"
-                                        type="text"
-                                        disabled="true"
-                                        formControlName="idpac"
-                                      />
-                                    </div>
-                                  </div>
-
-
-                                </div>
-                                <div class="row">
-                                  <div class=" col-md-3 pr-md-1">
-                                   <div class=" form-group">
-                                     <label> Primer Nombre </label>
-                                     <input
-                                       class=" form-control"
-                                       type="text"
-                                       disabled="true"
-                                       formControlName="primernompac"
-                                     />
-                                   </div>
-                                 </div>
-                                 <div class=" col-md-3 pr-md-1">
-                                   <div class=" form-group">
-                                     <label> Segundo Nombre </label>
-                                     <input
-                                       class=" form-control"
-                                       disabled="true"
-                                       type="text"
-                                       formControlName="segundonompac"
-                                     />
-                                   </div>
-                                 </div>
-                                 <div class=" col-md-3 pr-md-1">
-                                   <div class=" form-group">
-                                     <label> Primer Apellido </label>
-                                     <input
-                                       class=" form-control"
-                                       disabled="true"
-                                       type="text"
-                                       formControlName="primerapepac"
-                                     />
-                                   </div>
-                                 </div>
-                                 <div class=" col-md-3 pr-md-1">
-                                   <div class=" form-group">
-                                     <label> Segundo Apellido </label>
-                                     <input
-                                       class=" form-control"
-                                       disabled="true"
-                                       type="text"
-                                       formControlName="segundoapepac"
-                                     />
-                                   </div>
-                                 </div>
-                               </div>
-                            <div class="row">
-                                <div class=" col-md-4 pr-md-1">
-                                    <div class=" form-group">
-                                      <label> Tipo de evolucion </label>
-                                      <BR>
-                                      <select class="form-group" style="width: auto;" formControlName="notaevol_fk">
-                                        <option value="" disabled selected>Seleccione el tipo de nota</option>
-                                        <option *ngFor="let nota of tiponota" [value]="nota.idtypnot">{{nota.dettypnot}}</option>
-                                     </select>
-                                    </div>
-                                  </div>
-                                  <div class=" col-md-6 pr-md-1">
-                                    <div><label>Evolucion</label></div>
-                                    <div class=" form-group">
-                                       <textarea rows="5" cols="50" class="form-control" formControlName="detevol"></textarea>
-                                    </div>
-                                  </div> 
-                                  <!--<app-creadiagnosticosatencion #diagnosticosComp [idevent]="idevent"></app-creadiagnosticosatencion> -->
-                            </div> 
-                            <div class=" card-footer">
-                              <button class=" btn btn-fill btn-danger"type="submit" (click)="guardarTodo()">Save</button>
-                            </div>       
-                        </form>
-                </div>  
-                  
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h1 class="title">Evolucion Medica</h1>
             </div>
+            <div class="card-body">
+              <form [formGroup]="formEvoMedi">
+                 
+                <div class="card-header">
+                  <h3 class="title">Datos del paciente</h3>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-3 pr-md-1" *ngFor="let campo of camposPaciente">
+                    <div class="form-group">
+                      <label>{{ campo.label }}</label>
+                      <input class="form-control" 
+                             disabled [formControlName]="campo.nombre" />
+                    </div>
+                  </div>       
+                </div>  
+  
+                <div class="row">
+                    <!-- Iterar campos de la Evolucion Medica -->
+                    <div class="col-md-4 pr-md-1" *ngFor="let campo of camposEvolucionMedica; let i = index">
+                      <div class="form-group">
+                        <label>{{ campo.label }}</label>
+                  
+                        <!-- Verificar el tipo de campo -->
+                        <ng-container *ngIf="campo.type === 'textarea'; else inputField">
+                          <textarea class="form-control"
+                                    [formControlName]="campo.nombre"></textarea>
+                        </ng-container>
+                        <ng-template #inputField>
+                          <input class="form-control"
+                             type="text"
+                             [formControlName]="campo.nombre"                            
+                             (input)="gettiponota($event.target.value)"                                                          
+                             autocomplete="off"/>
+                             <ul *ngIf="tipnot.length > 0" class="list-group position-absolute w-100" style="z-index: 1050;">
+                              <li *ngFor="let tn of tipnot" 
+                                  class="list-group"
+                                  (click)="selectTipoNota(tn)">
+                                {{ tn.dettypnot }}
+                              </li>
+                            </ul>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Campos para los diagnosticos -->
+               
+                    <div class="card-header">
+                      <h4>Diagnósticos</h4>
+                    </div>
+
+                    <div formArrayName="diagnosticos">
+                      <div *ngFor="let diagnostico of diagnosticosFormArray.controls; let i = index" [formGroupName]="i" class="mb-3">
+                        
+                        <div class="row align-items-end g-2">
+                        <!-- Tipo de Diagnóstico -->
+                        <div class="col-md-4 position-relative">
+                          <label for="tipoDx">Tipo de diagnóstico</label>
+                          <input
+                            id="tipoDx"
+                            class="form-control"
+                            type="text"
+                            formControlName="detypdx"
+                            (input)="getTipoDxDetalle($event.target.value, i)"
+                            autocomplete="off"
+                          />
+                          <ul *ngIf="detypdx.length > 0" class="list-group position-absolute w-100 zindex-dropdown">
+                            <li *ngFor="let ddx of detypdx" class="list-group" (click)="selecttipDx(ddx, i)">
+                              {{ ddx.detypdx }}
+                            </li>
+                          </ul>
+                        </div> 
+                        
+
+                        <!-- Diagnóstico -->
+                        <div class="col-md-4 position-relative">
+                          <label for="descDx">Diagnóstico</label>
+                          <input
+                            id="descDx"
+                            class="form-control"
+                            type="text"
+                            formControlName="descdx"
+                            (input)="getDxDetalle($event.target.value, i)"
+                            autocomplete="off"
+                          />
+                          <ul *ngIf="detdx.length > 0" class="list-group position-absolute w-100 zindex-dropdown">
+                            <li *ngFor="let dx of detdx" class="list-group" (click)="selectDx(dx, i)">
+                              {{ dx.descdx }}
+                            </li>
+                          </ul>
+                        </div>
+
+                        <!-- Botón Agregar -->
+                        <div class="col-md-2">
+                          <div class="d-flex flex-column gap-2">
+
+                          <button class="btn btn-primary" type="button" (click)="agregarDiagnostico()">
+                            Agregar
+                          </button>
+                                                  
+                          <!-- Botón eliminar -->
+                         <div class="col-md-2">
+                          <button class="btn btn-primary" type="button" (click)="removeDiagnostico(i)">
+                            Eliminar
+                          </button>
+                          </div>
+                        </div> 
+                      </div>
+                    </div>
+                    </div>
+                    </div>
+                   <!-- <div *ngIf="diagnosticosFormArray.length === 0" class="alert alert-info">
+                      No hay diagnósticos registrados para esta historia clínica.
+                    </div>-->
+
+                 <div class="card-footer">
+                        <button class="btn btn-fill btn-danger" type="submit" (click)="creaevomed()">Confirmar</button>
+                        
+                      </div>
+                   
+              </form>
+            </div>
+          </div>
         </div>
     </div>
-</div>
+  </div>
+                   
+                  
+  
+
 

@@ -11,5 +11,7 @@ public interface IDiagnosticoEvolucionService {
 	public DiagnosticoEvolucion findById(Long iddxevopac);
 	
 	public DiagnosticoEvolucion save (DiagnosticoEvolucion dxevopac);
+	
+	List<DiagnosticoEvolucion> findByEvoFkId(Long idevol);
 
 }

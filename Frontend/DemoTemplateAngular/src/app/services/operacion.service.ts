@@ -110,30 +110,26 @@ export class OperacionService {
     return this.http.get<any[]>(this.endpoint+'diagnosticohcpac/'+id)
   }
 
-  // servicios para componente Evoluciones Medicas
-
-  addEvoMed(datosRegistros:any):Observable<any>{
-    return this.http.post<any>(this.endpoint + 'evoluciones',datosRegistros,{headers:this.httpheaders})
-  }
-  getEvoMed():Observable<any[]>{
-    return this.http.get<any[]>(this.endpoint+'evoluciones')
-  }
-  getEvoMedId(id:any):Observable<any[]>{
-    return this.http.get<any[]>(this.endpoint+'evoluciones/'+id)
-  }
-  editevomed(idevol: Number, datosRegistros: any): Observable<any> {
-    return this.http.put<any>(`${this.endpoint}evoluciones/${idevol}`, datosRegistros, { headers: this.httpheaders });
-  }
-
+  
   // servicios para componente creadesqx 
 
   adddesqx(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'procedimientosqx',datosRegistros,{headers:this.httpheaders})
   }
-
+  // servicios para componente descripcion quirurgica completa
+    
   adddesqxcompleta(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'descripcionquirurgica',datosRegistros,{headers:this.httpheaders})
   }
+
+  getdesqxCompletaXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'procedimientosqx/'+id)
+  }
+
+  editdesqxcompleta(idqx: Number, datosRegistros: any): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}descripcionquirurgica/${idqx}`, datosRegistros, { headers: this.httpheaders });
+  }
+
 
   getdesqx():Observable<any[]>{
     return this.http.get<any[]>(this.endpoint+'procedimientosqx')
@@ -279,6 +275,32 @@ export class OperacionService {
     return this.http.put<any>(`${this.endpoint}historiaclinicacompleta/${id}`, datosRegistros, { headers: this.httpheaders });
   }
 
+  // Servicios para componente de evolucion medica completa
+
+  addEvoMedCompleta(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'evolucionclinicacompleta',datosRegistros,{headers:this.httpheaders})
+  }
+  getEvoMedCompletaId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'evolucionclinicacompleta/'+id)
+  }
+  editevomedCompleta(idevol: Number, datosRegistros: any): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}evolucionclinicacompleta/${idevol}`, datosRegistros, { headers: this.httpheaders });
+  }
+
+  // servicios para componente Evoluciones Medicas
+
+  addEvoMed(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'evoluciones',datosRegistros,{headers:this.httpheaders})
+  }
+  getEvoMed():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'evoluciones')
+  }
+  getEvoMedId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'evoluciones/'+id)
+  }
+  editevomed(idevol: Number, datosRegistros: any): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}evoluciones/${idevol}`, datosRegistros, { headers: this.httpheaders });
+  }
 
   
 }

@@ -12,6 +12,10 @@ public interface IEvolucionEventoService {
 	
 	public EvolucionEvento save (EvolucionEvento evol);
 	
+	public List <EvolucionEvento> findByEventevo_Fk(Long idevent);
+	
+	public boolean existsById (Long idevol);
+	
 	
 
 }

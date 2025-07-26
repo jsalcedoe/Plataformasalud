@@ -10,17 +10,17 @@ import com.js.plataformasalud.modelos.dao.IEvolucionEventoDao;
 import com.js.plataformasalud.modelos.entidades.DiagnosticoEvolucion;
 import com.js.plataformasalud.modelos.entidades.EvolucionEvento;
 import com.js.plataformasalud.modelos.entidades.EvolucionEventoDTO;
+
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @Service
-
 public class IEvolucionEventoDTOServiceImpl {
-	private static final Logger logger = LoggerFactory.getLogger(IEvolucionEventoDTOServiceImpl.class);
-	private final IEvolucionEventoDao evoeventdao;
-	private final IDiagnosticoEvolucionDao dxevodao;
-	
-	@Transactional
+    private static final Logger logger = LoggerFactory.getLogger(IEvolucionEventoDTOServiceImpl.class);
+    private final IEvolucionEventoDao evoeventdao;
+    private final IDiagnosticoEvolucionDao dxevodao;
+    
+    @Transactional
     public EvolucionEvento save(EvolucionEventoDTO dto) {
         // Verificar si el DTO o sus listas son nulos
         if (dto == null) {
@@ -29,27 +29,27 @@ public class IEvolucionEventoDTOServiceImpl {
         }
         logger.debug("DTO recibido: {}", dto);
 
-        // Guardar la Evolucion
+        // Guardar la Evolucion Clinica
         
-        EvolucionEvento evoevent = dto.getEvoeventdto();
-        if (evoevent == null) {
+        EvolucionEvento evo = dto.getEvoeventdto();
+        if (evo == null) {
             logger.error("La Evolucion Clinica en el DTO es nula");
             throw new IllegalArgumentException("La Evolucion no puede ser nula");
         }
-        logger.debug("Evolucion Clinica a guardar: {}", evoevent);
+        logger.debug("Evolucion Clinica a guardar: {}", evo);
 
-        EvolucionEvento saveevoevent = evoeventdao.save(evoevent);
-        logger.debug("Evolucion Clinica guardada: {}", saveevoevent);
+        EvolucionEvento saveevo = evoeventdao.save(evo);
+        logger.debug("Evolucion Clinica guardada: {}", saveevo);
         
      // Manejo de diagnósticos
         if (dto.getDxevendto() != null) {
             // 1. Obtener diagnósticos existentes
             List<DiagnosticoEvolucion> diagnosticosExistentes = 
-                	dxevodao.findByEvoFkId(saveevoevent.getIdevol());   
+            		dxevodao.findByEvoFkId(saveevo.getIdevol());
+            
             // 2. Eliminar diagnósticos que no están en la nueva lista
             List<Long> idsNuevosDiagnosticos = dto.getDxevendto().stream()
-               // .filter(dx -> dx.getIddxhcpac() != null)
-            		.filter(dx -> dx.getIddxevopac() != null)
+                .filter(dx -> dx.getIddxevopac() != null)
                 .map(DiagnosticoEvolucion::getIddxevopac)
                 .collect(Collectors.toList());
             
@@ -60,44 +60,39 @@ public class IEvolucionEventoDTOServiceImpl {
             // 3. Guardar/Actualizar nuevos diagnósticos
             for (DiagnosticoEvolucion dxevo : dto.getDxevendto()) {
                 if (dxevo == null) continue;
-                dxevo.setEvopac_fk(saveevoevent);
+               
+                dxevo.setEvopac_fk(saveevo);
                 
                 // Si tiene ID, es una actualización; si no, es nuevo
                 if (dxevo.getIddxevopac() != null) {
-                
                     // Verificar que existe antes de actualizar
-                	   	dxevodao.findById(dxevo.getIddxevopac()).ifPresent(existing ->{
-                	   		existing.setDxevopac_fk(dxevo.getDxevopac_fk());
-                	   		existing.setEstdxevopac(dxevo.getEstdxevopac());
-                	   		existing.setTypdxevopac_fk(dxevo.getTypdxevopac_fk());
-                	   	
-                		
+                	dxevodao.findById(dxevo.getIddxevopac()).ifPresent(existing -> {
                         // Actualizar campos necesarios
                 		
-                	   		dxevodao.save(existing);
+                		existing.setDxevopac_fk(dxevo.getDxevopac_fk());
+                		existing.setTypdxevopac_fk(dxevo.getTypdxevopac_fk());
+                		existing.setEstdxevopac(dxevo.getEstdxevopac());
+                		dxevodao.save(existing);
                     });
                 } else {
                 	dxevodao.save(dxevo);
                 }
             }
         }
-        return saveevoevent;
+        return saveevo;
     }
-    
     @Transactional(readOnly = true)
-    public EvolucionEventoDTO findByIdevol(Long idevol) {
-        EvolucionEvento evopac = evoeventdao.findById(idevol)
+    public EvolucionEventoDTO findByEvoFkId(Long idevol) {
+        EvolucionEvento evo = evoeventdao.findById(idevol)
             .orElseThrow(() -> new RuntimeException("Evolucion Clinica no encontrada con id: " + idevol));
         
-        EvolucionEventoDTO dto = new EvolucionEventoDTO();
-        dto.setEvoeventdto(evopac);
+        EvolucionEventoDTO dto = new EvolucionEventoDTO();        
+        dto.setEvoeventdto(evo);
         dto.setDxevendto(dxevodao.findByEvoFkId(idevol));
         
         return dto;
     }
-
-
-
-	
-
+    
 }
+
+

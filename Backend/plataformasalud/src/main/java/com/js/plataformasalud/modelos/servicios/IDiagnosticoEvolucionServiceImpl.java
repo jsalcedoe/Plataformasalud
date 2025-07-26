@@ -37,5 +37,11 @@ public class IDiagnosticoEvolucionServiceImpl implements IDiagnosticoEvolucionSe
 		
 		return dxevodao.save(dxevopac);
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<DiagnosticoEvolucion> findByEvoFkId(Long idevol) {
+	    return dxevodao.findByEvoFkId(idevol);
+	}
 
 }

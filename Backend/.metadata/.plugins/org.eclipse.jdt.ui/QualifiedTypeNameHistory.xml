@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.DiagnosticoAtencion"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IProcedimientoQuirurgicoDao"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.DescripcionQuirurgica"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IRegistroMedicamentoDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.RegistroMedicamento"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.ISignosVitalesDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.SignosVitales"/>
@@ -32,7 +27,6 @@
     <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
     <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IDiagnosticoEvolucionService"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IDiagnosticoDescripcionQxDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.DiagnosticoDescripcionQx"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IHistoriaClinicaDao"/>
@@ -44,7 +38,6 @@
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IHistoriaClinicaDTOServiceImpl"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.HistoriaClinicaDTO"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
-    <fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
@@ -55,9 +48,16 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IEvolucionEventoDao"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.dao.IDiagnosticoEvolucionDao"/>
-    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.DiagnosticoEvolucion"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IEvolucionEventoDTOServiceImpl"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.EvolucionEventoDTO"/>
     <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.EvolucionEvento"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.OneToMany"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.entidades.DiagnosticoEvolucion"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IEvolucionEventoService"/>
+    <fullyQualifiedTypeName name="com.js.plataformasalud.modelos.servicios.IDiagnosticoEvolucionService"/>
+    <fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
 </qualifiedTypeNameHistroy>

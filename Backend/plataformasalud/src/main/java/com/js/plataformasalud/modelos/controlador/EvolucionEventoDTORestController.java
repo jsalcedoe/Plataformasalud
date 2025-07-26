@@ -18,11 +18,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.js.plataformasalud.modelos.entidades.EvolucionEvento;
 import com.js.plataformasalud.modelos.entidades.EvolucionEventoDTO;
 import com.js.plataformasalud.modelos.servicios.IEvolucionEventoDTOServiceImpl;
-
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
@@ -37,10 +35,10 @@ public class EvolucionEventoDTORestController {
 	// POST: Guardar la evolucion clínica con diagnósticos
 	
     @PostMapping("/evolucionclinicacompleta")
-    public ResponseEntity<?> saveEvolucionDTO(@Valid @RequestBody EvolucionEventoDTO dto, BindingResult result) 
+    public ResponseEntity<?> saveEvolucionEventoDTO(@Valid @RequestBody EvolucionEventoDTO dto, BindingResult result) 
     {
         Map<String, Object> response = new HashMap<>();
-        EvolucionEvento saveevol;
+        EvolucionEvento saveEvo;
 
         if (result.hasErrors()) {
             List<String> errors = result.getFieldErrors()
@@ -53,21 +51,22 @@ public class EvolucionEventoDTORestController {
         }
 
         try {
-            saveevol = evodtoserv.save(dto);
+            saveEvo = evodtoserv.save(dto);
         } catch (DataAccessException e) {
             response.put("mensaje", "Error al guardar en la base de datos");
             response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (Exception ex) {
-            response.put("mensaje", "Error inesperado al registrar la evolución clínica");
+            response.put("mensaje", "Error inesperado al registrar la evolucion clínica");
             response.put("error", ex.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        response.put("mensaje", "¡La evolución clínica ha sido creada con éxito!");
-        response.put("evolucionevento", saveevol);
+        response.put("mensaje", "¡La evolucion clínica ha sido creada con éxito!");
+        response.put("EvolucionEvento", saveEvo);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+    
 
     // GET: Obtener historia clínica + diagnósticos por ID
     
@@ -77,68 +76,68 @@ public class EvolucionEventoDTORestController {
         EvolucionEventoDTO dto;
 
         try {
-            dto = evodtoserv.findByIdevol(idevol);
+            dto = evodtoserv.findByEvoFkId(idevol);
         } catch (RuntimeException e) {
-            response.put("mensaje", "No se encontró una evolución clínica con el ID: " + idevol);
+            response.put("mensaje", "No se encontró una evolucion clínica con el ID: " + idevol);
             response.put("error", e.getMessage());
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
-
+    
+    // PUT: Editar evolucion clínica + diagnósticos por ID
     
     @PutMapping("/evolucionclinicacompleta/{idevol}")
-    public ResponseEntity<?> updateHistoriaClinicaDTO(@PathVariable Long idevol,
-                                                    @Valid @RequestBody EvolucionEventoDTO dto,
-                                                    BindingResult result) {
-        Map<String, Object> response = new HashMap<>();
+    public ResponseEntity<?> updateEvolucionEventoDTO(@PathVariable Long idevol,@Valid @RequestBody EvolucionEventoDTO dto, BindingResult result)
+    {
+    	Map<String, Object> response = new HashMap<>();
+    	if (result.hasErrors())
+    	{
+    		List<String> errors = result.getFieldErrors()
+    		.stream()
+    		.map(err -> "El campo '" + err.getField() + "' " + err.getDefaultMessage())
+    		.collect(Collectors.toList());
+    		response.put("errors", errors);
+    		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    	}
+    	try {
+    			// Verificar existencia usando el servicio
+    			EvolucionEventoDTO existingDto = evodtoserv.findByEvoFkId(idevol);
+    			if (existingDto == null || existingDto.getEvoeventdto() == null)
+    			{
+    				response.put("mensaje", "No existe la evolucion clínica con ID: " + idevol);
+    				return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    			}
 
-        if (result.hasErrors()) {
-            List<String> errors = result.getFieldErrors()
-                .stream()
-                .map(err -> "El campo '" + err.getField() + "' " + err.getDefaultMessage())
-                .collect(Collectors.toList());
-            response.put("errors", errors);
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-        }
+    	// Asignar ID
+    	dto.getEvoeventdto().setIdevol(idevol);
 
-        try {
-            // Verificar existencia usando el servicio
-        	
-            EvolucionEventoDTO existingDto = evodtoserv.findByIdevol(idevol);
-            if (existingDto == null || existingDto.getEvoeventdto() == null) {
-                response.put("mensaje", "No existe la evolucion clínica con ID: " + idevol);
-                return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-            }
-
-            // Asignar ID
-            //dto.getHcdto().setIdhcpac(idhcpac);
-            dto.getEvoeventdto().setIdevol(idevol);
+    	// Asignar IDs a diagnósticos que pertenecen a esta HC
+    	
+    	if (dto.getDxevendto() != null) {
             
-            // Asignar IDs a diagnósticos que pertenecen a esta HC
-            if (dto.getDxevendto() != null) {
-                dto.getDxevendto().forEach(dx -> {
-                	if (dx.getEvopac_fk() == null || 
-                            !dx.getEvopac_fk().getIdevol().equals(idevol)) {
-                            dx.setEvopac_fk(dto.getEvoeventdto());
-                    }
-                });
-            }
-
-            EvolucionEvento updated = evodtoserv.save(dto);
-            response.put("mensaje", "¡La evolucion clínica fue actualizada con éxito!");
-            response.put("Evolucion", updated);
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (DataAccessException e) {
-            response.put("mensaje", "Error al actualizar en la base de datos");
-            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        } catch (RuntimeException e) {
-            response.put("mensaje", "No se encontró la evolucion clínica");
-            response.put("error", e.getMessage());
-            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    		dto.getDxevendto().forEach(dx -> {
+                if (dx.getEvopac_fk() == null || !dx.getEvopac_fk().getIdevol().equals(idevol)) {
+                    
+                	dx.setEvopac_fk(dto.getEvoeventdto());
+                }
+            });
         }
-    }
 
+    	 EvolucionEvento updated = evodtoserv.save(dto);
+         response.put("mensaje", "¡La evolucion clínica fue actualizada con éxito!");
+         response.put("EvolucionEvento", updated);
+         return new ResponseEntity<>(response, HttpStatus.OK);
+     } catch (DataAccessException e) {
+         response.put("mensaje", "Error al actualizar en la base de datos");
+         response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+     } catch (RuntimeException e) {
+         response.put("mensaje", "No se encontró la evolucion clínica");
+         response.put("error", e.getMessage());
+         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+     }
+ }
+    
 }

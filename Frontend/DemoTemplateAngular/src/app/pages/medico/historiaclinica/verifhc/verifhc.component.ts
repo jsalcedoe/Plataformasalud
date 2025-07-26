@@ -254,7 +254,7 @@ export class VerifhcComponent implements OnInit {
         descdx: [{ value: diagnostico.dxhcpac_fk.descdx, disabled: true }]
 }));
       });
-    }
+    }console.log('Diagnósticos cargados:', this.diagnosticosFormArray.value);
   }
 
   agregarDiagnostico(): void {

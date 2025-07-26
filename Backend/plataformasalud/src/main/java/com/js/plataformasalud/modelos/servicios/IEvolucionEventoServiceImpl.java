@@ -38,6 +38,19 @@ public class IEvolucionEventoServiceImpl implements IEvolucionEventoService {
 		return evodao.save(evol);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<EvolucionEvento> findByEventevo_Fk(Long idevent) {
+		
+		return evodao.findByEventevo_Fk(idevent);
+	}
+
+	@Override
+	public boolean existsById(Long idevol) {
+		
+		return evodao.existsById(idevol);
+	}
+
 	
 
 }
