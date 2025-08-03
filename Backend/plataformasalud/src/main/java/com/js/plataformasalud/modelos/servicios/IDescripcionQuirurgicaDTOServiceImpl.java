@@ -1,11 +1,14 @@
 package com.js.plataformasalud.modelos.servicios;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-//import com.js.plataformasalud.modelos.dao.IDiagnosticoAtencionDao;
+
 import com.js.plataformasalud.modelos.dao.IEquipoQxDao;
 import com.js.plataformasalud.modelos.dao.IProcedimientoDescripcionQXDao;
 import com.js.plataformasalud.modelos.dao.IDescripcionQuirurgicaDao;
@@ -25,95 +28,169 @@ public class IDescripcionQuirurgicaDTOServiceImpl {
 	
 	private static final Logger logger = LoggerFactory.getLogger(IDescripcionQuirurgicaDTOServiceImpl.class);
 
-    private final IDescripcionQuirurgicaDao descripcionQuirurgicaDao;
-    private final IProcedimientoDescripcionQXDao procedimientoDescripcionQxDao;
-    private final IEquipoQxDao equipoQxDao;
-    private final IDiagnosticoDescripcionQxDao diagnosticodescripcionDao;
+    private final IDescripcionQuirurgicaDao dexqxDao;
+    private final IProcedimientoDescripcionQXDao pxQxDao;
+    private final IEquipoQxDao eqQxDao;
+    private final IDiagnosticoDescripcionQxDao dxqxDao;
 
 
     @Transactional
     public DescripcionQuirurgica save(DescripcionQuirurgicaDTO dto) {
         // Verificar si el DTO o sus listas son nulos
         if (dto == null) {
-            logger.error("El objeto DescripcionQuirurgicaDTO es nulo");
+            logger.error("El objeto DescripcionQuirurgica es nulo");
             throw new IllegalArgumentException("El DTO no puede ser nulo");
         }
         logger.debug("DTO recibido: {}", dto);
 
-        // Guardar la DescripcionQuirurgica
-        DescripcionQuirurgica descripcionQuirurgica = dto.getDescripcionQuirurgica();
-        if (descripcionQuirurgica == null) {
-            logger.error("La DescripcionQuirurgica en el DTO es nula");
-            throw new IllegalArgumentException("La DescripcionQuirurgica no puede ser nula");
-        }
-        logger.debug("DescripcionQuirurgica a guardar: {}", descripcionQuirurgica);
-
-        DescripcionQuirurgica savedDescripcion = descripcionQuirurgicaDao.save(descripcionQuirurgica);
-        logger.debug("DescripcionQuirurgica guardada: {}", savedDescripcion);
-
-        // Guardar los procedimientos asociados
-        if (dto.getProcedimientos() != null) {
-            for (ProcedimientoDescripcionQX procedimiento : dto.getProcedimientos()) {
-                if (procedimiento == null) {
-                    logger.warn("Procedimiento en la lista es nulo, se omitirá este registro.");
-                    continue;
-                }
-                procedimiento.setDescqx_fk(savedDescripcion);
-                logger.debug("Guardando procedimiento: {}", procedimiento);
-                procedimientoDescripcionQxDao.save(procedimiento);
-                logger.debug("Procedimiento guardado: {}", procedimiento);
-            }
-        } else {
-            logger.warn("La lista de procedimientos en el DTO es nula");
-        }
-
-        // Guardar el equipo quirúrgico asociado
-        if (dto.getEquipoQx() != null) {
-            for (EquipoQx equipo : dto.getEquipoQx()) {
-                if (equipo == null) {
-                    logger.warn("Equipo quirúrgico en la lista es nulo, se omitirá este registro.");
-                    continue;
-                }
-                equipo.setDesqx_fk(savedDescripcion);
-                logger.debug("Guardando miembro del equipo quirúrgico: {}", equipo);
-                equipoQxDao.save(equipo);
-                logger.debug("Miembro del equipo quirúrgico guardado: {}", equipo);
-            }
-        } else {
-            logger.warn("La lista de equipo quirúrgico en el DTO es nula");
-        }
+        // Guardar la Descripcion Quirurgica
         
-     // Guardar los diagnosticos relacionados
-         if (dto.getDxdexqx()!=null) {
-            for (DiagnosticoDescripcionQx dxdesqx : dto.getDxdexqx()) {
-                if (dxdesqx == null) {
-                    logger.warn("Diagnostico en la lista es nulo, se omitirá este registro.");
-                    continue;
-                }
+        DescripcionQuirurgica desqx = dto.getDescripcionQuirurgicadto();
+        if (desqx == null) {
+            logger.error("La Descripcion Quirurgica en el DTO es nula");
+            throw new IllegalArgumentException("La Descripcion Quirurgica no puede ser nula");
+        }
+        logger.debug("Descripcion Quirurgica a guardar: {}", desqx);
+
+        DescripcionQuirurgica savedxqx = dexqxDao.save(desqx);
+        logger.debug("Descripcion Quirurgica guardada: {}", savedxqx);
+        
+     // Manejo de Equipo Quirurgico
+        if (dto.getEquipoQxdto() != null) {
+            // 1. Obtener diagnósticos existentes
+            List<EquipoQx> equipoExistente = 
+            		eqQxDao.findByDesqxFkId(savedxqx.getIdqx());
+            // 2. Eliminar equipos que no están en la nueva lista
+            List<Long> idsNuevosEquipoQx= dto.getEquipoQxdto().stream()
+                .filter(eq ->eq.getIdeqqx()!= null)
+                .map(EquipoQx::getIdeqqx)
+                .collect(Collectors.toList());
+            
+            equipoExistente.stream()
+                //.filter(dx -> !idsNuevosEquipoQx.contains(dx.getIddxevopac()))
+            	.filter(eq -> !idsNuevosEquipoQx.contains(eq.getIdeqqx()))
+                .forEach(eqQxDao::delete);
+            
+            // 3. Guardar/Actualizar nuevos Equipos Quirurgicos
+            for (EquipoQx eqQx : dto.getEquipoQxdto()){
+                if (eqQx == null) continue;
+               
+                eqQx.setDesqx_fk(savedxqx);
                 
-                dxdesqx.setDesqx_fk(savedDescripcion);
-                logger.debug("Guardando diagnosticos del procedimiento: {}", dxdesqx);
-                diagnosticodescripcionDao.save(dxdesqx);
-                logger.debug("Diagnosticos del procedimiento guardados: {}", dxdesqx);
+                // Si tiene ID, es una actualización; si no, es nuevo
+                if (eqQx.getDesqx_fk() != null) {
+                    // Verificar que existe antes de actualizar
+                	eqQxDao.findById(eqQx.getIdeqqx()).ifPresent(existing -> {
+                        // Actualizar campos necesarios
+                		
+                		existing.setDatecreateqqx(eqQx.getDatecreateqqx());
+                		existing.setDateediteqqx(eqQx.getDateediteqqx());
+                		existing.setEsteqqx_fk(eqQx.getEsteqqx_fk());
+                		existing.setInteqqx(eqQx.getInteqqx());
+                		
+                		eqQxDao.save(existing);
+                    });
+                } else {
+                	eqQxDao.save(eqQx);
+                }
             }
-        } else {
-            logger.warn("La lista de diagnosticos en el DTO es nula");
         }
-
-        return savedDescripcion;
-    }
-    @Transactional(readOnly = true)
-    public DescripcionQuirurgicaDTO findByIdqx(Long idqx) {
-        DescripcionQuirurgica descripcion = descripcionQuirurgicaDao.findById(idqx)
-            .orElseThrow(() -> new RuntimeException("Descripción quirúrgica no encontrada con id: " + idqx));
         
-        DescripcionQuirurgicaDTO dto = new DescripcionQuirurgicaDTO();
-        dto.setDescripcionQuirurgica(descripcion);
-        dto.setProcedimientos(procedimientoDescripcionQxDao.findByDescqx_Fk(descripcion));
-        dto.setEquipoQx(equipoQxDao.findByDesqxFk(descripcion));
-        dto.setDxdexqx(diagnosticodescripcionDao.findByDxqxFk(descripcion));
+     // Manejo de Procedimientos
+        if (dto.getPxdto() != null) {
+            // 1. Obtener procedimientos existentes
+            List<ProcedimientoDescripcionQX> procedimientosExistente = 
+            		pxQxDao.findByDescqx_FkId(savedxqx.getIdqx());
+            
+            // 2. Eliminar procedimientos que no están en la nueva lista
+            List<Long> idsNuevosProcedimientosQx= dto.getPxdto().stream()
+                .filter(px ->px.getIdprocqx()!= null)
+                .map(ProcedimientoDescripcionQX::getIdprocqx)
+                .collect(Collectors.toList());
+            
+            procedimientosExistente.stream()
+            	.filter(px -> !idsNuevosProcedimientosQx.contains(px.getIdprocqx()))
+                .forEach(pxQxDao::delete);
+            
+            // 3. Guardar/Actualizar nuevos Procedimientos Quirurgicos
+            for (ProcedimientoDescripcionQX pxqx : dto.getPxdto()){
+                if (pxqx == null) continue;
+               
+                pxqx.setDescqx_fk(savedxqx);
+                
+                // Si tiene ID, es una actualización; si no, es nuevo
+                if (pxqx.getDescqx_fk() != null) {
+                    // Verificar que existe antes de actualizar
+                	pxQxDao.findById(pxqx.getIdprocqx()).ifPresent(existing -> {
+                        // Actualizar campos necesarios
+                		
+                		existing.setEstadopxdesqx_fk(pxqx.getEstadopxdesqx_fk());
+                		existing.setProcqx_fk(pxqx.getProcqx_fk());
+                		pxQxDao.save(existing);
+                		
+                		pxQxDao.save(existing);
+                    });
+                } else {
+                	pxQxDao.save(pxqx);
+                }
+            }
+        }
+        
+     // Manejo de diagnósticos
+        if (dto.getDxdexqxdto() != null) {
+            // 1. Obtener diagnósticos existentes
+            List<DiagnosticoDescripcionQx> diagnosticosExistentes = 
+            		dxqxDao.findByDxqxFkId(savedxqx.getIdqx());
+            
+            // 2. Eliminar diagnósticos que no están en la nueva lista
+            List<Long> idsNuevosDiagnosticos = dto.getDxdexqxdto().stream()
+                .filter(dx -> dx.getIddxqxpac() != null)
+                .map(DiagnosticoDescripcionQx::getIddxqxpac)
+                .collect(Collectors.toList());
+            
+            diagnosticosExistentes.stream()
+                .filter(dx -> !idsNuevosDiagnosticos.contains(dx.getIddxqxpac()))
+                .forEach(dxqxDao::delete);
+            
+            // 3. Guardar/Actualizar nuevos diagnósticos
+            for (DiagnosticoDescripcionQx dxpx : dto.getDxdexqxdto()) {
+                if (dxpx == null) continue;
+               
+                 dxpx.setDesqx_fk(savedxqx);
+                
+                // Si tiene ID, es una actualización; si no, es nuevo
+                if (dxpx.getIddxqxpac() != null) {
+                    // Verificar que existe antes de actualizar
+                	dxqxDao.findById(dxpx.getIddxqxpac()).ifPresent(existing -> {
+                        // Actualizar campos necesarios
+                		                		
+                		existing.setDateeditdxqxpac(dxpx.getDateeditdxqxpac());
+                		existing.setDxqxpac_fk(dxpx.getDxqxpac_fk());
+                		existing.setEstdxqxpac(dxpx.getEstdxqxpac());
+                		existing.setTypdxqxpac_fk(dxpx.getTypdxqxpac_fk());
+                		dxqxDao.save(existing);
+                    });
+                } else {
+                	dxqxDao.save(dxpx);
+                }
+            }
+        }
+        
+        return savedxqx;
+    }
+    
+    @Transactional(readOnly = true)
+    public DescripcionQuirurgicaDTO findByFkId(Long idqx) {
+        DescripcionQuirurgica deqx = dexqxDao.findById(idqx)
+            .orElseThrow(() -> new RuntimeException("Descripcion Quirurgica no encontrada con id: " + idqx));
+        
+        DescripcionQuirurgicaDTO dto = new DescripcionQuirurgicaDTO();        
+        dto.setDescripcionQuirurgicadto(deqx);
+        dto.setEquipoQxdto(eqQxDao.findByDesqxFkId(idqx));
+        dto.setPxdto(pxQxDao.findByDescqx_FkId(idqx));
+        dto.setDxdexqxdto(dxqxDao.findByDxqxFkId(idqx));
+        
         return dto;
     }
-
 
 }

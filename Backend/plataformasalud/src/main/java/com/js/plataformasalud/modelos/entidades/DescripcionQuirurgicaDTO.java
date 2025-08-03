@@ -9,9 +9,9 @@ import lombok.Setter;
 
 public class DescripcionQuirurgicaDTO {
 	
-	private DescripcionQuirurgica descripcionQuirurgica;
-    private List<ProcedimientoDescripcionQX> procedimientos;
-    private List<EquipoQx> equipoQx;
-    private List<DiagnosticoDescripcionQx>dxdexqx;
+	private DescripcionQuirurgica descripcionQuirurgicadto;
+    private List<ProcedimientoDescripcionQX> pxdto;
+    private List<EquipoQx> equipoQxdto;
+    private List<DiagnosticoDescripcionQx>dxdexqxdto;
     
 }
