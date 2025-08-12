@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, tap } from 'rxjs';
+import { catchError, of, tap } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 import { OperacionService } from 'src/app/services/operacion.service';
 import Swal from 'sweetalert2';
@@ -24,10 +24,13 @@ export class CreadesqxcompletaComponent implements OnInit {
   idevent:string
   sexopac:string
   eventSeleccionado: any
+  detypdx:any [] = []
+  detdx: any [] = []
   user:any []=[];
   filterUser: any [][]=[];
   procedimiento:any[] = [];
   filteredProcedimientos: any[][] = []; // Array de arrays para almacenar los resultados filtrados por cada input
+  diagnosticosFormArray: FormArray;
 
   constructor(private fb:FormBuilder,
               private router:Router,
@@ -61,10 +64,13 @@ export class CreadesqxcompletaComponent implements OnInit {
                 anestesia_fk:[''],
               //-----------------------------------------
               procedimientos: this.fb.array([]),
-              equipoQx: this.fb.array([])
+              equipoQx: this.fb.array([]),
+              diagnosticos: this.fb.array([])
+
         });
         this.addProcedimiento();
         this.addUser();
+        this.diagnosticosFormArray = this.procedimientoForm.get('diagnosticos') as FormArray;
   }
 
   ngOnInit(): void {
@@ -290,6 +296,81 @@ consultapxexam() {
     // Limpia la lista de resultados filtrados
     this.filterUser[index] = [];
   }
+  getTipoDxDetalle(term:string, index: number){
+         if(term.length > 2){
+           this.services.getTipoDxXDet(term)
+           .pipe(
+                   tap((res: any[]) => {
+                      this.detypdx = res.filter(ddx =>
+                      ddx.detypdx.toLowerCase().includes(term.toLowerCase())
+                      )                 
+                       }),
+                        
+                        catchError((err) => {
+                          // Maneja el error aquí
+                          console.error('Error al buscar el tipo de diagnostico:', err);
+                          alert('Error ' + err.message);
+                          return of([]);
+                        })
+                      ).subscribe();
+         }else{
+           this.detypdx = []
+         }
+         
+       }
+   
+    selecttipDx(tdx: any, index: number): void {
+         const grupo = this.diagnosticosFormArray.at(index);
+         grupo.get('typdxqxpac_fk')?.setValue(tdx.idtypdx);
+         grupo.get('detypdx')?.setValue(tdx.detypdx);
+         console.log('Tipo de diagnostico seleccionado:', tdx);
+         this.detypdx = [];
+   }
+   
+    getDxDetalle(term:string, index: number){
+         if(term.length > 2){
+           this.services.getDxfindByNomdx(term)
+           .pipe(
+                   tap((res: any[]) => {
+                      this.detdx = res.filter(ddx =>
+                      ddx.descdx.toLowerCase().includes(term.toLowerCase())
+                      )                 
+                       }),
+                        
+                        catchError((err) => {
+                          // Maneja el error aquí
+                          console.error('Error al buscar el diagnostico:', err);
+                          alert('Error ' + err.message);
+                          return of([]);
+                        })
+                      ).subscribe();
+         }else{
+           this.detdx = []
+         }
+         
+       }
+   
+    selectDx(dx: any, index: number): void {
+         const grupo = this.diagnosticosFormArray.at(index);
+         grupo.get('dxqxpac_fk')?.setValue(dx.clavedx);
+         grupo.get('descdx')?.setValue(dx.descdx);
+         console.log('Diagnostico seleccionado:', dx);
+         this.detdx = [];
+    }
+    agregarDiagnostico(): void {
+    this.diagnosticosFormArray.push(this.fb.group({
+      typdxqxpac_fk: [null],
+      detypdx: [''],
+      dxqxpac_fk: [null],
+      descdx: ['']
+      }));
+    }
+  
+    removeDiagnostico(index: number) {
+          const diagnosticos = this.procedimientoForm.get('diagnosticos') as FormArray;
+          diagnosticos.removeAt(index);
+          
+        }
 
   almacenarpxuser() {
     // Convertir el array de procedimientos y equipo quirúrgico a la estructura esperada
@@ -298,6 +379,10 @@ consultapxexam() {
     }));
     const equipoQxArray = this.procedimientoForm.value.equipoQx.map(user => ({
         inteqqx: { iduser: user.iduser }
+    }));
+    const diagnosticosArray = this.procedimientoForm.value.diagnosticos.map(dx => ({
+        typdxqxpac_fk: dx.typdxqxpac_fk,
+        dxqxpac_fk: dx.dxqxpac_fk
     }));
 
     // Construir el objeto DescripcionQuirurgica para el DTO
@@ -326,13 +411,14 @@ consultapxexam() {
 
     // Construir el DTO completo que cumpla con la estructura requerida
     const structjsonDto = {
-        descripcionQuirurgica: descripcionQuirurgica,
-        procedimientos: procedimientosArray,
-        equipoQx: equipoQxArray
+        descripcionQuirurgicadto: descripcionQuirurgica,
+        pxdto: procedimientosArray,
+        equipoQxdto: equipoQxArray,
+        dxdexqxdto: diagnosticosArray
     };
 
     // Enviar el DTO al servicio
-    this.service.adddesqxcompleta([structjsonDto])
+    this.service.addDesQxCompleta([structjsonDto])
         .pipe(
             tap((res) => {
                 console.log('Descripción quirúrgica almacenada', res);
@@ -354,16 +440,8 @@ consultapxexam() {
         ).subscribe();
 }
 
-guardarTodo(){
-  this.almacenarpxuser(),
-  this.diagnosticosComponent.creaDxAtencion()
-  this.router.navigateByUrl(`/eventos`)
-}
-
-
-
-
-  clearForm(){}
+guardarTodo(){}
+clearForm(){}
 
 
 }

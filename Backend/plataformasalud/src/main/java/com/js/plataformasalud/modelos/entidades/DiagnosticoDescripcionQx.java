@@ -48,10 +48,6 @@ public class DiagnosticoDescripcionQx implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private TipoNota origdxqx_fk; // especifica de donde proviene el diagnostico, es decir si es de hc de descqx o nota
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Diagnostico dxqxpac_fk;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

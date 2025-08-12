@@ -116,30 +116,7 @@ export class OperacionService {
   adddesqx(datosRegistros:any):Observable<any>{
     return this.http.post<any>(this.endpoint + 'procedimientosqx',datosRegistros,{headers:this.httpheaders})
   }
-  // servicios para componente descripcion quirurgica completa
-    
-  adddesqxcompleta(datosRegistros:any):Observable<any>{
-    return this.http.post<any>(this.endpoint + 'descripcionquirurgica',datosRegistros,{headers:this.httpheaders})
-  }
-
-  getdesqxCompletaXId(id:any):Observable<any[]>{
-    return this.http.get<any[]>(this.endpoint+'procedimientosqx/'+id)
-  }
-
-  editdesqxcompleta(idqx: Number, datosRegistros: any): Observable<any> {
-    return this.http.put<any>(`${this.endpoint}descripcionquirurgica/${idqx}`, datosRegistros, { headers: this.httpheaders });
-  }
-
-
-  getdesqx():Observable<any[]>{
-    return this.http.get<any[]>(this.endpoint+'procedimientosqx')
-  }
-  getdesqxId(id:any):Observable<any[]>{
-    return this.http.get<any[]>(this.endpoint+'procedimientosqx/'+id)
-  }
-
   
-
   // Servicio para componenta de equipo quirurgico
 
   addequipoqx(datosRegistros:any):Observable<any>{
@@ -300,6 +277,43 @@ export class OperacionService {
   }
   editevomed(idevol: Number, datosRegistros: any): Observable<any> {
     return this.http.put<any>(`${this.endpoint}evoluciones/${idevol}`, datosRegistros, { headers: this.httpheaders });
+  }
+
+  // servicios para componente Descripcion quirurgica completa
+
+  addDesQxCompleta(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'descripcionqxcompleta',datosRegistros,{headers:this.httpheaders})
+  }
+  getDesQxCompleta():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'descripcionqxcompleta')
+  }
+  getDesQxCompletaId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'descripcionqxcompleta/'+id)
+  }
+  editDesQxCompleta(idqx: Number, datosRegistros: any): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}descripcionqxcompleta/${idqx}`, datosRegistros, { headers: this.httpheaders });
+  }
+
+  // servicios para componente descripcion quirurgica completa antiguos
+    
+  adddesqxcompleta(datosRegistros:any):Observable<any>{
+    return this.http.post<any>(this.endpoint + 'descripcionquirurgica',datosRegistros,{headers:this.httpheaders})
+  }
+
+  getdesqxCompletaXId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'procedimientosqx/'+id)
+  }
+
+  editdesqxcompleta(idqx: Number, datosRegistros: any): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}descripcionquirurgica/${idqx}`, datosRegistros, { headers: this.httpheaders });
+  }
+
+
+  getdesqx():Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'procedimientosqx')
+  }
+  getdesqxId(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.endpoint+'procedimientosqx/'+id)
   }
 
   

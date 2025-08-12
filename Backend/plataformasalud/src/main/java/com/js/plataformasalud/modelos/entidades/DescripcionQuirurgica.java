@@ -3,10 +3,7 @@ package com.js.plataformasalud.modelos.entidades;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.Date;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -73,18 +69,18 @@ public class DescripcionQuirurgica implements Serializable {
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Estado estpxqx_fk;
 	
-	@OneToMany(mappedBy = "descqx_fk", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JsonManagedReference
-    private List<ProcedimientoDescripcionQX> procedimientos;
+	/*@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    private ProcedimientoDescripcionQX procedimientos;
 
-    @OneToMany(mappedBy = "desqx_fk", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<EquipoQx> equipoQx;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    private EquipoQx equipoQx;
     
-    @OneToMany(mappedBy = "desqx_fk", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<DiagnosticoDescripcionQx> dxdesqx;
-	
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    private DiagnosticoDescripcionQx dxdesqx;
+	*/
 	private static final long serialVersionUID = 1L;
 	
 }
