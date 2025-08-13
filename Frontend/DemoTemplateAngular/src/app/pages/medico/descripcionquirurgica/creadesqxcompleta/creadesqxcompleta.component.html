@@ -277,12 +277,74 @@
                           </div>
                           <button type="button" class="btn btn-primary" (click)="addUser()">Agregar Usuarios</button>
                         </div>
+                      </div>
                     </div>
-                    <app-creadiagnosticosatencion #diagnosticosComp></app-creadiagnosticosatencion>
+
+                     <div class=" card-header col-md-12"><h3 class=" title">Diagnosticos </h3></div>
+                    
+                     <!-- Sección de Diagnósticos -->
+                     <div class="row">
+                        <div class="col-md-12">
+                        <div formArrayName="diagnosticos">
+                          <div *ngFor="let proc of diagnosticosFormArray.controls; let i = index" [formGroupName]="i" class="row align-items-center">
+                            <div class="col-md-8 pr-md-1">
+                              <!--Seccion Tipo de Diagnostico-->
+                              <div class="form-group">
+                                <label>Tipo de diagnostico</label>
+                                <input 
+                                  id="tipoDx"
+                                  class="form-control"
+                                  type="text"
+                                  formControlName="detypdx"
+                                  (input)="getTipoDxDetalle($event.target.value, i)"
+                                  autocomplete="off"
+                                />
+                                <ul class="list-group" *ngIf="detypdx.length > 0">
+                                  <li 
+                                    class="list-group" 
+                                    *ngFor="let ddx of detypdx" 
+                                    (click)="selecttipDx(ddx, i)">
+                                    {{ ddx.detypdx }}
+                                  </li>
+                                </ul>
+                              </div>
+                              <!--Seccion Detalle de Diagnostico-->
+                              <div class="form-group">
+                                <label>Diagnostico</label>
+                                <input 
+                                  id="descDx"
+                                  class="form-control"
+                                  type="text"
+                                  formControlName="descdx"
+                                  (input)="getDxDetalle($event.target.value, i)"
+                                  autocomplete="off"
+                                />
+                                <ul class="list-group" *ngIf="detdx.length > 0">
+                                  <li 
+                                    class="list-group" 
+                                    *ngFor="let dx of detdx" 
+                                    (click)="selectDx(dx, i)">
+                                    {{ dx.descdx }}
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="col-md-2">
+                              <button type="button" class="btn btn-danger" (click)="removeDiagnostico(i)">Eliminar</button>
+                            </div>
+                          </div>
+                          <button type="button" class="btn btn-primary" (click)="agregarDiagnostico()">Agregar Diagnostico</button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    
                     <div class="card-footer">
-                      <button class="btn btn-fill btn-danger" type="submit" (click)="guardarTodo()">Guardar</button>
+                      <button class="btn btn-fill btn-danger" type="submit" (click)="almacenarpxuser()">Guardar</button>
                     </div>
-                  </div> 
+                  <!--</div>--> 
+                 <!-- </div>--> 
+                  
                 </form>
                     <!-------------------------------------------------------------------------->
                     

@@ -32,6 +32,7 @@ export class CreadesqxcompletaComponent implements OnInit {
   filteredProcedimientos: any[][] = []; // Array de arrays para almacenar los resultados filtrados por cada input
   diagnosticosFormArray: FormArray;
 
+
   constructor(private fb:FormBuilder,
               private router:Router,
               private service:OperacionService,
@@ -71,6 +72,8 @@ export class CreadesqxcompletaComponent implements OnInit {
         this.addProcedimiento();
         this.addUser();
         this.diagnosticosFormArray = this.procedimientoForm.get('diagnosticos') as FormArray;
+        this.agregarDiagnostico(); // Inicializar con un diagnóstico vacío
+
   }
 
   ngOnInit(): void {
@@ -80,8 +83,6 @@ export class CreadesqxcompletaComponent implements OnInit {
       this.getDataEvent(),
       this.consultapxexam(),
       this.consultauser()
-    }else{
-      this.clearForm();
     }
     
   }
@@ -381,9 +382,13 @@ consultapxexam() {
         inteqqx: { iduser: user.iduser }
     }));
     const diagnosticosArray = this.procedimientoForm.value.diagnosticos.map(dx => ({
-        typdxqxpac_fk: dx.typdxqxpac_fk,
-        dxqxpac_fk: dx.dxqxpac_fk
-    }));
+      typdxqxpac_fk: {
+          idtypdx: dx.typdxqxpac_fk
+      },
+      dxqxpac_fk: {
+          clavedx: dx.dxqxpac_fk
+      }
+  }));
 
     // Construir el objeto DescripcionQuirurgica para el DTO
     const descripcionQuirurgica = {
@@ -416,9 +421,9 @@ consultapxexam() {
         equipoQxdto: equipoQxArray,
         dxdexqxdto: diagnosticosArray
     };
-
+    console.log('Estructura de Descripción Quirúrgica', structjsonDto);
     // Enviar el DTO al servicio
-    this.service.addDesQxCompleta([structjsonDto])
+    this.service.addDesQxCompleta(structjsonDto)
         .pipe(
             tap((res) => {
                 console.log('Descripción quirúrgica almacenada', res);
@@ -426,7 +431,10 @@ consultapxexam() {
                     icon: 'success',
                     title: 'Operación exitosa',
                     text: res.mensaje
-                })
+                }).then (() =>{
+          this.router.navigateByUrl(`/eventos`)
+         
+        });
             }),
             catchError((err) => {
                 console.error('Error:', err);
@@ -438,10 +446,6 @@ consultapxexam() {
                 throw err;
             })
         ).subscribe();
+        console.log('estructura enviada', structjsonDto)
 }
-
-guardarTodo(){}
-clearForm(){}
-
-
 }

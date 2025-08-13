@@ -114,7 +114,6 @@ private IDiagnosticoDescripcionQxService dxateserv;
 			dxateAct.setDateeditdxqxpac(dxate.getDateeditdxqxpac());
 			dxateAct.setDxqxpac_fk(dxate.getDxqxpac_fk());
 			dxateAct.setEstdxqxpac(dxate.getEstdxqxpac());
-			dxateAct.setOrigdxqx_fk(dxate.getOrigdxqx_fk());
 			dxateAct.setTypdxqxpac_fk(dxate.getTypdxqxpac_fk());
 			
 			
